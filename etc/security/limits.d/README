@@ -1,0 +1,47 @@
+by F.C.
+
+All *.conf files in this folder (plus '/etc/security/limits.conf', if exists)
+allow setting resource limits for users logged-in via PAM. This is a good way
+of preventing fork-bombs from consuming all system resources. All configurable
+limits are described in '/etc/security/limits.conf' and limits.conf(5) manpage
+(see also https://serverfault.com/questions/773609).
+
+Please note that, if the above files are changed, the new resource limits will
+take effect only after a reboot. Current resource limits can be observed with:
+
+ - ulimit -aS  ->  soft limits                (bash internal command)
+ - ulimit -aH  ->  hard limits                (bash internal command)
+ - prlimit     ->  both soft and hard limits  (util-linux >= 2.21)
+
+Also, 'ulimit' and 'prlimit' allow us to set limits on the fly (but new limits
+will not be persistent, they'll survive only until the next reboot). Note that
+unlike ulimit, prlimit allows us to specify a PID in addition to the resource
+type (see https://www.baeldung.com/linux/prlimit and prlimit(1) man page).
+
+
+** WARNING **
+Resource limits set with the above files will take effect or not, depending on
+the use of the 'pam_limits.so' module in /etc/pam.d/*; therefore, the (default)
+behavior will strongly depend on the Unix-like used distribution! Moreover, in
+systemd based OS, we must also consider the resource limits imposed by systemd
+system/user configuration files (and services file, where such limits can be
+locally overridden). The behavior may vary with the distribution used.
+
+
+** GENTOO BEHAVIOR **
+Above resource limits are applied to processes started after the login (both
+GUI / NON-GUI), but they WILL NOT AFFECT SYSTEMD SERVICES, NOR OPENRC SERVICES
+STARTED AT BOOT. Systemd services have limits set by '/etc/systemd/system.conf',
+'/etc/systemd/user.conf' and other *.conf files in several subdirs (when exist,
+see systemd-system.conf(5) man page). OpenRC services started by hand after the
+login will obey the above limits; services started at boot can obey limits set
+in /etc/conf.d/* (https://forums.gentoo.org/viewtopic-t-1095304-start-0.html).
+NOTE: OTHER LINUX DISTROS MAY BEHAVE DIFFERENTLY FOR GUI AND NON-GUI LOGINS!
+
+
+** IMPORTANT NOTE **
+MANY PARAMETERS IN "PAM LIMITS" ARE EXPRESSED IN KB (FEW IN BLOCKS OR BYTES),
+WHILE THE EQUIVALENT PARAMS IN SYSTEMD CONFIGURATION FILES (AND SERVICES FILE)
+ARE EXPRESSED IN BYTES (see https://unix.stackexchange.com/questions/345595/).
+INCORRECT PARAMETERS MAY PREVENT THE OS FROM COMPLETING THE BOOT PROCESS, SO
+BE VERY CAREFUL WHEN ASSIGN SUCH LIMITS IN SYSTEMD CONFIGURATION FILES!

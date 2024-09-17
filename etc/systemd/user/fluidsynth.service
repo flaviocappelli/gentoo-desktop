@@ -1,0 +1,43 @@
+# by F.C.
+#
+# Gentoo installs the 'fluidsynth.service' file in '/usr/lib/systemd/system/'
+# (i.e. as system-wide service) which is totally wrong: it should be installed
+# as user service in '/usr/lib/systemd/user/', like Debian and some other Linux
+# distributions do. Also, such service, do not seems to work, even when started
+# as user service, so I provided my own (note: settings in /etc/fluidsynth.conf
+# are ignored, see below). As root, mask the system-wide Gentoo service:
+#
+#   systemctl mask fluidsynth.service
+#
+# then, as USER that needs to run the service, enable this service:
+#
+#   systemctl --user enable fluidsynth.service
+#
+# Note: fluidsynth fails to start if this service is enabled (by root) for all
+# users with '--global' (I dont' know why, it should work); anyway, the service
+# is started with the following options and arguments (see fluidsynth manpage):
+#
+#  '-is -m alsa_seq -p FluidSynth' -> ALSA MIDI sequencer, named FluidSynth;
+#  '-a pulseaudio' -> output to pulseaudio (works better than '-a pipewire');
+#  '-r 48000' -> use 48KHz as sampling frequency to match pulseaudio/pipewire;
+#  '-g .6 -l' -> set gain to 0.6 (default 0.2) and don't connect to LASH server;
+#  '/usr/share/sounds/sf2/FluidR3_GM.sf2' use General Midi (GM) Fluid3 SoundFont;
+#  '/usr/share/sounds/sf2/FluidR3_GS.sf2' add also Sound FX Extended Instruments.
+#
+# You need to emerge the package 'fluid-soundfont' before enabling this service.
+
+[Unit]
+Description=FluidSynth Daemon
+Documentation=man:fluidsynth(1)
+Requires=pipewire.service pipewire-session-manager.service pipewire-pulse.service
+After=pipewire.service pipewire-session-manager.service pipewire-pulse.service
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/sleep 1
+ExecStart=/usr/bin/fluidsynth -is -m alsa_seq -p FluidSynth -a pulseaudio -r 48000 -g 0.6 -l /usr/share/sounds/sf2/FluidR3_GM.sf2 /usr/share/sounds/sf2/FluidR3_GS.sf2
+# Restart on failure (note that ExecStartPre runs on restart).
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

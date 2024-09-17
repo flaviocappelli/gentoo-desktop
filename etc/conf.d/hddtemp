@@ -1,0 +1,18 @@
+# Copyright 1999-2012 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# the hddtemp executable
+HDDTEMP_EXEC=/usr/sbin/hddtemp
+
+# various options to pass to the daemon
+HDDTEMP_OPTS="--listen=127.0.0.1"
+
+# by F.C.
+# a list of drives to check
+# NOTE: official hddtemp is quite old and does not support NVME devices.
+# There is a fork (https://github.com/vitlav/hddtemp) that does it, but no
+# ebuilds are yet provided. Anyway, today, it is better to use the sensors
+# command (with -j option and a little bit of postprocessing), or get the
+# temperatures directly from /sys/class/hwmon/hwmon* (readable by normal
+# users), see: https://unix.stackexchange.com/questions/558112.
+HDDTEMP_DRIVES="/dev/sda /dev/sdb /dev/sdc /dev/sdd /dev/sde"

@@ -1,0 +1,31 @@
+by F.C.
+
+/etc/conf.d/hwclock file and /sbin/hwclock command (from the sys-apps/util-linux
+package) are no longer needed, whether we use OpenRC or Systemd. Kernels 3.9 and
+later are capable of managing the system clock update from the RTC at boot, and
+the RTC update from the system clock at shutdown (plus synchronization at fixed
+intervals). The best/recommended NTP synchronization daemon is "chrony".
+
+Note: "chrony" does not need the /etc/adjtime file (that is created by hwclock)
+and can automatically detect if the RTC time is expressed in UTC or local time
+(so we do not need the 'rtconutc' directive in /etc/chrony/chrony.conf).
+
+It is strongly recommended to always keep the RTC in UTC time; in case we have a
+dual boot system with Windows, the latter can be forced to consider the hardware
+clock in UTC instead of local time (default). Also we should disable the Windows
+time synchronization, because "chrony" is not unaware of Windows adjustments, so
+it will make incorrect estimates of the RTC drift (note that the Windows clock
+synchronization routine is quite inaccurate, so disabling it should not be a big
+loss): open the Control Panel -> click on Date and Time -> click on the Internet
+Time tab -> click the Change Settings button -> uncheck the time synchronization
+option (in VirtualBox we should also do the same in any VM OS guest we have with
+guest additions installed, as they keep the host/guest time syncronized).
+
+See the following documentation:
+
+https://wiki.archlinux.org/title/System_time
+https://wiki.gentoo.org/wiki/System_time
+https://wiki.gentoo.org/wiki/Chrony
+https://chrony-project.org/faq.htm
+
+To handle date/time with systemd use the 'timedatectl' command and not 'hwclock'.

@@ -1,0 +1,258 @@
+# by F.C.
+#
+# Ebuilds from the gentoo official repository.
+# NOTE: sign ~ (tilde) let in -r# package revisions.
+
+# Enable some ~arch packages with fixes,
+# or support for Python 3.12 / Ruby 3.2.
+~dev-ruby/asciidoctor-2.0.20::gentoo
+~media-gfx/gimp-2.10.36::gentoo
+~media-libs/openexr-3.2.4::gentoo
+~sci-libs/opencascade-7.7.2::gentoo
+
+# CPU vulnerability checker (latest version).
+app-admin/spectre-meltdown-checker::gentoo **
+
+# Other Qt5 packages in testing useful for development. For Qt5->Qt6 package
+# migration, see https://wiki.gentoo.org/wiki/Project:Qt/Qt6_migration_notes
+~dev-qt/qtplugininfo-5.15.14::gentoo
+~dev-qt/qtserialbus-5.15.14::gentoo
+
+# Qt Creator: not emerged (at the moment I'm using
+# the version provided with the Qt Maintenance Tool).
+#=dev-qt/qt-creator-13*::gentoo
+
+# Hex editor that can edit very BIG files!
+app-editors/wxhexeditor::gentoo
+
+# Other packages useful for development. dev-util/seer
+# is a new gui frontend to gdb with advanced features.
+app-text/zeal::gentoo
+dev-debug/kdbg::gentoo
+dev-util/heaptrack::gentoo
+dev-util/seer::gentoo
+
+# PipeWire Graph Qt GUI Interface.
+media-sound/qpwgraph::gentoo
+
+# IM: Zoom, Skype, Telegram Desktop (bin version).
+# NOTE: Microsoft has discontinued the Debian Skype packages
+# (on which the ebuild is based) and the related repository,
+# so there will likely be no more updates of 'skypeforlinux'.
+# Switching to Skype for Web (SfW) is highly recommended. See:
+# https://forums.debian.net/viewtopic.php?t=155419&start=20
+net-im/zoom::gentoo
+net-im/skypeforlinux::gentoo
+net-im/telegram-desktop-bin::gentoo
+
+# OBS Studio. Seee also
+# https://github.com/umlaeute/v4l2loopback.
+~media-video/obs-studio-30.2.3::gentoo
+~media-video/v4l2loopback-0.13.1::gentoo
+
+# Avidemux.
+~media-video/avidemux-2.8.1::gentoo
+~media-libs/avidemux-core-2.8.1::gentoo
+~media-libs/avidemux-plugins-2.8.1::gentoo
+~media-sound/dcaenc-2::gentoo
+
+# Blender.
+# VERSION >= 4.1.1 IS NOW STABLE!
+# VERSION 4.2.x WILL BE LTS BUT IS NOT YET IN PORTAGE.
+# When including OpenShadingLanguage scripting support (not
+# enabled by default) media-gfx/blender, media-libs/mesa and
+# media-libs/osl must be linked to the same LLVM version, or
+# blender will crash (see gentoo bugs 880671 / 821955).
+#~media-gfx/blender-4.1.1::gentoo
+#~media-libs/oidn-2.2.2::gentoo
+#~media-gfx/openvdb-11.0.0::gentoo
+
+# KiCad.
+# Only KiCad >= 8.0.3 have support for Python 3.12.
+~app-doc/kicad-doc-8.0.4::gentoo
+~sci-electronics/kicad-8.0.4::gentoo
+~sci-electronics/kicad-symbols-8.0.4::gentoo
+~sci-electronics/kicad-footprints-8.0.4::gentoo
+~sci-electronics/kicad-packages3d-8.0.4::gentoo
+~sci-electronics/kicad-templates-8.0.4::gentoo
+~sci-electronics/kicad-meta-8.0.4::gentoo
+~app-text/dblatex-0.3.12::gentoo
+
+# FreeCAD.
+# Finally getting closer to version 1.0, with Qt6 support,
+# new and improved features, and important issue fixed!
+media-gfx/freecad::gentoo
+
+# Godot Engine.
+dev-games/godot::gentoo
+dev-games/recastnavigation::gentoo
+net-libs/wslay::gentoo
+
+# Xonotic.
+games-fps/xonotic::gentoo
+
+# FlighGear.
+games-simulation/flightgear::gentoo
+games-simulation/flightgear-data::gentoo
+dev-games/simgear::gentoo
+
+# Battle for Wesnoth.
+games-strategy/wesnoth::gentoo
+
+# OpenGL/Vulkan multi-platform port of ZDoom (game engine that
+# permit to play DOOM, DOOM II, HERETIC, HEXEN, and many others
+# old titles, including mods). NOTE that it needs the original
+# *.WAD game files. See https://zdoom.org/wiki/Main_Page
+games-fps/gzdoom::gentoo
+media-libs/zmusic::gentoo
+
+# CHM support has gone away from okular, while
+# kchmviewer has come back (still in testing).
+# See https://bugs.gentoo.org/806296
+app-text/kchmviewer::gentoo
+
+# Android emulator which includes a complete set of sensors and features in order
+# to interact with a virtual Android environment. Is is free for personal use, see:
+# https://blog.desdelinux.net/it/genymotion-un-emulador-de-android-para-gnulinux/
+app-emulation/genymotion-bin::gentoo
+
+# Realtime monitor.
+net-analyzer/netdata::gentoo
+
+# Advanced power management.
+# LATEST VERSION (1.6.1) IS NOW STABLE!
+# Alternative: sys-power/power-profiles-daemon >= 0.14
+#sys-power/tlp::gentoo
+
+# Very cool emerge.log parser. See:
+# https://github.com/vincentdephily/emlop
+# https://www.reddit.com/r/Gentoo/comments/159727l
+# Most useful command: 'emlop s -H -gm -st'.
+app-portage/emlop::gentoo
+
+# Manage monitor settings such as brightness, color levels, input source (any
+# setting that can be changed by pressing monitor's buttons).  NOTE: does not
+# support laptop displays (which are controlled using a special API, not I2C).
+app-misc/ddcui::gentoo
+app-misc/ddcutil::gentoo
+
+# Utility that shows and sets processor power related values (stable version
+# is too old). Useful to check the acpi-cpufreq / amd-pstate driver status.
+sys-power/cpupower::gentoo
+
+# Show the GPU utilization (AMD GPU only)
+# (see https://github.com/clbr/radeontop).
+app-misc/radeontop::gentoo
+
+# Display info about the system's OpenCL capabilities.
+dev-util/clinfo::gentoo
+
+# ======== OpenCL / ROCM / HIP / CUDA ========
+# See:
+#   https://wiki.gentoo.org/wiki/HIP
+#   https://wiki.gentoo.org/wiki/ROCm
+#   https://wiki.gentoo.org/wiki/OpenCL#AMD
+#   AMDGPU TARGET GPUs in /etc/portage/make.conf/00-amdgpu.conf
+#
+# -------- OpenCL ONLY --------
+# emerge -pv clinfo
+#
+# 1) USE=opencl emerge media-libs/mesa
+#    MESA >= 23.1.0 uses "rusticl" instead of "glover", but "rusticl" radeonsi implementation
+#    is still considered unstable and not ready for all OpenCL applications (it must be enabled
+#    with the environment variable RUSTICL_ENABLE=radeonsi, at least up to MESA 24.0.x); note
+#    that mesa[opencl] cannot be installed together with ROCM (dev-libs/rocm-opencl-runtime).
+#    For the MESA environment variables see https://docs.mesa3d.org/envvars.html
+#    For the RUSTICL STATUS see https://mesamatrix.net/
+#
+#    TESTS:  darktable works
+#            luxmark-3.1 luxball with -cl-fast-relaxed-math enabled/disable: score around 60650..60850
+#            luxmark-4.0-alpha1 (not updated since 2020!) default scene: hangs compiling OpenCL kernels
+#
+# 2) emerge dev-libs/amdgpu-pro-opencl
+#    cannot be installed together with media-libs/mesa[opencl]
+#    old, not maintained, deprecated in favor of ROCM (dev-libs/rocm-opencl-runtime)
+#
+#    TESTS:  untested
+#
+# -------- OpenCL + ROCM + HIP --------
+# emerge -pv rocm-opencl-runtime clinfo rocminfo
+# emerge -pv dev-util/hip hipBLAS hipFFT hipCUB hipRAND
+#
+# NOTES:
+#  * ROCM cannot be installed together with mesa[opencl]
+#  * ROCM DOCS are available at 'https://rocm.docs.amd.com/projects/xxxYYYY/en/latest/' for
+#    package 'xxxYYYY' (e.g. rocBLAS -> https://rocm.docs.amd.com/projects/rocBLAS/en/latest/)
+#
+# dev-libs/rocm-opencl-runtime TESTS (with GPU AMD RADEON RX 6900XT):
+#  * 5.5.1     ->  luxmark-3.1 works, darktable-4.4 cltest works
+#  * 5.7.1-r1  ->  luxmark-3.1 crashes, darktable-4.4 cltest crashes (TODO: try kernel arg: iommu=pt)
+#  * 6.1.2     ->  luxmark-3.1 works (slightly lower score than with 5.5.1), darktable-4.4 cltest works
+#
+# Also it seems that ROC OpenCL version 5.7 has poor performances compared to 5.5, at least on Fedora. See:
+# https://community.amd.com/t5/discussions/issue-with-poor-integer-performance-rocm-opencl-5-7-1/m-p/646380
+# NOTE: we can emerge version 5.7 of other ROCM components, even with rocm-opencl-runtime-5.5.
+dev-libs/rocm-opencl-runtime:0/5.5::gentoo
+
+# ROCM dependencies. Note: dev-build/rocm-cmake:0/5.7
+# is not more in portage (dev-build/rocm-cmake:0/6.1
+# can work with other ROCM packages < 6.1.0).
+dev-build/rocm-cmake:0/6.1::gentoo
+dev-libs/rocm-comgr:0/5.7::gentoo
+dev-libs/rocm-device-libs:0/5.7::gentoo
+dev-libs/rocr-runtime:0/5.7::gentoo
+dev-libs/roct-thunk-interface:0/5.7::gentoo
+
+# ROCIMINFO.
+dev-util/rocminfo:0/5.7::gentoo
+
+# BANDWIDTH_TEST.
+# Display info about performance characteristics of buffer copying and kernel
+# read / write operation. 5.7 is the latest version, but works with ROCM 6.1.
+dev-util/rocm_bandwidth_test:0/5.7::gentoo
+
+# HIP compiler (dev-perl/URI-Encode
+# is required only for ROCM < 6.0).
+dev-util/hip:0/5.7::gentoo
+dev-util/hipcc:0/5.7::gentoo
+dev-perl/URI-Encode::gentoo
+
+# hipBLAS needs rocBLAS, rocPRIM, rocSOLVER,
+# rocSPARSE, Tensile, rocm-smi (same version).
+sci-libs/hipBLAS:0/5.7::gentoo
+sci-libs/rocBLAS:0/5.7::gentoo
+sci-libs/rocPRIM:0/5.7::gentoo
+sci-libs/rocSOLVER:0/5.7::gentoo
+sci-libs/rocSPARSE:0/5.7::gentoo
+dev-util/Tensile:0/5.7::gentoo
+dev-util/rocm-smi:0/5.7::gentoo
+
+# hipSPARSE needs above rocPRIM, rocSPARSE (same version).
+sci-libs/hipSPARSE:0/5.7::gentoo
+
+# hipSOLVER needs above rocSOLVER (same version).
+sci-libs/hipSOLVER:0/5.7::gentoo
+
+# hipCUB needs above rocPRIM (same version).
+sci-libs/hipCUB:0/5.7::gentoo
+
+# rocTrush needs above rocPRIM (same version).
+sci-libs/rocThrust:0/5.7::gentoo
+
+# hipFFT needs below rocFFT (same version).
+sci-libs/hipFFT:0/5.7::gentoo
+sci-libs/rocFFT:0/5.7::gentoo
+
+# hipRAND needs below rocRAND (same version).
+sci-libs/hipRAND:0/5.7::gentoo
+sci-libs/rocRAND:0/5.7::gentoo
+
+# Tools to translate CUDA source code into portable HIP C++.
+dev-util/hipify-clang:0/5.7::gentoo
+
+# These ROCM packages do not currently support my GPU card (gfx1030).
+# sci-libs/hipBLASLt (only ROCM >= 6.0)
+# sci-libs/rocWMMA
+
+# CUSTOM ROCM BUILD AND OTHER INTERESTING STUFFS:
+# https://github.com/lamikr/rocm_sdk_builder

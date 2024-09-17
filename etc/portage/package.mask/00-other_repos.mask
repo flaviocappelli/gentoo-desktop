@@ -1,0 +1,17 @@
+# by F.C.
+#
+# By default, all packages in all added repos (other than "gentoo" and
+# "local") are masked below. Packages emerged from such repos (if any)
+# are unmasked in /etc/portage/package.unmask/00-other_repos.unmask
+#
+# Note that, by default, packages in such repos are also disabled (see
+# /etc/portage/package.accept_keywords/00-other_repos.accept_keywords).
+
+*/*::gentoo-zh
+*/*::guru
+*/*::holgersson-overlay
+*/*::pg_overlay
+*/*::phackerlay
+*/*::salfter
+*/*::supertux88
+*/*::vowstar

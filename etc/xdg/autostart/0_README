@@ -1,0 +1,48 @@
+# by F.C.
+#
+# Processes in this directory are automatically started when a user enter an X session
+# unless:
+#
+#  - the corresponding .desktop file has a 'Hidden=true' key;
+#  - the current DE (desktop environment) match a DE listed in 'NotShowIn' key;
+#  - the current DE (desktop environment) does not match a DE listed in 'OnlyShowIn' key;
+#  - the value of 'TryExec' key (if exists) does NOT match an installed executable.
+#
+# An individual user can override the automatic start by placing, in its personal autostart
+# directory (.config/autostart) a desktop file of the same name, with the key 'Hidden=true'.
+#
+# NOTE the 'NoDisplay=true' key does not prevent the process to start (it simply tells the DE
+# to not show such process within the "started application page" of the DE control application).
+#
+# NOTE also the exec bit does not affect the behaviour of such desktop files!
+#
+# References:
+# https://wiki.archlinux.org/title/XDG_Autostart
+# https://specifications.freedesktop.org/autostart-spec/autostart-spec-latest.html
+
+# For example in KDE/PLASMA5:
+#
+# * at-spi-dbus-bus.desktop                  NOT STARTED
+# * baloo_file.desktop                         STARTED      (if some conditions match)
+# * firewall-applet.desktop                    STARTED
+# * Gentoo-print-applet.desktop              NOT STARTED
+# * geoclue-demo-agent.desktop                 STARTED
+# * gmenudbusmenuproxy.desktop                 STARTED
+# * gnome-keyring-pkcs11.desktop             NOT STARTED
+# * gnome-keyring-secrets.desktop            NOT STARTED
+# * gnome-keyring-ssh.desktop                NOT STARTED
+# * kaccess.desktop                            STARTED
+# * kalarm.autostart.desktop                   STARTED
+# * klipper.desktop                            STARTED
+# * konqy_preload.desktop                      STARTED
+# * org.kde.kdeconnect.daemon.desktop          STARTED
+# * org.kde.kgpg.desktop                       STARTED      (if some conditions match)
+# * org.kde.plasmashell.desktop                STARTED
+# * pam_kwallet_init.desktop                   STARTED
+# * polkit-kde-authentication-agent-1.desktop  STARTED
+# * powerdevil.desktop                         STARTED
+# * pulseaudio.desktop                         STARTED      (but stopped by autospawn = no)
+# * user-dirs-update-gtk.desktop             NOT STARTED
+# * xapps-sn-watcher.desktop                   STARTED
+# * xdg-user-dirs.desktop                      STARTED
+# * xembedsniproxy.desktop                     STARTED

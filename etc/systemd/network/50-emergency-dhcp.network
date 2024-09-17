@@ -1,0 +1,18 @@
+# by F.C.
+#
+# THIS CONFIG FILE IS FOR A DHCP CONNECTION WITH
+# systemd-nertworkd INSTEAD OF NetworkManager (TO
+# BE USED IN CASE OF EMERGENCY). IT IS IGNORED IF
+# SERVICE systemd-networkd IS NOT RUNNING.
+#
+# Actions required:
+#  * disable 'NetworkManager' service
+#  * enable 'systemd-resolved' service
+#  * enable 'systemd-networkd' service
+#  * verify the assigned IP with 'ip a'.
+
+[Match]
+Name=en*
+
+[Network]
+DHCP=yes

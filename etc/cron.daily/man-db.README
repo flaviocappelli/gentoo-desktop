@@ -1,0 +1,3 @@
+# by F.C.
+# 'man-db' installs both a cron script and systemd timer/service.
+# I'm using the systemd timer, so I had to disable the cron script.

@@ -1,0 +1,98 @@
+# by F.C.
+
+# PYHON UPGRADE 3.12 -> 3.13
+# ==========================
+
+# 1) DEFERRING THE UPGRADE. This will enforce Python 3.12 and block
+#    any future updates. However, note that this is only a temporary
+#    solution and you will need to perform the migration ASAP:
+#
+#        */* PYTHON_TARGETS: -* python3_12
+#        */* PYTHON_SINGLE_TARGET: -* python3_12
+
+# 2) SAFER UPGRADE PROCEDURE. Add Python 3.13 support to your system
+#    first, and only then remove Python 3.12. This involves 3 rebuilds
+#    of all affected packages, so it will take some time:
+#
+#    - First, enable both Python 3.12 and Python 3.13, and run the 1st
+#      upgrade (see below):
+#
+#        */* PYTHON_TARGETS: -* python3_12 python3_13
+#        */* PYTHON_SINGLE_TARGET: -* python3_12
+#
+#    - Then switch PYTHON_SINGLE_TARGET and run the 2nd upgrade:
+#
+#        */* PYTHON_TARGETS: -* python3_12 python3_13
+#        */* PYTHON_SINGLE_TARGET: -* python3_13
+#
+#    - Finally, switch to the final version and run the 3rd upgrade:
+#
+#        */* PYTHON_TARGETS: -* python3_13
+#        */* PYTHON_SINGLE_TARGET: -* python3_13
+#
+#      Keep the latest two lines to block the next automatic upgrade
+#      to Python 3.14.
+
+# UPGRADE CMDS. The cleanup requires that the old Python is removed
+# from the complete dependency trees in batch. If some installed
+# packages using the older version are not triaged for the upgrade,
+# the package manager will throw dependency conflicts. This makes it
+# important that the upgrade is carried via a --deep --changed-use
+# @world upgrade, as well as that any stray packages are removed
+# prior to it, e.g.:
+#
+#    emerge --depclean
+#    emerge -1avUD @world
+#    emerge --depclean
+#
+# Please note that there may be a transition period (two/three months)
+# where both the old and new versions of Python need to be enabled for
+# some packages.
+
+
+
+# ========================================================== #
+# The following installed packages still require Python 3.11 #
+# See also the 3.12 porting (https://bugs.gentoo.org/921826) #
+# ========================================================== #
+
+# dev-python/pyside2.
+# Such package is unmaintained and deprecated; it also pull in
+# LLVM-15 and needs Python-3.11. It is not more required on my
+# installation. If you need it, uncomment the following lines.
+#dev-python/pyside2                  PYTHON_TARGETS: python3_11
+#dev-python/shiboken2                PYTHON_TARGETS: python3_11
+
+# dev-python/QtPy.
+# Such package is a small abstraction layer for PyQt5/PySide2 (Qt5)
+# and PyQt6/PySide6 (Qt6). It is useful for fast prototyping. NOTE:
+# on my installation, the 'pyside2' support is disabled (see above);
+# if you need it, enable the 'pyside2' use flag in './00-allpkgs.use'
+# and the above & following lines (PySide2 forces Python-3.11 on QtPy
+# and requires Python-3.11 support on lot of dev-python/* packages).
+#dev-python/QtPy                     PYTHON_TARGETS: -* python3_11
+#dev-python/backports-tarfile        PYTHON_TARGETS: python3_11
+#dev-python/dbus-python              PYTHON_TARGETS: python3_11
+#dev-python/flit-core                PYTHON_TARGETS: python3_11
+#dev-python/gpep517                  PYTHON_TARGETS: python3_11
+#dev-python/installer                PYTHON_TARGETS: python3_11
+#dev-python/jaraco-context           PYTHON_TARGETS: python3_11
+#dev-python/jaraco-functools         PYTHON_TARGETS: python3_11
+#dev-python/jaraco-text              PYTHON_TARGETS: python3_11
+#dev-python/more-itertools           PYTHON_TARGETS: python3_11
+#dev-python/packaging                PYTHON_TARGETS: python3_11
+#dev-python/platformdirs             PYTHON_TARGETS: python3_11
+#dev-python/PyQt-builder             PYTHON_TARGETS: python3_11
+#dev-python/PyQt5                    PYTHON_TARGETS: python3_11
+#dev-python/PyQt5-sip                PYTHON_TARGETS: python3_11
+#dev-python/PyQt6                    PYTHON_TARGETS: python3_11
+#dev-python/PyQt6-sip                PYTHON_TARGETS: python3_11
+#dev-python/PyQt6-WebEngine          PYTHON_TARGETS: python3_11
+#dev-python/PyQtWebEngine            PYTHON_TARGETS: python3_11
+#dev-python/pyside6                  PYTHON_TARGETS: python3_11
+#dev-python/setuptools               PYTHON_TARGETS: python3_11
+#dev-python/setuptools-scm           PYTHON_TARGETS: python3_11
+#dev-python/shiboken6                PYTHON_TARGETS: python3_11
+#dev-python/sip                      PYTHON_TARGETS: python3_11
+#dev-python/trove-classifiers        PYTHON_TARGETS: python3_11
+#dev-python/wheel                    PYTHON_TARGETS: python3_11

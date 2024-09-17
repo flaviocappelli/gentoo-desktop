@@ -1,0 +1,38 @@
+## by F.C.
+##
+## USB3 QUIRKS FOR UAS BROKEN TRIM.
+##
+## These quirks work only if the device is connected after the boot
+## (to work at boot, the corresponding kernel parameter must be used)
+## To check if a device has TRIM support you can type:
+##
+##   hdparm -I /dev/<device> | grep TRIM
+##   lsblk --discard
+##
+## If the 1st command report TRIM support but the 2nd no (0B on the 2nd
+## and 3rd column) then the disk has TRIM support but not the USB-to-SATA
+## bridge used in the enclosure (or it has been disabled by the kernel).
+## Also, we can use the blkdiscard command to check the TRIM support:
+##
+##   blkdiscard -v /dev/<device>
+##
+## *** WARNING ***: such command erase the device, all data is LOST!
+##
+##   Result with UAS working TRIM:
+##   /dev/<device>: Discarded xxxxxxxxxx. bytes from the offset 0
+##
+##   Result with UAS unsupported TRIM:
+##   /dev/<device>: BLKDISCARD ioctl failed: Operation not supported
+##
+## NOTES: 1) Not all SSDs and USB-to-SATA bridges have TRIM support.
+##        2) UAS is usually faster than usb_storage, so do not disable
+##           the UAS driver if it is not really necessary.
+
+
+## Ensure usb_storage is loaded.
+#modprobe usb_storage
+
+## Orinoco enclosure (JMS578 based SATA bridge).
+## Not more required: JMS578 firmware upgraded (now has TRIM support).
+## NOTE: the FW upgrade changed the USB address and the reported model.
+#echo "0080:a001:u" > /sys/module/usb_storage/parameters/quirks

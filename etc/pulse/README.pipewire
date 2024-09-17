@@ -1,0 +1,9 @@
+by F.C.
+
+Pulseaudio is gone, the place to put pulseaudio related
+options would be '/usr/share/pipewire/pipewire-pulse.conf'
+after copying it to '/etc/pipewire/' (note that by default
+'/etc/pipewire/' might not exist).
+
+The only file that should exist here is 'client.conf',
+with active option 'autospawn = no' (emerge default).

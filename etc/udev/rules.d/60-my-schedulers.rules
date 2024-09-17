@@ -1,0 +1,71 @@
+# by F.C.
+#
+# Set I/O scheduler based on disk type (NVMe, SSD, eMMC, HDD).
+#
+# Single-queue schedulers (cfq, deadline noop) were removed from kernel since Linux 5.0, so
+# we have only the multi-queue schedulers now. The Multi-Queue Block I/O Queuing Mechanism
+# (blk-mq) maps I/O queries to multiple queues, the tasks are distributed across threads
+# and therefore CPU cores. Within this framework the following schedulers are available:
+#
+#   * "none"        no queuing algorithm is applied (use only for NVMe disks and ZFS pool);
+#
+#   * "mq-deadline" (default) is the adaptation of the deadline scheduler to multi-threading;
+#
+#   * "kyber"       created by Facebook engineers and actively developed: on latest kernels
+#                   it has reached enough maturity; favoring low latency over throughput it
+#                   could be the best scheduler for SSD and NVME on desktop systems (to try);
+#                   note that on kernels 6.6 and 6.7 it has some regression (wait the fix);
+#
+#   * "bfq"         very tunable and complex scheduler, not the best choice with any SSD
+#                   and slow CPU (the overhead of the algo is going to be the bottleneck);
+#                   should be used only with HDD to improve startup application time (for
+#                   some workloads it is still better the mq-deadline); actively developed,
+#                   it might require complex settings to cgroup to do its best.
+#
+# To list the available schedulers for all devices:
+#
+#   cat /sys/block/*/queue/scheduler
+#
+# The best I/O scheduler depends on the disk type, filesystem (especially when it
+# has its own scheduler like ZFS), host use, workloads and number of threads. See:
+#
+#   https://www.phoronix.com/scan.php?page=article&item=linux-50hdd-io&num=3
+#   https://www.phoronix.com/scan.php?page=news_item&px=Ubuntu-BFQ-Brought-Up
+#   https://wiki.ubuntu.com/Kernel/Reference/IOSchedulers
+
+
+# NEW: multi-queue schedulers
+# ---------------------------
+# Set scheduler for NVMe.
+# NOT REQUIRED: default is "none", which is the best for NVMe.
+#ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]", ATTR{queue/scheduler}="none"
+
+# Set scheduler for SSD and eMMC.
+ACTION=="add|change", KERNEL=="sd[a-z]|mmcblk[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="mq-deadline"
+
+# Set scheduler for rotating disks.
+ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+
+# ZFS has its own I/O scheduler: to improve the performance of ZFS we should set
+# the kernel I/O scheduler to "none" on ALL zpool's disks (this will avoid that the
+# Linux scheduler will be stacked on top of the ZFS scheduler). NOTE that the device
+# names /dev/sdX are not more persistent, so we must use DEVPATH (device hardware
+# path), ENV{ID_SERIAL_SHORT} (device S/N) or ENV{ID_PART_TABLE_UUID} (GPT UUID).
+#
+# MAP DISK BY PATH (SATA 1 to 4), see "udevadm info /dev/<device>".
+ACTION=="add|change", KERNEL=="sd[a-z]", DEVPATH=="*0000:*:00.1/ata1/host*", ATTR{queue/scheduler}="none"
+ACTION=="add|change", KERNEL=="sd[a-z]", DEVPATH=="*0000:*:00.1/ata2/host*", ATTR{queue/scheduler}="none"
+ACTION=="add|change", KERNEL=="sd[a-z]", DEVPATH=="*0000:*:00.1/ata3/host*", ATTR{queue/scheduler}="none"
+ACTION=="add|change", KERNEL=="sd[a-z]", DEVPATH=="*0000:*:00.1/ata4/host*", ATTR{queue/scheduler}="none"
+
+
+# OLD: single-queue schedulers (just for reference)
+# -------------------------------------------------
+# Set scheduler for NVMe.
+#ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/scheduler}="none"
+
+# Set scheduler for SSD and eMMC.
+#ACTION=="add|change", KERNEL=="sd[a-z]|mmcblk[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="deadline"
+
+# Set scheduler for rotating disks.
+#ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"

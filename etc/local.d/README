@@ -1,0 +1,19 @@
+by F.C
+
+This directory contains programs or scripts which are to be run
+when the local service is started or stopped.
+
+If a file in this directory is executable and it has a '.start'
+extension, it will be run when the local service is started. If
+a file is executable and it has a '.stop' extension, it will be
+run when the local service is stopped.
+
+NOTE: all files in this directory are processed in lexical order
+and sequentially; moreover, the local service is not considered
+started or stopped until everything is processed, so if we have
+a process which takes a long time to run, it can delay our boot
+or shutdown processing.
+
+On Gentoo with systemd, this directory is parsed by script
+/usr/lib/systemd/system-generators/gentoo-local-generator
+(from package 'sys-apps/gentoo-systemd-integration').

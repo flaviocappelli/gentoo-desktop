@@ -1,0 +1,11 @@
+# by F.C.
+
+# Blocks (removing 'keywords') all versions of
+# packages that must be in sync with my laptop.
+app-editors/vscode                -*
+mail-client/thunderbird           -*
+
+# Allows (restoring 'keywords') a specific version
+# of the above packages (from Gentoo or local repo).
+~app-editors/vscode-1.93.1         **
+~mail-client/thunderbird-115.15.0  **

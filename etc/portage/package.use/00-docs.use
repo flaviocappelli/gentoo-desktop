@@ -1,0 +1,51 @@
+# by F.C.
+
+# NOTE: Portage documentation installed with "apidoc" is not required
+# to write ebuilds, while documentation installed with "doc" describes
+# only EAPI 1 to 5, so it is better to browse the following links:
+#
+# https://wiki.gentoo.org/wiki/EAPI
+# https://projects.gentoo.org/pms/8/pms.html
+# https://dev.gentoo.org/~zmedico/portage/doc/portage.html
+
+app-doc/kicad-doc                      -l10n_it
+
+dev-qt/qt-creator                      doc
+
+sci-electronics/kicad                  doc examples
+sci-electronics/kicad-meta             doc
+
+#app-text/asciidoc                      doc
+
+#dev-cpp/eigen                          doc
+
+#dev-db/sqlite                          doc
+
+#dev-lang/nasm                          doc
+#dev-lang/perl                          doc
+
+#dev-libs/boost                         doc
+#dev-libs/gmp                           doc
+#dev-libs/libdaemon                     doc
+#dev-libs/libusb                        doc
+
+#dev-python/cython                      doc
+#dev-python/numpy                       doc
+
+#dev-util/cmake                         doc
+#dev-util/cmocka                        doc
+
+#kde-frameworks/extra-cmake-modules     doc
+
+#media-libs/alsa-lib                    doc
+
+#sci-libs/armadillo                     doc
+#sci-libs/fftw                          doc
+
+#sci-mathematics/octave                 doc
+
+#sys-devel/binutils                     doc
+#sys-devel/gcc                          doc
+#sys-devel/gettext                      doc
+
+#sys-libs/glibc                         doc

@@ -1,0 +1,17 @@
+# by F.C.
+# This file is still missing on Gentoo/Mint/Debian so we add it.
+# See https://github.com/andrewc12/openzfs -> etc/systemd/system,
+# zfs-scrub-weekly@.timer and https://wiki.archlinux.org/title/ZFS
+
+[Unit]
+Description=Weekly zpool trim timer for %i
+Documentation=man:zpool-trim(8)
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+RandomizedDelaySec=1h
+Unit=zfs-trim@%i.service
+
+[Install]
+WantedBy=timers.target

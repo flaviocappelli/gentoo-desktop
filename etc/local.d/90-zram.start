@@ -1,0 +1,48 @@
+## by F.C.
+##
+## Enable swap in zram. I prefere this script (instead of
+## the systemd-swap package) to tune kernel vm parameters.
+##
+## See also:
+##  - 90-zram.stop
+##  - /etc/sysctl.conf.d
+##
+## DO NOT USE SWAP ON ZRAM IF YOU HAVE OTHER SWAP DEVICES (USE ZSWAP INSTEAD).
+
+
+## Disable zswap (if enabled by default) to avoid it acting as a swap cache in front
+## of zram: having both enabled is bad because zram would remain mostly unused (and
+## zramctl(8) would return wrong statistics); this happens because zswap intercepts
+## and compresses memory pages being swapped out (before they can reach zram). NOTE:
+## on Gentoo (kernel 6.6), zswap is not enabled by default (see kernel config).
+#if [ -d /sys/module/zswap ]; then
+#    echo 0 > /sys/module/zswap/parameters/enabled
+#fi
+
+## Max size of zram swap device (1/4 of MemTotal).
+MEMORY=$(perl -ne'/^MemTotal:\s+(\d+)/ && print $1*1024;' </proc/meminfo)
+SIZE=$(( MEMORY / 4 ))
+
+## Create zram device. Compressor LZ4 show better speed than
+## default LZO-RLE, while obtain almost same compression ratio.
+modprobe zram num_devices=1
+echo lz4 > /sys/block/zram0/comp_algorithm
+echo $SIZE >/sys/block/zram0/disksize
+
+## Create swap device using zram.
+mkswap --label zram0 /dev/zram0
+swapon --priority 100 /dev/zram0
+
+## Optimize kernel vm for swap on zram device. Note:
+## swappiness 10 is recommended for professional audio.
+## Also we have lot of ram, so we can decrease the cache
+## pressure (since caching is good for performance, we
+## want to keep cached data in memory longer).
+echo 10 >/proc/sys/vm/swappiness
+echo 50 >/proc/sys/vm/vfs_cache_pressure
+
+## Compact memory if allowed, so that free memory
+## is available in contiguous blocks where possible.
+if [ -e /proc/sys/vm/compact_memory ]; then
+	echo 1 >/proc/sys/vm/compact_memory
+fi

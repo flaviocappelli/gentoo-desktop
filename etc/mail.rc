@@ -1,0 +1,13 @@
+# by F.C.
+#
+# OBSOLETED.
+# Config file for mail-client/mailx. Modified config, see mail(1) manpage:
+# - use 'nosave' instead of 'save' (do not save aborted messages in dead.letter)
+# - add 'hold' (don't move messages to $HOME/mbox, but keep them in system mbox).
+#
+set ask askcc append dot nosave hold crt
+ignore Received Message-Id Resent-Message-Id Status Mail-From Return-Path Via Delivered-To
+
+# NOTE: mail-client/mailx is now conflicting with mail-mta/opensmtpd. So I replaced
+#       mail-client/mailx with mail-client/s-nails (that is a better console client).
+#       I left this file only for reference. To configure s-nails see /etc/s-nail.rc

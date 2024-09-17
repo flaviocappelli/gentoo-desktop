@@ -1,0 +1,33 @@
+by F.C.
+
+Don't use such config files blindly: perform some tests to determine
+which mode, governor and energy policy (when allowed) works best for
+your system, in both AC/BAT profiles. Try different workloads, like:
+
+ - idle state
+ - kernel build
+ - internet browsing
+ - video and audio transcoding
+ - gaming and 3D engine benchmarks
+ - filesystem operations on big files
+ - compress of big archives
+
+Generally you should consider:
+
+ - on AC : which configuration provides the best performance while
+   limiting the generated heat and fan(s) noise to acceptable levels;
+
+ - on BAT : which configuration provides acceptable performance while
+   maximizing the battery life.
+
+On a desktop system (i.e. always AC powered) you can safely ignore the
+BAT profile (it is not used if the host is always AC powered). Also you
+can enable one configuration that maximize performances (at the expense
+of more heat and consumed energy) but compared to other setups the gain
+might be minimal (and might not be worth it). Whatever setup you choose,
+make sure the desktop is enough cooled, otherwise the CPU will reach its
+thermal limits, resulting in slowdowns and (maybe) physical damage.
+
+On my desktop system, the driver 'amd-pstate-epp' seems to delivers the
+best performance-per-Watt (with the 'balance_performance' energy policy).
+See also comments in https://www.reddit.com/r/linux/comments/1aoaps4/.

@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,6 +2,8 @@
+ TARGET          := $(shell uname -r)
+ DKMS_ROOT_PATH  := /usr/src/zenpower-$(VERSION)
+ 
++KBUILD_CFLAGS   += -Wno-implicit-fallthrough
++
+ KERNEL_MODULES	:= /lib/modules/$(TARGET)
+ 
+ ifneq ("","$(wildcard /usr/src/linux-headers-$(TARGET)/*)")

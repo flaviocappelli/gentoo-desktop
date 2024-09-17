@@ -1,0 +1,8 @@
+# by F.C.
+#
+# Settings in /etc/X11/xorg.conf take precedence over settings
+# in /etc/X11/xorg.conf.d/*.conf, which take precedence over
+# settings in /usr/share/X11/xorg.conf.d/*.conf, which take
+# precedence over the built-in X server configuration.
+#
+# See https://wiki.gentoo.org/wiki/Xorg.conf

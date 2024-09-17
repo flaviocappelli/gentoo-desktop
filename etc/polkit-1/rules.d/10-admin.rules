@@ -1,0 +1,10 @@
+// by F.C.
+// Allow members of the wheel group to be administrators (this permits to run
+// some system apps (like 'Timeshift') with user password autentication). See
+// https://wiki.gentoo.org/wiki/KDE and https://wiki.gentoo.org/wiki/Polkit
+//
+// DISABLED TO IMPROVE SECURITY.
+
+//polkit.addAdminRule(function(action, subject) {
+//    return ["unix-group:wheel"];
+//});

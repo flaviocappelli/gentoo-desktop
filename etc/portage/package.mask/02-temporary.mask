@@ -1,0 +1,11 @@
+# by F.C.
+#
+# These are temporary fix (will be removed in the future).
+
+# SMplayer < 23.12.0 does not work with MPV >= 0.37: the 'SPACE
+# KEY' stops the video but does not resume it (instead, it works
+# with MPV 0.36, that has been removed from portage). But version
+# 26.12.0 and above (not in portage, see my local repo) fixes that
+# and also fixes the subtitle download failure (that was due to new
+# OpenSubtitle's APIs, see https://www.smplayer.info/en/changes).
+<media-video/smplayer-23.12.0

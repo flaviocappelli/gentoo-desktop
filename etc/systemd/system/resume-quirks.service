@@ -1,0 +1,13 @@
+# by F.C.
+# Run script "/etc/init.d/resume-quirks.sh" after a system resume.
+
+[Unit]
+Description=Quirk actions required after system resume
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh /etc/init.d/resume-quirks.sh
+
+[Install]
+WantedBy=suspend.target

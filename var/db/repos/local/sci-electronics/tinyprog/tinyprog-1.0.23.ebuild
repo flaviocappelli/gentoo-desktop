@@ -1,0 +1,40 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# by F.C.
+# Copied from the 'salfter' overlay.
+
+EAPI=8
+
+PYTHON_COMPAT=( python3_{8..12} )
+inherit distutils-r1
+
+GIT_COMMIT=0b70c51b8a3fa6b4b2ce4f8d31435ec80d0c8a3f
+
+DESCRIPTION="Programmer for FPGA boards using the TinyFPGA USB Bootloader"
+HOMEPAGE="https://github.com/tinyfpga/TinyFPGA-Bootloader/"
+SRC_URI="https://github.com/tinyfpga/TinyFPGA-Bootloader/archive/$GIT_COMMIT.tar.gz -> ${P}.tar.gz"
+DISTUTILS_USE_PEP517=setuptools
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64"
+
+RDEPEND=">=dev-python/pyserial-3
+	 <dev-python/pyserial-4
+	 >=dev-python/jsonmerge-1.4
+	 <dev-python/jsonmerge-2
+	 >=dev-python/intelhex-2.2.1
+	 <dev-python/intelhex-3
+	 >=dev-python/tqdm-4.19.5
+	 <dev-python/tqdm-5
+	 dev-python/six
+	 dev-python/packaging
+	 dev-python/pyusb"
+DEPEND=""
+
+src_unpack() {
+  cd $WORKDIR
+  unpack $A
+  mv $WORKDIR/TinyFPGA-Bootloader-$GIT_COMMIT/programmer $WORKDIR/$P
+}

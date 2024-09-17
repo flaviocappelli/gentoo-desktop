@@ -1,0 +1,28 @@
+# by F.C.
+#
+# By default, all packages in all added repos (other than "gentoo"
+# and "local") are disabled below. Packages emerged from such repos
+# (if any) must be explicitly enabled in this file (after the list).
+#
+# Note that, by default, packages in such repos are also masked
+# (see /etc/portage/package.mask/00-other_repos.mask).
+
+*/*::gentoo-zh          -*
+*/*::guru               -*
+*/*::holgersson-overlay -*
+*/*::pg_overlay         -*
+*/*::phackerlay         -*
+*/*::salfter            -*
+*/*::supertux88         -*
+*/*::vowstar            -*
+
+# Enable packages from above repos.
+
+# --- EBUILDS FROM GENTOO-ZH -----------------------------------
+# --- EBUILDS FROM GURU ----------------------------------------
+# --- EBUILDS FROM HOLGERSSON-OVERLAY --------------------------
+# --- EBUILDS FROM PG_OVERLAY ----------------------------------
+# --- EBUILDS FROM PHACKERLAY ----------------------------------
+# --- EBUILDS FROM SALFTER -------------------------------------
+# --- EBUILDS FROM SUPERTUX88 ----------------------------------
+# --- EBUILDS FROM VOWSTAR -------------------------------------

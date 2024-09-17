@@ -1,0 +1,115 @@
+## by F.C.
+##
+## sys-power/tlp-1.6.1 (on Gentoo)
+## AMD Ryzen 9 5900X desktop, kernel >= 6.6 LTS, driver amd-pstate
+##
+## References:
+##  - /etc/tlp.conf
+##  - https://linrunner.de/tlp/settings
+##  - https://wiki.archlinux.org/title/TLP
+##  - https://wiki.archlinux.org/title/CPU_frequency_scaling
+##
+## Note that, in case of identical parameters, the last occurence has
+## precedence; because /etc/tlp.conf overrides anything in /etc/tlp.d/,
+## by default all parameters in /etc/tlp.conf are disabled. To provide
+## custom settings, this file, must be the last file read in /etc/tlp.d/.
+##
+## Use 'tlp-stat -c' to show the active TLP configuration.
+## Use 'tlp-stat -w' to show warnings related with power management.
+## Use 'tlp-stat -p' to show the active driver and available governors.
+
+
+## Ensure TLP is enabled.
+TLP_ENABLE=1
+
+## Operation mode when no power supply can be detected.
+TLP_DEFAULT_MODE=AC
+
+## AMD P-STATE SCALING DRIVER - CPPC auto/enabled in BIOS - KERNEL >= 6.6 LTS
+## CPPC = [auto] works on the 'MSI B550 Gamin Plus' + Ryzen 5900X, but some systems wants CPPC = [enabled].
+## To enable the AMD P-State driver, add 'amd_pstate=<mode>' option to the kernel command line (see below)
+##
+## Driver operating mode: passive (since kernel 5.17) -> amd_pstate      (best default (boot) <mode>)
+##                        active  (since kernel 6.3)  -> amd_pstate_epp  (better to set it using TLP)
+##                        guided  (since kernel 6.4)  -> amd_pstate      (better to set it using TLP)
+##
+## AMD P-State modes explained:
+## https://www.reddit.com/r/linux/comments/15p4bfs/
+## https://www.phoronix.com/news/AMD-P-State-Guided-Auto
+## https://docs.kernel.org/admin-guide/pm/amd-pstate.html
+## https://www.phoronix.com/review/amd-pstate-epp-ryzen-mobile (see comments).
+##
+## This file tells TLP to use the 'guided' mode on AC and the 'active' mode on BAT
+## (see below). Indeed on BAT, the 'active' mode + 'powersave' governor might be the
+## best (but some people prefere the 'passive' mode + 'conservative' governor).
+CPU_DRIVER_OPMODE_ON_AC=guided
+CPU_DRIVER_OPMODE_ON_BAT=active
+
+## Scaling governors in active mode: performance, powersave (*).
+## Scaling governors in passive/guided mode: conservative, ondemand (*), userspace, powersave, performance, schedutil (*).
+## NOTE: governors marked with (*) are power efficient for **ALMOST ALL** workloads.
+CPU_SCALING_GOVERNOR_ON_AC=ondemand
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
+
+## CPU energy/performance policies (active mode only, ignored on others):
+## performance, balance_performance, default, balance_power, power.
+#CPU_ENERGY_PERF_POLICY_ON_AC=balance_performance
+CPU_ENERGY_PERF_POLICY_ON_BAT=balance_power
+
+## Allows to raise the maximum frequency/P-state of some cores if the
+## CPU chip is not fully utilized and below it's intended thermal budget
+## (note that a value of 1 does *not* activate boosting, it just allows it).
+## It has effect on almost 'guided' and 'active' modes (passive not tested).
+CPU_BOOST_ON_AC=1
+CPU_BOOST_ON_BAT=0
+
+## Improve performance by increasing minimum P-state limit dynamically
+## whenever a task previously waiting on I/O is selected to run. Only for
+## Intel CPU >= Skylake, with intel_pstate scaling driver in active mode.
+#CPU_HWP_DYN_BOOST_ON_AC=1
+#CPU_HWP_DYN_BOOST_ON_BAT=0
+
+## Define disk devices on which the following DISK/AHCI_RUNTIME parameters act.
+DISK_DEVICES="nvme0n1 nvme1n1 sda sdb sdc sdd sde"
+
+## Disk advanced power management level: 1..254, 255 (max saving, min, off).
+## Levels 1..127 may spin down the disk; 'keep' keeps the disk hardware default.
+DISK_APM_LEVEL_ON_AC="254 254 254 254 254 254 254"
+DISK_APM_LEVEL_ON_BAT="128 128 128 128 128 128 128"
+
+## Select I/O scheduler for the disk devices. Currently disabled,
+## because determined by /etc/udev/rules.d/60-my-schedulers.rules
+#DISK_IOSCHED="mq-deadline mq-deadline mq-deadline mq-deadline mq-deadline mq-deadline mq-deadline"
+
+## AHCI link power management (ALPM) for SATA disks. Allowed values: min_power,
+## med_power_with_dipm, medium_power, max_performance. Restore the TLP-1.5 defaults
+## (multiple values separated with spaces are tried sequentially until success).
+SATA_LINKPWR_ON_AC="med_power_with_dipm max_performance"
+SATA_LINKPWR_ON_BAT="med_power_with_dipm min_power"
+
+## Settings for RADEON driver only: dynamic power management
+## method (DPM). Allowed values: balanced, battery, performance.
+## NOTE: the AMDGPU driver has already the recommended settings.
+RADEON_DPM_STATE_ON_AC=performance
+RADEON_DPM_STATE_ON_BAT=balanced
+
+## Audio power saving for Intel HDA, AC97 devices (0 disabled, > 0 timeout sec).
+## See Manjaro forum, stable update 2021-10-16.
+#SOUND_POWER_SAVE_ON_AC=0
+#SOUND_POWER_SAVE_ON_BAT=0
+
+## Do not disable the audio controller too (HDA only).
+#SOUND_POWER_SAVE_CONTROLLER=N
+
+## Disable the USB autosuspend feature. NOTE: There is no real
+## need to disable the USB autosuspend globally; it's better to
+## create appropriate udev rules for problematic devices, see:
+## https://www.reddit.com/r/archlinux/comments/ls15yw/
+## https://hamwaves.com/usb.autosuspend/en/
+#USB_AUTOSUSPEND=0
+
+## Do not disable Wake-on-LAN (by default is disabled).
+#WOL_DISABLE=N
+
+# Force syntax highlighting in Kate editor.
+# kate: syntax bash;

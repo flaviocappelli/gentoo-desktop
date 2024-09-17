@@ -1,0 +1,73 @@
+# by F.C.
+#
+# Ebuilds from my local repo.
+
+# Ryzen 5000 (Zen3) advanced termal sensor and monitoring (emerge
+# zenmonitor3) + NCT6687-R Super I/O for MSI B550 Gaming Plus. Note:
+# the 'zenpower3' module is abandoned but it still works with kernel
+# 6.6 LTS and works with the KDE/PLASMA System Monitor plasmoid (while
+# 'k10temp' that now is compatible with Ryzen 5000, does not, at leat
+# up to PLASMA 6.0.3, see https://bugs.kde.org/show_bug.cgi?id=X, with
+# X = 438318, 474766, 484019 and 490675). NOTE: the 'k10temp' module
+# must be blacklisted (see /etc/modprobe.d/blacklist.conf).
+app-admin/zenmonitor3::local
+sys-kernel/zenpower3::local
+sys-kernel/nct6687d::local **
+
+# Timeshift system backup, from GURU repo.
+app-backup/timeshift::local
+
+# HDD and SSD benchmark tool with a very friendly graphical user interface
+# (similar to CrystalDiskMark in Windows). It uses 'sys-block/fio' (for the
+# exact tests launched see https://github.com/JonMagon/KDiskMark/issues/130).
+# Note that benchmarks on ZFS are currently not accurate, due to multiple
+# cache levels (see https://github.com/JonMagon/KDiskMark/issues/148).
+app-benchmarks/kdiskmark::local
+
+# SiriKali (from holgersson overlay) and GoCryptFS (from portage).
+app-crypt/sirikali::local
+app-crypt/gocryptfs::gentoo
+
+# Other packages useful for development. NOTE: kdstatemachineeditor from
+# portage (optionally required by dev-util/gammaray) is at the moment not
+# installed because it fails to build. See https://bugs.gentoo.org/854303
+dev-util/gammaray::local
+dev-util/kdstatemachineeditor::gentoo
+
+# Multi-platform Git client originally forked from QGit.
+dev-vcs/gitqlient::local
+
+# Plugin for OBS Studio, useful to remove or blur the background
+# of captured images and videos (based on a neural network). See:
+# https://github.com/occ-ai/obs-backgroundremoval
+media-plugins/obs-backgroundremoval::local
+
+# SMplayer > 23.06 (not yet in portage) fix issues with MPV >= 0.37
+# (i.e. the 'SPACE KEY' that stop the video but does not resume it).
+# Also fix the download failure from OpenSubtitle (due to new APIs
+# in OpenSubtitle, see https://www.smplayer.info/en/changes).
+media-video/smplayer::local
+
+# FPGA tools: Verilator (verilog simulation and lint), Yosys (HDL synthesis),
+# iCEstorm (Lattice iCE40 FPGA), PrjTrellis (Lattice ECP FPGA), Apicula (GoWin
+# FPGA), NextPNR (place and route), TinyProg (programmer for TinyFPGA-BX board),
+# openFPGAloader (programmer for Tang Nano 20K board and many others), etc. Some
+# of these packages are copied from 'salfter', 'vowstar' and 'gentoo-zh' overlays
+# with minor modifications (see my notes inside the related ebuilds). Note: there
+# are many other interesting electronics packages in such overlays.
+sci-electronics/verilator::local
+sci-electronics/yosys::local
+sci-electronics/icestorm::local
+sci-electronics/prjtrellis::local
+sci-electronics/apicula::local
+sci-electronics/nextpnr::local
+sci-electronics/tinyprog::local
+sci-electronics/openfpgaloader::local
+sci-electronics/gtkwave::local
+=dev-python/jsonmerge-1.9*::gentoo
+
+# Electronic circuit simulator (browser based) with lot of examples.
+sci-electronics/circuitjs1-bin::local
+
+# Electronic circuit simulator.
+sci-electronics/qucs-s::local

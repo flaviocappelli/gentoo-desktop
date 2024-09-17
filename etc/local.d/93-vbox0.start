@@ -1,0 +1,54 @@
+## by F.C.
+##
+## See also: 93-vbox.stop
+##
+## NOTE: 'virbr0' and 'vbox0' must be set as 'unmanaged' in
+## NM (see /etc/NetworkManager/conf.d/unmanaged-devices.conf).
+## Also the 'vboxusers' group must exists (install VirtualBox).
+
+
+## Set the dummy tun/tap interface name.
+VBOXIF=vbox0
+
+## Set the bridge interface created by libvirt (default virbr0).
+## NOTE: the MAC address of the libvirt bridge interface is set
+## in /etc/libvirt/qemu/networks/default.xml (or related xml).
+LIBVIRT_BRIDGE=virbr0
+
+## Set the MAC address for the dummy tun/tap interface (to be used
+## with the VirtualBox bridged networking): a persistent MAC address
+## is required to avoid that Windows VMs will detect each time a new
+## network (the MAC address of the bridge must also be persistent).
+VBOXIF_MAC=5e:07:33:63:3d:d1
+
+## Wait at most 3 seconds to ensure the libvirt interface is started.
+for i in 1 2 3; do
+  if [ ! -e /sys/class/net/${LIBVIRT_BRIDGE} ]; then
+    sleep 1
+  fi
+done
+
+## Make possible to use the libvirt bridge interface with VirtualBox.
+## VirtualBox < 7 comes with a VBoxTunctl tool that allows us to create
+## a TAP tunnel interface (removed in VirtualBox 7); alternatively we can
+## use the 'tuntap' command from 'usermode-utilities' or 'ip tuntap' from
+## 'iproute2'). We have to create a TAP tunnel (that our VirtualBox VMs
+## will use) and add it to the libvirt bridge interface.
+if [ -e /sys/class/net/${LIBVIRT_BRIDGE} ]; then
+  if [ ! -e /sys/class/net/${VBOXIF} ]; then
+    if [ -x /usr/bin/VBoxTunctl ]; then
+      VBoxTunctl -u root -g vboxusers -t ${VBOXIF}
+    elif [ -x /usr/bin/tunctl ]; then
+      tunctl -u root -g vboxusers -t ${VBOXIF}
+    else
+      ip tuntap add mode tap user root group vboxusers dev ${VBOXIF}
+    fi
+    ip link set dev ${VBOXIF} address ${VBOXIF_MAC}
+    ip link set dev ${VBOXIF} up
+    ip link set dev ${VBOXIF} master ${LIBVIRT_BRIDGE}
+  else
+    echo "Interface ${VBOXIF} already exists!"
+  fi
+else
+  echo "Bridge ${LIBVIRT_BRIDGE} not found!"
+fi

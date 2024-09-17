@@ -1,0 +1,35 @@
+# by F.C.
+#
+# PORTAGE HOOKS: perform special actions (package related).
+
+case "${CATEGORY}/${PN}" in
+
+	# I need to apply some custom patches to all gentoo kernels with the same maj.min version.
+	# I can store such patches in '/etc/portage/patches/sys-kernel/gentoo-kernel-maj.min/' but
+	# unfortunately portage only consider ${PN} (package name without version), ${P} (package
+	# name and version) or ${PF} (full package name, including revision). A possible solution
+	# is to manually create a symbolic link 'gentoo-kernel-${PV} -> gentoo-kernel-maj.min' in
+	# '/etc/portage/patches/sys-kernel'. In order to not forget to create such link each time
+    # the kernel is updated, I prefere that emerge will do it automatically: the following hook
+	# will intercept any emerge of sys-kernel/gentoo-kernel, and will creates the proper link.
+	# See the documentation in https://devmanual.gentoo.org/ebuild-writing/variables/ (ebuild
+	# variables) and in https://wiki.gentoo.org/wiki//etc/portage/patches (user patches).
+	sys-kernel/gentoo-kernel)
+		if [ "${EBUILD_PHASE}" == "pretend" ]; then
+		LINK="/etc/portage/patches/sys-kernel/gentoo-kernel-${PV}"
+		PDIR="/etc/portage/patches/sys-kernel/gentoo-kernel-$(echo ${PV} | cut -s -d '.' -f 1,2)"
+		if [ ! -d "${PDIR}" ]; then
+			ewarn "Folder ${PDIR} does not exists"
+			ewarn "USER'S PATCHES WILL NOT BE APPLIED"
+		elif [ -d "${LINK}" ]; then
+			einfo "Patching dir ${LINK} already exists"
+		else
+			ln -s "${PDIR}" "${LINK}" || die
+			einfo "Link ${LINK} -> ${PDIR} created"
+		fi
+	fi
+	;;
+
+ *) ;;
+
+esac

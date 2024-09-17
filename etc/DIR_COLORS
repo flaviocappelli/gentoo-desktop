@@ -1,0 +1,291 @@
+# Configuration file for dircolors, a utility to help you set the
+# LS_COLORS environment variable used by GNU ls with the --color option.
+
+# Copyright (C) 1996-2023 Free Software Foundation, Inc.
+# Copying and distribution of this file, with or without modification,
+# are permitted provided the copyright notice and this notice are preserved.
+
+# The keywords COLOR, OPTIONS, and EIGHTBIT (honored by the
+# slackware version of dircolors) are recognized but ignored.
+
+# You can copy this file to .dir_colors in your $HOME directory to override
+# the system defaults.
+
+# Global config options can be specified before TERM or COLORTERM entries
+
+# Personalization by F.C. - 2024/02/10
+
+
+# ===================================================================
+# Terminal filters
+# ===================================================================
+# Below are TERM or COLORTERM entries, which can be glob patterns, which
+# restrict following config to systems with matching environment variables.
+
+COLORTERM ?*
+TERM Eterm
+TERM ansi
+TERM *color*
+TERM con[0-9]*x[0-9]*
+TERM cons25
+TERM console
+TERM cygwin
+TERM *direct*
+TERM dtterm
+TERM gnome
+TERM hurd
+TERM jfbterm
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mlterm
+TERM putty
+TERM rxvt*
+TERM screen*
+TERM st
+TERM terminator
+TERM tmux*
+TERM vt100
+TERM xterm*
+
+# ===================================================================
+# Basic file attributes
+# ===================================================================
+# Below are the color init strings for the basic file types.
+# One can use codes for 256 or more colors supported by modern terminals.
+# The default color codes use the capabilities of an 8 color terminal
+# with some additional attributes as per the following codes:
+#
+# Attribute codes:
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+#
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+#
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+
+#NORMAL                 00          # no color code at all
+#FILE                   00          # regular file: use no color at all
+RESET 0                             # reset to "normal" color
+DIR                     01;34       # directory
+LINK                    01;36       # symbolic link (if you set this to 'target' instead of a
+                                    # numerical value, the color is as for the file pointed to)
+#MULTIHARDLINK          00          # regular file with more than one link
+MULTIHARDLINK           44;37       # regular file with more than one link
+FIFO                    40;33       # pipe
+SOCK                    01;35       # socket
+DOOR                    01;35       # door
+BLK                     40;33;01    # block device driver
+CHR                     40;33;01    # character device driver
+ORPHAN                  01;05;37;41 # symlink to nonexistent file, or non-stat'able file ...
+MISSING                 01;05;37;41 # ... and the files they point to
+SETUID                  37;41       # file that is setuid (u+s)
+SETGID                  30;43       # file that is setgid (g+s)
+#CAPABILITY             00          # file with capability (very expensive to lookup)
+CAPABILITY              30;41       # file with capability (very expensive to lookup)
+STICKY_OTHER_WRITABLE   30;42       # dir that is sticky and other-writable (+t,o+w)
+OTHER_WRITABLE          34;42       # dir that is other-writable (o+w) and not sticky
+STICKY                  37;44       # dir with the sticky bit set (+t) and not other-writable
+EXEC                    01;32       # files with execute permission
+
+# ===================================================================
+# File extension attributes
+# ===================================================================
+# List any file extensions like '.gz' or '.tar' that you would like ls
+# to color below. Put the suffix, a space, and the color init string.
+# (and any comments you want to add after a '#').
+# Suffixes are matched case insensitively, but if you define different
+# init strings for separate cases, those will be honored.
+
+# Executables (bright green)
+.app      01;32     # OSX
+.bat      01;32     # DOS/WINDOWS executable
+.btm      01;32     # DOS/WINDOWS executable
+.cmd      01;32     # DOS/WINDOWS executable
+.com      01;32     # DOS/WINDOWS executable
+.csh      01;32     # Unix TCSH Shell script
+.dll      01;32     # DOS/WINDOWS executable
+.exe      01;32     # DOS/WINDOWS executable
+.fish     01;32     # Unix Fish Shell script
+.ksh      01;32     # Unix Korn Shell script
+.reg      01;32     # WINDOWS registry
+.sh       01;32     # Unix SH and BASH Shell script
+.zsh      01;32     # Unix ZSH Shell script
+
+# Archives or compressed (bright red)
+.7z       01;31     # app-arch/p7zip
+.ace      01;31     # app-arch/unace (Windows)
+.alz      01;31     # app-arch/unalz (see 'eix -R unalz')
+.apk      01;31     # Android package format
+.arc      01;31     # app-arch/arc (DOS LHARC archive or Macintosh HFS archive)
+.arj      01;31     # app-arch/arj (DOS & Windows archive)
+.bz       01;31
+.bz2      01;31
+.cab      01;31     # app-arch/cabextract (Windows archive)
+.cpio     01;31     # app-arch/cpio
+.deb      01;31
+.dmg      01;31     # Apple DiskImage format
+.dwm      01;31
+.dz       01;31     # dzip compressed file (demo recordings of id's Quake).
+.ear      01;31
+.esd      01;31
+.gz       01;31
+.jar      01;31
+.lha      01;31     # app-arch/lha (DOS)
+.lrz      01;31     # app-arch/lrzip
+.lz       01;31
+.lz4      01;31     # app-arch/lz4 (Google fast compressor/decompressor)
+.lzh      01;31     # app-arch/lha (DOS)
+.lzma     01;31     # 7-zip compressed file
+.lzo      01;31     # app-arch/lzop (fast, even real-time, compression/decompression)
+.partimg  01;31     # Partimage backup format
+.pea      01;31     # app-arch/peazip (see "eix -R unalz")
+.rar      01;31     # app-arch/rar & app-arch/unrar (both required)
+.rpm      01;31
+.rz       01;31     # app-arch/rzip
+.sar      01;31
+.swm      01;31
+.t7z      01;31
+.tar      01;31
+.taz      01;31
+.tb2      01;31     # ?
+.tbz      01;31
+.tbz2     01;31
+.tgz      01;31
+.tlz      01;31
+.txz      01;31
+.tz       01;31
+.tz2      01;31     # ?
+.tzo      01;31     # (.tar.lzo)
+.tzst     01;31
+.war      01;31
+.wim      01;31
+.xz       01;31
+.z        01;31     # app-arch/gzip (OLD Unix archive format) & app-arch/ncompress
+.zip      01;31     # app-arch/zip
+.zoo      01;31     # app-arch/zoo
+.zst      01;31
+
+# Multimedia (image/sound/video) file formats
+.aac      01;35
+.anx      01;35     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.asf      01;35     # Advanced Systems Format (contains Windows Media Video)
+.au       01;35
+.avi      01;35
+.avif     01;35
+.axa      01;35     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.axv      01;35     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.bmp      01;35
+.cgm      01;35
+.dl       01;35
+.emf      01;35
+.flac     01;35
+.flc      01;35     # AutoDesk Animator
+.fli      01;35     # AutoDesk Animator
+.flv      01;35
+.gif      01;35
+.gl       01;35
+.jpeg     01;35
+.jpg      01;35
+.m2v      01;35     # MPEG-2 Video only
+.m4a      01;35     # AAC audio coding
+.m4v      01;35     # MPEG-4 Video only
+.mid      01;35
+.midi     01;35
+.mjpeg    01;35
+.mjpg     01;35
+.mka      01;35
+.mkv      01;35     # Matroska (http://matroska.org/)
+.mng      01;35
+.mov      01;35     # Quicktime (http://developer.apple.com/qa/qtw/qtw99.html)
+.mp3      01;35
+.mp4      01;35     # "Offical" container for MPEG-4
+.mp4v     01;35     # MPEG-4 Video only
+.mpc      01;35
+.mpeg     01;35
+.mpg      01;35
+.nuv      01;35
+.oga      01;35     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.ogg      01;35
+.ogm      01;35     # Ogg Media File
+.ogv      01;35     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.ogx      01;35     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.opus     01;35
+.pbm      01;35
+.pcx      01;35
+.pgm      01;35
+.png      01;35
+.ppm      01;35
+.qt       01;35     # Quicktime (http://developer.apple.com/qa/qtw/qtw99.html)
+.ra       01;35
+.rm       01;35     # Real Media
+.rmvb     01;35     # Real Media Variable Bitrate
+.spx      01;35     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+.svg      01;35
+.svgz     01;35     # compressed scalable vector graphics file
+.tga      01;35
+.tif      01;35
+.tiff     01;35
+.vob      01;35     # MPEG-2 DVD
+.wav      01;35
+.webm     01;35
+.webp     01;35
+.wmv      01;35     # Windows Media Video
+.xbm      01;35
+.xcf      01;35
+.xpm      01;35
+.xwd      01;35
+.yuv      01;35
+
+# Playlist
+.m3u      00;36
+.xspf     00;36     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
+
+# Some document files (text or binary)
+.cfg      00;32
+.chm      00;32
+.conf     00;32
+.csv      00;32
+.diff     00;32
+.djvu     00;32
+.doc      00;32
+.epub     00;32
+.htm      00;32
+.html     00;32
+.ini      00;32
+.log      00;32
+.mobi     00;32
+.patch    00;32
+.pdf      00;32
+.ps       00;32
+.rtf      00;32
+.tex      00;32
+.txt      00;32
+.xml      00;32
+
+# Backup/temporary files
+*~          00;90
+*#          00;90
+.bak        00;90
+.crdownload 00;90
+.dpkg-dist  00;90
+.dpkg-new   00;90
+.dpkg-old   00;90
+.dpkg-tmp   00;90
+.old        00;90
+.orig       00;90
+.part       00;90
+.rej        00;90
+.rpmnew     00;90
+.rpmorig    00;90
+.rpmsave    00;90
+.swp        00;90
+.tmp        00;90
+.ucf-dist   00;90
+.ucf-new    00;90
+.ucf-old    00;90
+
+# Subsequent TERM or COLORTERM entries, can be used to add / override
+# config specific to those matching environment variables.

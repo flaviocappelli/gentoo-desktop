@@ -1,0 +1,41 @@
+by F.C.
+
+
+DISABLED SERVICES
+-----------------
+These 3 services conflict with TLP-1.5 and above
+(see https://wiki.archlinux.org/title/TLP), so they
+are masked (if you uninstall TLP, re-enable them):
+
+	power-profiles-daemon.service -> /dev/null
+	systemd-rfkill.service -> /dev/null
+	systemd-rfkill.socket -> /dev/null
+
+This service conflicts with chrony so it is masked:
+
+	systemd-timesyncd.service -> /dev/null.
+
+Fluidsynth service should be enabled only as user service
+(see /etc/systemd/user/fluidsynth.service) so it is masked
+here (i.e. as system service):
+
+	fluidsynth.service -> /dev/null
+
+Hibernation corrupts ZFS filesystems (see Gentoo bug 773649).
+Note that currently, the swap is in ZRAM, so hibernation is
+not possible anyway, but to be safe, all hibernation services
+are masked:
+
+	hibernate.target -> /dev/null
+	hybrid-sleep.target -> /dev/null
+
+
+
+ADDED SERVICES
+--------------
+resume-quirks.service
+
+This service (currently not used) can be enabled to carry
+out some actions required to solve anomalous behaviors (if
+any) that might occur after resuming from a system suspend
+in RAM (e.g. reload of modules, special settings, etc).

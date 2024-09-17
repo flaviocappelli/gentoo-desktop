@@ -1,0 +1,19 @@
+by F.C.
+
+Historically all libvirt functionality was provided in the
+monolithic 'libvirtd' daemon. Since libvirt-9.3.0 there is
+a new modular architecture for libvirt, where each driver
+(QEMU, LXC, ...) is run in its own daemon, see:
+
+  https://libvirt.org/daemons.html#modular-driver-daemons
+
+The monolitic daemon is still supported, so the switch to
+the modular architecture is currently not required (but it
+will be in the future).
+
+Note that the modular daemons have their own configuration
+files. The instructions for the switching, provided in the
+Gentoo wiki (i.e. https://wiki.gentoo.org/wiki/Libvirt) are
+inaccurate! Please refer to the following link:
+
+  https://libvirt.org/daemons.html#switching-to-modular-daemons

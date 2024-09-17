@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# by F.C.
+# Neofetch is abandoware and will be removed from portage: the
+# best alternative is fastfetch (it can even emulate neofetch).
+
+fastfetch --load-config neofetch

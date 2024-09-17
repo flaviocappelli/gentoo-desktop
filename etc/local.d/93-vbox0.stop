@@ -1,0 +1,22 @@
+## by F.C.
+##
+## See also: 93-vbox.start
+
+
+## Set the dummy tun/tap interface name.
+VBOXIF=vbox0
+
+## Delete the dummy tun/tap interface.
+if [ -e /sys/class/net/${VBOXIF} ]; then
+  ip link set dev ${VBOXIF} nomaster
+  ip link set dev ${VBOXIF} down
+  if [ -x /usr/bin/VBoxTunctl ]; then
+    VBoxTunctl -d ${VBOXIF}
+  elif [ -x /usr/bin/tunctl ]; then
+    tunctl -d ${VBOXIF}
+  else
+    ip tuntap del mode tap dev ${VBOXIF}
+  fi
+else
+  echo "Interface ${VBOXIF} not found!"
+fi

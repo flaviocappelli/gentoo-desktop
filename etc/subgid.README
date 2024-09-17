@@ -1,0 +1,8 @@
+by F.C.
+
+/etc/subgid is required for Podman.
+See https://wiki.gentoo.org/wiki/Podman
+
+If the user is managed by 'systemd-homed', the
+subuid/subgid range must be within 524288-1878982656
+(see https://github.com/systemd/systemd/issues/29297).

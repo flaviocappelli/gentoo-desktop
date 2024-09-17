@@ -1,0 +1,26 @@
+by F.C.
+
+Kernel system variables configuration files.
+
+Files found under "/etc/sysctl.d/" directory (that end with .conf) are parsed
+by sysctl(8) at boot time.  If you want to set kernel variables you can either
+edit "/etc/sysctl.d/99-override.conf" or make a new file here (don't make it a
+package name, as it may clash with something the package builder creates later).
+The file name must end with ".conf", or it will not be parsed. The naming and
+source directory decide the order of processing, which is important since the
+last parameter processed may override earlier ones. The command (from root):
+
+    sysctl --system 2>/dev/null | grep --color=never "sysctl"
+
+will show the order in which sysctl's configuration files are parsed. See the
+sysctl.conf(5) man page for details about the format of configuration files.
+
+
+NOTE: Configuration file "/etc/sysctl.conf" has been deprecated for some time,
+      and recently removed in Gentoo (and other Linux distributions).
+
+NOTE: System defaults (i.e. sysctl configuration of packages) have been moved
+      to "/usr/lib/sysctl.d/"; some packages might still use "/etc/sysctl.d/".
+
+NOTE: DO NOT ASSUME THAT FILES IN "/etc/sysctl.d/" ARE PARSED AFTER FILES IN
+      "/usr/lib/sysctl.d/"; use the above command to find-out the order.

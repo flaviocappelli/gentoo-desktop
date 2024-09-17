@@ -1,0 +1,19 @@
+# by F.C.
+#
+# NOTE: I'm using systemd sockets, so agents must be kept disabled
+#       in '/etc/xdg/plasma-workspace/env/10-agent-startup.sh' and
+#       '/etc/xdg/plasma-workspace/shutdown/10-agent-shutdown.sh'.
+#
+# Check agent status (from normal user):
+# systemctl --user status gpg-agent*.socket dirmngr.socket
+#
+#  - gpg-agent.socket         - GnuPG cryptographic agent and passphrase cache
+#  - gpg-agent-browser.socket - GnuPG cryptographic agent and passphrase cache (access for web browsers)
+#  - gpg-agent-extra.socket   - GnuPG cryptographic agent and passphrase cache (restricted)
+#  - gpg-agent-ssh.socket     - GnuPG cryptographic agent (ssh-agent emulation)
+#  - dirmngr.socket           - GnuPG network certificate management daemon
+#
+# See GnuPG documentation:
+# https://wiki.gentoo.org/wiki/GnuPG
+# https://wiki.archlinux.org/title/GnuPG
+# https://wiki.gentoo.org/wiki/Keychain

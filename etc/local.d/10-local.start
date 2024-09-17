@@ -1,0 +1,38 @@
+## by F.C.
+##
+## Here is where you can put anything you need to start that
+## do not have an init script (use >/dev/null to hide output).
+##
+## See also:
+##  - 10-local.stop
+##  - /etc/init.d/local-start-stop.sh  (not gentoo distros)
+##  - /etc/systemd/system/local-start-stop.service  (not gentoo distros)
+##  - /usr/lib/systemd/system-generators/gentoo-local-generator  (gentoo distro)
+##  - /etc/default/tlp, /etc/tlp.conf, /etc/tlp.d/*
+##  - /etc/sysctl.conf.d
+##  - /etc/modprobe.d
+
+
+## KDE QUIRKS
+## ----------
+## Some versions of KDE5/PLASMA take a lot of time to complete the user login if the
+## bluetooth daemon is not running, but systemd starts such daemon (via dbus) only if
+## the path "/sys/class/bluetooth" is available (i.e. the "bluetooth" module is loaded)
+## AND an hardware device is available at boot time or inserted after the boot process.
+## The Linux kernel loads the bluetooth module automatically only if a bluetooth device
+## is found, so to avoid any KDE5/PLASMA login delay (on systems without any bluetooth
+## device) we need to force the load of some BT modules and start the daemon manually.
+## NOTE: loading such modules in "/etc/modules-load.d" does not work (I think because
+## probably systemd tries to start the bluetooth daemon before loading the modules).
+if ! systemctl status bluetooth >/dev/null 2>&1; then
+    modprobe btusb
+    sleep 1
+    if ! systemctl status bluetooth >/dev/null 2>&1; then
+        systemctl start bluetooth
+    fi
+fi
+
+
+## POWER MANAGEMENT
+## ----------------
+## Power management of CPU, GPU and other subsystems is handled by package 'tlp'.

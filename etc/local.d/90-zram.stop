@@ -1,0 +1,20 @@
+## by F.C.
+##
+## See also: 90-zram.start
+##
+## Disable zram swap.
+
+
+## Restore original kernel vm settings.
+echo 60 >/proc/sys/vm/swappiness
+echo 100 >/proc/sys/vm/vfs_cache_pressure
+
+## Disable swap and remove zram module.
+swapoff /dev/zram0
+rmmod zram
+
+## Reenable zswap.
+## NOTE: on Gentoo (kernel 6.6), zswap is not enabled by default (see kernel config).
+#if [ -d /sys/module/zswap ]; then
+#    echo 1 > /sys/module/zswap/parameters/enabled
+#fi

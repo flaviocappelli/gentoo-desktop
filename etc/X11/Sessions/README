@@ -1,0 +1,5 @@
+# by F.C.
+#
+# XSESSION and 'xdm' init script are obsoleted. The display
+# manager is configured in /etc/conf.d/display-manager (for
+# OpenRC). See https://wiki.gentoo.org/wiki/Display_manager

@@ -1,0 +1,24 @@
+# by F.C.
+# THIS FILE MUST START WITH A NUMBER OR IT WILL NOT BE READ.
+
+# Gtk look and feel and antialiasing fonts setting for java GUI applications.
+#
+# See:
+#   https://wiki.archlinux.org/index.php/Java#GTK_LookAndFeel
+#   https://wiki.archlinux.org/index.php/Java_Runtime_Environment_fonts
+#   https://wiki.manjaro.org/index.php?title=Set_all_Java_apps_to_use_GTK%2B_font_%26_theme_settings
+#
+# *** WARNING ***
+# The "Picked up _JAVA_OPTIONS" message is always sent to stderr by the java command:
+# unfortunately this behaviour may break "Qt Creator" when the user create an AVD. To avoid
+# a failure: open a shell, unset the _JAVA_OPTIONS variable, then call Qt Creator directly.
+#
+#_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
+#_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
+#_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd-hrgb -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
+#_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd-vrgb -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
+#_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd-hbgr -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
+#_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=lcd-vbgr -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
+#_JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel ${_JAVA_OPTIONS}"
+
+_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=lcd -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'

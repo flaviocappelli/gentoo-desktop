@@ -1,0 +1,7 @@
+by F.C.
+
+'portpeek' is a powerful script, very useful to maintain the system
+packages. It shows potential package upgrades, all obsoleted use flags,
+etc. It does not require root (can be run by users of the 'wheel' group).
+
+See 'man portpeek'.

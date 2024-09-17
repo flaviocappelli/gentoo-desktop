@@ -1,0 +1,53 @@
+# by F.C.
+#
+# /etc/fstab: static file system information.
+#
+# Accessible filesystems are system maintained under '/dev/disk'. See
+# man pages fstab(5), findfs(8), mount(8) and blkid(8) for more info.
+#
+# Use 'blkid' to print the universally unique identifier for a device;
+# this may be used with UUID=... as a more robust way to name devices
+# that works even if disks are added and removed.
+#
+# Use "fstrim -v" in cronjob or add "discard" here to the SSD EXT4/XFS
+# mount points. The first solution is preferred because "discard" makes
+# delete of files much slower.
+#
+# <file system>  <mount point>  <type>  <options>  <dump>  <pass>
+
+
+# NOTE: do not use option 'errors=remount-ro' with the XFS filesystem
+# (XFS does not support such option, the filesystem will be mounted ro).
+
+# /dev/nvme0n1p3 (label GENTOO).
+UUID=02de765f-423e-49af-9f21-121ad8b86da3   /              ext4   noatime,errors=remount-ro       0  1
+
+# /dev/nvme0n1p2 (label BOOT).
+UUID=7a22b2e1-f58d-4e59-8379-65ca0e98428f   /boot          ext4   noatime,errors=remount-ro       0  2
+
+# /dev/nvme0n1p1 (label ESP => EFI).
+UUID=062E-2D13                              /boot/efi      vfat   noatime,umask=0077              0  2
+
+# /dev/nvme0n1p4 (label VARDATA).
+UUID=4a264017-bd29-4dd8-a944-e36245a4fcad   /mnt/VARDATA   xfs    noatime                         0  2
+
+# TMP filesystems. NOTES:
+#  - by default, systemd mount /tmp as tmpfs if not specified in /etc/fstab (to
+#    definitively disable the automatic mount, mask the tmp.mount systemd unit);
+#    I set it here, to override the default tmpfs mount options (add 'noatime');
+#  - for changes of /tmp settings see https://wiki.archlinux.org/index.php/tmpfs;
+#  - if you want to use the 'noexec' on /tmp, beware it will break some programs.
+tmpfs                                       /tmp          tmpfs  noatime,nodev,nosuid,mode=1777   0  0
+
+# Encrypted LOW PRIORITY swap device. At the moment not required. See also:
+#  - /etc/crypttab
+#  - /etc/local.d/90-zram.start
+#/dev/mapper/cswap                           none           swap   sw                              0  0
+
+# NFS EXPORTS, see /etc/exports.
+# DISABLED, BECAUSE PLASMA KIO ZEROCONF IS STILL BUGGED.
+# TO REENABLE, SIMPLY UNCOMMENT THIS LINE AND TYPE "systemctl enable nfs-server".
+#/home/TEMP/flavio/PUBLIC     /mnt/NFS_EXPORT/PUBLIC        none   bind                            0  0
+
+# PORTAGE_TMPDIR on tmpfs: not required with /var/tmp on NVME disk (even counterproductive).
+#tmpfs   /var/tmp/portage-tmpfs   tmpfs   defaults,noatime,mode=775,uid=portage,gid=portage,nodev,nosuid   0  0

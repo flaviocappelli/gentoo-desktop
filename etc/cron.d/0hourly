@@ -1,0 +1,9 @@
+# Run the hourly jobs
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+# by F.C.
+# MAILTO set to root@localhost
+MAILTO=root@localhost
+
+01 * * * * root run-parts /etc/cron.hourly

@@ -1,0 +1,18 @@
+## by F.C.
+##
+## Overridden configs for Gentoo Distribution Kernels.
+
+
+## NOTES
+## -----
+## Comments must begin with ##.
+##
+## A CONFIG_XXX item is disabled with '# CONFIG_XXX is not set'
+##
+## (*) SDDM ebuild suggest to enable it or install sys-apps/haveged
+## (or sys-apps/rng-tools). But such tools are not required anymore
+## (indeed all kernels >= 5.6 have the haveged algorithm built in).
+##
+## The sys-apps/irqbalance daemon is not required anymore because
+## now the Linux kernel is capable of balancing irqs by itself (it
+## is even counter-productive, especially for low latency audio).

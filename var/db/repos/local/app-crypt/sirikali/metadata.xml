@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>holgersson@posteo.de</email>
+		<name>Nils Freydank</name>
+	</maintainer>
+	<use>
+		<flag name="kwallet">Enable support for storing passwords in kwallet</flag>
+		<flag name="gnome-keyring">Enable support for storing passowrds in gnome-keyring</flag>
+	</use>
+	<longdescription>
+		SiriKali is a Qt/C++ GUI frontend to cryfs, gocryptfs, securefs, ecryptfs and encfs.
+		Please note that not all backends are packaged on Gentoo.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mhogomchungu/sirikali</remote-id>
+	</upstream>
+</pkgmetadata>
