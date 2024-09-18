@@ -1,0 +1,16 @@
+--- /usr/share/applications/kdbg.desktop	2024-03-17 14:30:37.074398155 +0100
++++ ./kdbg.desktop	2024-03-17 21:56:56.323314514 +0100
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+ Name=KDbg
+-GenericName=Debugger
++GenericName=Debugger for C/C++
++GenericName[it]=Debugger per C/C++
+ Exec=kdbg -qwindowtitle "%c"
+ Icon=kdbg
+ Terminal=false
+ Type=Application
+-Categories=Qt;KDE;Development;Debugger;
++Categories=Qt;KDE;Development;
++Keywords=gdb;
+ X-DocPath=kdbg/index.html

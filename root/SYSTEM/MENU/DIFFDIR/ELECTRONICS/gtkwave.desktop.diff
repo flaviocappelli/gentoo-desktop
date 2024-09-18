@@ -1,0 +1,19 @@
+--- /usr/share/applications/gtkwave.desktop	2024-03-17 14:30:37.120397711 +0100
++++ ./gtkwave.desktop	2024-03-17 19:15:34.996084860 +0100
+@@ -1,10 +1,13 @@
+ [Desktop Entry]
+ Name=GTKWave
+-GenericName=Electronic Waveform Viewer
+-Exec=gtkwave
++GenericName=Digital Viewer for Spice
++GenericName[it]=Visualizzatore digitale per Spice
++Exec=gtkwave %F
+ Icon=gtkwave
+ Terminal=false
+ Type=Application
+ MimeType=application/vnd.gtkwave-ae2;application/vnd.gtkwave-aet;application/vnd.gtkwave-evcd;application/vnd.gtkwave-fst;application/vnd.gtkwave-ghw;application/vnd.gtkwave-gtkw;application/vnd.gtkwave-lx2;application/vnd.gtkwave-lxt;application/vnd.gtkwave-lxt2;application/vnd.gtkwave-vcd;application/vnd.gtkwave-vzt;
+-Categories=Utility;GTK;Electronics;Engineering;
++Categories=Electronics;
++Keywords=electronics;EDA;FPGA;
++Keywords[it]=elettronica;EDA;FPGA;
+ StartupNotify=true

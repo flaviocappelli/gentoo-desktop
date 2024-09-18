@@ -1,0 +1,9 @@
+--- /usr/share/applications/konqbrowser.desktop	2024-03-17 14:30:37.097397932 +0100
++++ ./konqbrowser.desktop	2024-03-17 20:29:41.687660787 +0100
+@@ -6,5 +6,5 @@
+ Exec=konqueror
+ Icon=konqueror
+ Type=Application
+-Categories=Qt;KDE;Network;WebBrowser;
++Categories=Qt;KDE;Network;
+ X-DocPath=konqueror/index.html

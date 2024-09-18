@@ -1,0 +1,13 @@
+--- /usr/share/applications/org.kde.sweeper.desktop	2024-03-17 14:30:37.006398810 +0100
++++ ./org.kde.sweeper.desktop	2024-03-17 17:47:27.532049037 +0100
+@@ -1,8 +1,7 @@
+ [Desktop Entry]
+ Name=Sweeper
+-Name[it]=Spazzino
+-GenericName=System Cleaner
+-GenericName[it]=Pulizia del sistema e riservatezza dei dati
++GenericName=KDE System Cleaner
++GenericName[it]=Pulizia dati di KDE
+ Exec=sweeper
+ Icon=sweeper
+ Type=Application

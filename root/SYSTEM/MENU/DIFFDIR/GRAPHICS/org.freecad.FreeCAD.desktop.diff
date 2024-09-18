@@ -1,0 +1,19 @@
+--- /usr/share/applications/org.freecad.FreeCAD.desktop	2024-09-16 00:39:22.973720182 +0200
++++ ./org.freecad.FreeCAD.desktop	2024-09-16 00:43:08.566560035 +0200
+@@ -1,11 +1,14 @@
+ [Desktop Entry]
+ Name=FreeCAD
+-GenericName=CAD Application
++GenericName=3D CAD Modelling
++GenericName[it]=Modellazione CAD 3D
+ Exec=freecad - --single-instance %F
+ Icon=org.freecad.FreeCAD
+ Terminal=false
+ Type=Application
+ MimeType=application/iges;application/vnd.shp;application/x-extension-fcstd;image/vnd.dwg;image/vnd.dxf;model/iges;model/obj;model/step;model/step+zip;model/stl;model/vnd.collada+xml;model/vrml;
+-Categories=Graphics;Science;Education;Engineering;X-CNC;
++Categories=Graphics;
++Keywords=solid;solids;stl;mechanics;models;geometry;csg;
++Keywords[it]=solido;solidi;stl;meccanica;modello;modelli;geometria;csg;
+ StartupWMClass=FreeCAD
+ StartupNotify=true

@@ -1,0 +1,20 @@
+--- /usr/share/applications/org.kde.kwalletmanager5.desktop	2024-03-17 14:30:37.031398569 +0100
++++ ./org.kde.kwalletmanager5.desktop	2024-03-17 18:14:44.015418199 +0100
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+-Name=KWalletManager
+-Name[it]=KWalletManager
++Name=KDE Wallet Management Tool
++Name[it]=Gestione del portafogli di KDE
+ GenericName=KDE Wallet Management Tool
+-GenericName[it]=Strumento per la gestione dei portafogli di KDE
++GenericName[it]=Gestione del portafogli di KDE
+ Exec=kwalletmanager5 %F
+ Icon=kwalletmanager
+ Type=Application
+ MimeType=application/x-kwallet;
+-Categories=Qt;KDE;System;Security;
++Categories=Qt;KDE;Settings;
+ InitialPreference=6
+ DBusActivatable=true
+ X-DocPath=kwallet5/index.html

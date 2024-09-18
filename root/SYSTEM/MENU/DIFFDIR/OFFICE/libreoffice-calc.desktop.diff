@@ -1,0 +1,28 @@
+--- /usr/share/applications/libreoffice-calc.desktop	2024-06-30 05:41:40.943575873 +0200
++++ ./libreoffice-calc.desktop	2024-06-30 05:44:28.774978017 +0200
+@@ -1,13 +1,15 @@
+ [Desktop Entry]
+ Name=LibreOffice Calc
+-GenericName=Spreadsheet
++GenericName=Spreadsheets
++GenericName[it]=Fogli di calcolo
+ Exec=libreoffice --calc %U
+ Icon=libreoffice-calc
+ Terminal=false
+ Type=Application
+ MimeType=application/clarisworks;application/csv;application/excel;application/msexcel;application/tab-separated-values;application/vnd.apache.parquet;application/vnd.apple.numbers;application/vnd.lotus-1-2-3;application/vnd.ms-excel;application/vnd.ms-excel.sheet.binary.macroEnabled.12;application/vnd.ms-excel.sheet.macroEnabled.12;application/vnd.ms-excel.template.macroEnabled.12;application/vnd.ms-works;application/vnd.oasis.opendocument.chart;application/vnd.oasis.opendocument.chart-template;application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.spreadsheet-flat-xml;application/vnd.oasis.opendocument.spreadsheet-template;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.openxmlformats-officedocument.spreadsheetml.template;application/vnd.stardivision.calc;application/vnd.stardivision.chart;application/vnd.sun.xml.calc;application/vnd.sun.xml.calc.template;application/x-123;application/x-dbase;application/x-dbf;application/x-dos_ms_excel;application/x-excel;application/x-gnumeric;application/x-iwork-numbers-sffnumbers;application/x-ms-excel;application/x-msexcel;application/x-quattropro;application/x-starcalc;application/x-starchart;text/comma-separated-values;text/csv;text/spreadsheet;text/tab-separated-values;text/x-comma-separated-values;text/x-csv;
+-Categories=Office;Spreadsheet;X-Red-Hat-Base;
+-Keywords=Accounting;Stats;OpenDocument Spreadsheet;Chart;Microsoft Excel;Microsoft Works;OpenOffice Calc;ods;xls;xlsx;
++Categories=Office;
++Keywords=Accounting;Stats;OpenDocument;Chart;Microsoft;Excel;OpenOffice;ods;xls;xlsx;csv;
++Keywords[it]=Contabilità;Statistica;OpenDocument;Diagramma;Grafico;Microsoft;Excel;OpenOffice;ods;xls;xlsx;csv;
+ InitialPreference=5
+ StartupWMClass=libreoffice-calc
+ StartupNotify=true
+@@ -17,5 +19,6 @@
+ 
+ [Desktop Action NewDocument]
+ Name=New Spreadsheet
++Name[it]=Nuovo foglio di calcolo
+ Exec=libreoffice --calc
+ Icon=document-new

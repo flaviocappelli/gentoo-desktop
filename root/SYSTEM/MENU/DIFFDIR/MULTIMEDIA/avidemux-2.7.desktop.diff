@@ -1,0 +1,8 @@
+--- /usr/share/applications/avidemux-2.7.desktop	2024-03-18 14:45:15.274009909 +0100
++++ ./avidemux-2.7.desktop	2024-03-18 14:47:10.123934433 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Avidemux
+ Exec=avidemux3_qt5
+ Icon=avidemux-2.7

@@ -1,0 +1,49 @@
+--- /usr/share/applications/kshutdown.desktop	2024-09-02 21:59:46.930251295 +0200
++++ ./kshutdown.desktop	2024-09-02 22:01:59.341539850 +0200
+@@ -1,41 +1,12 @@
+ [Desktop Entry]
+ Name=KShutdown
+-GenericName=System Shut Down Utility
++GenericName=Timed System Shutdown
++GenericName[it]=Arresto temporizzato del sistema
+ Exec=kshutdown
+ Icon=kshutdown
+ Type=Application
+-Categories=Utility;KDE;Qt;
+-Keywords=Shutdown;Halt;Reboot;Restart;Hibernate;Sleep;Suspend;Lock;Logout;
++Categories=System;
++Keywords=halt;poweroff;
++Keywords[it]=shutdown;halt;poweroff;spegnimento;
+ StartupNotify=true
+ X-DBUS-ServiceName=net.sf.kshutdown
+-Actions=Halt;Reboot;Hibernate;Suspend;Lock;Logout;
+-
+-[Desktop Action Halt]
+-Name=Shut Down
+-Exec=kshutdown --halt --confirm
+-Icon=system-shutdown
+-
+-[Desktop Action Reboot]
+-Name=Restart
+-Exec=kshutdown --reboot --confirm
+-Icon=system-reboot
+-
+-[Desktop Action Hibernate]
+-Name=Hibernate
+-Exec=kshutdown --hibernate --confirm-auto
+-Icon=system-suspend-hibernate
+-
+-[Desktop Action Suspend]
+-Name=Sleep
+-Exec=kshutdown --suspend --confirm-auto
+-Icon=system-suspend
+-
+-[Desktop Action Lock]
+-Name=Lock
+-Exec=kshutdown --lock
+-Icon=system-lock-screen
+-
+-[Desktop Action Logout]
+-Name=Logout
+-Exec=kshutdown --logout --confirm
+-Icon=system-log-out

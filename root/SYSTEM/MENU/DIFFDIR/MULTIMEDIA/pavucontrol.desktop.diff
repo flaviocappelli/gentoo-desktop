@@ -1,0 +1,19 @@
+--- /usr/share/applications/pavucontrol.desktop	2024-03-17 14:30:37.107397836 +0100
++++ ./pavucontrol.desktop	2024-03-17 18:21:43.214128370 +0100
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+-Name=PulseAudio Volume Control
+-Name[it]=Regolazione del volume PulseAudio
+-GenericName=Volume Control
+-GenericName[it]=Regolazione del volume
++Name=Pavucontrol
++GenericName=PulseAudio Control
++GenericName[it]=Regolazioni di PulseAudio
+ Exec=pavucontrol
+ Icon=multimedia-volume-control
+ Type=Application
+-Categories=AudioVideo;Audio;Mixer;GTK;Settings;X-XFCE-SettingsDialog;X-XFCE-HardwareSettings;
++Categories=AudioVideo;
+ Keywords=pavucontrol;Microphone;Volume;Fade;Balance;Headset;Speakers;Headphones;Audio;Mixer;Output;Input;Devices;Playback;Recording;System Sounds;Sound Card;Settings;Preferences;
++Keywords[it]=pavucontrol;microfono;volume;dissolvenza;bilanciamento;auricolari;altoparlanti;cuffie;audio;mixer;uscita;ingresso;dispositivi;riproduzione;registrazione;suoni di sistema;scheda audio;configurazione;preferenze;
+ StartupNotify=true

@@ -1,0 +1,20 @@
+--- /usr/share/applications/org.kde.iconexplorer.desktop	2024-09-03 14:15:03.030950689 +0200
++++ ./org.kde.iconexplorer.desktop	2024-09-03 14:19:17.495462240 +0200
+@@ -1,13 +1,12 @@
+ [Desktop Entry]
+-Name=Icon Explorer
+-Name[it]=Esploratore di icone
++Name=IconExplorer
+ GenericName=Icon Viewer
+-GenericName[it]=Visore icone
++GenericName[it]=Visore di icone
+ Exec=iconexplorer
+ Icon=cuttlefish
+ Terminal=false
+ Type=Application
+-Categories=Qt;KDE;Development;IDE;
+-Keywords=design;icon;preview;symbol;cuttlefish;
++Categories=Qt;KDE;Development;
++Keywords=design;preview;symbol;cuttlefish;
+ Keywords[it]=disegno;icona;anteprima;simbolo;cuttlefish;
+ InitialPreference=7

@@ -1,0 +1,8 @@
+--- /usr/share/applications/PTBatcherGUI.desktop	2024-03-17 14:30:37.021398665 +0100
++++ ./PTBatcherGUI.desktop	2024-03-17 21:10:19.000776840 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Hugin Batch Processor
+ Name[it]=Hugin - Elaboratore in serie
+ GenericName=Panorama batch processor GUI

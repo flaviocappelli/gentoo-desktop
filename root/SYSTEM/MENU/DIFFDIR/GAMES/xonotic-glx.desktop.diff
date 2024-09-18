@@ -1,0 +1,14 @@
+--- /usr/share/applications/xonotic-glx.desktop	2024-03-17 14:30:37.107397836 +0100
++++ ./xonotic-glx.desktop	2024-03-17 19:12:46.321810378 +0100
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Name=Xonotic (GLX)
++GenericName=Multiplayer Deathmatch FPS
+ Exec=xonotic-glx
+ Icon=xonotic
+ Terminal=false
+ Type=Application
+-Categories=Game;ActionGame;
++Categories=Game;
+ StartupNotify=false
+ PrefersNonDefaultGPU=true

@@ -1,0 +1,21 @@
+--- /usr/share/applications/mupdf.desktop	2024-03-17 14:30:37.049398395 +0100
++++ ./mupdf.desktop	2024-03-17 21:17:09.393587335 +0100
+@@ -1,15 +1,11 @@
+ [Desktop Entry]
+ Name=MuPDF
+-GenericName=PDF file viewer
++GenericName=PDF File Viewer
++GenericName[it]=Visore di file PDF
+ TryExec=mupdf
+ Exec=mupdf %f
+ Icon=new-mupdf-icon
+ Terminal=false
+ Type=Application
+ MimeType=application/oxps;application/pdf;application/vnd.ms-xpsdocument;application/x-cbz;application/x-pdf;image/jpeg;image/pjpeg;image/png;image/tiff;image/x-tiff;
+-Categories=Viewer;Graphics;
+-Actions=View;
+-
+-[Desktop Action View]
+-Name=View with mupdf
+-Exec=mupdf %f
++Categories=Graphics;

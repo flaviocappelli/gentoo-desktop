@@ -1,0 +1,13 @@
+--- /usr/share/applications/org.kde.kleopatra.desktop	2024-03-17 14:30:37.102397885 +0100
++++ ./org.kde.kleopatra.desktop	2024-03-17 17:57:51.597712990 +0100
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=Kleopatra
+ Name[it]=Kleopatra
+-GenericName=Certificate Manager and Unified Crypto GUI
+-GenericName[it]=Gestore di certificati e interfaccia grafica unificata di crittografia
++GenericName=Certificate Manager and Crypto GUI
++GenericName[it]=Gestore di certificati e crittografia
+ Exec=kleopatra
+ Icon=kleopatra
+ Type=Application

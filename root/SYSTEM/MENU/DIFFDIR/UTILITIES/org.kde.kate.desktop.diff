@@ -1,0 +1,15 @@
+--- /usr/share/applications/org.kde.kate.desktop	2024-03-17 14:30:37.078398116 +0100
++++ ./org.kde.kate.desktop	2024-03-17 17:59:58.501422847 +0100
+@@ -7,9 +7,9 @@
+ Icon=kate
+ Type=Application
+ MimeType=inode/directory;text/plain;
+-Categories=Qt;KDE;Utility;TextEditor;Development;
+-Keywords=text;txt;editor;programming;programmer;development;developer;code;
+-Keywords[it]=testo;txt;editor;programmazione;programmatore;sviluppo;sviluppatore;codice;
++Categories=Qt;KDE;Utility;
++Keywords=txt;notes;notepad;programming;development;code;
++Keywords[it]=testo;txt;text;appunti;blocco note;notepad;programmazione;sviluppo;codice;
+ InitialPreference=9
+ StartupWMClass=kate
+ StartupNotify=true

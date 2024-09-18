@@ -1,0 +1,21 @@
+--- /usr/share/applications/hugin.desktop	2024-03-25 16:41:29.473366502 +0100
++++ ./hugin.desktop	2024-03-25 16:45:30.810926743 +0100
+@@ -1,12 +1,13 @@
+ [Desktop Entry]
+-Name=Hugin Panorama Creator
+-Name[it]=Hugin - Assemblatore di panorami
+-GenericName=Panorama stitcher
+-GenericName[it]=Crea dei panorami
++Name=Hugin
++GenericName=Panoramic Image Creator
++GenericName[it]=Crea immagini panoramiche
+ Exec=hugin %f
+ Icon=hugin
+ Terminal=false
+ Type=Application
+ MimeType=application/x-ptoptimizer-script;
+ Categories=Graphics;
+-StartupNotify=false
++Keywords=images;photos;panorama;stitcher;
++Keywords[it]=foto;panorama;assemblaggio;
++StartupNotify=true

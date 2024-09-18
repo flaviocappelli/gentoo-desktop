@@ -1,0 +1,13 @@
+--- /usr/share/applications/org.qbittorrent.qBittorrent.desktop	2024-03-17 14:30:37.046398424 +0100
++++ ./org.qbittorrent.qBittorrent.desktop	2024-03-17 20:19:27.591906587 +0100
+@@ -8,8 +8,8 @@
+ Terminal=false
+ Type=Application
+ MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+-Categories=Network;FileTransfer;P2P;Qt;
+-Keywords=bittorrent;torrent;magnet;download;p2p;
++Categories=Network;
++Keywords=torrent;magnet;download;p2p;
+ StartupWMClass=qbittorrent
+ StartupNotify=false
+ SingleMainWindow=true

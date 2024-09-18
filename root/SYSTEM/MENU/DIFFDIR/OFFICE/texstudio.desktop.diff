@@ -1,0 +1,19 @@
+--- /usr/share/applications/texstudio.desktop	2024-08-03 17:09:44.859141110 +0200
++++ ./texstudio.desktop	2024-08-03 17:40:30.167013427 +0200
+@@ -1,11 +1,13 @@
+ [Desktop Entry]
+ Name=TeXstudio
+ GenericName=LaTeX Editor
++GenericName[it]=Editor per LaTeX
+ Exec=texstudio %F
+ Icon=texstudio
+ Terminal=false
+ Type=Application
+ MimeType=text/x-tex;
+-Categories=Office;Publishing;Qt;X-SuSE-Core-Office;X-Mandriva-Office-Publishing;X-Misc;
+-Keywords=LaTeX;TeX;editor;
+-StartupNotify=false
++Categories=Office;
++Keywords=WYSIWYG;WYSIWYM;TeX;GUI;frontend;documents;
++Keywords[it]=WYSIWYG;WYSIWYM;TeX;GUI;frontend;documenti;
++StartupNotify=true

@@ -1,0 +1,28 @@
+--- /usr/share/applications/thunderbird.desktop	2024-03-17 23:44:44.259868406 +0100
++++ ./thunderbird.desktop	2024-03-17 23:57:13.617222568 +0100
+@@ -1,16 +1,19 @@
+ [Desktop Entry]
+-Name=Mozilla Thunderbird
+-GenericName=Email
++Name=Thunderbird
++GenericName=Email Client
++GenericName[it]=Client email
+ Exec=thunderbird %u
+ Icon=thunderbird
+ Terminal=false
+ Type=Application
+-MimeType=message/rfc822;text/calendar;x-scheme-handler/mailto;
+-Categories=Network;Email;Calendar;
+-Keywords=email;messages;calendar
++MimeType=application/x-xpinstall;message/rfc822;text/calendar;x-scheme-handler/mailto;x-scheme-handler/mid;x-scheme-handler/webcal;
++Categories=Network;
++Keywords=Email;E-mail;Newsgroup;Feed;RSS;messages;calendar
++Keywords[it]=Email;Mail;Posta;Newsgroup;Feed;RSS;messaggi;calendario
+ StartupNotify=true
+ Actions=profile-manager-window;
+ 
+ [Desktop Action profile-manager-window]
+-Name=Open the Profile Manager
++Name=Open Profile Manager
++Name[it]=Apri gestione profili
+ Exec=thunderbird --ProfileManager

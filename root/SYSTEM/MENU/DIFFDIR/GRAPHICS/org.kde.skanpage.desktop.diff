@@ -1,0 +1,18 @@
+--- /usr/share/applications/org.kde.skanpage.desktop	2024-03-17 14:30:37.089398010 +0100
++++ ./org.kde.skanpage.desktop	2024-03-17 21:40:39.346217453 +0100
+@@ -1,9 +1,12 @@
+ [Desktop Entry]
+ Name=Skanpage
+ Name[it]=Skanpage
+-GenericName=Multi-Page Document Scanning Application
+-GenericName[it]=Applicazione per scansionare documenti multi pagina
++GenericName=Multi-Page Document Scanning
++GenericName[it]=Scansione documenti multi pagina
+ Exec=skanpage
+ Icon=skanpage
++Terminal=false
+ Type=Application
+-Categories=Qt;KDE;Graphics;Scanning;
++Categories=Qt;KDE;Graphics;
++Keywords=capture;scanner;
++Keywords[it]=acquisizione;scanner;scanning;

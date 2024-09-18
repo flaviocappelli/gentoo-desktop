@@ -1,0 +1,21 @@
+--- /usr/share/applications/org.kde.kinfocenter.desktop	2024-09-02 21:59:46.973251061 +0200
++++ ./org.kde.kinfocenter.desktop	2024-09-02 22:03:26.958098758 +0200
+@@ -1,15 +1,14 @@
+ [Desktop Entry]
+ OnlyShowIn=KDE;
+-Name=Info Center
+-Name[it]=Centro d'informazione
++Name=KInfoCenter
+ GenericName=Info Center
+ GenericName[it]=Centro d'informazione
+ Exec=kinfocenter
+ Icon=hwinfo
+ Type=Application
+ Categories=Qt;KDE;System;
+-Keywords=kinfocenter
+-Keywords[it]=kinfocenter
++Keywords=linux;kernel;hardware;cpu;processor;capabilities;frequency;memory;ram;mobo;motherboard;resources;sensors;devices;usb;pci;display;graphics;3d;network;
++Keywords[it]=linux;kernel;system;hardware;cpu;processore;capabilities;frequenza;memoria;ram;mobo;motherboard;scheda madre;risorse;sensori;dispositivi;usb;pci;display;schermo;grafica;3d;network;rete;
+ StartupNotify=true
+ X-DocPath=kinfocenter/index.html
+ X-DBUS-ServiceName=org.kde.kinfocenter

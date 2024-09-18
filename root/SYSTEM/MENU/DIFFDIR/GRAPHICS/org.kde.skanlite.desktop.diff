@@ -1,0 +1,21 @@
+--- /usr/share/applications/org.kde.skanlite.desktop	2024-03-17 14:30:37.010398771 +0100
++++ ./org.kde.skanlite.desktop	2024-03-17 21:38:16.954667768 +0100
+@@ -1,13 +1,15 @@
+ [Desktop Entry]
+ Name=Skanlite
+ Name[it]=Skanlite
+-GenericName=Image Scanning Application
+-GenericName[it]=Applicazione per la scansione di immagini
++GenericName=Image Scanning
++GenericName[it]=Scansione di immagini
+ Exec=skanlite
+ Icon=org.kde.skanlite
+ Terminal=false
+ Type=Application
+-Categories=Qt;KDE;Graphics;Scanning;
++Categories=Qt;KDE;Graphics;
++Keywords=capture;images;photos;illustrations;documents;
++Keywords[it]=acquisizione;foto;illustrazioni;documenti;
+ StartupWMClass=skanlite
+ X-DocPath=skanlite/index.html
+ X-DBUS-ServiceName=org.kde.skanlite

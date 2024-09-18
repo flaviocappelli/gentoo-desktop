@@ -1,0 +1,21 @@
+--- /usr/share/applications/audacity.desktop	2024-05-18 06:48:43.027407727 +0200
++++ ./audacity.desktop	2024-05-18 06:51:26.068081354 +0200
+@@ -1,13 +1,14 @@
+ [Desktop Entry]
+ Name=Audacity
+ GenericName=Sound Editor
+-GenericName[it]=editore di suoni
++GenericName[it]=Editor audio
+ Exec=env UBUNTU_MENUPROXY=0 audacity %F
+ Icon=audacity
+ Terminal=false
+ Type=Application
+ MimeType=application/ogg;application/x-audacity-project;application/x-audacity-project+sqlite3;audio/aac;audio/ac3;audio/basic;audio/flac;audio/mp4;audio/x-aiff;audio/x-flac;audio/x-ms-wma;audio/x-vorbis+ogg;audio/x-wav;video/mpeg;
+-Categories=AudioVideo;Audio;AudioVideoEditing;
+-Keywords=sound;music editing;voice channel;frequency;modulation;audio trim;clipping;noise reduction;multi track audio editor;edit;mixing;WAV;AIFF;FLAC;MP2;MP3;
++Categories=AudioVideo;
++Keywords=audio;sounds;alsa;jack;editor;track;tracks;frequency;modulation;WAV;MP3;codec;
++Keywords[it]=audio;suono;suoni;alsa;jack;editor;traccia;tracce;frequenza;modulazione;WAV;MP3;codec;
+ StartupWMClass=Audacity
+-StartupNotify=false
++StartupNotify=true

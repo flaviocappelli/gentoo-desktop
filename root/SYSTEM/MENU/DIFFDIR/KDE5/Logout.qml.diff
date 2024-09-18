@@ -1,0 +1,11 @@
+--- /usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/logout/Logout.qml	2023-06-20 15:34:35.000000000 +0200
++++ ./Logout.qml	2023-08-04 18:49:15.378792293 +0200
+@@ -41,7 +41,7 @@
+         root.suspendRequested(4);
+     }
+ 
+-    property real timeout: 30
++    property real timeout: 10
+     property real remainingTime: root.timeout
+     property var currentAction: {
+         switch (sdtype) {

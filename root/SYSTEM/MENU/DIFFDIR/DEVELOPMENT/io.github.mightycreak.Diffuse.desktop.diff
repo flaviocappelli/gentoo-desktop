@@ -1,0 +1,17 @@
+--- /usr/share/applications/io.github.mightycreak.Diffuse.desktop	2024-03-17 14:30:37.090398000 +0100
++++ ./io.github.mightycreak.Diffuse.desktop	2024-03-17 21:55:48.628000653 +0100
+@@ -1,9 +1,13 @@
+ [Desktop Entry]
+ Name=Diffuse
++GenericName=Compare and Merge Tool
++GenericName[it]=Confronto e unione di file
+ Exec=diffuse -s %F
+ Icon=io.github.mightycreak.Diffuse
+ Terminal=false
+ Type=Application
+ MimeType=text/plain;text/x-chdr;text/x-csrc;
+-Categories=Development;GTK;
++Categories=Development;
++Keywords=diff;
++Keywords[it]=diff;merge;differenze;
+ StartupNotify=true

@@ -1,0 +1,17 @@
+--- /usr/share/applications/ddcui.desktop	2024-09-03 14:35:14.280121258 +0200
++++ ./ddcui.desktop	2024-09-03 14:36:06.934605742 +0200
+@@ -1,10 +1,12 @@
+ [Desktop Entry]
+-Name=ddcui
++Name=Monitor Settings
++Name[it]=Impostazioni del monitor
+ GenericName=Monitor Settings
++GenericName[it]=Impostazioni del monitor
+ TryExec=ddcui
+ Exec=ddcui
+ Icon=ddcui
+ Terminal=false
+ Type=Application
+-Categories=Settings;HardwareSettings;
++Categories=Settings;
+ Keywords=ddcutil;DDC/CI;MCCS

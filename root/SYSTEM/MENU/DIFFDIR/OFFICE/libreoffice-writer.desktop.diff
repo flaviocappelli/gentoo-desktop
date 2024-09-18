@@ -1,0 +1,27 @@
+--- /usr/share/applications/libreoffice-writer.desktop	2024-06-30 05:46:43.287160984 +0200
++++ ./libreoffice-writer.desktop	2024-06-30 05:48:00.938328459 +0200
+@@ -1,13 +1,15 @@
+ [Desktop Entry]
+ Name=LibreOffice Writer
+ GenericName=Word Processor
++GenericName[it]=Videoscrittura
+ Exec=libreoffice --writer %U
+ Icon=libreoffice-writer
+ Terminal=false
+ Type=Application
+ MimeType=application/clarisworks;application/docbook+xml;application/macwriteii;application/msword;application/prs.plucker;application/rtf;application/vnd.apple.pages;application/vnd.lotus-wordpro;application/vnd.ms-word;application/vnd.ms-word.document.macroEnabled.12;application/vnd.ms-word.template.macroEnabled.12;application/vnd.ms-works;application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.text-flat-xml;application/vnd.oasis.opendocument.text-master;application/vnd.oasis.opendocument.text-master-template;application/vnd.oasis.opendocument.text-template;application/vnd.oasis.opendocument.text-web;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.palm;application/vnd.stardivision.writer-global;application/vnd.sun.xml.writer;application/vnd.sun.xml.writer.global;application/vnd.sun.xml.writer.template;application/vnd.wordperfect;application/wordperfect;application/x-abiword;application/x-aportisdoc;application/x-doc;application/x-extension-txt;application/x-fictionbook+xml;application/x-hwp;application/x-iwork-pages-sffpages;application/x-mswrite;application/x-pocket-word;application/x-sony-bbeb;application/x-starwriter;application/x-starwriter-global;application/x-t602;text/plain;text/rtf;
+-Categories=Office;WordProcessor;X-Red-Hat-Base;
+-Keywords=Text;Letter;Fax;Document;OpenDocument Text;Microsoft Word;Microsoft Works;Lotus WordPro;OpenOffice Writer;CV;odt;doc;docx;rtf;
++Categories=Office;
++Keywords=Text;Letter;Fax;Document;OpenDocument;Microsoft;Word;OpenOffice;CV;odt;doc;docx;rtf;
++Keywords[it]=Testo;Lettera;Fax;Documento;OpenDocument;Microsoft;Word;OpenOffice;CV;odt;doc;docx;rtf;
+ InitialPreference=5
+ StartupWMClass=libreoffice-writer
+ StartupNotify=true
+@@ -17,5 +19,6 @@
+ 
+ [Desktop Action NewDocument]
+ Name=New Document
++Name[it]=Nuovo documento
+ Exec=libreoffice --writer
+ Icon=document-new

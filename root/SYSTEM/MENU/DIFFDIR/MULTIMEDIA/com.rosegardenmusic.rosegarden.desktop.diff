@@ -1,0 +1,18 @@
+--- /usr/share/applications/com.rosegardenmusic.rosegarden.desktop	2024-09-08 07:00:15.149379174 +0200
++++ ./com.rosegardenmusic.rosegarden.desktop	2024-09-08 07:03:35.740434106 +0200
+@@ -1,12 +1,14 @@
+ [Desktop Entry]
+ Name=Rosegarden
+ GenericName=Sequencer and Notation Editor
++GenericName[it]=Sequencer ed editor musicale
+ Exec=rosegarden %f
+ Icon=rosegarden
+ Terminal=false
+ Type=Application
+ MimeType=audio/midi;audio/x-rosegarden-composition;audio/x-rosegarden-device;audio/x-rosegarden-project;audio/x-rosegarden-template;
+-Categories=AudioVideo;Audio;Midi;Sequencer;X-SuSE-Sequencer;X-Red-Hat-Base;
++Categories=AudioVideo;
+ Keywords=midi audio sequencer music notation score
+ StartupWMClass=Rosegarden
++StartupNotify=true
+ X-KDE-NativeMimeType=audio/x-rosegarden-composition

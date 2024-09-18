@@ -1,0 +1,17 @@
+--- /usr/share/applications/kchmviewer.desktop	2024-03-17 14:30:37.078398116 +0100
++++ ./kchmviewer.desktop	2024-03-17 21:16:02.741267744 +0100
+@@ -1,9 +1,12 @@
+ [Desktop Entry]
+ Name=KchmViewer
+-GenericName=CHM file viewer
++GenericName=CHM File Viewer
++GenericName[it]=Visore di file CHM
+ Exec=kchmviewer %f
+ Icon=kchmviewer
+ Terminal=false
+ Type=Application
+ MimeType=application/chm;application/x-chm;application/vnd.ms-htmlhelp;application/epub+zip
+-Categories=Qt;KDE;Office;Viewer;
++Categories=Qt;KDE;Graphics;
++Keywords=ebooks;e-books;
++StartupNotify=true

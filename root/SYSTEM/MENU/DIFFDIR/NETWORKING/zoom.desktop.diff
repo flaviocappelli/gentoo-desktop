@@ -1,0 +1,15 @@
+--- /usr/share/applications/zoom.desktop	2024-03-17 14:30:37.106397846 +0100
++++ ./zoom.desktop	2024-03-17 20:05:50.592225702 +0100
+@@ -1,8 +1,11 @@
+ [Desktop Entry]
+ Name=Zoom
++GenericName=Video Conference
++GenericName[it]=Video Conferenza
+ TryExec=zoom
+ Exec=zoom %U
+ Icon=videoconference-zoom
+ Type=Application
+ MimeType=application/x-zoom;x-scheme-handler/zoommtg;x-scheme-handler/zoomus;
+-Categories=Network;VideoConference;
++Categories=Network;
++X-KDE-Protocols=zoommtg;zoomus;tel;callto;zoomphonecall;

@@ -1,0 +1,18 @@
+--- /usr/share/applications/org.kde.rocs.desktop	2024-03-17 14:30:37.075398145 +0100
++++ ./org.kde.rocs.desktop	2024-03-17 18:55:04.089667365 +0100
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+ Name=Rocs
+ Name[it]=Rocs
+-GenericName=Rocs Graph Theory
+-GenericName[it]=Rocs - Teoria dei grafi
++GenericName=Graph Theory Tool
++GenericName[it]=Strumento per la teoria dei grafi
+ Exec=rocs %u -qwindowtitle %c
+ Icon=rocs
+ Type=Application
+ MimeType=application/x-rocs;
+-Categories=Qt;KDE;Education;Science;Math;
++Categories=Education;Science;
+ X-DocPath=rocs/index.html
+ X-DBUS-ServiceName=org.kde.rocs

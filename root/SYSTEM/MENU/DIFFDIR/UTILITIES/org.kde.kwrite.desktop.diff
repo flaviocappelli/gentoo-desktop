@@ -1,0 +1,21 @@
+--- /usr/share/applications/org.kde.kwrite.desktop	2024-03-17 14:30:37.111397798 +0100
++++ ./org.kde.kwrite.desktop	2024-03-17 17:53:45.119215882 +0100
+@@ -2,14 +2,14 @@
+ Name=KWrite
+ Name[it]=KWrite
+ GenericName=Text Editor
+-GenericName[it]=Editor di testo
++GenericName[it]=Editor di testi
+ Exec=kwrite %U
+ Icon=kwrite
+ Type=Application
+ MimeType=text/plain;
+-Categories=Qt;KDE;Utility;TextEditor;
+-Keywords=text;txt;editor;note;notepad;
+-Keywords[it]=testo;txt;editor;note;blocco note;
++Categories=Qt;KDE;Utility;
++Keywords=txt;notes;notepad;
++Keywords[it]=testo;txt;text;appunti;blocco note;notepad;
+ InitialPreference=8
+ StartupWMClass=kwrite
+ StartupNotify=true

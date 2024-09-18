@@ -1,0 +1,15 @@
+--- /usr/share/applications/phononsettings-phonon.desktop	2024-03-17 14:30:37.087398029 +0100
++++ ./phononsettings-phonon.desktop	2024-03-17 18:15:57.457666634 +0100
+@@ -1,7 +1,10 @@
+ [Desktop Entry]
+-Name=Phonon Audio and Video
++Name=Phonon Audio/Video Settings
++Name[it]=Impostazioni audio/video di Phonon
++GenericName=Phonon Audio/Video Settings
++GenericName[it]=Impostazioni audio/video di Phonon
+ TryExec=phononsettings
+ Exec=phononsettings
+ Icon=preferences-desktop-sound
+ Type=Application
+-Categories=AudioVideo;
++Categories=Qt;KDE;Settings;

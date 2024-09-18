@@ -1,0 +1,14 @@
+--- /usr/share/applications/amule.desktop	2024-03-17 14:30:37.021398665 +0100
++++ ./amule.desktop	2024-03-17 20:20:32.184249630 +0100
+@@ -1,8 +1,10 @@
+ [Desktop Entry]
+ Name=aMule
++GenericName=eD2k/Kad Network Client
++GenericName[it]=Client per reti eD2k/Kad
+ Exec=amule %u
+ Icon=amule
+ Terminal=false
+ Type=Application
+ MimeType=x-scheme-handler/ed2k;
+-Categories=Network;P2P;
++Categories=Network;

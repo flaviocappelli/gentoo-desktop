@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.wireshark.Wireshark.desktop	2024-03-17 14:30:37.006398810 +0100
++++ ./org.wireshark.Wireshark.desktop	2024-03-17 20:14:50.648723234 +0100
+@@ -8,4 +8,4 @@
+ Terminal=false
+ Type=Application
+ MimeType=application/ipfix;application/vnd.tcpdump.pcap;application/x-5view;application/x-apple-packetlogger;application/x-endace-erf;application/x-etherpeek;application/x-iptrace;application/x-ixia-vwr;application/x-lanalyzer;application/x-micropross-mplog;application/x-netinstobserver;application/x-nettl;application/x-pcapng;application/x-radcom;application/x-snoop;application/x-tektronix-rf5;application/x-visualnetworks;
+-Categories=Network;Monitor;Qt;
++Categories=Network;

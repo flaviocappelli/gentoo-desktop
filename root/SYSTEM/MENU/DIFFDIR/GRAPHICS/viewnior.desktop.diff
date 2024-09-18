@@ -1,0 +1,20 @@
+--- /usr/share/applications/viewnior.desktop	2024-07-09 08:04:19.595688461 +0200
++++ ./viewnior.desktop	2024-07-09 08:16:45.687763300 +0200
+@@ -1,12 +1,15 @@
+ [Desktop Entry]
+ Name=Viewnior
+ Name[it]=Viewnior
++GenericName=Image Viewer
++GenericName[it]=Visore di immagini
+ TryExec=viewnior
+ Exec=viewnior %F
+ Icon=viewnior
+ Terminal=false
+ Type=Application
+ MimeType=image/bmp;image/gif;image/jpeg;image/jpg;image/pjpeg;image/png;image/svg+xml;image/svg+xml-compressed;image/tiff;image/vnd.wap.wbmp;image/x-bmp;image/x-gray;image/x-icb;image/x-ico;image/x-pcx;image/x-png;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-xbitmap;image/x-xpixmap;
+-Categories=GNOME;GTK;Graphics;Viewer;
+-Keywords=Image;Picture;Slideshow;
++Categories=Graphics;
++Keywords=images;photos;
++Keywords[it]=immagine;foto;
+ StartupNotify=true

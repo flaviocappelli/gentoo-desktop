@@ -1,0 +1,14 @@
+--- /usr/share/applications/putty.desktop	2024-03-17 14:30:37.068398212 +0100
++++ ./putty.desktop	2024-03-17 20:13:33.065513563 +0100
+@@ -1,7 +1,11 @@
+ [Desktop Entry]
+ Name=PuTTY
++GenericName=SSH/Telnet/Serial Client
++GenericName[it]=Client SSH/Telnet/Seriale
+ TryExec=putty
+ Exec=putty
+ Icon=putty
+ Type=Application
+ Categories=Network;
++Keywords=connect;remote;
++Keywords[it]=connessione;remoto;remota;

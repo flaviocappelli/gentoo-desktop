@@ -1,0 +1,16 @@
+--- /usr/share/applications/xonotic.desktop	2024-03-17 14:30:37.019398685 +0100
++++ ./xonotic.desktop	2024-03-17 19:11:43.427453781 +0100
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+-Name=Xonotic
++Hidden=true
++Name=Xonotic (SDL)
++GenericName=Multiplayer Deathmatch FPS
+ Exec=xonotic-sdl
+ Icon=xonotic
+ Terminal=false
+ Type=Application
+-Categories=Game;ActionGame;
++Categories=Game;
+ StartupNotify=false
+ PrefersNonDefaultGPU=true

@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.kde.kdevelop_ps.desktop	2024-03-17 14:30:37.005398819 +0100
++++ ./org.kde.kdevelop_ps.desktop	2024-03-17 22:10:26.888084867 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=KDevelop (Pick Session)
+ Name[it]=KDevelop (Scegliere la sessione)
+ GenericName=Integrated Development Environment (Pick Session to start with)

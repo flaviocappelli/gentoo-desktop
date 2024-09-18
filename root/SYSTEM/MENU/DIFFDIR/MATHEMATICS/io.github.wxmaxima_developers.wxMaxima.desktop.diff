@@ -1,0 +1,22 @@
+--- /usr/share/applications/io.github.wxmaxima_developers.wxMaxima.desktop	2024-03-17 14:30:37.041398472 +0100
++++ ./io.github.wxmaxima_developers.wxMaxima.desktop	2024-03-17 19:01:47.574545715 +0100
+@@ -1,14 +1,15 @@
+ [Desktop Entry]
+ Name=wxMaxima
+-GenericName=GUI for Maxima
+-GenericName[it]=Un'interfaccia grafica per Maxima
++GenericName=Numerical and Symbolic Computation
++GenericName[it]=Calcolo numerico e simbolico
+ TryExec=wxmaxima
+ Exec=wxmaxima %f
+ Icon=io.github.wxmaxima_developers.wxMaxima
+ Terminal=false
+ Type=Application
+ MimeType=text/x-maxima-out;text/x-maximasession;text/x-wxmathml;text/x-wxmaxima-batch;
+-Categories=Education;Math;Science;
+-Keywords=maths;cas;algebra;education;engineering;physics;
++Categories=Mathematics
++Keywords=maths;mathematics;cas;algebra;engineering;physics;
++Keywords[it]=math;matematica;cas;algebra;ingegneria;fisica;
+ StartupWMClass=wxmaxima
+ StartupNotify=true

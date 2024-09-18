@@ -1,0 +1,13 @@
+--- /usr/share/applications/org.kde.plasma.emojier.desktop	2024-09-03 14:40:27.599053689 +0200
++++ ./org.kde.plasma.emojier.desktop	2024-09-03 14:54:05.454036761 +0200
+@@ -1,7 +1,8 @@
+ [Desktop Entry]
+ OnlyShowIn=KDE;
+-Name=Emoji Selector
+-Name[it]=Selettore di emoji
++Name=plasma-emojier
++GenericName=Emoji Selector
++GenericName[it]=Selettore di emoji
+ Exec=plasma-emojier
+ Icon=preferences-desktop-emoticons
+ Type=Application

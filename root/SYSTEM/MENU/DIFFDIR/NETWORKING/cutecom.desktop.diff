@@ -1,0 +1,15 @@
+--- /usr/share/applications/cutecom.desktop	2024-06-02 22:05:16.623659877 +0200
++++ ./cutecom.desktop	2024-06-02 22:06:57.922624649 +0200
+@@ -1,7 +1,11 @@
+ [Desktop Entry]
+ Name=CuteCom
+ GenericName=Serial Terminal
++GenericName[it]=Terminale seriale
+ Exec=cutecom
+ Icon=cutecom
+ Type=Application
+-Categories=Qt;System;TerminalEmulator;
++Categories=Network;
++Keywords=dialup;uucp;device;devices;interface;emulator;
++Keywords[it]=dialup;uucp;dispositivo;dispositivi;interfaccia;emulatore;
++StartupNotify=true

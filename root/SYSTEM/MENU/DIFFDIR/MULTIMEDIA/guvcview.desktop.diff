@@ -1,0 +1,13 @@
+--- /usr/share/applications/guvcview.desktop	2024-03-17 14:30:37.069398203 +0100
++++ ./guvcview.desktop	2024-03-17 20:53:24.918149410 +0100
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=guvcview
+ Name[it]=guvcview
+-GenericName=GTK UVC video viewer
+-GenericName[it]=GTK UVC visualizzatore video
++GenericName=UVC Webcam Viewer
++GenericName[it]=Visualizzatore webcam UVC
+ TryExec=guvcview
+ Exec=guvcview
+ Icon=/usr/share/pixmaps/guvcview/guvcview.png

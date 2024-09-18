@@ -1,0 +1,16 @@
+--- /usr/share/applications/startlazarus-lazarus.desktop	2024-03-17 22:52:16.008853166 +0100
++++ ./startlazarus-lazarus.desktop	2024-03-17 22:53:52.213881192 +0100
+@@ -1,7 +1,12 @@
+ [Desktop Entry]
+-Name=Lazarus IDE
++Name=Lazarus
++GenericName=IDE for Pascal and Delphi
++GenericName[it]=IDE per Pascal e Delphi
+ TryExec=startlazarus
+ Exec=startlazarus
+ Icon=lazarus
+ Type=Application
++MimeType=text/lazarus-code-inlay;text/lazarus-form;text/lazarus-package;text/lazarus-package-link;text/lazarus-project-information;text/lazarus-project-source;text/lazarus-resource;text/x-pascal;
+ Categories=Development;
++Keywords=editor;FreePascal;fpc;Design;Designer;GUI;
++StartupWMClass=Lazarus

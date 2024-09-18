@@ -1,0 +1,17 @@
+--- /usr/share/applications/org.zealdocs.zeal.desktop	2024-09-06 00:20:37.595621298 +0200
++++ ./org.zealdocs.zeal.desktop	2024-09-06 00:21:55.125881757 +0200
+@@ -1,10 +1,13 @@
+ [Desktop Entry]
+ Name=Zeal
+ GenericName=Documentation Browser
++GenericName[it]=Visore di documentazione
+ Exec=zeal %u
+ Icon=zeal
+ Terminal=false
+ Type=Application
+ MimeType=x-scheme-handler/dash;x-scheme-handler/dash-plugin;
+-Categories=Development;Documentation;
++Categories=Development;
++Keywords=programming;development;docs;
++Keywords[it]=programmazione;sviluppo;docs;
+ StartupWMClass=Zeal

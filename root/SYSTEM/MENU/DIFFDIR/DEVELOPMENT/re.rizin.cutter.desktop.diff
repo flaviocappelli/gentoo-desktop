@@ -1,0 +1,14 @@
+--- /usr/share/applications/re.rizin.cutter.desktop	2024-03-17 14:30:37.104397865 +0100
++++ ./re.rizin.cutter.desktop	2024-03-17 22:03:23.089388519 +0100
+@@ -1,6 +1,11 @@
+ [Desktop Entry]
+ Name=Cutter
++GenericName=Reverse Engineering Tool
++GenericName[it]=Strumento per il Reverse Engineering
+ Exec=cutter
+ Icon=cutter
++Terminal=false
+ Type=Application
+ Categories=Development;
++Keywords=radare2;r2cutter;cutter-re;gdb;disassembler;debugger;c++;assembler;decompiler;binary;asm;arm;exe;viewer;
++StartupNotify=true

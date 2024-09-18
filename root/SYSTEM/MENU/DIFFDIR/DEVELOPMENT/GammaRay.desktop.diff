@@ -1,0 +1,15 @@
+--- /usr/share/applications/GammaRay.desktop	2024-03-17 14:30:37.037398511 +0100
++++ ./GammaRay.desktop	2024-03-17 21:50:31.889211010 +0100
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Name=GammaRay
+-GenericName=Qt Inspection Tool
++GenericName=Qt5 Inspection Tool
++GenericName[it]=Ispezione applicazioni Qt5
+ Exec=gammaray
+ Icon=GammaRay
+ Type=Application
+ Categories=Qt;Development;
+-Keywords=Qt;development;runtime;
++Keywords=development;runtime;
+ X-KDE-StartupNotify=true

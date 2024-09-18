@@ -1,0 +1,9 @@
+--- /usr/share/applications/org.kde.kmenuedit.desktop	2024-03-17 14:30:37.040398482 +0100
++++ ./org.kde.kmenuedit.desktop	2024-03-17 19:57:09.902532032 +0100
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-OnlyShowIn=KDE;
++Hidden=true
+ Name=Menu Editor
+ Name[it]=Editor dei menu
+ Exec=kmenuedit

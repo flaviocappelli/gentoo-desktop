@@ -1,0 +1,17 @@
+--- /usr/share/applications/ardour8.desktop	2024-03-17 14:30:37.065398241 +0100
++++ ./ardour8.desktop	2024-03-17 20:44:42.793481523 +0100
+@@ -1,8 +1,12 @@
+ [Desktop Entry]
+-Name=Ardour 8
++Name=Ardour
++GenericName=Digital Audio Workstation
++GenericName[it]=Workstation audio digitale
+ Exec=ardour8
+ Icon=ardour8
+ Terminal=false
+ Type=Application
+ MimeType=application/x-ardour;
+-Categories=AudioVideo;Audio;X-AudioEditing;X-Recorders;X-Multitrack;X-Jack;
++Categories=AudioVideo;
++Keywords=microphone;instruments;track;record;capture;music;sounds;midi;
++Keywords[it]=microfono;strumenti;traccia;registrazione;cattura;musica;suoni;midi;

@@ -1,0 +1,21 @@
+--- /usr/share/applications/QXmlEdit.desktop	2024-03-17 14:30:37.009398781 +0100
++++ ./QXmlEdit.desktop	2024-03-17 22:02:26.464963586 +0100
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+-NoDisplay=false
+-Hidden=false
+ Name=QXmlEdit
+-GenericName=Simple XML editor and XSD viewer.
+-GenericName[it]=Semplice editor XML e visualizzatore XSD.
++GenericName=XML editor and XSD viewer
++GenericName[it]=Editor XML e visualizzatore XSD
+ Exec=qxmledit %u
+ Icon=qxmledit
+ Terminal=false
+ Type=Application
+ MimeType=text/xml;
+-Categories=Utility;Qt;Development;TextEditor;
++Categories=Development;
++Keywords=programming;inspection;
++Keywords[it]=programmazione;ispezione;
+ StartupNotify=true

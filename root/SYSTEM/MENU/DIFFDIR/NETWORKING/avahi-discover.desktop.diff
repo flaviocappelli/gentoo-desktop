@@ -1,0 +1,17 @@
+--- /usr/share/applications/avahi-discover.desktop	2024-03-17 14:30:37.065398241 +0100
++++ ./avahi-discover.desktop	2024-03-17 20:21:31.025651117 +0100
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+-Name=Avahi Zeroconf Browser
+-Name[it]=Esploratore Zeroconf Avahi
++Name=avahi-discover
++GenericName=Zeroconf Service Browser
++GenericName[it]=Esploratore servizi Zeroconf
+ Exec=/usr/bin/avahi-discover
+ Icon=network-wired
+ Terminal=false
+ Type=Application
+-Categories=GNOME;System;
+-StartupNotify=false
++Categories=Network;
++StartupNotify=true

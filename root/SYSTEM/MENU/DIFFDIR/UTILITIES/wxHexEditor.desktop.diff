@@ -1,0 +1,17 @@
+--- /usr/share/applications/wxHexEditor.desktop	2024-03-17 14:30:37.096397942 +0100
++++ ./wxHexEditor.desktop	2024-03-17 17:42:36.109007558 +0100
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+ Name=wxHexEditor
+-GenericName=wxHexEditor
++GenericName=Hex Editor
++GenericName[it]=Editor esadecimale
+ Exec=wxHexEditor
+ Icon=wxHexEditor
+ Terminal=false
+ Type=Application
+-Categories=Utility;TextEditor;
+-Keywords=disk;drive;volume;harddisk;hdd;disc;cdrom;dvd;partition;iso;image;backup;restore;editor;
++Categories=Utility;
++Keywords=disk;drive;volume;harddisk;hdd;ssd;nvme;disc;cdrom;dvd;partition;iso;image;
++Keywords[it]=disk;disco;drive;volume;harddisk;hdd;ssd;nvme;cdrom;dvd;partizione;iso;immagine;

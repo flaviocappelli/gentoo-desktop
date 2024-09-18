@@ -1,0 +1,11 @@
+--- /usr/share/applications/org.kde.kgraphviewer.desktop	2024-09-02 21:50:16.724411822 +0200
++++ ./org.kde.kgraphviewer.desktop	2024-09-02 21:52:03.315794895 +0200
+@@ -8,7 +8,7 @@
+ Terminal=false
+ Type=Application
+ MimeType=text/vnd.graphviz
+-Categories=Qt;KDE;Graphics;Viewer;2DGraphics;DataVisualization;
++Categories=Qt;KDE;Graphics;
+ InitialPreference=10
+ StartupWMClass=kgraphviewer
+ X-DocPath=kgraphviewer/index.html

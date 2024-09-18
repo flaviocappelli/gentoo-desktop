@@ -1,0 +1,22 @@
+--- /usr/share/applications/org.kde.lokalize.desktop	2024-03-17 14:30:37.033398550 +0100
++++ ./org.kde.lokalize.desktop	2024-03-17 22:17:08.763010514 +0100
+@@ -1,14 +1,16 @@
+ [Desktop Entry]
+ Name=Lokalize
+ Name[it]=Lokalize
+-GenericName=Computer-Aided Translation System
+-GenericName[it]=Sistema di traduzione assistito dal computer
++GenericName=Translation Tool
++GenericName[it]=Strumento per le traduzioni
+ Exec=lokalize %F
+ Icon=lokalize
+ Terminal=false
+ Type=Application
+ MimeType=application/x-lokalize-project;application/x-xliff;text/x-gettext-translation;text/x-gettext-translation-template;
+-Categories=Qt;KDE;Development;Office;Translation;
++Categories=Qt;KDE;Development;Translation;
++Keywords=programming;linguas;i18n;l10n;
++Keywords[it]=programmazione;lingue;i18n;l10n;
+ X-DocPath=lokalize/index.html
+ X-DBUS-StartupType=Multi
+ X-DBUS-ServiceName=org.kde.lokalize

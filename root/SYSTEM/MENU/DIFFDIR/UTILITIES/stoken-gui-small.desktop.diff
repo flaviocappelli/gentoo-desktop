@@ -1,0 +1,8 @@
+--- /usr/share/applications/stoken-gui-small.desktop	2024-03-17 17:19:28.575140463 +0100
++++ ./stoken-gui-small.desktop	2024-03-17 17:20:29.567520135 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Software Token (small)
+ GenericName=Software Token
+ Exec=stoken-gui --small

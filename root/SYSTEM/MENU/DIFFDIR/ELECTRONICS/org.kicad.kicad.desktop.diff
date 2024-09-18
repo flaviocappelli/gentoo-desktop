@@ -1,0 +1,22 @@
+--- /usr/share/applications/org.kicad.kicad.desktop	2024-05-18 06:48:43.030407680 +0200
++++ ./org.kicad.kicad.desktop	2024-05-18 06:49:57.270208642 +0200
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Name=KiCad
+ Name[it]=KiCad
+-GenericName=EDA Suite
+-GenericName[it]=Suite EDA
++GenericName=Electronic CAD
++GenericName[it]=CAD elettronico
+ Exec=kicad %f
+ Icon=kicad
+ Terminal=false
+ Type=Application
+ MimeType=application/x-kicad-project;
+-Categories=Science;Electronics;
+-Keywords=Projectmanager;
+-Keywords[it]=Gestione progetto;
++Categories=Electronics;
++Keywords=Schema;PCB;Gerber;EDA;Electronics;
++Keywords[it]=Schemi;PCB;Gerber;EDA;elettronica;
+ StartupWMClass=kicad

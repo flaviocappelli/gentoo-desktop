@@ -1,0 +1,12 @@
+--- /usr/share/applications/gzdoom.desktop	2024-08-01 19:21:25.784214909 +0200
++++ ./gzdoom.desktop	2024-08-01 19:22:43.628562254 +0200
+@@ -1,7 +1,8 @@
+ [Desktop Entry]
++Hidden=true
+ Name=GZDoom
+ TryExec=gzdoom
+ Exec=gzdoom
+ Icon=gzdoom
+ Type=Application
+-Categories=Game;ActionGame;
++Categories=Game;

@@ -1,0 +1,16 @@
+--- /usr/share/applications/org.kde.kmag.desktop	2024-03-17 14:30:37.101397894 +0100
++++ ./org.kde.kmag.desktop	2024-03-17 17:56:48.167357756 +0100
+@@ -1,11 +1,10 @@
+ [Desktop Entry]
+ Name=KMag
+-Name[it]=Lente d'ingrandimento
+ GenericName=Screen Magnifier
+-GenericName[it]=Lente di ingrandimento per lo schermo
++GenericName[it]=Lente di ingrandimento
+ Exec=kmag
+ Icon=kmag
+ Type=Application
+-Categories=Qt;KDE;Utility;Accessibility;
++Categories=Qt;KDE;Utility;
+ X-DocPath=kmag/index.html
+ X-DBUS-ServiceName=org.kde.kmag

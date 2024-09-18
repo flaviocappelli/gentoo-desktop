@@ -1,0 +1,19 @@
+--- /usr/share/applications/org.kde.k3b.desktop	2024-03-17 14:30:37.016398713 +0100
++++ ./org.kde.k3b.desktop	2024-03-17 21:01:26.721218153 +0100
+@@ -2,12 +2,14 @@
+ Name=K3b
+ Name[it]=K3b
+ GenericName=Disk Burning
+-GenericName[it]=Scrittura disco
++GenericName[it]=Masterizzazione dischi
+ Exec=k3b %U
+ Icon=k3b
+ Type=Application
+ MimeType=application/x-cd-image;application/x-cue;application/x-iso;application/x-k3b;x-content/blank-bd;x-content/blank-cd;x-content/blank-dvd;x-content/blank-hddvd;
+-Categories=KDE;Qt;AudioVideo;DiscBurning;Filesystem;
++Categories=AudioVideo;
++Keywords=CD;DVD;Audio;Video;ISO;
++Keywords[it]=CD;DVD;Audio;Video;ISO;
+ InitialPreference=5
+ StartupWMClass=k3b
+ StartupNotify=true

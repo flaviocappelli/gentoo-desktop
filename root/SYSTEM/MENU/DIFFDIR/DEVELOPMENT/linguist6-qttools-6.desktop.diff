@@ -1,0 +1,17 @@
+--- /usr/share/applications/linguist6-qttools-6.desktop	2024-05-20 07:25:09.981057843 +0200
++++ ./linguist6-qttools-6.desktop	2024-05-20 07:26:31.677258842 +0200
+@@ -1,7 +1,12 @@
+ [Desktop Entry]
+-Name=Qt 6 Linguist
++Name=Qt6 Linguist
++GenericName=Translation Tool
++GenericName[it]=Strumento per le traduzioni
+ TryExec=linguist6
+ Exec=linguist6
+ Icon=linguist6
+ Type=Application
+-Categories=Qt;Development;Translation;
++MimeType=application/x-linguist;text/vnd.trolltech.linguist;
++Categories=Qt;KDE;Development;Translation;
++Keywords=programming;linguas;i18n;l10n;
++Keywords[it]=programmazione;lingue;i18n;l10n;

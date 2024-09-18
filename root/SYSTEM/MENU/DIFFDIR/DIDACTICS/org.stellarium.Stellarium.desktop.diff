@@ -1,0 +1,33 @@
+--- /usr/share/applications/org.stellarium.Stellarium.desktop	2024-05-29 06:12:10.414626768 +0200
++++ ./org.stellarium.Stellarium.desktop	2024-05-29 06:16:56.514598317 +0200
+@@ -8,9 +8,9 @@
+ Terminal=false
+ Type=Application
+ MimeType=application/x-stellarium-script;
+-Categories=Education;
+-StartupNotify=false
+-Actions=Window;Fullscreen;Debugmode;XCBPlatform;XCBPlatformTheme;
++Categories=Education;Science;
++StartupNotify=true
++Actions=Window;Fullscreen;XCBPlatform;XCBPlatformTheme;
+ 
+ [Desktop Action Window]
+ Name=Open in window
+@@ -24,15 +24,10 @@
+ 
+ [Desktop Action XCBPlatform]
+ Name=Open with QPA platform XCB
+-Name[it]=Aperto con QPA piattaforma XCB
++Name[it]=Apri con QPA piattaforma XCB
+ Exec=stellarium -platform xcb
+ 
+ [Desktop Action XCBPlatformTheme]
+ Name=Open with QPA platform theme XCB
+-Name[it]=Aperto con QPA piattaforma tema XCB
++Name[it]=Apri con QPA piattaforma tema XCB
+ Exec=stellarium -platformtheme xcb
+-
+-[Desktop Action Debugmode]
+-Name=Open in debug mode
+-Name[it]=Apri in modalità di debug
+-Exec=stellarium --dump-opengl-details

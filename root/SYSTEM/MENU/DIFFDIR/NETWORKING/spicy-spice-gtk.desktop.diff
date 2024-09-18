@@ -1,0 +1,8 @@
+--- /usr/share/applications/spicy-spice-gtk.desktop	2024-03-17 17:17:25.136395866 +0100
++++ ./spicy-spice-gtk.desktop	2024-03-17 17:17:54.582096439 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Spicy
+ TryExec=spicy
+ Exec=spicy

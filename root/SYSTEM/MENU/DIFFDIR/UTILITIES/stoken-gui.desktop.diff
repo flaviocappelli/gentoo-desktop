@@ -1,0 +1,16 @@
+--- /usr/share/applications/stoken-gui.desktop	2024-03-17 17:25:12.158642301 +0100
++++ ./stoken-gui.desktop	2024-03-17 17:27:02.216520380 +0100
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Name=Software Token
+-GenericName=Software Token
++GenericName=Generator RSA SecurID 128-bit compatible
++GenericName[it]=Generatore RSA SecurID 128-bit compatibile
+ Exec=stoken-gui
+ Icon=stoken-gui
+ Terminal=false
+ Type=Application
+-Categories=Security;GTK;Utility;
+-Keywords=RSA;SecurID;Authenticator;
++Categories=Utility;
++Keywords=Authenticator;

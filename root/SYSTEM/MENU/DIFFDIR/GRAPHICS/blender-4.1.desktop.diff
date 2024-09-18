@@ -1,0 +1,23 @@
+--- /usr/share/applications/blender-4.1.desktop	2024-05-19 15:42:43.529190041 +0200
++++ ./blender-4.1.desktop	2024-05-19 15:44:05.261375502 +0200
+@@ -1,14 +1,15 @@
+ [Desktop Entry]
+-Name=Blender 4.1
+-GenericName=3D modeler
+-GenericName[it]=Modellatore 3D
++Name=Blender
++GenericName=3D Modeling
++GenericName[it]=Modellazione 3D
+ Exec=blender-4.1 %f
+ Icon=blender-4.1
+ Terminal=false
+ Type=Application
+ MimeType=application/x-blender;
+-Categories=Graphics;3DGraphics;
+-Keywords=3d;cg;modeling;animation;painting;sculpting;texturing;video editing;video tracking;rendering;render engine;cycles;game engine;python;
++Categories=Graphics;
++Keywords=animation;rendering;video;game engine;post-production;cad;
++Keywords[it]=animazione;rendering;video;game engine;post-produzione;cad;
+ StartupWMClass=Blender
+ PrefersNonDefaultGPU=true
+ X-KDE-RunOnDiscreteGpu=true

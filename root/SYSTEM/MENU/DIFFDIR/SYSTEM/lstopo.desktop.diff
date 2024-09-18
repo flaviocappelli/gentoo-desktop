@@ -1,0 +1,17 @@
+--- /usr/share/applications/lstopo.desktop	2024-03-17 14:30:37.058398309 +0100
++++ ./lstopo.desktop	2024-03-17 19:49:17.820367655 +0100
+@@ -1,8 +1,12 @@
+ [Desktop Entry]
+-Name=Hardware Locality lstopo
++Name=lstopo
++GenericName=Show Hardware Topology
++GenericName[it]=Mostra la topologia dell'hardware
+ Exec=lstopo
++Icon=/usr/share/pixmaps/lstopo.png
+ Icon=hwloc
+ Terminal=false
+ Type=Application
+ Categories=System;
+-Keywords=System;Utility;
++Keywords=system;cpu;processor;numa;core;cache;memory;ram;resources;devices;pci;gpu;disks;sata;network;
++Keywords[it]=system;cpu;processore;numa;core;cache;memoria;ram;risorse;dispositivi;pci;gpu;dischi;sata;network;rete;

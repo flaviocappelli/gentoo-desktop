@@ -1,0 +1,17 @@
+--- /usr/share/applications/io.otsaloma.gaupol.desktop	2024-03-17 14:30:37.073398164 +0100
++++ ./io.otsaloma.gaupol.desktop	2024-03-17 20:54:27.302510914 +0100
+@@ -1,10 +1,12 @@
+ [Desktop Entry]
+ Name=Gaupol
+ GenericName=Subtitle Editor
++GenericName[it]=Editor di sottotitoli
+ Exec=gaupol %F
+ Icon=io.otsaloma.gaupol
+ Type=Application
+ MimeType=application/x-subrip;text/vtt;text/x-microdvd;text/x-ssa;text/x-subviewer;
+-Categories=AudioVideo;Video;GTK;
+-Keywords=video;subtitles;captions;
++Categories=AudioVideo;
++Keywords=video;subtitles;captions;dubbing;
++Keywords[it]=video;doppiaggio;
+ StartupNotify=true

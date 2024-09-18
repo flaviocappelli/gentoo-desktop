@@ -1,0 +1,18 @@
+--- /usr/share/applications/com.github.jeromerobert.pdfarranger.desktop	2024-07-05 13:58:52.503451932 +0200
++++ ./com.github.jeromerobert.pdfarranger.desktop	2024-07-05 14:04:13.336664346 +0200
+@@ -1,12 +1,13 @@
+ [Desktop Entry]
+ Name=PDF Arranger
++GenericName=Perform some operations on PDF documents
++GenericName[it]=Effettua alcune operazioni sui documenti PDF
+ Exec=pdfarranger %U
+ Icon=com.github.jeromerobert.pdfarranger
+ Terminal=false
+ Type=Application
+ MimeType=application/pdf;application/postscript;application/x-ext-pdf;image/bmp;image/gif;image/jp2;image/jpeg;image/jpg;image/png;image/tiff;image/vnd.zbrush.pcx;image/x-bmp;image/x-gray;image/x-ico;image/x-icon;image/x-pcx;image/x-png;image/x-portable-pixmap;
+-Categories=Office;
+-Keywords=pdfarranger;pdfshuffler;PDF Shuffler;
++Categories=Graphics;
+ StartupNotify=false
+ Actions=new-window;
+ 

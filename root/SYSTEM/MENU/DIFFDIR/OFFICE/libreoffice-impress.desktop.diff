@@ -1,0 +1,28 @@
+--- /usr/share/applications/libreoffice-impress.desktop	2024-06-30 05:50:38.817924413 +0200
++++ ./libreoffice-impress.desktop	2024-06-30 05:52:05.306121394 +0200
+@@ -1,13 +1,15 @@
+ [Desktop Entry]
+ Name=LibreOffice Impress
+-GenericName=Presentation
++GenericName=Presentations
++GenericName[it]=Presentazioni
+ Exec=libreoffice --impress %U
+ Icon=libreoffice-impress
+ Terminal=false
+ Type=Application
+ MimeType=application/mspowerpoint;application/vnd.apple.keynote;application/vnd.ms-powerpoint;application/vnd.ms-powerpoint.presentation.macroEnabled.12;application/vnd.ms-powerpoint.slideshow.macroEnabled.12;application/vnd.ms-powerpoint.template.macroEnabled.12;application/vnd.oasis.opendocument.presentation;application/vnd.oasis.opendocument.presentation-flat-xml;application/vnd.oasis.opendocument.presentation-template;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.slide;application/vnd.openxmlformats-officedocument.presentationml.slideshow;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.stardivision.impress;application/vnd.sun.xml.impress;application/vnd.sun.xml.impress.template;application/x-iwork-keynote-sffkey;application/x-starimpress;
+-Categories=Office;Presentation;X-Red-Hat-Base;
+-Keywords=Slideshow;Slides;OpenDocument Presentation;Microsoft PowerPoint;Microsoft Works;OpenOffice Impress;odp;ppt;pptx;
++Categories=Office;
++Keywords=Slideshow;Slides;OpenDocument;Microsoft;PowerPoint;OpenOffice;odp;ppt;pptx;
++Keywords[it]=Diapositive;Slides;OpenDocument;Microsoft;PowerPoint;OpenOffice;odp;ppt;pptx;
+ InitialPreference=5
+ StartupWMClass=libreoffice-impress
+ StartupNotify=true
+@@ -17,5 +19,6 @@
+ 
+ [Desktop Action NewDocument]
+ Name=New Presentation
++Name[it]=Nuova presentazione
+ Exec=libreoffice --impress
+ Icon=document-new

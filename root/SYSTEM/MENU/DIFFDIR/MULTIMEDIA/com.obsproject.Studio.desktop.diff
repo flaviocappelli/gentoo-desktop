@@ -1,0 +1,19 @@
+--- /usr/share/applications/com.obsproject.Studio.desktop	2024-03-17 14:30:37.026398617 +0100
++++ ./com.obsproject.Studio.desktop	2024-03-17 20:47:49.844575607 +0100
+@@ -1,11 +1,13 @@
+ [Desktop Entry]
+ Name=OBS Studio
+-GenericName=Streaming/Recording Software
+-GenericName[it_IT]=Software per dirette e registrazione schermo
++GenericName=Streaming and Recording Software
++GenericName[it]=Software di registrazione e streaming
+ Exec=obs
+ Icon=com.obsproject.Studio
+ Terminal=false
+ Type=Application
+-Categories=AudioVideo;Recorder;
++Categories=AudioVideo;
++Keywords=audio;video;
++Keywords[it]=audio;video;
+ StartupWMClass=obs
+ StartupNotify=true

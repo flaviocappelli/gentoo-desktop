@@ -1,0 +1,15 @@
+--- /usr/share/applications/org.kde.dolphin.desktop	2024-09-02 22:03:44.201011907 +0200
++++ ./org.kde.dolphin.desktop	2024-09-02 22:05:46.808394820 +0200
+@@ -7,9 +7,9 @@
+ Icon=org.kde.dolphin
+ Type=Application
+ MimeType=inode/directory;
+-Categories=Qt;KDE;System;FileTools;FileManager;
+-Keywords=files;file management;file browsing;samba;network shares;Explorer;Finder;
+-Keywords[it]=file;gestione dei file;navigazione dei file;samba;condivisioni di rete;Explorer;Finder;
++Categories=Qt;KDE;Utility;
++Keywords=explorer;finder;browser;files;folders;directory;directories;disks;drives;network;devices;rename;move;copy;delete;permissions;home;trash;shares;samba;
++Keywords[it]=esplora;cerca;sfoglia;cartella;cartelle;folders;directory;directories;disks;dischi;rete;dispositivi;rinomina;muovi;copia;elimina;permessi;home;cestino;condivisioni;samba;explorer;finder;
+ InitialPreference=10
+ StartupWMClass=dolphin
+ X-DocPath=dolphin/index.html

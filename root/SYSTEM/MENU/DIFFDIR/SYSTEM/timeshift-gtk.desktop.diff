@@ -1,0 +1,18 @@
+--- /usr/share/applications/timeshift-gtk.desktop	2024-07-09 11:17:18.292468822 +0200
++++ ./timeshift-gtk.desktop	2024-07-09 11:19:05.888550037 +0200
+@@ -1,11 +1,13 @@
+ [Desktop Entry]
+ Name=Timeshift
+-GenericName=System Restore Utility
++GenericName=System Backup and Restore
++GenericName[it]=Salvataggio e ripristino di sistema
+ Exec=timeshift-launcher
+ Icon=timeshift
+ Terminal=false
+ Type=Application
+ Categories=System;
+-Keywords=backup;btrfs;rsync;
++Keywords=btrfs;rsync;
++Keywords[it]=system;backup;restore;btrfs;rsync;
+ X-GNOME-UsesNotifications=true
+ X-KDE-StartupNotify=false

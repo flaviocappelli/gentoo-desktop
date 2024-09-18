@@ -1,0 +1,21 @@
+--- /usr/share/applications/ca.desrt.dconf-editor.desktop	2024-03-17 14:30:37.014398732 +0100
++++ ./ca.desrt.dconf-editor.desktop	2024-03-17 19:39:08.304611273 +0100
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+-Name=dconf Editor
+-Name[it]=Editor dconf
+-GenericName=Configuration editor for dconf
+-GenericName[it]=Editor di configurazione per dconf
++Name=DCONF Editor for GNOME Applications
++Name[it]=Editor DCONF per applicazioni GNOME
++GenericName=DCONF Editor for GNOME Applications
++GenericName[it]=Editor DCONF per applicazioni GNOME
+ Exec=dconf-editor
+ Icon=ca.desrt.dconf-editor
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;System;
++Categories=Settings;
+ Keywords=settings;configuration;
+ Keywords[it]=impostazione;impostazioni;configurazione;
+ StartupNotify=true

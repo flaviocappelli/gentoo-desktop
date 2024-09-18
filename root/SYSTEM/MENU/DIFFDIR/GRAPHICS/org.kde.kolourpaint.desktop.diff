@@ -1,0 +1,13 @@
+--- /usr/share/applications/org.kde.kolourpaint.desktop	2024-03-17 14:30:37.130397614 +0100
++++ ./org.kde.kolourpaint.desktop	2024-03-17 21:34:27.977000034 +0100
+@@ -7,6 +7,9 @@
+ Icon=kolourpaint
+ Type=Application
+ MimeType=application/x-krita;application/x-navi-animation;image/avif;image/bmp;image/gif;image/heif;image/jpeg;image/jxl;image/openraster;image/png;image/svg+xml;image/svg+xml-compressed;image/tiff;image/vnd.adobe.photoshop;image/vnd.microsoft.icon;image/vnd.wap.wbmp;image/webp;image/x-eps;image/x-exr;image/x-hdr;image/x-icns;image/x-mng;image/x-pcx;image/x-pic;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-rgb;image/x-sun-raster;image/x-tga;image/x-xbitmap;image/x-xcf;image/x-xpixmap;
+-Categories=Qt;KDE;Graphics;2DGraphics;RasterGraphics;
++Categories=Qt;KDE;Graphics;
++Keywords=images;photos;graphic;illustration;painting;
++Keywords[it]=immagini;foto;grafica;illustrazioni;pittura;
+ StartupWMClass=kolourpaint
++StartupNotify=true
+ X-DocPath=kolourpaint/index.html

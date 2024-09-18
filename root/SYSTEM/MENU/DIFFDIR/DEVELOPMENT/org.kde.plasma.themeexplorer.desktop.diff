@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.kde.plasma.themeexplorer.desktop	2024-03-17 14:30:37.027398608 +0100
++++ ./org.kde.plasma.themeexplorer.desktop	2024-03-17 22:20:49.167787796 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Plasma Theme Explorer
+ Name[it]=Plasma Theme Explorer
+ Exec=plasmathemeexplorer

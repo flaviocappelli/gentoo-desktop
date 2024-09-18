@@ -1,0 +1,16 @@
+--- /usr/share/applications/uget-gtk.desktop	2024-03-17 14:30:37.096397942 +0100
++++ ./uget-gtk.desktop	2024-03-17 20:07:51.383994947 +0100
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+ Name=uGet
+ GenericName=Download Manager
++GenericName[it]=Gestore degli scaricamenti
+ Exec=env GDK_BACKEND=x11 uget-gtk %u
+ Icon=uget-icon
+ Terminal=false
+ Type=Application
+-Categories=Network;FileTransfer;
+-Keywords=filetransfer;download files;download manager;
++Categories=Network;
++Keywords=filetransfer;
++Keywords[it]=download;trasferimenti;

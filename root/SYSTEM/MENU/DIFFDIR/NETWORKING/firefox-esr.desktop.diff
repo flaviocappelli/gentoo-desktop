@@ -1,0 +1,41 @@
+--- /usr/share/applications/firefox-esr.desktop	2024-03-17 23:44:44.259868406 +0100
++++ ./firefox-esr.desktop	2024-03-17 23:53:37.919423352 +0100
+@@ -1,26 +1,29 @@
+ [Desktop Entry]
+-Name=Mozilla Firefox
++Name=Firefox ESR
+ GenericName=Web Browser
++GenericName[it]=Browser web
+ Exec=firefox %u
+ Icon=firefox
+ Terminal=false
+ Type=Application
+-MimeType=application/pdf;application/vnd.mozilla.xul+xml;application/xhtml+xml;text/html;text/mml;text/xml;x-scheme-handler/http;x-scheme-handler/https;
+-Categories=Network;WebBrowser;
+-Keywords=web;browser;internet;
++MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/vnd.mozilla.xul+xml;application/x-xpinstall;application/xhtml+xml;application/xml;image/gif;image/jpeg;image/png;text/html;text/mml;text/xml;video/webm;x-scheme-handler/chrome;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;
++Categories=Network;
++Keywords=Internet;WWW;Browser;Web;Explorer
++Keywords[it]=Internet;WWW;Browser;Web;Navigatore
+ StartupNotify=true
+ Actions=new-window;new-private-window;profile-manager-window;
+ 
+ [Desktop Action new-window]
+-Name=Open a New Window
+-Name[it]=Nuova finestra
++Name=Open New Window
++Name[it]=Apri nuova finestra
+ Exec=firefox --new-window %u
+ 
+ [Desktop Action new-private-window]
+-Name=Open a New Private Window
+-Name[it]=Nuova finestra anonima
++Name=Open New Private Window
++Name[it]=Apri nuova finestra anonima
+ Exec=firefox --private-window %u
+ 
+ [Desktop Action profile-manager-window]
+-Name=Open the Profile Manager
++Name=Open Profile Manager
++Name[it]=Apri gestione profili
+ Exec=firefox --ProfileManager

@@ -1,0 +1,18 @@
+--- /usr/share/applications/sqlitebrowser.desktop	2024-09-05 10:24:10.599411359 +0200
++++ sqlitebrowser.desktop	2024-09-05 10:21:34.617769346 +0200
+@@ -1,10 +1,13 @@
+ [Desktop Entry]
+-Name=DB Browser for SQLite
++Name=SQLiteBrowser
++GenericName=SQLite3 Database Inspection Tool
++GenericName[it]=Ispezione database SQLite3
+ Exec=sqlitebrowser %f
+ Icon=sqlitebrowser
+ Terminal=false
+ Type=Application
+ MimeType=application/geopackage+sqlite3;application/sqlitebrowser;application/vnd.db4s-project+xml;application/vnd.sqlite3;application/x-sqlite2;application/x-sqlite3;application/x-sqlitebrowser;text/csv;
+-Categories=Development;Utility;Database;
++Categories=Development;
+ StartupWMClass=sqlitebrowser
++StartupNotify=true
+ X-MultipleArgs=false

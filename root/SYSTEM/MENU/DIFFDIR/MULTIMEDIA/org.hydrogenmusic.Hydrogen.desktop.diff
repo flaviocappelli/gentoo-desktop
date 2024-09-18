@@ -1,0 +1,21 @@
+--- /usr/share/applications/org.hydrogenmusic.Hydrogen.desktop	2024-03-17 14:30:37.059398298 +0100
++++ ./org.hydrogenmusic.Hydrogen.desktop	2024-03-17 21:04:12.765518685 +0100
+@@ -1,13 +1,15 @@
+ [Desktop Entry]
+ Name=Hydrogen
+-GenericName=Drum Machine
++GenericName=Percussion Synthesizer
++GenericName[it]=Sintetizzatore di percussioni
+ TryExec=hydrogen
+ Exec=hydrogen %F
+ Icon=org.hydrogenmusic.Hydrogen
+ Terminal=false
+ Type=Application
+ MimeType=text/xml;
+-Categories=AudioVideo;Audio;Qt;
+-Keywords=audio;sound;jackd;sampler;drum;
++Categories=AudioVideo;
++Keywords=audio;sounds;sampler;drums;cymbals;music;
++Keywords[it]=audio;suono;suoni;campionatore;batteria;tamburo;tamburi;piatto;piatti;musica;
+ StartupNotify=true
+ X-NSM-Capable=true

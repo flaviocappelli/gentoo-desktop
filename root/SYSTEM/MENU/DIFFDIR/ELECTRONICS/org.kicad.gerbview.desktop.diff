@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.kicad.gerbview.desktop	2024-03-17 14:30:37.125397663 +0100
++++ ./org.kicad.gerbview.desktop	2024-03-17 19:20:07.908293003 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=KiCad Gerber Viewer
+ Name[it]=Visualizzatore Gerber KiCad
+ GenericName=Gerber File Viewer

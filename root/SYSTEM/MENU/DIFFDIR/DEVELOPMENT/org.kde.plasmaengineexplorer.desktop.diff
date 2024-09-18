@@ -1,0 +1,16 @@
+--- /usr/share/applications/org.kde.plasmaengineexplorer.desktop	2024-03-17 14:30:37.076398135 +0100
++++ ./org.kde.plasmaengineexplorer.desktop	2024-03-17 22:19:29.381592414 +0100
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Name=Plasma Engine Explorer
+ Name[it]=Plasma Engine Explorer
+-GenericName=Plasma Data Engines Viewing Tool
+-GenericName[it]=Strumento di visualizzazione dei motori di dati di Plasma
++GenericName=Explorer of Plasma Data Engine
++GenericName[it]=Esploratore del motore dati di Plasma
+ Exec=plasmaengineexplorer
+ Icon=plasma
+ Terminal=false
+ Type=Application
+-Categories=Qt;KDE;Development;IDE;
++Categories=Qt;KDE;Development;

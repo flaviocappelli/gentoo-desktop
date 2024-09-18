@@ -1,0 +1,18 @@
+--- /usr/share/applications/io.github.mhogomchungu.sirikali.desktop	2024-03-17 14:30:37.080398097 +0100
++++ ./io.github.mhogomchungu.sirikali.desktop	2024-03-17 18:05:28.804064786 +0100
+@@ -1,10 +1,13 @@
+ [Desktop Entry]
+-NoDisplay=false
+ Name=SiriKali
+ GenericName=Encrypted Folder Manager
++GenericName[it]=Gestore di cartelle criptate
+ Exec=/usr/bin/sirikali -d %U
+ Icon=sirikali
+ Terminal=false
+ Type=Application
+-Categories=Security;Utility;Qt;X-MandrivaLinux-System-FileTools;
++MimeType=inode/directory;
++Categories=Utility;
++Keywords=encryption;cryfs;ecryptfs;encfs;gocryptfs;securefs;
++Keywords[it]=crittografia;cryfs;ecryptfs;encfs;gocryptfs;securefs;
+ StartupNotify=true

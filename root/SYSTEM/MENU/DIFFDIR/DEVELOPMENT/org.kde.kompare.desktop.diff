@@ -1,0 +1,23 @@
+--- /usr/share/applications/org.kde.kompare.desktop	2024-03-17 14:30:37.117397740 +0100
++++ ./org.kde.kompare.desktop	2024-03-17 22:14:23.698680023 +0100
+@@ -1,14 +1,16 @@
+ [Desktop Entry]
+ Name=Kompare
+ Name[it]=Kompare
+-GenericName=Diff/Patch Frontend
+-GenericName[it]=Interfaccia per diff e patch
+-Exec=kompare %U
++GenericName=Compare and Merge Tool
++GenericName[it]=Confronto e unione di file
++Exec=kompare -o %U
+ Icon=kompare
+ Terminal=false
+ Type=Application
+ MimeType=text/x-patch;
+ Categories=Qt;KDE;Development;
+-InitialPreference=10
++Keywords=diff;
++Keywords[it]=diff;merge;differenze;
++InitialPreference=95
+ StartupWMClass=kompare
+ X-DocPath=kompare/index.html

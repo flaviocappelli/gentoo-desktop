@@ -1,0 +1,29 @@
+--- /usr/share/applications/org.telegram.desktop.desktop	2024-03-17 14:30:37.012398752 +0100
++++ ./org.telegram.desktop.desktop	2024-03-17 20:16:46.080549243 +0100
+@@ -1,13 +1,16 @@
+ [Desktop Entry]
+-Name=Telegram Desktop
++Name=Telegram
++GenericName=Instant Messaging
++GenericName[it]=Messaggistica istantanea
+ TryExec=telegram-desktop
+ Exec=telegram-desktop -- %u
+ Icon=telegram
+ Terminal=false
+ Type=Application
+ MimeType=x-scheme-handler/tg;
+-Categories=Chat;Network;InstantMessaging;Qt;
+-Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;
++Categories=Network;
++Keywords=chat;im;messaging;messenger;sms;telegram;tg;
++Keywords[it]=chat;im;messaggi;messenger;sms;telegram;tg;
+ StartupWMClass=TelegramDesktop
+ DBusActivatable=true
+ SingleMainWindow=true
+@@ -17,5 +20,6 @@
+ 
+ [Desktop Action quit]
+ Name=Quit Telegram
++Name[it]=Termina Telegram
+ Exec=telegram-desktop -quit
+ Icon=application-exit

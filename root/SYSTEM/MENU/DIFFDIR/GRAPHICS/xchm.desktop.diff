@@ -1,0 +1,17 @@
+--- /usr/share/applications/xchm.desktop	2024-03-17 22:34:30.252515354 +0100
++++ ./xchm.desktop	2024-03-17 22:38:09.142328865 +0100
+@@ -1,8 +1,12 @@
+ [Desktop Entry]
+ Name=xCHM
++GenericName=CHM file Viewer
++GenericName[it]=Visore di file CHM
+ TryExec=xchm
+ Exec=xchm %f
+ Icon=xchm
+ Type=Application
+-MimeType=application/x-chm;
+-Categories=Office;Viewer;
++MimeType=application/vnd.ms-htmlhelp;application/x-chm;
++Categories=Qt;KDE;Graphics;
++Keywords=ebooks;e-books;
++StartupNotify=true

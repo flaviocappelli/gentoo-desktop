@@ -1,0 +1,22 @@
+--- /usr/share/applications/org.octave.Octave.desktop	2024-03-17 23:00:01.750146176 +0100
++++ ./org.octave.Octave.desktop	2024-03-17 23:03:37.142969807 +0100
+@@ -1,12 +1,15 @@
+ [Desktop Entry]
+-Name=GNU Octave
++Name=Octave
++GenericName=Computation Environment
++GenericName[it]=Ambiente di calcolo
+ TryExec=/usr/bin/octave
+ Exec=/usr/bin/octave --gui %f
+ Icon=octave
+ Terminal=false
+ Type=Application
+ MimeType=text/x-matlab;text/x-octave;
+-Categories=Education;Science;Math;
+-Keywords=science;math;matrix;numerical computation;plotting;
++Categories=Mathematics
++Keywords=science;maths;mathematics;matrix;computation;plotting;
++Keywords[it]=scienza;math;matematica;matrici;calcolo;grafici;
+ StartupWMClass=GNU Octave
+-StartupNotify=false
++StartupNotify=true

@@ -1,0 +1,15 @@
+--- /usr/share/applications/filezilla.desktop	2024-03-17 14:30:37.052398366 +0100
++++ ./filezilla.desktop	2024-03-17 20:36:36.501436625 +0100
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Name=FileZilla
+-GenericName=FTP client
++GenericName=FTP/FTPS/SFTP Client
++GenericName[it]=Client FTP/FTPS/SFTP
+ Exec=filezilla
+ Icon=filezilla
+ Terminal=false
+ Type=Application
+ MimeType=x-scheme-handler/ftp;
+-Categories=Network;FileTransfer;
++Categories=Network;

@@ -1,0 +1,21 @@
+--- /usr/share/applications/org.kde.partitionmanager.desktop	2024-03-17 14:30:37.009398781 +0100
++++ ./org.kde.partitionmanager.desktop	2024-03-17 20:01:27.039911081 +0100
+@@ -1,13 +1,12 @@
+ [Desktop Entry]
+-Name=KDE Partition Manager
+-Name[it]=Gestore delle partizioni di KDE
++Name=PartitionManager
+ GenericName=Partition Editor
+-GenericName[it]=Editor delle partizioni
++GenericName[it]=Editor di partizioni
+ Exec=partitionmanager
+ Icon=partitionmanager
+ Type=Application
+-Categories=System;Filesystem;KDE;Qt;
+-Keywords=partition;disk;
+-Keywords[it]=partizione;disco;
++Categories=System;
++Keywords=disk;drive;volume;harddisk;hdd;ssd;disc;partitions;raid;luks;encryption;mbr;gpt;boot;
++Keywords[it]=disco;dischi;drive;volume;harddisk;hdd;ssd;partizione;raid;luks;encryption;mbr;gpt;boot;
+ SingleMainWindow=true
+ X-KDE-StartupNotify=true

@@ -1,0 +1,9 @@
+--- /usr/share/applications/libreoffice-math.desktop	2024-03-17 14:30:37.117397740 +0100
++++ ./libreoffice-math.desktop	2024-03-17 18:48:59.763388993 +0100
+@@ -1,5 +1,5 @@
+ [Desktop Entry]
+-NoDisplay=false
++Hidden=true
+ Name=LibreOffice Math
+ GenericName=Formula Editor
+ Exec=libreoffice --math %U

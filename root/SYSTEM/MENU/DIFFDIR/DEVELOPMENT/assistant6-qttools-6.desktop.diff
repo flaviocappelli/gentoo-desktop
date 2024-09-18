@@ -1,0 +1,8 @@
+--- /usr/share/applications/assistant6-qttools-6.desktop	2024-05-20 07:26:54.535042481 +0200
++++ ./assistant6-qttools-6.desktop	2024-05-20 07:28:17.140260179 +0200
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Qt 6 Assistant
+ TryExec=assistant6
+ Exec=assistant6

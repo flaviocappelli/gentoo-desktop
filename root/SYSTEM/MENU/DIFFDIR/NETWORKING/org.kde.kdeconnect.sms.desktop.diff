@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.kde.kdeconnect.sms.desktop	2024-03-17 17:04:41.952153965 +0100
++++ ./org.kde.kdeconnect.sms.desktop	2024-03-17 17:06:18.723173533 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=KDE Connect SMS
+ Name[it]=KDE Connect SMS
+ GenericName=SMS

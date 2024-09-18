@@ -1,0 +1,18 @@
+--- /usr/share/applications/moserial.desktop	2024-03-17 14:30:37.022398656 +0100
++++ ./moserial.desktop	2024-03-17 20:28:40.612281945 +0100
+@@ -1,11 +1,12 @@
+ [Desktop Entry]
+-Name=moserial Terminal
+-Name[it]=Terminale moserial
++Name=moserial
+ GenericName=Serial Terminal
+ GenericName[it]=Terminale seriale
+ Exec=moserial %U
+ Icon=moserial
+ Terminal=false
+ Type=Application
+-Categories=GTK;Utility;FileTransfer;TerminalEmulator;
++Categories=Network;
++Keywords=dialup;uucp;device;devices;interface;emulator;
++Keywords[it]=dialup;uucp;dispositivo;dispositivi;interfaccia;emulatore;
+ StartupNotify=true

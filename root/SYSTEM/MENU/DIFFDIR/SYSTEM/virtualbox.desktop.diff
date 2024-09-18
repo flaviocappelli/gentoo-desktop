@@ -1,0 +1,25 @@
+--- /usr/share/applications/virtualbox.desktop	2024-03-27 16:21:30.563361836 +0100
++++ ./virtualbox.desktop	2024-03-27 16:25:11.836020981 +0100
+@@ -1,16 +1,13 @@
+ [Desktop Entry]
+-Name=Oracle VM VirtualBox
+-GenericName=Virtualization Software
++Name=VirtualBox
++GenericName=PC and Networking Emulator
++GenericName[it]=Emulatore di PC e reti
+ TryExec=VirtualBox
+ Exec=VirtualBox %U
+ Icon=virtualbox
+ Type=Application
+ MimeType=application/x-virtualbox-ova;application/x-virtualbox-ovf;application/x-virtualbox-vbox;application/x-virtualbox-vbox-extpack;
+-Categories=Emulator;System;
+-Keywords=virtualization;
++Categories=System;
++Keywords=vm;virtualization;virtual;
++Keywords[it]=vm;virtualizzazione;virtuali;
+ StartupWMClass=VirtualBox Manager
+-Actions=Manager;
+-
+-[Desktop Action Manager]
+-Name=Open VM Manager
+-Exec=VirtualBox

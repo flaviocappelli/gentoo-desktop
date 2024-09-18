@@ -1,0 +1,16 @@
+--- /usr/share/applications/org.kde.kuiviewer.desktop	2024-03-17 14:30:37.054398347 +0100
++++ ./org.kde.kuiviewer.desktop	2024-03-17 22:15:47.981825296 +0100
+@@ -2,11 +2,12 @@
+ Name=KUIViewer
+ Name[it]=KUIViewer
+ GenericName=Qt Designer UI File Viewer
+-GenericName[it]=Visualizzatore per file UI di Qt Designer
++GenericName[it]=Visualizzatore file UI di Qt Designer
+ Exec=kuiviewer -qwindowtitle %c %u
+ Icon=kuiviewer
+ Terminal=false
+ Type=Application
+ MimeType=application/x-designer;
+ Categories=Qt;KDE;Development;
++Keywords=GUI;
+ InitialPreference=10

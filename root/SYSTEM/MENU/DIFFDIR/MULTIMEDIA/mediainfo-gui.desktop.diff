@@ -1,0 +1,16 @@
+--- /usr/share/applications/mediainfo-gui.desktop	2024-03-17 14:30:37.024398636 +0100
++++ ./mediainfo-gui.desktop	2024-03-17 20:57:15.391790511 +0100
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+ Name=MediaInfo
++GenericName=Display informations about video/audio files
++GenericName[it]=Visualizza informazioni su file audio/video
+ Exec=mediainfo-gui %f
+ Icon=mediainfo
+ Terminal=false
+ Type=Application
+ MimeType=application/ogg;application/vnd.rn-realmedia;application/x-extension-mp4;application/x-flac;application/x-matroska;application/x-ogg;application/x-shockwave-flash;application/x-shorten;audio/amr;audio/amr-wb;audio/mp4;audio/mpeg;audio/vnd.rn-realaudio;audio/webm;audio/x-ape;audio/x-flac;audio/x-m4a;audio/x-matroska;audio/x-mp3;audio/x-mpeg;audio/x-mpegurl;audio/x-ms-asf;audio/x-ms-asx;audio/x-ms-wax;audio/x-opus+ogg;audio/x-pn-aiff;audio/x-pn-au;audio/x-pn-realaudio;audio/x-pn-wav;audio/x-pn-windows-acm;audio/x-real-audio;audio/x-scpls;audio/x-tta;audio/x-vorbis+ogg;audio/x-wav;audio/x-wavpack;video/mp2t;video/mp4;video/mp4v-es;video/mpeg;video/msvideo;video/quicktime;video/vnd.rn-realvideo;video/webm;video/x-anim;video/x-avi;video/x-flc;video/x-fli;video/x-flv;video/x-matroska;video/x-mpeg;video/x-ms-asf;video/x-ms-wmv;video/x-msvideo;video/x-nsv;video/x-ogm+ogg;
+-Categories=AudioVideo;AudioVideoEditing;
+-Keywords=media info;metadata;tag;video;audio;subtitles;chapters;codec;mkv;mpeg;mp3;h264;avc;h265;hevc;avi;
++Categories=AudioVideo;
++Keywords=media info;metadata;tag;codec;mkv;mpeg;mp3;h264;avc;h265;hevc;avi;mp4;matroska;vorbis;wav;opus;flac;ogg;aac;quicktime;theora;webm;

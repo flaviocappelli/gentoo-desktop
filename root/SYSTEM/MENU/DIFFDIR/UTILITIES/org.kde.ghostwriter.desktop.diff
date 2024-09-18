@@ -1,0 +1,22 @@
+--- /usr/share/applications/org.kde.ghostwriter.desktop	2024-06-04 23:05:34.867094569 +0200
++++ ./org.kde.ghostwriter.desktop	2024-06-04 23:08:49.204973405 +0200
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Name=ghostwriter
+ Name[it]=ghostwriter
+-GenericName=Markdown Editor
+-GenericName[it]=Editor Markdown
++GenericName=Markdown Text Editor
++GenericName[it]=Editor di testi Markdown
+ TryExec=ghostwriter
+ Exec=ghostwriter %f
+ Icon=ghostwriter
+ Terminal=false
+ Type=Application
+ MimeType=text/markdown;text/plain;text/x-markdown;
+-Categories=Qt;Office;WordProcessor;
+-Keywords=Markdown;editor;document;fullscreen;distraction;concentration;focused;writing;
+-Keywords[it]=Markdown;editor;documento;schermo intero;distrazione;concentrazione;focalizzato;scrittura;
++Categories=Qt;KDE;Utility;
++Keywords=document;documents;writing;
++Keywords[it]=testo:documento;documenti;scrittura;

@@ -1,0 +1,8 @@
+--- /usr/share/applications/xdvi-xdvik.desktop	2024-03-17 17:22:17.565421756 +0100
++++ ./xdvi-xdvik.desktop	2024-03-17 17:23:00.548983930 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=XDvi
+ TryExec=xdvi
+ Exec=xdvi %f

@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.kicad.bitmap2component.desktop	2024-03-17 14:30:37.104397865 +0100
++++ ./org.kicad.bitmap2component.desktop	2024-03-17 19:18:32.254271531 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=KiCad Image Converter
+ Name[it]=Convertitore immagini KiCad
+ GenericName=Bitmap to Component Converter

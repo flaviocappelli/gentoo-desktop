@@ -1,0 +1,17 @@
+--- /usr/share/applications/org.kde.kdf.desktop	2024-09-02 22:07:18.909931262 +0200
++++ ./org.kde.kdf.desktop	2024-09-02 22:10:11.804060942 +0200
+@@ -1,11 +1,11 @@
+ [Desktop Entry]
+ Name=KDiskFree
+ Name[it]=KDiskFree
+-GenericName=View Disk Usage
+-GenericName[it]=Mostra lo spazio disco libero
++GenericName=Disk Usage Statistics
++GenericName[it]=Statistiche uso del disco
+ Exec=kdf -qwindowtitle %c
+ Icon=kdf
+ Type=Application
+-Categories=Qt;KDE;System;
++Categories=Qt;KDE;Utility;
+ StartupNotify=true
+ X-DocPath=kdf/index.html

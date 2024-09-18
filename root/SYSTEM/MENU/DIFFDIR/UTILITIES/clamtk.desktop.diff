@@ -1,0 +1,19 @@
+--- /usr/share/applications/clamtk.desktop	2024-03-17 14:30:37.053398356 +0100
++++ ./clamtk.desktop	2024-03-17 18:06:46.070279312 +0100
+@@ -1,12 +1,13 @@
+ [Desktop Entry]
+ Name=ClamTk
+ GenericName=Virus Scanner
+-GenericName[it]=Analizzatore virus
++GenericName[it]=Scansione virus
+ TryExec=clamtk
+ Exec=clamtk %F
+ Icon=clamtk
+ Terminal=false
+ Type=Application
+-Categories=GTK;GNOME;Utility;
+-Keywords=antivirus;virus;malware;scan;scanner;
++Categories=Utility;
++Keywords=antivirus;malware;
++Keywords[it]=antivirus;malware;scanner;
+ StartupNotify=true

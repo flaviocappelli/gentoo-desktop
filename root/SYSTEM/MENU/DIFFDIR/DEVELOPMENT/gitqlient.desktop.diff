@@ -1,0 +1,12 @@
+--- /usr/share/applications/gitqlient.desktop	2024-03-17 14:30:37.037398511 +0100
++++ ./gitqlient.desktop	2024-03-17 21:51:27.224650139 +0100
+@@ -1,6 +1,9 @@
+ [Desktop Entry]
+ Name=GitQlient
++GenericName=Git Frontend
++GenericName[it]=Interfaccia a Git
+ Exec=gitqlient
+ Icon=gitqlient
++Terminal=false
+ Type=Application
+ Categories=Development;

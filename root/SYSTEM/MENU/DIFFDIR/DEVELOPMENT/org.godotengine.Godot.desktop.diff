@@ -1,0 +1,19 @@
+--- /usr/share/applications/org.godotengine.Godot.desktop	2024-08-30 19:25:11.902455813 +0200
++++ ./org.godotengine.Godot.desktop	2024-08-30 19:26:41.890281594 +0200
+@@ -1,11 +1,12 @@
+ [Desktop Entry]
+-Name=Godot Engine
+-GenericName=Libre game engine
++Name=Godot Engine 4 (Gentoo version)
++Name[it]=Godot Engine 4 (versione Gentoo)
++GenericName=Opensource 2D/3D Game Editor
++GenericName[it]=Editor di giochi 2D/3D opensource
+ Exec=godot %f
+ Icon=godot
+ Terminal=false
+ Type=Application
+ MimeType=application/x-godot-project;
+-Categories=Development;IDE;
+-StartupWMClass=Godot
++Categories=Development;
+ PrefersNonDefaultGPU=true

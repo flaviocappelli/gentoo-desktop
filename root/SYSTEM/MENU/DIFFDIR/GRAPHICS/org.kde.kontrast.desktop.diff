@@ -1,0 +1,16 @@
+--- /usr/share/applications/org.kde.kontrast.desktop	2024-06-05 02:04:26.996100483 +0200
++++ ./org.kde.kontrast.desktop	2024-06-05 02:06:13.200050461 +0200
+@@ -1,8 +1,12 @@
+ [Desktop Entry]
+ Name=Kontrast
+ Name[it]=Kontrast
++GenericName=Contrast Checker
++GenericName[it]=Verifica del contrasto
+ Exec=kontrast
+ Icon=org.kde.kontrast
+ Terminal=false
+ Type=Application
+-Categories=Graphics;Qt;KDE;
++Categories=Graphics;
++Keywords=colors;
++Keywords[it]=colori;

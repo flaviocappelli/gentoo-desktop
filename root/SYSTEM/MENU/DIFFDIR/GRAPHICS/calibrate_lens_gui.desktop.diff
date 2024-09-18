@@ -1,0 +1,15 @@
+--- /usr/share/applications/calibrate_lens_gui.desktop	2024-03-17 14:30:37.010398771 +0100
++++ ./calibrate_lens_gui.desktop	2024-03-17 21:12:58.003153696 +0100
+@@ -1,9 +1,12 @@
+ [Desktop Entry]
+ Name=Hugin Calibrate Lens
+ GenericName=Lens Calibrator
++GenericName[it]=Calibrazione lenti
+ Exec=calibrate_lens_gui
+ Icon=hugin
+ Terminal=false
+ Type=Application
+ Categories=Graphics;
++Keywords=images;photos;panorama;stitcher;camera;
++Keywords[it]=foto;panorama;assemblaggio;macchina fotografica;
+ StartupNotify=false

@@ -1,0 +1,18 @@
+--- /usr/share/applications/org.kde.plasma-systemmonitor.desktop	2024-03-17 14:30:37.011398761 +0100
++++ ./org.kde.plasma-systemmonitor.desktop	2024-03-17 20:03:09.451867623 +0100
+@@ -1,12 +1,11 @@
+ [Desktop Entry]
+-Name=System Monitor
+-Name[it]=Monitor di sistema
++Name=plasma-systemmonitor
+ GenericName=System Monitor
+ GenericName[it]=Monitor di sistema
+ Exec=plasma-systemmonitor
+ Icon=utilities-system-monitor
+ Type=Application
+ Categories=Qt;KDE;System;
+-Keywords=task;manager;process;cpu;memory;
+-Keywords[it]=processo;gestore;processo;cpu;memoria;
++Keywords=task;tasks;process;cpu;memory;resources;applications;daemons;crash;background;foreground;run;threads;
++Keywords[it]=processo;processi;cpu;memoria;risorse;applicazioni;daemon;demoni;crash;background;foreground;esecuzione;threads;
+ SingleMainWindow=true

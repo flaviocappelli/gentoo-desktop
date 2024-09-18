@@ -1,0 +1,16 @@
+--- /usr/share/applications/org.avidemux.Avidemux.desktop	2024-03-17 14:30:37.017398703 +0100
++++ ./org.avidemux.Avidemux.desktop	2024-03-17 21:02:39.351474780 +0100
+@@ -1,9 +1,12 @@
+ [Desktop Entry]
+ Name=Avidemux
+ GenericName=Video Editor
++GenericName[it]=Editor video
+ Exec=avidemux3_qt5 %f
+ Icon=org.avidemux.Avidemux
+ Terminal=false
+ Type=Application
+ MimeType=video/3gp;video/dv;video/flv;video/mkv;video/mp4;video/mpeg;video/quicktime;video/webm;video/x-anim;video/x-flv;video/x-m4v;video/x-matroska;video/x-mpeg;video/x-ms-asf;video/x-ms-wmv;video/x-msvideo;
+-Categories=AudioVideo;AudioVideoEditing;Video;
++Categories=AudioVideo;
++Keywords=audio;tracks;transcoding;extraction;media;
++Keywords[it]=audio;tracce;conversione;estrazione;media;

@@ -1,0 +1,9 @@
+--- /usr/share/applications/Gentoo-system-config-printer.desktop	2024-09-03 14:36:28.077398742 +0200
++++ ./Gentoo-system-config-printer.desktop	2024-09-03 14:40:01.245311710 +0200
+@@ -7,5 +7,5 @@
+ Icon=printer
+ Terminal=false
+ Type=Application
+-Categories=System;Settings;HardwareSettings;Printing;GTK;
++Categories=Settings;
+ StartupNotify=true

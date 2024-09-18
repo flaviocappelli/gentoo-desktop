@@ -1,0 +1,16 @@
+--- /usr/share/applications/openscad.desktop	2024-03-17 14:30:37.036398521 +0100
++++ ./openscad.desktop	2024-03-17 21:18:04.790021826 +0100
+@@ -1,8 +1,11 @@
+ [Desktop Entry]
+ Name=OpenSCAD
++GenericName=3D CAD Modelling
++GenericName[it]=Modellazione CAD 3D
+ Exec=openscad %f
+ Icon=openscad
+ Type=Application
+ MimeType=application/x-openscad;
+-Categories=Graphics;3DGraphics;Engineering;
+-Keywords=3d;solid;geometry;csg;model;stl;
++Categories=Graphics;
++Keywords=solid;solids;stl;mechanics;models;geometry;csg;
++Keywords[it]=solido;solidi;stl;meccanica;modello;modelli;geometria;csg;

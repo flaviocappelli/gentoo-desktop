@@ -1,0 +1,14 @@
+--- /usr/share/applications/seergdb.desktop	2024-03-19 21:17:08.332007425 +0100
++++ ./seergdb.desktop	2024-03-19 21:18:03.741452046 +0100
+@@ -1,8 +1,10 @@
+ [Desktop Entry]
+ Name=SeerGdb
+-GenericName=Debugger
++GenericName=Debugger for C/C++
++GenericName[it]=Debugger per C/C++
+ Exec=seergdb
+ Icon=seergdb
+ Terminal=false
+ Type=Application
+ Categories=Development;
++Keywords=gdb;

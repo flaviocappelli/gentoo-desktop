@@ -1,0 +1,19 @@
+--- /usr/share/applications/xsane.desktop	2024-03-17 14:30:37.074398155 +0100
++++ ./xsane.desktop	2024-03-17 21:07:41.339386315 +0100
+@@ -1,10 +1,13 @@
+ [Desktop Entry]
+-Name=XSane Scanner Tool
+-GenericName=Scanner Tool
++Name=XSane
++GenericName=Scanning Application
++GenericName[it]=Scansione di immagini
+ TryExec=xsane
+ Exec=xsane
+ Icon=xsane
+ Terminal=false
+ Type=Application
+-Categories=Graphics;2DGraphics;RasterGraphics;Scanning;GTK;
++Categories=Graphics;
++Keywords=capture;images;photos;illustrations;documents;
++Keywords[it]=acquisizione;foto;illustrazioni;documenti;
+ StartupNotify=true

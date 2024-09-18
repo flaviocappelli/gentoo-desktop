@@ -1,0 +1,21 @@
+--- /usr/share/applications/org.kde.kdevelop.desktop	2024-03-17 14:30:37.099397913 +0100
++++ ./org.kde.kdevelop.desktop	2024-03-17 22:09:35.613605584 +0100
+@@ -1,14 +1,15 @@
+ [Desktop Entry]
+ Name=KDevelop
+ Name[it]=KDevelop
+-GenericName=Integrated Development Environment
+-GenericName[it]=Ambiente di sviluppo integrato
++GenericName=IDE for C++ and KDE
++GenericName[it]=IDE per C++ e KDE
+ Exec=kdevelop
+ Icon=kdevelop
+ Terminal=false
+ Type=Application
+ MimeType=
+-Categories=Qt;KDE;Development;IDE;
++Categories=Qt;KDE;Development;
++Keywords=editor;Design;Designer;GUI;
+ StartupWMClass=kdevelop
+ X-DocPath=kdevelop/index.html
+ Actions=OpenSession;

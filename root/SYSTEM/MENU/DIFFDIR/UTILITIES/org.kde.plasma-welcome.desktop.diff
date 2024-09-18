@@ -1,0 +1,18 @@
+--- /usr/share/applications/org.kde.plasma-welcome.desktop	2024-09-02 22:10:47.907879230 +0200
++++ ./org.kde.plasma-welcome.desktop	2024-09-02 22:11:54.263545217 +0200
+@@ -1,10 +1,11 @@
+ [Desktop Entry]
+-Name=Welcome Center
+-Name[it]=Centro di benvenuto
++Name=plasma-welcome
++GenericName=Welcome Center
++GenericName[it]=Centro di benvenuto
+ Exec=plasma-welcome
+ Icon=start-here-kde-plasma
+ Type=Application
+ Categories=Qt;KDE;Utility;
+-Keywords=Welcome;Wizard;Onboarding;Contribute;Get involved;
+-Keywords[it]=Benvenuto;Procedura guidata;Primo approccio;Contribuisci;Partecipa;
++Keywords=Wizard;Onboarding;Contribute;Get involved;
++Keywords[it]=Procedura guidata;Primo approccio;Contribuisci;Partecipa;
+ SingleMainWindow=true

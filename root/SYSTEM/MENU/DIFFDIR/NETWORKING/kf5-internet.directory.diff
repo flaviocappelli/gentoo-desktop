@@ -1,0 +1,28 @@
+--- /usr/share/desktop-directories/kf5-internet.directory	2023-05-09 13:38:50.000000000 +0200
++++ ./kf5-internet.directory	2023-07-23 21:32:28.773124808 +0200
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=Directory
+-Name=Internet
++Name=Internet & Networks
+ Name[af]=Internet
+ Name[ar]=الإنترنت
+ Name[as]=ইন্টাৰ্নে'ট
+@@ -20,7 +20,7 @@
+ Name[da]=Internet
+ Name[de]=Internet
+ Name[el]=Διαδίκτυο
+-Name[en_GB]=Internet
++Name[en_GB]=Internet & Networks
+ Name[eo]=Interreto
+ Name[es]=Internet
+ Name[et]=Internet
+@@ -41,7 +41,7 @@
+ Name[ia]=Internet
+ Name[id]=Internet
+ Name[is]=Internetið
+-Name[it]=Internet
++Name[it]=Internet e reti
+ Name[ja]=インターネット
+ Name[ka]=ინტერნეტი
+ Name[kk]=Интернет

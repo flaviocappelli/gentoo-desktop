@@ -1,0 +1,11 @@
+--- /usr/share/applications/org.kde.okular.desktop	2024-03-17 14:30:37.072398174 +0100
++++ ./org.kde.okular.desktop	2024-03-17 21:36:54.649506108 +0100
+@@ -8,7 +8,7 @@
+ Terminal=false
+ Type=Application
+ MimeType=application/vnd.kde.okular-archive;
+-Categories=Qt;KDE;Graphics;Office;Viewer;
++Categories=Qt;KDE;Graphics;
+ InitialPreference=7
+ StartupWMClass=okular
+ X-DocPath=okular/index.html

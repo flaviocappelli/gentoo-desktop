@@ -1,0 +1,8 @@
+--- /usr/share/applications/calibre-lrfviewer.desktop	2024-03-17 18:29:40.734241735 +0100
++++ ./calibre-lrfviewer.desktop	2024-03-17 18:33:37.677817987 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=LRF viewer
+ GenericName=Viewer for LRF files
+ TryExec=lrfviewer

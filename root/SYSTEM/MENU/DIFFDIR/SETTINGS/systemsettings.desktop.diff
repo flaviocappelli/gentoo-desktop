@@ -1,0 +1,51 @@
+--- /usr/share/applications/systemsettings.desktop	2024-09-02 21:57:22.730037149 +0200
++++ ./systemsettings.desktop	2024-09-02 21:59:28.273352989 +0200
+@@ -1,9 +1,9 @@
+ [Desktop Entry]
+ OnlyShowIn=KDE;
+-Name=System Settings
+-Name[it]=Impostazioni di sistema
+-GenericName=System Settings
+-GenericName[it]=Impostazioni di sistema
++Name=KDE System Settings
++Name[it]=Impostazioni di sistema di KDE
++GenericName=KDE System Settings
++GenericName[it]=Impostazioni di sistema di KDE
+ Exec=systemsettings
+ Icon=preferences-system
+ Type=Application
+@@ -16,34 +16,3 @@
+ X-DBUS-StartupType=Unique
+ X-DBUS-ServiceName=org.kde.systemsettings
+ X-KDE-Shortcuts=Tools
+-Actions=kcm-lookandfeel;kcm-users;kcm-screenlocker;kcm-powerdevilprofilesconfig;kcm-kscreen;
+-
+-[Desktop Action kcm-lookandfeel]
+-Name=Global Theme
+-Name[it]=Tema globale
+-Exec=systemsettings kcm_lookandfeel
+-Icon=preferences-desktop-theme-global
+-
+-[Desktop Action kcm-users]
+-Name=Users
+-Name[it]=Utenti
+-Exec=systemsettings kcm_users
+-Icon=preferences-system-users
+-
+-[Desktop Action kcm-screenlocker]
+-Name=Screen Locking
+-Name[it]=Blocco dello schermo
+-Exec=systemsettings kcm_screenlocker
+-Icon=preferences-desktop-user-password
+-
+-[Desktop Action kcm-powerdevilprofilesconfig]
+-Name=Power Management
+-Name[it]=Gestione energetica
+-Exec=systemsettings kcm_powerdevilprofilesconfig
+-Icon=preferences-system-power-management
+-
+-[Desktop Action kcm-kscreen]
+-Name=Display Configuration
+-Name[it]=Configurazione dello schermo
+-Exec=systemsettings kcm_kscreen
+-Icon=preferences-desktop-display-randr

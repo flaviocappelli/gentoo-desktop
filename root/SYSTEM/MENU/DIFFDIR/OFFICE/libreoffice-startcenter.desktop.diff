@@ -1,0 +1,20 @@
+--- /usr/share/applications/libreoffice-startcenter.desktop	2024-03-17 14:30:37.084398058 +0100
++++ ./libreoffice-startcenter.desktop	2024-03-17 18:47:58.541014867 +0100
+@@ -1,13 +1,14 @@
+ [Desktop Entry]
+-NoDisplay=false
+ Name=LibreOffice
+-GenericName=Office
++GenericName=Office Suite
++GenericName[it]=Suite Office
+ Exec=libreoffice %U
+ Icon=libreoffice-startcenter
+ Terminal=false
+ Type=Application
+ MimeType=application/vnd.openofficeorg.extension;x-scheme-handler/ms-access;x-scheme-handler/ms-excel;x-scheme-handler/ms-powerpoint;x-scheme-handler/ms-visio;x-scheme-handler/ms-word;x-scheme-handler/vnd.libreoffice.cmis;x-scheme-handler/vnd.libreoffice.command;x-scheme-handler/vnd.sun.star.webdav;x-scheme-handler/vnd.sun.star.webdavs;
+-Categories=Office;X-Red-Hat-Base;X-SuSE-Core-Office;
++Categories=Office;
++Keywords=OpenDocument;Microsoft;OpenOffice;
+ StartupWMClass=libreoffice-startcenter
+ StartupNotify=true
+ X-GIO-NoFuse=true

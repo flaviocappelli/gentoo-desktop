@@ -1,0 +1,19 @@
+--- /usr/share/applications/texmaker.desktop	2024-08-03 17:00:18.635457600 +0200
++++ ./texmaker.desktop	2024-08-03 17:09:24.080375729 +0200
+@@ -1,11 +1,13 @@
+ [Desktop Entry]
+ Name=Texmaker
+ GenericName=LaTeX Editor
++GenericName[it]=Editor per LaTeX
+ Exec=texmaker %F
+ Icon=texmaker
+ Terminal=false
+ Type=Application
+ MimeType=text/x-tex;
+-Categories=Office;Publishing;Qt;X-SuSE-Core-Office;X-Mandriva-Office-Publishing;X-Misc;
+-Keywords=Editor;Latex;
+-StartupNotify=false
++Categories=Office;
++Keywords=WYSIWYG;WYSIWYM;TeX;GUI;frontend;documents;
++Keywords[it]=WYSIWYG;WYSIWYM;TeX;GUI;frontend;documenti;
++StartupNotify=true

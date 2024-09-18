@@ -1,0 +1,17 @@
+--- /usr/share/applications/org.kde.kdiff3.desktop	2024-06-18 04:00:54.466649787 +0200
++++ ./org.kde.kdiff3.desktop	2024-06-18 04:02:43.160629838 +0200
+@@ -1,10 +1,12 @@
+ [Desktop Entry]
+ Name=KDiff3
+ Name[it]=KDiff3
+-GenericName=Diff/Patch Frontend
+-GenericName[it]=Interfaccia per i comandi diff e patch
++GenericName=Compare and Merge Tool
++GenericName[it]=Confronto e unione di file
+ Exec=kdiff3 %U
+ Icon=kdiff3
+ Terminal=false
+ Type=Application
+ Categories=Qt;KDE;Development;
++Keywords=diff;
++Keywords[it]=diff;merge;differenze;

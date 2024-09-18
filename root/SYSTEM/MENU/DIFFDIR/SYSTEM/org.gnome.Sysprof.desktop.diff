@@ -1,0 +1,19 @@
+--- /usr/share/applications/org.gnome.Sysprof.desktop	2024-03-17 14:30:37.116397750 +0100
++++ ./org.gnome.Sysprof.desktop	2024-03-17 19:52:55.843134409 +0100
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+ Name=Sysprof
+ Name[it]=Sysprof
+-GenericName=Profiler
+-GenericName[it]=Profilatore
++GenericName=Performance Profiler
++GenericName[it]=Profiler di prestazioni
+ TryExec=sysprof
+ Exec=sysprof %u
+ Icon=org.gnome.Sysprof
+ Terminal=false
+ Type=Application
+ MimeType=application/x-sysprof-capture;
+-Categories=GNOME;GTK;Development;
++Categories=System;
+ StartupNotify=true

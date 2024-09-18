@@ -1,0 +1,12 @@
+--- /usr/share/applications/wine-browsedrive.desktop	2024-03-17 14:30:37.036398521 +0100
++++ ./wine-browsedrive.desktop	2024-03-17 17:31:49.343593439 +0100
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+-Name=Browse C: Drive
+-Name[it]=Esplora unità C:
++Name=Wine Browse Drive
++GenericName=Browse virtual C: drive
++GenericName[it]=Esplora l'unità virtuale C:
+ Exec=xdg-open .wine/dosdevices/c:
+ Icon=folder-wine
+ Terminal=false

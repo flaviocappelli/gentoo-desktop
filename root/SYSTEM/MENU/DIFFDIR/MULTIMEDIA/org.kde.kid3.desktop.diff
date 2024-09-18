@@ -1,0 +1,22 @@
+--- /usr/share/applications/org.kde.kid3.desktop	2024-03-17 14:30:37.088398019 +0100
++++ ./org.kde.kid3.desktop	2024-03-17 20:59:49.201216263 +0100
+@@ -2,15 +2,15 @@
+ Name=Kid3
+ Name[it]=Kid3
+ GenericName=Audio Tagger
+-GenericName[it]=Editor dei tag audio
++GenericName[it]=Editor di tag audio
+ Exec=kid3 %F
+ Icon=kid3
+ Terminal=false
+ Type=Application
+ MimeType=application/ogg;audio/aac;audio/mp4;audio/mpeg;audio/ogg;audio/opus;audio/x-aiff;audio/x-dsf;audio/x-flac;audio/x-flac+ogg;audio/x-it;audio/x-mod;audio/x-ms-wma;audio/x-musepack;audio/x-oggflac;audio/x-opus+ogg;audio/x-s3m;audio/x-speex;audio/x-speex+ogg;audio/x-tta;audio/x-vorbis+ogg;audio/x-wav;audio/x-wavpack;audio/x-xm;inode/directory;
+-Categories=Qt;KDE;AudioVideo;Audio;AudioVideoEditing;
+-Keywords=audio;id3;tag;editor;id3v1;id3v2;mp3;
+-Keywords[it]=audio;id3;tag;editor;id3v1;id3v2;mp3;
++Categories=Qt;KDE;AudioVideo;
++Keywords=id3;tag;editor;id3v1;id3v2;mp3;
++Keywords[it]=id3;id3v1;id3v2;mp3;tagger;
+ StartupWMClass=kid3
+ StartupNotify=true
+ X-DocPath=kid3/index.html

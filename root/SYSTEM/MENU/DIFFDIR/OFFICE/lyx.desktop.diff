@@ -1,0 +1,22 @@
+--- /usr/share/applications/lyx.desktop	2024-03-17 14:30:37.120397711 +0100
++++ ./lyx.desktop	2024-03-17 18:36:03.810323647 +0100
+@@ -1,13 +1,15 @@
+ [Desktop Entry]
+ Name=LyX
+-GenericName=Document Processor
++GenericName=LaTeX Editor
++GenericName[it]=Editor per LaTeX
+ TryExec=lyx
+ Exec=lyx %F
+ Icon=lyx
+ Terminal=false
+ Type=Application
+ MimeType=application/x-lyx;text/x-lyx;
+-Categories=Office;WordProcessor;Qt;
+-Keywords=WYSIWYG;WYSIWYM;TeX;LaTeX;GUI;frontend;editor;
++Categories=Office;
++Keywords=WYSIWYG;WYSIWYM;TeX;GUI;frontend;documents;
++Keywords[it]=WYSIWYG;WYSIWYM;TeX;GUI;frontend;documenti;
+ StartupWMClass=lyx
+-StartupNotify=false
++StartupNotify=true

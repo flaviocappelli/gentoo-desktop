@@ -1,0 +1,34 @@
+--- /usr/share/applications/org.kde.konsole.desktop	2024-03-17 14:30:37.026398617 +0100
++++ ./org.kde.konsole.desktop	2024-03-17 19:59:49.311906822 +0100
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+ Name=Konsole
+ Name[it]=Konsole
+-GenericName=Terminal
+-GenericName[it]=Terminale
++GenericName=Terminal Emulator
++GenericName[it]=Emulatore di terminale
+ TryExec=konsole
+ Exec=konsole
+ Icon=utilities-terminal
+ Type=Application
+-Categories=Qt;KDE;System;TerminalEmulator;
++Categories=Qt;KDE;System;
+ Keywords=terminal;console;script;run;execute;command;command-line;commandline;cli;bash;sh;shell;zsh;cmd;command prompt
+ Keywords[it]=terminale;console;script;esegui;comando;riga di comando;cli;bash;sh;shell;zsh;cmd;prompt dei comandi
+ StartupWMClass=konsole
+@@ -20,12 +20,12 @@
+ 
+ [Desktop Action NewWindow]
+ Name=Open a New Window
+-Name[it]=Apri in una nuova finestra
++Name[it]=Apri una nuova finestra
+ Exec=konsole
+ Icon=window-new
+ 
+ [Desktop Action NewTab]
+ Name=Open a New Tab
+-Name[it]=Apri in una nuova scheda
++Name[it]=Apri una nuova scheda
+ Exec=konsole --new-tab
+ Icon=tab-new

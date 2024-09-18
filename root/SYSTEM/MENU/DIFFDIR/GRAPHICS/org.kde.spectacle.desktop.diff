@@ -1,0 +1,45 @@
+--- /usr/share/applications/org.kde.spectacle.desktop	2024-09-02 21:52:28.307650243 +0200
++++ ./org.kde.spectacle.desktop	2024-09-02 21:57:07.738118897 +0200
+@@ -6,9 +6,9 @@
+ Exec=/usr/bin/spectacle
+ Icon=spectacle
+ Type=Application
+-Categories=Qt;KDE;Utility;
+-Keywords=snapshot;capture;print;screenshot;snipping;snipping tool;snip;
+-Keywords[it]=schermata;cattura;stampa;screenshot;ritagliare;strumento di ritaglio;ritaglio;
++Categories=Qt;KDE;Graphics;
++Keywords=snapshot;capture;print;screenshot;snipping;snip;
++Keywords[it]=schermata;cattura;stampa;screenshot;ritaglia;ritaglio;
+ StartupNotify=false
+ DBusActivatable=true
+ X-DBUS-StartupType=Unique
+@@ -43,7 +43,7 @@
+ 
+ [Desktop Action WindowUnderCursorScreenShot]
+ Name=Capture Window Under Cursor
+-Name[it]=Cattura finestra sotto il cursore
++Name[it]=Cattura la finestra sotto il cursore
+ Exec=/usr/bin/spectacle -u
+ X-KDE-Shortcuts=Meta+Ctrl+Print
+ 
+@@ -55,17 +55,17 @@
+ 
+ [Desktop Action RecordScreen]
+ Name=Record Screen
+-Name[it]=Registra schermo
++Name[it]=Registra lo schermo
+ Exec=/usr/bin/spectacle -R screen
+ X-KDE-Shortcuts=Meta+Alt+R
+ 
+ [Desktop Action RecordWindow]
+ Name=Record Window
+-Name[it]=Registra finestra
++Name[it]=Registra una finestra
+ Exec=/usr/bin/spectacle -R window
+ X-KDE-Shortcuts=Meta+Ctrl+R
+ 
+ [Desktop Action OpenWithoutScreenshot]
+ Name=Launch without taking a screenshot
+-Name[it]=Esegui senza acquisire una schermata
++Name[it]=Avvia senza acquisire una schermata
+ Exec=/usr/bin/spectacle -l

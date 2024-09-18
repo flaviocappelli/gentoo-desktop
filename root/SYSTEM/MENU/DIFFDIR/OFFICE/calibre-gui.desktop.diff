@@ -1,0 +1,12 @@
+--- /usr/share/applications/calibre-gui.desktop	2024-03-17 18:29:40.734241735 +0100
++++ ./calibre-gui.desktop	2024-03-17 18:32:58.872214808 +0100
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+-Name=calibre
+-GenericName=E-book library management
++Name=Calibre
++GenericName=E-book Management
++GenericName[it]=Gestione e-book
+ TryExec=calibre
+ Exec=calibre --detach %U
+ Icon=calibre-gui

@@ -1,0 +1,10 @@
+--- /usr/share/applications/org.kde.kruler.desktop	2024-03-17 14:30:37.092397981 +0100
++++ ./org.kde.kruler.desktop	2024-03-17 21:35:45.655208840 +0100
+@@ -6,6 +6,6 @@
+ Exec=kruler
+ Icon=kruler
+ Type=Application
+-Categories=Qt;KDE;Utility;Graphics;X-KDE-More;
++Categories=Qt;KDE;Graphics;X-KDE-More;
+ StartupNotify=true
+ X-DocPath=kruler/index.html

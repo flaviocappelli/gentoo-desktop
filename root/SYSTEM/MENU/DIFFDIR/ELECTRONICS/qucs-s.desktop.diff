@@ -1,0 +1,17 @@
+--- /usr/share/applications/qucs-s.desktop	2024-03-17 14:30:37.016398713 +0100
++++ ./qucs-s.desktop	2024-03-17 19:17:15.538056329 +0100
+@@ -1,8 +1,12 @@
+ [Desktop Entry]
+ Name=Qucs-S
++GenericName=Electronic Circuit Simulator
++GenericName[it]=Simulazione di circuiti elettronici
+ Exec=qucs-s %U
+ Icon=qucs-s
+ Terminal=false
+ Type=Application
+-Categories=Education;Electronics
+-StartupNotify=false
++Categories=Electronics
++Keywords=simulation;electronics;circuits;
++Keywords[it]=simulatore;elettronica;circuito;
++StartupNotify=true

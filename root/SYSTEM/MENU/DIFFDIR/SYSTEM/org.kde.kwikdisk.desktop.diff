@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.kde.kwikdisk.desktop	2024-03-17 17:09:18.808341981 +0100
++++ ./org.kde.kwikdisk.desktop	2024-03-17 17:10:13.980780886 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=KwikDisk
+ Name[it]=KwikDisk
+ GenericName=Removable Media Utility

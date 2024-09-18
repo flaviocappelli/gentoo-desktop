@@ -1,0 +1,33 @@
+--- /usr/share/applications/org.inkscape.Inkscape.desktop	2024-03-17 14:30:37.111397798 +0100
++++ ./org.inkscape.Inkscape.desktop	2024-03-17 21:22:45.673154451 +0100
+@@ -2,26 +2,14 @@
+ Name=Inkscape
+ Name[it]=Inkscape
+ GenericName=Vector Graphics Editor
+-GenericName[it]=Editor grafico vettoriale SVG
++GenericName[it]=Editor grafico vettoriale
+ TryExec=inkscape
+ Exec=inkscape %F
+ Icon=org.inkscape.Inkscape
+ Terminal=false
+ Type=Application
+ MimeType=application/illustrator;application/pdf;application/postscript;application/visio;application/visio.drawing;application/vnd.corel-draw;application/vnd.ms-visio.viewer;application/vnd.visio;application/vsd;application/x-visio;application/x-vsd;application/x-xccx;application/x-xcdt;application/x-xcmx;image/svg+xml;image/svg+xml-compressed;image/x-emf;image/x-eps;image/x-vsd;image/x-wmf;image/x-xcdr;
+-Categories=Graphics;VectorGraphics;GTK;
+-Keywords=image;editor;vector;drawing;
+-Keywords[it]=immagine;editor;vettoriale;disegno;
++Categories=Graphics;
++Keywords=image;drawing;painting;
++Keywords[it]=immagine;disegno;illustrazione;
+ StartupNotify=true
+-Actions=new-window;
+-
+-[X-Drawing Shortcut Group]
+-Name=New Drawing
+-Name[it]=Nuovo disegno
+-Exec=inkscape
+-TargetEnvironment=Unity
+-
+-[Desktop Action new-window]
+-Name=Open a New Window
+-Name[it]=Apri una nuova finestra
+-Exec=inkscape

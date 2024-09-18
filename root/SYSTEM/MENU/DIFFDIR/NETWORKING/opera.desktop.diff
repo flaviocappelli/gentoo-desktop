@@ -1,0 +1,29 @@
+--- /usr/share/applications/opera.desktop	2024-03-17 14:30:37.106397846 +0100
++++ ./opera.desktop	2024-03-17 20:26:49.774409263 +0100
+@@ -1,21 +1,22 @@
+ [Desktop Entry]
+ Name=Opera
+-GenericName=Web browser
++GenericName=Web Browser
++GenericName[it]=Browser web
+ TryExec=opera
+ Exec=opera %U
+ Icon=opera
+ Terminal=false
+ Type=Application
+ MimeType=application/x-opera-download;application/xhtml_xml;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;
+-Categories=Network;WebBrowser;
++Categories=Network;
+ Actions=new-window;new-private-window;
+ 
+ [Desktop Action new-window]
+ Name=New Window
++Name[it]=Nuova finestra
+ Exec=opera --new-window
+-X-TargetEnvironment=Unity
+ 
+ [Desktop Action new-private-window]
+ Name=New Private Window
++Name[it]=Nuova finestra anonima
+ Exec=opera --incognito
+-X-TargetEnvironment=Unity

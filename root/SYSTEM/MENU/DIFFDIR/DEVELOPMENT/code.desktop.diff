@@ -1,0 +1,26 @@
+--- /usr/share/applications/code.desktop	2024-09-09 00:36:19.217596517 +0200
++++ ./code.desktop	2024-09-09 01:14:04.422003140 +0200
+@@ -1,17 +1,12 @@
+ [Desktop Entry]
+-Name=VSCode
+-GenericName=Code Editor
++Name=Visual Studio Code
++GenericName=Programming Editor
++GenericName[it]=Editor per programmazione
+ Exec=/usr/bin/vscode --ozone-platform-hint=auto --enable-wayland-ime %F
+ Icon=vscode
+ Type=Application
+ MimeType=application/x-code-workspace;inode/directory;text/plain;
+-Categories=Utility;TextEditor;Development;IDE;
+-Keywords=vscode;code;
++Categories=Development;
++Keywords=vscode;
+ StartupWMClass=Code
+-StartupNotify=false
+-Actions=new-empty-window;
+-
+-[Desktop Action new-empty-window]
+-Name=New Empty Window
+-Exec=/usr/bin/vscode --ozone-platform-hint=auto --enable-wayland-ime --new-window %F
+-Icon=vscode
++StartupNotify=true

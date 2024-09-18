@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.kicad.pcbcalculator.desktop	2024-03-17 14:30:37.129397624 +0100
++++ ./org.kicad.pcbcalculator.desktop	2024-03-17 19:23:07.168459136 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=KiCad PCB Calculator
+ Name[it]=Calcolatrice per C.S. KiCad
+ GenericName=PCB Calculator
