@@ -6,7 +6,8 @@ Yes, it requires some time and patience, but the efforts are well rewarded.
 
 This repository contains the configuration of my Gentoo desktop (Ryzen 5900X,
 multilib, PLASMA 6, systemd), in particular my kernel configuration, portage
-settings, other modified /etc files and a small local overlay.
+settings, other modified /etc files, a small local overlay and some scripts
+used to simplify system maintenance (see the /root/SYSTEM/BIN folder).
 
 Don't use these files blindly, adapt them to your hardware and needs!
 <br/>
