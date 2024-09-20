@@ -62,6 +62,7 @@ app-text/tree
 app-text/xchm
 app-text/zeal
 dev-db/sqlitebrowser
+dev-debug/bpftrace
 dev-debug/kdbg
 dev-debug/ltrace
 dev-debug/strace
@@ -88,6 +89,7 @@ dev-qt/qtserialbus:5
 dev-qt/qtserialbus:6
 dev-qt/qtwebview:5
 dev-qt/qtwebview:6
+dev-util/bindgen
 dev-util/ccache
 dev-util/clazy
 dev-util/clinfo
