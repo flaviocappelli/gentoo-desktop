@@ -336,6 +336,7 @@ www-client/opera
 www-client/uget
 x11-apps/mesa-progs
 x11-apps/xdpyinfo
+x11-apps/xlsclients
 x11-apps/xrandr
 x11-themes/oxygen-gtk:2
 x11-themes/oxygen-gtk:3
