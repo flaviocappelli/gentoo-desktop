@@ -47,7 +47,7 @@ app-arch/unzip                      natspec               # Use dev-libs/libnats
 app-arch/zip                        natspec               # Use dev-libs/libnatspec to correctly decode non-ascii file names archived in Windows.
 app-arch/xz-utils                   pgo                   # Optimize the build using Profile Guided Optimization (from CLD).
 
-app-backup/backintime               qt5 gui               # Build the GUI frontend (the used flag depends on the app-backup/backintime version).
+app-backup/backintime               gui qt5               # Build the GUI frontend (the used flag depends on the app-backup/backintime version).
 app-backup/bacula                   qt5                   # Build the GUI frontend.
 
 ##app-crypt/gpgme                   python                # Provides a high-level C & Python crypto API for encryption, decryption, signing, etc (from CLD).
@@ -419,7 +419,6 @@ kde-misc/kshutdown                  kde                   # Re-enable flag +KDE 
 
 kde-plasma/breeze                   qt5                   # Required by kde-plasma/plasma-meta:6.
 kde-plasma/kde-cli-tools            kdesu                 # Build graphical frontend for kde-frameworks/kdesu, required by kde-apps/ksystemlog[kdesu].
-kde-plasma/libksysguard             webengine             # Enable display of detailed memory information using dev-qt/qtwebengine.
 ##kde-plasma/plasma-firewall        -ufw firewalld        # Use net-firewall/firewalld as backend.
 kde-plasma/plasma-integration       qt5                   # Required by kde-plasma/plasma-meta:6.
 kde-plasma/plasma-meta              -crypt                # Do not pull in kde-plasma/plasma-vault (I don't use it).
@@ -582,7 +581,6 @@ media-video/pipewire                gstreamer             # Add support for medi
 media-video/pipewire                jack-sdk              # Use PipeWire as JACK replacement.
 media-video/pipewire                pipewire-alsa         # Replace PulseAudio's ALSA plugin with PipeWire's plugin (see comments above).
 media-video/pipewire                sound-server          # Provide sound server using ALSA and bluetooth devices, see 'eselect news' 2022-07-29.
-media-video/smplayer                autoshutdown          # Enable the option to shutdown the computer after finishing the playlist.
 media-video/vcdimager               xml                   # Re-enable flag +XML (see the ebuild).
 media-video/vlc                     -vaapi                # Prevents vlc to pull in ffmpeg < 5 (downgrade). See https://bugs.gentoo.org/864721.
 media-video/vlc                     -vdpau                # VLC build fails with vdpau enabled (due to issues in sys-apps/install-xattr-0.8-r1, see https://bugs.gentoo.org/914298).

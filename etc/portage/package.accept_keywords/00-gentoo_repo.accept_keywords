@@ -6,9 +6,8 @@
 # Enable some ~arch packages with fixes,
 # or support for Python 3.12 / Ruby 3.2.
 ~dev-ruby/asciidoctor-2.0.20::gentoo
-~media-gfx/gimp-2.10.36::gentoo
-~media-libs/openexr-3.2.4::gentoo
 ~sci-libs/opencascade-7.7.2::gentoo
+~media-libs/openimageio-2.5.13.1::gentoo
 
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
@@ -34,6 +33,12 @@ dev-util/seer::gentoo
 
 # PipeWire Graph Qt GUI Interface.
 media-sound/qpwgraph::gentoo
+
+# SMPlayer ebuild 23.6.0-r1 (stable) is required with MPV >= 0.37
+# (see Gentoo bug #919917); anyway, I prefere SMPlayer 24.5.0 that
+# also fixes the download issues with OpenSubtitle (caused by new
+# APIs in OpenSubtitle, see https://www.smplayer.info/en/changes).
+~media-video/smplayer-24.5.0
 
 # IM: Zoom, Skype, Telegram Desktop (bin version).
 # NOTE: Microsoft has discontinued the Debian Skype packages

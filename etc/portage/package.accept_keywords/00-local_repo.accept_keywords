@@ -42,12 +42,6 @@ dev-vcs/gitqlient::local
 # https://github.com/occ-ai/obs-backgroundremoval
 media-plugins/obs-backgroundremoval::local
 
-# SMplayer > 23.06 (not yet in portage) fix issues with MPV >= 0.37
-# (i.e. the 'SPACE KEY' that stop the video but does not resume it).
-# Also fix the download failure from OpenSubtitle (due to new APIs
-# in OpenSubtitle, see https://www.smplayer.info/en/changes).
-media-video/smplayer::local
-
 # FPGA tools: Verilator (verilog simulation and lint), Yosys (HDL synthesis),
 # iCEstorm (Lattice iCE40 FPGA), PrjTrellis (Lattice ECP FPGA), Apicula (GoWin
 # FPGA), NextPNR (place and route), TinyProg (programmer for TinyFPGA-BX board),

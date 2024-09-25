@@ -1,6 +1,6 @@
---- /usr/share/applications/zzz-gimp.desktop	2024-09-07 13:24:39.100181707 +0200
-+++ ./zzz-gimp.desktop	2024-09-07 13:26:44.641979020 +0200
-@@ -1,15 +1,14 @@
+--- /usr/share/applications/zzz-gimp.desktop	2024-09-25 21:52:51.152752493 +0200
++++ ./zzz-gimp.desktop	2024-09-25 21:55:03.948263906 +0200
+@@ -1,16 +1,15 @@
  [Desktop Entry]
 -Name=GNU Image Manipulation Program
 -Name[it]=GNU Image Manipulation Program
@@ -13,11 +13,12 @@
  Icon=gimp
  Terminal=false
  Type=Application
- MimeType=application/pdf;application/postscript;image/avif;image/bmp;image/g3fax;image/gif;image/heic;image/heif;image/jp2;image/jpeg;image/jxl;image/png;image/svg+xml;image/tiff;image/webp;image/x-compressed-xcf;image/x-exr;image/x-fits;image/x-gimp-gbr;image/x-gimp-gih;image/x-gimp-pat;image/x-icon;image/x-pcx;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-psd;image/x-psp;image/x-sgi;image/x-sun-raster;image/x-tga;image/x-webp;image/x-wmf;image/x-xbitmap;image/x-xcf;image/x-xcursor;image/x-xpixmap;image/x-xwindowdump;
+ MimeType=application/pdf;application/postscript;image/bmp;image/g3fax;image/gif;image/jp2;image/jpeg;image/jxl;image/png;image/svg+xml;image/tiff;image/webp;image/x-compressed-xcf;image/x-exr;image/x-fits;image/x-gimp-gbr;image/x-gimp-gih;image/x-gimp-pat;image/x-icon;image/x-pcx;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-psd;image/x-psp;image/x-sgi;image/x-sun-raster;image/x-tga;image/x-webp;image/x-wmf;image/x-xbitmap;image/x-xcf;image/x-xcursor;image/x-xpixmap;image/x-xwindowdump;
 -Categories=Graphics;2DGraphics;RasterGraphics;GTK;
 -Keywords=GIMP;graphic;design;illustration;painting;
 -Keywords[it]=GIMP;grafica;design;illustrazioni;disegno;fotoritocco;
 +Categories=Graphics;
 +Keywords=images;photos;graphic;design;illustration;painting;
 +Keywords[it]=immagine;foto;grafica;disegno;illustrazioni;pittura;fotoritocco;
+ StartupWMClass=gimp-2.10
  StartupNotify=true
