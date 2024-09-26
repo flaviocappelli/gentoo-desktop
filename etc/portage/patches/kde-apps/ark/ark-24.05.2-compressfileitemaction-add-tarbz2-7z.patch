@@ -1,0 +1,23 @@
+--- a/app/compressfileitemaction.cpp	2024-07-02 05:05:15.000000000 +0200
++++ b/app/compressfileitemaction.cpp	2024-09-26 13:29:15.379405384 +0200
+@@ -55,6 +55,7 @@
+     QMenu *compressMenu = new QMenu(parentWidget);
+ 
+     compressMenu->addAction(createAction(icon, parentWidget, urlList, QStringLiteral("tar.gz")));
++    compressMenu->addAction(createAction(icon, parentWidget, urlList, QStringLiteral("tar.bz2")));
+ 
+     const QMimeType zipMime = QMimeDatabase().mimeTypeForName(QStringLiteral("application/zip"));
+     // Don't offer zip compression if no zip plugin is available.
+@@ -62,6 +63,12 @@
+         compressMenu->addAction(createAction(icon, parentWidget, urlList, QStringLiteral("zip")));
+     }
+ 
++    const QMimeType sevenZipMime = QMimeDatabase().mimeTypeForName(QStringLiteral("application/x-7z-compressed"));
++    // Don't offer 7z compression if no 7-zip plugin is available.
++    if (!m_pluginManager->preferredWritePluginsFor(sevenZipMime).isEmpty()) {
++        compressMenu->addAction(createAction(icon, parentWidget, urlList, QStringLiteral("7z")));
++    }
++
+     compressMenu->addAction(createAction(icon, parentWidget, urlList, QString()));
+ 
+     QAction *compressMenuAction = new QAction(i18nc("@action:inmenu Compress submenu in Dolphin context menu", "Compress"), parentWidget);
