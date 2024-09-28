@@ -1,18 +1,22 @@
 ## by F.C.
 ##
-## Overridden configs for Gentoo Distribution Kernels.
-
+## Override configuration of Gentoo Distribution Kernels.
+## This setup is intended for desktops/gaming/low latency audio,
+## while still supporting a wide range of hardware and features.
 
 ## NOTES
 ## -----
 ## Comments must begin with ##.
 ##
-## A CONFIG_XXX item is disabled with '# CONFIG_XXX is not set'
+## Items can be disabled with '# CONFIG_* is not set'
+## or with 'CONFIG_*=n' (but the former is preferred).
 ##
-## (*) SDDM ebuild suggest to enable it or install sys-apps/haveged
-## (or sys-apps/rng-tools). But such tools are not required anymore
-## (indeed all kernels >= 5.6 have the haveged algorithm built in).
+## All kernels >= 5.6 have an HAVEGED inspired algorithm built-in
+## so, despite what is stated in the SDDM Gentoo ebuild, packages
+## sys-apps/haveged and sys-apps/rng-tools are not longer required
+## (see the README in https://github.com/jirka-h/haveged).
 ##
-## The sys-apps/irqbalance daemon is not required anymore because
-## now the Linux kernel is capable of balancing irqs by itself (it
-## is even counter-productive, especially for low latency audio).
+## sys-apps/irqbalance is also no longer required (it might be even
+## counter-productive, especially for desktops / gaming / low latency
+## audio) because Linux is now able to balance the irqs by itself (see
+## https://bugs.launchpad.net/ubuntu/+source/ubuntu-meta/+bug/1833322).
