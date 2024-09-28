@@ -29,6 +29,7 @@ app-editors/wxhexeditor::gentoo
 app-text/zeal::gentoo
 dev-debug/kdbg::gentoo
 dev-util/heaptrack::gentoo
+dev-util/meld::gentoo
 dev-util/seer::gentoo
 
 # PipeWire Graph Qt GUI Interface.
