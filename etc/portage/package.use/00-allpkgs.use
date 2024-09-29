@@ -744,6 +744,7 @@ sys-apps/fwupd                      gusb                  # Without it the build
 ##sys-apps/fwupd                    synaptics             # Install synaptics plugin.
 ##sys-apps/fwupd                    tpm                   # Install Trusted Platform Module plugin.
 ##sys-apps/fwupd                    uefi                  # Enable UEFI support (required by 'dell' use flag).
+sys-apps/kmod                       pkcs7                 # Required to get the module signature. See https://wiki.gentoo.org/wiki/Signed_kernel_module_support
 sys-apps/openrc                     sysv-utils            # Use OpenRC init code instead of sys-apps/sysvinit (just for reference, this system uses systemd).
 sys-apps/shadow                     -cracklib             # USE flags 'pam' and 'cracklib' cannot be both enabled (from CLD).
 sys-apps/systemd                    cryptsetup            # Enable cryptsetup tools (includes unit generator for crypttab).
