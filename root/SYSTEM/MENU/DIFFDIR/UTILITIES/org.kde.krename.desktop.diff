@@ -1,15 +1,17 @@
---- /usr/share/applications/org.kde.krename.desktop	2024-03-17 14:30:37.055398337 +0100
-+++ ./org.kde.krename.desktop	2024-03-17 17:55:00.023455490 +0100
-@@ -1,8 +1,12 @@
- [Desktop Entry]
+--- /usr/share/applications/org.kde.krename.desktop	2024-09-29 11:27:28.690462688 +0200
++++ ./org.kde.krename.desktop	2024-09-29 11:30:01.791162798 +0200
+@@ -2,10 +2,12 @@
  Name=KRename
  Name[it]=KRename
-+GenericName=Batch renamer
+ GenericName=Batch File Renamer
+-GenericName[it]=Uno strumento di rinomina di massa
 +GenericName[it]=Strumento di rinomina di massa
  Exec=krename -qwindowtitle "%c" %U
  Icon=krename
  Terminal=false
  Type=Application
- Categories=Qt;KDE;Utility;
+-Categories=Qt;KDE;Utility;FileTools;
++Categories=Qt;KDE;Utility;
 +Keywords=files;
-+Keywords[it]=files;batch;rename;
++Keywords[it]=file;files;batch;rename;
+ StartupWMClass=krename
