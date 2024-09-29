@@ -26,4 +26,3 @@ modules:
 
 clean:
 	@$(MAKE) -C $(KERNEL_BUILD) M=$(CURDIR) clean
-

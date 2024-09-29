@@ -22,6 +22,7 @@ CONFIG_CHECK="~X86_MSR"
 S="${WORKDIR}/zenmonitor3"
 
 DEPEND="
+	!sys-apps/zenmonitor
 	cli? ( sys-libs/ncurses[tinfo] )
 	filecaps? ( sys-libs/libcap )
 	sys-kernel/zenpower3

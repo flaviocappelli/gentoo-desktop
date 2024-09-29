@@ -1,33 +1,32 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+# by F.C.
+# Inspired by sys-kernel/zenpower3 ebuild (in this overlay).
 
-inherit dist-kernel-utils linux-mod
+EAPI=8
 
-DESCRIPTION="Linux kernel driver for Nuvoton NCT6687-R Super I/O"
-HOMEPAGE="https://github.com/Fred78290/nct6687d.git"
+inherit git-r3 linux-mod-r1
 
-if [[ ${PV} == "9999" ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/Fred78290/nct6687d.git"
-else
-	SRC_URI="https://github.com/Fred78290/nct6687d/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
-fi
+DESCRIPTION="Linux kernel module for Nuvoton NCT6687-R Super I/O"
+HOMEPAGE="https://github.com/Fred78290/nct6687d"
+EGIT_REPO_URI="https://github.com/Fred78290/nct6687d.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-# See files/Makefile and the following page:
-# https://devmanual.gentoo.org/eclass-reference/linux-mod.eclass/index.html
-BUILD_TARGETS="modules"
-MODULE_NAMES="nct6687(misc:${S})"
+# A kernel >= 5.11 is required; also, to use this driver, the NCT6683
+# driver must not be compiled (or built as module and blacklisted). See:
+# https://devmanual.gentoo.org/eclass-reference/linux-info.eclass/index.html
+# https://devmanual.gentoo.org/eclass-reference/linux-mod-r1.eclass/index.html
+
+MODULES_KERNEL_MIN=5.11
+CONFIG_CHECK="HWMON ~!SENSORS_NCT6683"
+ERROR_SENSORS_NCT6683="SENSORS_NCT6683: If you insist on building this, you must blacklist it!"
 
 pkg_pretend() {
 	if has_version virtual/dist-kernel && ! use dist-kernel; then
@@ -38,38 +37,17 @@ pkg_pretend() {
 	fi
 }
 
-pkg_setup() {
-	kernel_is -ge 5 11 || die "Linux 5.11 or newer required"
-
-	# See 'make menuconfig' (module NCT6683) and the following page:
-	# https://devmanual.gentoo.org/eclass-reference/linux-info.eclass/index.html
-	CONFIG_CHECK="HWMON ~!SENSORS_NCT6683"
-
-	# To use this driver, the NCT6683 module must be blacklisted.
-	ERROR_SENSORS_NCT6683="SENSORS_NCT6683: If you insist on building this, you must blacklist it!"
-
-	linux-mod_pkg_setup
-}
-
 src_prepare() {
-	default_src_prepare
+	cp -f "${FILESDIR}/${PN}-Makefile" "${S}/Makefile" || die
 
-	# by F.C.
-	# The default driver's makefile incorrectly build the module for the old kernel
-	# (when the kernel is upgraded). So use my makefile instead (see files/Makefile).
-	cp -f "${FILESDIR}/Makefile" "${S}/Makefile"
+	eapply_user
+
+	default
 }
 
 src_compile() {
 	export KV_FULL
-	linux-mod_src_compile
-}
+	local modlist=( nct6687=misc:"${S}" )
 
-src_install() {
-	linux-mod_src_install
-	dodoc LICENSE README.md
-}
-
-pkg_postinst() {
-	linux-mod_pkg_postinst
+	linux-mod-r1_src_compile
 }
