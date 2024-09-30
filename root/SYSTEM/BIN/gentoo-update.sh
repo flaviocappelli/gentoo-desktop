@@ -266,7 +266,7 @@ echo -e "\n"
 
 # Patch menu desktop files.
 if [ -x /root/SYSTEM/BIN/patch_menu.sh ]; then
-    echo -e "\nPATCHING DESKTOPFILES\n---------------------\n"
+    echo -e "\nPATCHING DESKTOPFILES\n---------------------"
     /root/SYSTEM/BIN/patch_menu.sh
     echo ""
 fi
