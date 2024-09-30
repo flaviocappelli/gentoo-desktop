@@ -99,7 +99,6 @@ dev-util/cppcheck
 dev-util/cutter
 dev-util/debugedit
 dev-util/diffuse
-dev-util/gammaray
 dev-util/heaptrack
 dev-util/hip
 dev-util/hipify-clang
