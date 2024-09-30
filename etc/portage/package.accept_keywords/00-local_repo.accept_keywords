@@ -31,8 +31,12 @@ app-crypt/gocryptfs::gentoo
 # Other packages useful for development. NOTE: kdstatemachineeditor from
 # portage (optionally required by dev-util/gammaray) is at the moment not
 # installed because it fails to build. See https://bugs.gentoo.org/854303
-dev-util/gammaray::local
-dev-util/kdstatemachineeditor::gentoo
+# UPDATE: gammaray-2.11.3 also fails to build now; version 3.1.0 (recently
+# released) supports both qt5 and qt6, and should work, but unfortunately
+# no ebuild exists for it yet; I tried to create one but there are issues
+# that need to be investigated (so, for the moment I just removed it).
+#dev-util/gammaray::local
+#dev-util/kdstatemachineeditor::gentoo
 
 # Multi-platform Git client originally forked from QGit.
 dev-vcs/gitqlient::local
