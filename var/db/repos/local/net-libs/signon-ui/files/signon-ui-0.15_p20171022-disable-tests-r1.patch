@@ -1,0 +1,12 @@
+--- a/signon-ui.pro	2024-10-03 06:49:14.916247684 +0200
++++ b/signon-ui.pro	2024-10-03 06:49:37.316851773 +0200
+@@ -4,8 +4,7 @@
+ TEMPLATE = subdirs
+ CONFIG += ordered
+ SUBDIRS = \
+-    src \
+-    tests
++    src
+ 
+ include(common-installs-config.pri)
+ 
