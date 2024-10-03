@@ -50,7 +50,7 @@ app-arch/xz-utils                   pgo                   # Optimize the build u
 app-backup/backintime               gui qt5               # Build the GUI frontend (the used flag depends on the app-backup/backintime version).
 app-backup/bacula                   qt5                   # Build the GUI frontend.
 
-##app-crypt/gpgme                   python                # Provides a high-level C & Python crypto API for encryption, decryption, signing, etc (from CLD).
+##app-crypt/gpgme                   python                # Required by kde-apps/kdenetwork-meta[dropbox].
 ##app-crypt/qca                     gpg                   # Provide GnuPG capability to programs that utilize the Qt Cryptographic Architecture (QCA) (from CLD).
 app-crypt/qca                       qt5                   # Required by kde-frameworks/kwallet:5.
 
@@ -390,6 +390,8 @@ kde-apps/akonadi                    tools                 # Install tools for de
 kde-apps/kalarm                     -pim                  # Disable PIM integration (I don't need it).
 ##kde-apps/kdegraphics-meta         color-management      # Enable color management.
 ##kde-apps/kdegraphics-meta         -scanner              # Do not build kde-misc/skanlite (NOTE: not related with kde-apps/kolourpaint[scanner]).
+kde-apps/kdenetwork-meta            -bittorrent           # I don't need bittorrent support (I prefere net-p2p/qbittorrent that works very well).
+##kde-apps/kdenetwork-meta          dropbox               # Popular cloud storage alternative to Google Drive (see also NextCloud).
 kde-apps/kdesdk-meta                git                   # Enable support for Git VCS in kde-apps/dolphin .
 ##kde-apps/kdeutils-meta            7zip                  # Install app-arch/p7zip for 7zip archive support in kde-apps/ark.
 ##kde-apps/kdeutils-meta            gpg                   # Install kde-apps/kgpg which depends on kde-apps/akonadi.

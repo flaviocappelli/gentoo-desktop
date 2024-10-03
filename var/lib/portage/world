@@ -140,11 +140,10 @@ kde-apps/kdeadmin-meta
 kde-apps/kdebugsettings
 kde-apps/kdecore-meta
 kde-apps/kdegraphics-meta
-kde-apps/kdenetwork-filesharing
+kde-apps/kdenetwork-meta
 kde-apps/kdenlive
 kde-apps/kdesdk-meta
 kde-apps/kdf
-kde-apps/kget
 kde-apps/kgpg
 kde-apps/kimagemapeditor
 kde-apps/kleopatra
@@ -153,9 +152,7 @@ kde-apps/kmahjongg
 kde-apps/kmines
 kde-apps/konqueror
 kde-apps/kpat
-kde-apps/krdc
 kde-apps/kreversi
-kde-apps/krfb
 kde-apps/ksudoku
 kde-apps/ktimer
 kde-apps/kwalletmanager
@@ -163,9 +160,7 @@ kde-apps/lokalize
 kde-apps/marble
 kde-apps/rocs
 kde-apps/sweeper
-kde-misc/kdeconnect
 kde-misc/kdiff3
-kde-misc/kio-gdrive
 kde-misc/krename
 kde-misc/krusader
 kde-misc/kshutdown
@@ -231,7 +226,6 @@ net-im/telegram-desktop-bin
 net-im/zoom
 net-misc/bridge-utils
 net-misc/chrony
-net-misc/kio-zeroconf
 net-misc/putty
 net-misc/rclone
 net-misc/socat
