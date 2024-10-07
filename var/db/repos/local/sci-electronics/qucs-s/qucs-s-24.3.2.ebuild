@@ -29,6 +29,7 @@ src_prepare() {
 	cmake_src_prepare
 }
 
+
 src_install() {
 	cmake_src_install
 	cd ${D}/usr/share/qucs-s/library

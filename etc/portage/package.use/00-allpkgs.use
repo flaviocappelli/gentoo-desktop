@@ -327,6 +327,7 @@ dev-qt/qt-docs                      xml                   # Install documentatio
 ##dev-qt/qt3d                       gamepad               # Add support for gamepad hardware via dev-qt/qtgamepad.
 dev-qt/qt5compat                    icu                   # If disabled, force emerge of dev-qt/qtbase[-icu].
 dev-qt/qt5compat                    qml                   # Many Qt6 packages need this flag.
+dev-qt/qtbase                       -mysql                # MySQL/MariaDB support not required (see also 'kde-apps/akonadi' below).
 dev-qt/qtbase                       gui widgets xml       # Required by dev-qt/qtbase and other Qt6 packages.
 dev-qt/qtbase                       icu                   # Required by dev-qt/qt5compat.
 dev-qt/qtcharts                     qml                   # Required by kde-misc/kweather.
@@ -335,6 +336,7 @@ dev-qt/qtdeclarative                localstorage          # Build the LocalStora
 dev-qt/qtdeclarative                widgets               # Required by dev-qt/qtwebengine[widgets] and dev-qt/qttools[qml].
 ##dev-qt/qtgamepad                  evdev                 # Enable support for input devices via evdev (normally via SDL is better).
 dev-qt/qtgui                        -vnc                  # Drop unnecessary dependency (from CLD).
+dev-qt/qtgui                        egl                   # Required by dev-qt/qtwayland:5 and kde-plasma/kwayland:5.
 ##dev-qt/qtgui                      evdev                 # Required by dev-qt/qtgamepad[evdev].
 dev-qt/qtimageformats               mng                   # Required by app-editors/qxmledit.
 dev-qt/qtmultimedia                 gstreamer qml         # Required by kde-plasma/kwin, kde-apps/spectacle and other packages.
