@@ -16,12 +16,12 @@ REPOS_ROOT=/var/db/repos
 GENTOO_REPO=${REPOS_ROOT}/gentoo
 PERSONAL_REPO=${REPOS_ROOT}/local
 
-# The Gentoo 'eapi7-ver' eclass, containing the 'ver_test' (version
-# compare) bash function. Many files in $GENTOO_REPO/eclass/ depend
-# on the 'ver_test' function, so I'm sure it will be kept even when
-# the EAPI 7 will be removed (perhaps such eclass will be renamed or
-# 'ver_test' moved to another eclass: just update VER_TEST_ECLASS).
-VER_TEST_ECLASS=${GENTOO_REPO}/eclass/eapi7-ver.eclass
+# Path to the script that defines the Gentoo bash function 'ver_test'
+# (version comparison). Many eclasses (files in $GENTOO_REPO/eclass/)
+# and ebuilds depend on 'ver_test', so I'm sure it will be kept for a
+# long time (note that 'ver_test' was previously defined in the eclass
+# 'eapi7-ver'; if moved again, we just need to update VER_TEST_SCRIPT).
+VER_TEST_SCRIPT=${GENTOO_REPO}/eclass/tests/version-funcs.sh
 
 # Perform some safety checks.
 if [ ! -d ${GENTOO_REPO} ]; then
@@ -32,13 +32,13 @@ if [ ! -d ${PERSONAL_REPO} ]; then
     echo -e "\nError: \"${PERSONAL_REPO}\" not found!\n"
     exit 1
 fi
-if [ ! -e ${VER_TEST_ECLASS} ]; then
-    echo -e "\nError: \"${VER_TEST_ECLASS}\" not found!\n"
+if [ ! -e ${VER_TEST_SCRIPT} ]; then
+    echo -e "\nError: \"${VER_TEST_SCRIPT}\" not found!\n"
     exit 1
 fi
 
 # Import the 'ver_test' function.
-source ${VER_TEST_ECLASS}
+source ${VER_TEST_SCRIPT} || exit
 
 # This does not need an explanation!
 show_usage_and_exit()
