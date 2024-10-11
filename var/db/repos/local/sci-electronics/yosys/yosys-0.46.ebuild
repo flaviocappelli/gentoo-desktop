@@ -13,7 +13,7 @@ DESCRIPTION="Framework for Verilog RTL synthesis"
 HOMEPAGE="http://www.clifford.at/yosys/"
 
 EGIT_REPO_URI=https://github.com/YosysHQ/yosys
-EGIT_COMMIT=yosys-0.43
+EGIT_COMMIT=$PV
 
 LICENSE="ISC"
 SLOT="0"

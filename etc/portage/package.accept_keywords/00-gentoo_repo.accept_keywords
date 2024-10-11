@@ -5,9 +5,7 @@
 
 # Enable some ~arch packages with fixes,
 # or support for Python 3.12 / Ruby 3.2.
-~dev-ruby/asciidoctor-2.0.20::gentoo
 ~sci-libs/opencascade-7.7.2::gentoo
-~media-libs/openimageio-2.5.13.1::gentoo
 
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
@@ -62,32 +60,29 @@ net-im/telegram-desktop-bin::gentoo
 ~media-libs/avidemux-plugins-2.8.1::gentoo
 ~media-sound/dcaenc-2::gentoo
 
-# Blender.
-# VERSION >= 4.1.1 IS NOW STABLE!
-# VERSION 4.2.x WILL BE LTS BUT IS NOT YET IN PORTAGE.
+# Blender 4.2 LTS (wait for 4.2.2 in portage).
 # When including OpenShadingLanguage scripting support (not
 # enabled by default) media-gfx/blender, media-libs/mesa and
 # media-libs/osl must be linked to the same LLVM version, or
 # blender will crash (see gentoo bugs 880671 / 821955).
-#~media-gfx/blender-4.1.1::gentoo
-#~media-libs/oidn-2.2.2::gentoo
-#~media-gfx/openvdb-11.0.0::gentoo
+#media-gfx/blender:4.2::gentoo
 
-# KiCad.
+# KiCad, latest version.
 # Only KiCad >= 8.0.3 have support for Python 3.12.
-~app-doc/kicad-doc-8.0.4::gentoo
-~sci-electronics/kicad-8.0.4::gentoo
-~sci-electronics/kicad-symbols-8.0.4::gentoo
-~sci-electronics/kicad-footprints-8.0.4::gentoo
-~sci-electronics/kicad-packages3d-8.0.4::gentoo
-~sci-electronics/kicad-templates-8.0.4::gentoo
-~sci-electronics/kicad-meta-8.0.4::gentoo
+~app-doc/kicad-doc-8.0.5::gentoo
+~sci-electronics/kicad-8.0.5::gentoo
+~sci-electronics/kicad-symbols-8.0.5::gentoo
+~sci-electronics/kicad-footprints-8.0.5::gentoo
+~sci-electronics/kicad-packages3d-8.0.5::gentoo
+~sci-electronics/kicad-templates-8.0.5::gentoo
+~sci-electronics/kicad-meta-8.0.5::gentoo
 ~app-text/dblatex-0.3.12::gentoo
 
 # FreeCAD.
 # Finally getting closer to version 1.0, with Qt6 support,
 # new and improved features, and important issue fixed!
-media-gfx/freecad::gentoo
+# NOTE: v1.0_rc2 has many bugs, I suggest to skip it!
+~media-gfx/freecad-1.0_rc1::gentoo
 
 # Godot Engine.
 dev-games/godot::gentoo

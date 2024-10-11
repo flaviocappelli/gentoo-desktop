@@ -370,7 +370,7 @@ dev-util/gammaray                   script                # Build the script eng
 dev-util/gammaray                   scxml                 # Build the state machine viewer plugin.
 dev-util/heaptrack                  gui                   # Build the GUI frontend.
 dev-util/kdevelop                   gdbui                 # Enable GUI for attaching GDB to a running process.
-dev-util/kdevelop                   hex                   # Enable hex editor plugin via app-editors/okteta.
+##dev-util/kdevelop                 hex                   # Enable hex editor plugin via app-editors/okteta (for the moment such flag is ignored, see the ebuild).
 ##dev-util/kdevelop                 plasma                # Build optional KDE plasma addons.
 ##dev-util/strace                   aio                   # Enable dev-libs/libaio support for tracing Asynchronous I/O operations.
 
@@ -530,7 +530,6 @@ media-sound/fluidsynth              network               # Required for server 
 media-sound/kid3                    kde                   # Add KDE/PLASMA support.
 ##media-sound/pulseaudio            daemon                # Use the old PulseAudio daemon instead of Pipewire. *** NOT RECOMMENDED ***
 ##media-sound/pulseaudio            ofono-headset         # Build the oFono HFP backend for Bluez 5 (relevant only for the old PulseAudio daemon, not for Pipewire).
-media-sound/qpwgraph                trayicon              # Build support for tray icon.
 ##media-sound/strawberry            mtp                   # Enable support for Media Transfer Protocol (to transfer music to MTP compatible devices). Pull in gnome-base/gvfs.
 media-sound/timidity++              -gtk -ncurses -X      # Graphic and NCurses UI not required (used only as MIDI sequencer).
 
