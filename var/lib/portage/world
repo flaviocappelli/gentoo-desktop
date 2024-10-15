@@ -73,6 +73,7 @@ dev-games/godot
 dev-libs/libclc
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
+dev-python/pip
 dev-qt/assistant
 dev-qt/linguist
 dev-qt/qdbusviewer
