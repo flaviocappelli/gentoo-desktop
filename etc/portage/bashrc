@@ -10,7 +10,7 @@ case "${CATEGORY}/${PN}" in
 	# name and version) or ${PF} (full package name, including revision). A possible solution
 	# is to manually create a symbolic link 'gentoo-kernel-${PV} -> gentoo-kernel-maj.min' in
 	# '/etc/portage/patches/sys-kernel'. In order to not forget to create such link each time
-    # the kernel is updated, I prefere that emerge will do it automatically: the following hook
+	# the kernel is updated, I prefere that emerge will do it automatically: the following hook
 	# will intercept any emerge of sys-kernel/gentoo-kernel, and will creates the proper link.
 	# See the documentation in https://devmanual.gentoo.org/ebuild-writing/variables/ (ebuild
 	# variables) and in https://wiki.gentoo.org/wiki//etc/portage/patches (user patches).
