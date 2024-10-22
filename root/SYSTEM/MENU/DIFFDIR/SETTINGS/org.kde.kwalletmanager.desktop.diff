@@ -1,5 +1,5 @@
---- /usr/share/applications/org.kde.kwalletmanager5.desktop	2024-03-17 14:30:37.031398569 +0100
-+++ ./org.kde.kwalletmanager5.desktop	2024-03-17 18:14:44.015418199 +0100
+--- /usr/share/applications/org.kde.kwalletmanager.desktop	2024-10-16 20:08:19.828863953 +0200
++++ ./org.kde.kwalletmanager.desktop	2024-10-16 20:17:55.140250179 +0200
 @@ -1,13 +1,13 @@
  [Desktop Entry]
 -Name=KWalletManager

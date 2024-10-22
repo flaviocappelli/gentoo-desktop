@@ -43,7 +43,6 @@ app-misc/tmux
 app-misc/wayland-utils
 app-office/libreoffice
 app-office/lyx
-app-office/texmaker
 app-office/texstudio
 app-portage/cpuid2cpuflags
 app-portage/elogv
@@ -206,7 +205,6 @@ media-sound/timidity++
 media-video/avidemux
 media-video/gaupol
 media-video/guvcview
-media-video/handbrake
 media-video/libva-utils
 media-video/mkvtoolnix
 media-video/obs-studio

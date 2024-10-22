@@ -5,10 +5,16 @@
 
 # Enable some ~arch packages with fixes,
 # or support for Python 3.12 / Ruby 3.2.
+~app-office/lyx-2.4.2.1::gentoo
+~app-office/texstudio-4.8.4::gentoo
 ~sci-libs/opencascade-7.7.2::gentoo
 
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
+
+# The stable splix driver (for some Samsung printers) is very old and
+# sometimes causes a SPL ERROR 11-1114. Version 2.0.1 adds some fixes.
+~net-print/splix-2.0.1::gentoo
 
 # Other Qt5 packages in testing useful for development. For Qt5->Qt6 package
 # migration, see https://wiki.gentoo.org/wiki/Project:Qt/Qt6_migration_notes
