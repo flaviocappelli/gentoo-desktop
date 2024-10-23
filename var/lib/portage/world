@@ -328,6 +328,8 @@ www-client/falkon
 www-client/firefox
 www-client/opera
 www-client/uget
+www-client/ungoogled-chromium-bin
+www-plugins/chrome-binary-plugins
 x11-apps/mesa-progs
 x11-apps/xdpyinfo
 x11-apps/xlsclients

@@ -810,6 +810,7 @@ www-client/firefox                  hwaccel               # Force-enable hardwar
 ##www-client/firefox                lto                   # Build using Link Time Optimizations (LTO), but not PGO (don't worth the effort).
 www-client/firefox                  openh264              # Use media-libs/openh264 for H264 support instead of downloading binary blob from Mozilla at runtime.
 www-client/uget                     aria2                 # Enable support for net-misc/aria2 (plugin) through xmlrpc.
+www-client/ungoogled-chromium-bin   widevine              # Unsupported closed-source DRM capability (required by Netflix VOD).
 www-client/vivaldi                  proprietary-codecs    # Enable codecs for patent-encumbered audio and video formats.
 www-client/vivaldi                  widevine              # Unsupported closed-source DRM capability (required by Netflix VOD).
 

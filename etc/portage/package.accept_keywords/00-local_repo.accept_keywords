@@ -69,3 +69,6 @@ sci-electronics/circuitjs1-bin::local
 
 # Electronic circuit simulator.
 sci-electronics/qucs-s::local
+
+# Ungoogled-chromium (binary version).
+www-client/ungoogled-chromium-bin::local
