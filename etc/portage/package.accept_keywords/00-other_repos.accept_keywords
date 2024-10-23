@@ -10,6 +10,7 @@
 */*::gentoo-zh          -*
 */*::guru               -*
 */*::holgersson-overlay -*
+*/*::pf4public          -*
 */*::pg_overlay         -*
 */*::phackerlay         -*
 */*::salfter            -*
@@ -21,6 +22,7 @@
 # --- EBUILDS FROM GENTOO-ZH -----------------------------------
 # --- EBUILDS FROM GURU ----------------------------------------
 # --- EBUILDS FROM HOLGERSSON-OVERLAY --------------------------
+# --- EBUILDS FROM PF4PUBLIC -----------------------------------
 # --- EBUILDS FROM PG_OVERLAY ----------------------------------
 # --- EBUILDS FROM PHACKERLAY ----------------------------------
 # --- EBUILDS FROM SALFTER -------------------------------------

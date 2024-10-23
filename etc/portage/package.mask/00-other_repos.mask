@@ -10,6 +10,7 @@
 */*::gentoo-zh
 */*::guru
 */*::holgersson-overlay
+*/*::pf4public
 */*::pg_overlay
 */*::phackerlay
 */*::salfter
