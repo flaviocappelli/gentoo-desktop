@@ -632,6 +632,7 @@ net-dns/avahi                       autoipd               # Build the IPv4LL (RF
 ##net-dns/avahi                     bookmarks             # Install the avahi-bookmarks application.
 net-dns/avahi                       mdnsresponder-compat  # Enable compat libraries for mDNSResponder (required for Bonjour).
 net-dns/avahi                       python                # Required by net-print/hplip[snmp].
+net-dns/bind                        gssapi                # Required by net-dns/bind-tools[gssapi].
 net-dns/bind-tools                  gssapi                # Required by net-fs/samba[ads].
 net-dns/dnsmasq                     script                # Required by app-emulation/virt-manager[virt-network].
 
