@@ -4,8 +4,17 @@
 
 # SMplayer < 23.12.0 does not work with MPV >= 0.37: the 'SPACE
 # KEY' stops the video but does not resume it (instead, it works
-# with MPV 0.36, that has been removed from portage). But version
-# 26.12.0 and above (not in portage, see my local repo) fixes that
-# and also fixes the subtitle download failure (that was due to new
-# OpenSubtitle's APIs, see https://www.smplayer.info/en/changes).
+# with MPV 0.36, that has been removed from portage). Versions
+# 26.12.0 and above fixes that, and also fixes the subtitle
+# download failure (that was caused by new OpenSubtitle's
+# APIs, see https://www.smplayer.info/en/changes).
 <media-video/smplayer-23.12.0
+
+# Mask Python-3.13 until truly required.
+dev-lang/python:3.13
+
+# With systemd-256.x I can no longer login to my user managed by
+# systemd-homed! (known issue, see https://bugs.gentoo.org/937941).
+# Systemd-255.x works fine, so I will delay the update of systemd
+# until the Gentoo developers will decide what to do to fix it.
+>=sys-apps/systemd-256.0
