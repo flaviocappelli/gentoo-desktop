@@ -34,6 +34,7 @@ dev-libs/gmp                            abi_x86_32
 dev-libs/icu                            abi_x86_32
 dev-libs/jemalloc                       abi_x86_32
 dev-libs/json-glib                      abi_x86_32
+dev-libs/jsoncpp                        abi_x86_32
 dev-libs/libbsd                         abi_x86_32
 dev-libs/libcdio                        abi_x86_32
 dev-libs/libcdio-paranoia               abi_x86_32
