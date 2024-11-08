@@ -1,7 +1,12 @@
 # by F.C.
+#
 # Just an example of custom set, see
 # https://wiki.gentoo.org/wiki//etc/portage/sets
 # https://wiki.gentoo.org/wiki/Package_sets
+#
+# DO NOT USE 'unmerge' with sets; to unmerge type:
+#    emerge --deselect @<set_name>
+#    emerge --ask --depclean
 
 #sci-electronics/apicula
 #sci-electronics/gtkwave

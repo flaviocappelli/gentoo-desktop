@@ -39,6 +39,7 @@ app-misc/fastfetch
 app-misc/openrgb
 app-misc/radeontop
 app-misc/resolve-march-native
+app-misc/screen
 app-misc/tmux
 app-misc/wayland-utils
 app-office/libreoffice
@@ -225,7 +226,6 @@ net-im/telegram-desktop-bin
 net-im/zoom
 net-misc/bridge-utils
 net-misc/chrony
-net-misc/putty
 net-misc/rclone
 net-misc/socat
 net-misc/whois
