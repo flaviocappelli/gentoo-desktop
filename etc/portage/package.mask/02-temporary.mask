@@ -12,9 +12,3 @@
 
 # Mask Python-3.13 until truly required.
 dev-lang/python:3.13
-
-# With systemd-256.x I can no longer login to my user managed by
-# systemd-homed! (known issue, see https://bugs.gentoo.org/937941).
-# Systemd-255.x works fine, so I will delay the update of systemd
-# until the Gentoo developers will decide what to do to fix it.
->=sys-apps/systemd-256.0
