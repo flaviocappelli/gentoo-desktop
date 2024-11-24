@@ -3,12 +3,6 @@
 # Ebuilds from the gentoo official repository.
 # NOTE: sign ~ (tilde) let in -r# package revisions.
 
-# Enable some ~arch packages with fixes,
-# or support for Python 3.12 / Ruby 3.2.
-~app-office/lyx-2.4.2.1::gentoo
-~app-office/texstudio-4.8.4::gentoo
-~sci-libs/opencascade-7.7.2::gentoo
-
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
 
@@ -23,7 +17,7 @@ app-admin/spectre-meltdown-checker::gentoo **
 
 # Qt Creator: not emerged (at the moment I'm using
 # the version provided with the Qt Maintenance Tool).
-#=dev-qt/qt-creator-13*::gentoo
+#=dev-qt/qt-creator-14*::gentoo
 
 # Hex editor that can edit very BIG files!
 app-editors/wxhexeditor::gentoo
@@ -38,12 +32,6 @@ dev-util/seer::gentoo
 
 # PipeWire Graph Qt GUI Interface.
 media-sound/qpwgraph::gentoo
-
-# SMPlayer ebuild 23.6.0-r1 (stable) is required with MPV >= 0.37
-# (see Gentoo bug #919917); anyway, I prefere SMPlayer 24.5.0 that
-# also fixes the download issues with OpenSubtitle (caused by new
-# APIs in OpenSubtitle, see https://www.smplayer.info/en/changes).
-~media-video/smplayer-24.5.0
 
 # IM: Zoom, Skype, Telegram Desktop (bin version).
 # NOTE: Microsoft has discontinued the Debian Skype packages
@@ -65,30 +53,6 @@ net-im/telegram-desktop-bin::gentoo
 ~media-libs/avidemux-core-2.8.1::gentoo
 ~media-libs/avidemux-plugins-2.8.1::gentoo
 ~media-sound/dcaenc-2::gentoo
-
-# Blender 4.2 LTS (wait for 4.2.2 in portage).
-# When including OpenShadingLanguage scripting support (not
-# enabled by default) media-gfx/blender, media-libs/mesa and
-# media-libs/osl must be linked to the same LLVM version, or
-# blender will crash (see gentoo bugs 880671 / 821955).
-#media-gfx/blender:4.2::gentoo
-
-# KiCad, latest version.
-# Only KiCad >= 8.0.3 have support for Python 3.12.
-~app-doc/kicad-doc-8.0.5::gentoo
-~sci-electronics/kicad-8.0.5::gentoo
-~sci-electronics/kicad-symbols-8.0.5::gentoo
-~sci-electronics/kicad-footprints-8.0.5::gentoo
-~sci-electronics/kicad-packages3d-8.0.5::gentoo
-~sci-electronics/kicad-templates-8.0.5::gentoo
-~sci-electronics/kicad-meta-8.0.5::gentoo
-~app-text/dblatex-0.3.12::gentoo
-
-# FreeCAD.
-# Finally getting closer to version 1.0, with Qt6 support,
-# new and improved features, and important issue fixed!
-# NOTE: v1.0_rc2 has many bugs, I suggest to skip it!
-~media-gfx/freecad-1.0_rc1::gentoo
 
 # Godot Engine.
 dev-games/godot::gentoo
@@ -125,11 +89,6 @@ app-emulation/genymotion-bin::gentoo
 
 # Realtime monitor.
 net-analyzer/netdata::gentoo
-
-# Advanced power management.
-# LATEST VERSION (1.6.1) IS NOW STABLE!
-# Alternative: sys-power/power-profiles-daemon >= 0.14
-#sys-power/tlp::gentoo
 
 # Very cool emerge.log parser. See:
 # https://github.com/vincentdephily/emlop

@@ -1,0 +1,290 @@
+diff '--color=auto' -urw moserial-3.0.21.orig/src/MainWindow.c moserial-3.0.21/src/MainWindow.c
+--- moserial-3.0.21.orig/src/MainWindow.c	2021-11-26 22:16:04.000000000 +0300
++++ moserial-3.0.21/src/MainWindow.c	2024-08-12 16:30:38.790323755 +0300
+@@ -1838,21 +1838,21 @@
+                                                                               const gchar* newStatus,
+                                                                               gpointer self)
+ {
+-	moserial_send_progress_dialog_updateStatus ((moserialSendProgressDialog*) self, _sender, newStatus);
++	moserial_send_progress_dialog_updateStatus ((moserialSendProgressDialog*) self, (GObject*) _sender, newStatus);
+ }
+ 
+ static void
+ _moserial_szwrapper_transferCanceled_moserial_send_progress_dialog_transfer_canceled (moserialSendProgressDialog* _sender,
+                                                                                       gpointer self)
+ {
+-	moserial_szwrapper_transferCanceled ((moserialSzwrapper*) self, _sender);
++	moserial_szwrapper_transferCanceled ((moserialSzwrapper*) self, (GObject *) _sender);
+ }
+ 
+ static void
+ _moserial_main_window_sendComplete_moserial_szwrapper_transfer_complete (moserialSzwrapper* _sender,
+                                                                          gpointer self)
+ {
+-	moserial_main_window_sendComplete ((moserialMainWindow*) self, _sender);
++	moserial_main_window_sendComplete ((moserialMainWindow*) self, (GObject *) _sender);
+ }
+ 
+ static void
+@@ -1987,21 +1987,21 @@
+                                                                                  const gchar* newStatus,
+                                                                                  gpointer self)
+ {
+-	moserial_receive_progress_dialog_updateStatus ((moserialReceiveProgressDialog*) self, _sender, newStatus);
++	moserial_receive_progress_dialog_updateStatus ((moserialReceiveProgressDialog*) self, (GObject *) _sender, newStatus);
+ }
+ 
+ static void
+ _moserial_rzwrapper_transferCanceled_moserial_receive_progress_dialog_transfer_canceled (moserialReceiveProgressDialog* _sender,
+                                                                                          gpointer self)
+ {
+-	moserial_rzwrapper_transferCanceled ((moserialRzwrapper*) self, _sender);
++	moserial_rzwrapper_transferCanceled ((moserialRzwrapper*) self, (GObject *) _sender);
+ }
+ 
+ static void
+ _moserial_main_window_receiveComplete_moserial_rzwrapper_transfer_complete (moserialRzwrapper* _sender,
+                                                                             gpointer self)
+ {
+-	moserial_main_window_receiveComplete ((moserialMainWindow*) self, _sender);
++	moserial_main_window_receiveComplete ((moserialMainWindow*) self, (GObject *) _sender);
+ }
+ 
+ static void
+@@ -4161,7 +4161,7 @@
+ _moserial_main_window_showSettingsDialog_gtk_tool_button_clicked (GtkToolButton* _sender,
+                                                                   gpointer self)
+ {
+-	moserial_main_window_showSettingsDialog ((moserialMainWindow*) self, _sender);
++	moserial_main_window_showSettingsDialog ((moserialMainWindow*) self, (GObject *) _sender);
+ }
+ 
+ static void
+@@ -4241,7 +4241,7 @@
+ _moserial_main_window_showPreferencesDialog_gtk_tool_button_clicked (GtkToolButton* _sender,
+                                                                      gpointer self)
+ {
+-	moserial_main_window_showPreferencesDialog ((moserialMainWindow*) self, _sender);
++	moserial_main_window_showPreferencesDialog ((moserialMainWindow*) self, (GObject *) _sender);
+ }
+ 
+ static void
+@@ -4280,14 +4280,14 @@
+ _moserial_main_window_sendString_gtk_button_clicked (GtkButton* _sender,
+                                                      gpointer self)
+ {
+-	moserial_main_window_sendString ((moserialMainWindow*) self, _sender);
++	moserial_main_window_sendString ((moserialMainWindow*) self, (GtkWidget *) _sender);
+ }
+ 
+ static void
+ _moserial_main_window_sendString_gtk_entry_activate (GtkEntry* _sender,
+                                                      gpointer self)
+ {
+-	moserial_main_window_sendString ((moserialMainWindow*) self, _sender);
++	moserial_main_window_sendString ((moserialMainWindow*) self, (GtkWidget *) _sender);
+ }
+ 
+ static void
+@@ -5089,7 +5089,7 @@
+ 	_g_object_unref0 (self->priv->inputModeCombo);
+ 	self->priv->inputModeCombo = _tmp236_;
+ 	_tmp237_ = self->priv->inputModeCombo;
+-	mo_utils_populateComboBox (_tmp237_, MOSERIAL_MAIN_WINDOW_inputModeStrings, (gint) G_N_ELEMENTS (MOSERIAL_MAIN_WINDOW_inputModeStrings), TRUE);
++	mo_utils_populateComboBox (_tmp237_, (gchar **) MOSERIAL_MAIN_WINDOW_inputModeStrings, (gint) G_N_ELEMENTS (MOSERIAL_MAIN_WINDOW_inputModeStrings), TRUE);
+ 	_tmp238_ = self->priv->inputModeCombo;
+ 	g_signal_connect_object (_tmp238_, "changed", (GCallback) _moserial_main_window_inputModeChanged_gtk_combo_box_changed, self, 0);
+ 	_tmp239_ = builder;
+@@ -5098,7 +5098,7 @@
+ 	_g_object_unref0 (self->priv->lineEndModeCombo);
+ 	self->priv->lineEndModeCombo = _tmp241_;
+ 	_tmp242_ = self->priv->lineEndModeCombo;
+-	mo_utils_populateComboBox (_tmp242_, MOSERIAL_SERIAL_CONNECTION_LineEndStrings, (gint) G_N_ELEMENTS (MOSERIAL_SERIAL_CONNECTION_LineEndStrings), TRUE);
++	mo_utils_populateComboBox (_tmp242_, (gchar **) MOSERIAL_SERIAL_CONNECTION_LineEndStrings, (gint) G_N_ELEMENTS (MOSERIAL_SERIAL_CONNECTION_LineEndStrings), TRUE);
+ 	_tmp243_ = self->priv->lineEndModeCombo;
+ 	g_signal_connect_object (_tmp243_, "changed", (GCallback) _moserial_main_window_lineEndChanged_gtk_combo_box_changed, self, 0);
+ 	_tmp244_ = g_strdup (MOSERIAL_MAIN_WINDOW_recentGroup);
+@@ -5144,7 +5144,7 @@
+ 	recentFileItem = _tmp264_;
+ 	_tmp265_ = recentFileItem;
+ 	_tmp266_ = recentChooserMenu;
+-	gtk_menu_item_set_submenu (_tmp265_, (GtkMenu*) _tmp266_);
++	gtk_menu_item_set_submenu (_tmp265_, (GtkWidget*) _tmp266_);
+ 	_tmp267_ = builder;
+ 	_tmp268_ = gtk_builder_get_object (_tmp267_, "labelStatusRI");
+ 	_tmp269_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_CAST (_tmp268_, gtk_label_get_type (), GtkLabel));
+diff '--color=auto' -urw moserial-3.0.21.orig/src/PreferencesDialog.c moserial-3.0.21/src/PreferencesDialog.c
+--- moserial-3.0.21.orig/src/PreferencesDialog.c	2021-11-26 22:16:05.000000000 +0300
++++ moserial-3.0.21/src/PreferencesDialog.c	2024-08-12 16:40:17.852581062 +0300
+@@ -397,7 +397,7 @@
+ 	_g_object_unref0 (self->priv->recordAutoDirection);
+ 	self->priv->recordAutoDirection = _tmp42_;
+ 	_tmp43_ = self->priv->recordAutoDirection;
+-	mo_utils_populateComboBox (_tmp43_, MOSERIAL_SERIAL_STREAM_RECORDER_DirectionStrings, (gint) G_N_ELEMENTS (MOSERIAL_SERIAL_STREAM_RECORDER_DirectionStrings), TRUE);
++	mo_utils_populateComboBox (_tmp43_, (gchar **) MOSERIAL_SERIAL_STREAM_RECORDER_DirectionStrings, (gint) G_N_ELEMENTS (MOSERIAL_SERIAL_STREAM_RECORDER_DirectionStrings), TRUE);
+ 	_tmp44_ = self->priv->recordAutoDirection;
+ 	gtk_combo_box_set_active (_tmp44_, (gint) MOSERIAL_SERIAL_STREAM_RECORDER_DIRECTION_INCOMING);
+ 	_tmp45_ = gtk_builder_get_object (builder, "preferences_record_auto_extension");
+diff '--color=auto' -urw moserial-3.0.21.orig/src/ReceiveChooserDialog.c moserial-3.0.21/src/ReceiveChooserDialog.c
+--- moserial-3.0.21.orig/src/ReceiveChooserDialog.c	2021-11-26 22:16:04.000000000 +0300
++++ moserial-3.0.21/src/ReceiveChooserDialog.c	2024-08-12 16:36:59.944233070 +0300
+@@ -143,7 +143,7 @@
+                                                                gint response_id,
+                                                                gpointer self)
+ {
+-	moserial_receive_chooser_dialog_response ((moserialReceiveChooserDialog*) self, _sender, response_id);
++	moserial_receive_chooser_dialog_response ((moserialReceiveChooserDialog*) self, (GtkWidget *) _sender, response_id);
+ }
+ 
+ moserialReceiveChooserDialog*
+@@ -178,7 +178,7 @@
+ 	_g_object_unref0 (self->protocolCombo);
+ 	self->protocolCombo = _tmp5_;
+ 	_tmp6_ = self->protocolCombo;
+-	mo_utils_populateComboBox (_tmp6_, MOSERIAL_RZWRAPPER_ProtocolStrings, (gint) G_N_ELEMENTS (MOSERIAL_RZWRAPPER_ProtocolStrings), TRUE);
++	mo_utils_populateComboBox (_tmp6_, (gchar **) MOSERIAL_RZWRAPPER_ProtocolStrings, (gint) G_N_ELEMENTS (MOSERIAL_RZWRAPPER_ProtocolStrings), TRUE);
+ 	_tmp7_ = self->priv->dialog;
+ 	g_signal_connect_object ((GtkWidget*) _tmp7_, "delete-event", (GCallback) _moserial_receive_chooser_dialog_hide_gtk_widget_delete_event, self, 0);
+ 	_tmp8_ = self->priv->dialog;
+diff '--color=auto' -urw moserial-3.0.21.orig/src/ReceiveProgressDialog.c moserial-3.0.21/src/ReceiveProgressDialog.c
+--- moserial-3.0.21.orig/src/ReceiveProgressDialog.c	2021-11-26 22:16:04.000000000 +0300
++++ moserial-3.0.21/src/ReceiveProgressDialog.c	2024-08-12 16:38:14.260633150 +0300
+@@ -115,7 +115,7 @@
+ _moserial_receive_progress_dialog_cancel_gtk_button_clicked (GtkButton* _sender,
+                                                              gpointer self)
+ {
+-	moserial_receive_progress_dialog_cancel ((moserialReceiveProgressDialog*) self, _sender);
++	moserial_receive_progress_dialog_cancel ((moserialReceiveProgressDialog*) self, (GObject *) _sender);
+ }
+ 
+ static gboolean
+diff '--color=auto' -urw moserial-3.0.21.orig/src/RecordDialog.c moserial-3.0.21/src/RecordDialog.c
+--- moserial-3.0.21.orig/src/RecordDialog.c	2021-11-26 22:16:05.000000000 +0300
++++ moserial-3.0.21/src/RecordDialog.c	2024-08-12 16:39:44.009875221 +0300
+@@ -163,7 +163,7 @@
+                                                       gint response_id,
+                                                       gpointer self)
+ {
+-	moserial_record_dialog_response ((moserialRecordDialog*) self, _sender, response_id);
++	moserial_record_dialog_response ((moserialRecordDialog*) self, (GtkWidget *) _sender, response_id);
+ }
+ 
+ moserialRecordDialog*
+@@ -206,7 +206,7 @@
+ 	_g_object_unref0 (self->priv->streamCombo);
+ 	self->priv->streamCombo = _tmp7_;
+ 	_tmp8_ = self->priv->streamCombo;
+-	mo_utils_populateComboBox (_tmp8_, MOSERIAL_SERIAL_STREAM_RECORDER_DirectionStrings, (gint) G_N_ELEMENTS (MOSERIAL_SERIAL_STREAM_RECORDER_DirectionStrings), TRUE);
++	mo_utils_populateComboBox (_tmp8_, (gchar **) MOSERIAL_SERIAL_STREAM_RECORDER_DirectionStrings, (gint) G_N_ELEMENTS (MOSERIAL_SERIAL_STREAM_RECORDER_DirectionStrings), TRUE);
+ 	_tmp9_ = self->priv->streamCombo;
+ 	gtk_combo_box_set_active (_tmp9_, (gint) MOSERIAL_SERIAL_STREAM_RECORDER_DIRECTION_INCOMING);
+ 	_tmp10_ = self->priv->dialog;
+Только в moserial-3.0.21.orig/src: Rzwrapper.o
+diff '--color=auto' -urw moserial-3.0.21.orig/src/SendChooserDialog.c moserial-3.0.21/src/SendChooserDialog.c
+--- moserial-3.0.21.orig/src/SendChooserDialog.c	2021-11-26 22:16:05.000000000 +0300
++++ moserial-3.0.21/src/SendChooserDialog.c	2024-08-12 16:43:17.509956500 +0300
+@@ -146,7 +146,7 @@
+                                                             gint response_id,
+                                                             gpointer self)
+ {
+-	moserial_send_chooser_dialog_response ((moserialSendChooserDialog*) self, _sender, response_id);
++	moserial_send_chooser_dialog_response ((moserialSendChooserDialog*) self, (GtkWidget *) _sender, response_id);
+ }
+ 
+ moserialSendChooserDialog*
+@@ -181,7 +181,7 @@
+ 	_g_object_unref0 (self->protocolCombo);
+ 	self->protocolCombo = _tmp5_;
+ 	_tmp6_ = self->protocolCombo;
+-	mo_utils_populateComboBox (_tmp6_, MOSERIAL_SZWRAPPER_ProtocolStrings, (gint) G_N_ELEMENTS (MOSERIAL_SZWRAPPER_ProtocolStrings), TRUE);
++	mo_utils_populateComboBox (_tmp6_, (gchar **) MOSERIAL_SZWRAPPER_ProtocolStrings, (gint) G_N_ELEMENTS (MOSERIAL_SZWRAPPER_ProtocolStrings), TRUE);
+ 	_tmp7_ = self->priv->dialog;
+ 	g_signal_connect_object ((GtkWidget*) _tmp7_, "delete-event", (GCallback) _moserial_send_chooser_dialog_hide_gtk_widget_delete_event, self, 0);
+ 	_tmp8_ = self->priv->dialog;
+diff '--color=auto' -urw moserial-3.0.21.orig/src/SendProgressDialog.c moserial-3.0.21/src/SendProgressDialog.c
+--- moserial-3.0.21.orig/src/SendProgressDialog.c	2021-11-26 22:16:04.000000000 +0300
++++ moserial-3.0.21/src/SendProgressDialog.c	2024-08-12 16:35:21.413205403 +0300
+@@ -116,7 +116,7 @@
+ _moserial_send_progress_dialog_cancel_gtk_button_clicked (GtkButton* _sender,
+                                                           gpointer self)
+ {
+-	moserial_send_progress_dialog_cancel ((moserialSendProgressDialog*) self, _sender);
++	moserial_send_progress_dialog_cancel ((moserialSendProgressDialog*) self, (GObject *) _sender);
+ }
+ 
+ static gboolean
+Только в moserial-3.0.21.orig/src: SerialConnection.o
+Только в moserial-3.0.21.orig/src: SerialStreamRecorder.o
+Только в moserial-3.0.21.orig/src: Settings.o
+diff '--color=auto' -urw moserial-3.0.21.orig/src/SettingsDialog.c moserial-3.0.21/src/SettingsDialog.c
+--- moserial-3.0.21.orig/src/SettingsDialog.c	2021-11-26 22:16:04.000000000 +0300
++++ moserial-3.0.21/src/SettingsDialog.c	2024-08-12 16:34:40.125660268 +0300
+@@ -229,14 +229,14 @@
+ _moserial_settings_dialog_cancel_gtk_button_clicked (GtkButton* _sender,
+                                                      gpointer self)
+ {
+-	moserial_settings_dialog_cancel ((moserialSettingsDialog*) self, _sender);
++	moserial_settings_dialog_cancel ((moserialSettingsDialog*) self, (GtkWidget *) _sender);
+ }
+ 
+ static void
+ _moserial_settings_dialog_ok_gtk_button_clicked (GtkButton* _sender,
+                                                  gpointer self)
+ {
+-	moserial_settings_dialog_ok ((moserialSettingsDialog*) self, _sender);
++	moserial_settings_dialog_ok ((moserialSettingsDialog*) self, (GtkWidget *) _sender);
+ }
+ 
+ moserialSettingsDialog*
+@@ -327,25 +327,25 @@
+ 	_g_object_unref0 (self->priv->baudRateCombo);
+ 	self->priv->baudRateCombo = _tmp14_;
+ 	_tmp15_ = self->priv->baudRateCombo;
+-	mo_utils_populateComboBox (_tmp15_, SETTINGS_BaudRateItems, (gint) G_N_ELEMENTS (SETTINGS_BaudRateItems), FALSE);
++	mo_utils_populateComboBox (_tmp15_, (gchar **) SETTINGS_BaudRateItems, (gint) G_N_ELEMENTS (SETTINGS_BaudRateItems), FALSE);
+ 	_tmp16_ = gtk_builder_get_object (builder, "settings_data_bits");
+ 	_tmp17_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_CAST (_tmp16_, gtk_combo_box_get_type (), GtkComboBox));
+ 	_g_object_unref0 (self->priv->dataBitsCombo);
+ 	self->priv->dataBitsCombo = _tmp17_;
+ 	_tmp18_ = self->priv->dataBitsCombo;
+-	mo_utils_populateComboBox (_tmp18_, SETTINGS_DataBitItems, (gint) G_N_ELEMENTS (SETTINGS_DataBitItems), TRUE);
++	mo_utils_populateComboBox (_tmp18_, (gchar **) SETTINGS_DataBitItems, (gint) G_N_ELEMENTS (SETTINGS_DataBitItems), TRUE);
+ 	_tmp19_ = gtk_builder_get_object (builder, "settings_stop_bits");
+ 	_tmp20_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_CAST (_tmp19_, gtk_combo_box_get_type (), GtkComboBox));
+ 	_g_object_unref0 (self->priv->stopBitsCombo);
+ 	self->priv->stopBitsCombo = _tmp20_;
+ 	_tmp21_ = self->priv->stopBitsCombo;
+-	mo_utils_populateComboBox (_tmp21_, SETTINGS_StopBitItems, (gint) G_N_ELEMENTS (SETTINGS_StopBitItems), TRUE);
++	mo_utils_populateComboBox (_tmp21_, (gchar **) SETTINGS_StopBitItems, (gint) G_N_ELEMENTS (SETTINGS_StopBitItems), TRUE);
+ 	_tmp22_ = gtk_builder_get_object (builder, "settings_parity");
+ 	_tmp23_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_CAST (_tmp22_, gtk_combo_box_get_type (), GtkComboBox));
+ 	_g_object_unref0 (self->priv->parityCombo);
+ 	self->priv->parityCombo = _tmp23_;
+ 	_tmp24_ = self->priv->parityCombo;
+-	mo_utils_populateComboBox (_tmp24_, SETTINGS_ParityModeStrings, (gint) G_N_ELEMENTS (SETTINGS_ParityModeStrings), TRUE);
++	mo_utils_populateComboBox (_tmp24_, (gchar **) SETTINGS_ParityModeStrings, (gint) G_N_ELEMENTS (SETTINGS_ParityModeStrings), TRUE);
+ 	_tmp25_ = gtk_builder_get_object (builder, "settings_hardware_handshake");
+ 	_tmp26_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_CAST (_tmp25_, gtk_check_button_get_type (), GtkCheckButton));
+ 	_g_object_unref0 (self->priv->hardwareHandshake);
+@@ -363,7 +363,7 @@
+ 	_g_object_unref0 (self->priv->accessModeCombo);
+ 	self->priv->accessModeCombo = _tmp32_;
+ 	_tmp33_ = self->priv->accessModeCombo;
+-	mo_utils_populateComboBox (_tmp33_, SETTINGS_AccessModeStrings, (gint) G_N_ELEMENTS (SETTINGS_AccessModeStrings), TRUE);
++	mo_utils_populateComboBox (_tmp33_, (gchar **) SETTINGS_AccessModeStrings, (gint) G_N_ELEMENTS (SETTINGS_AccessModeStrings), TRUE);
+ 	_tmp34_ = gtk_builder_get_object (builder, "settings_local_echo");
+ 	_tmp35_ = _g_object_ref0 (G_TYPE_CHECK_INSTANCE_CAST (_tmp34_, gtk_check_button_get_type (), GtkCheckButton));
+ 	_g_object_unref0 (self->priv->localEcho);
+Только в moserial-3.0.21.orig/src: Szwrapper.o
+diff '--color=auto' -urw moserial-3.0.21.orig/src/XmodemFilenameDialog.c moserial-3.0.21/src/XmodemFilenameDialog.c
+--- moserial-3.0.21.orig/src/XmodemFilenameDialog.c	2021-11-26 22:16:05.000000000 +0300
++++ moserial-3.0.21/src/XmodemFilenameDialog.c	2024-08-12 16:40:55.568248401 +0300
+@@ -122,7 +122,7 @@
+                                                                gint response_id,
+                                                                gpointer self)
+ {
+-	moserial_xmodem_filename_dialog_response ((moserialXmodemFilenameDialog*) self, _sender, response_id);
++	moserial_xmodem_filename_dialog_response ((moserialXmodemFilenameDialog*) self, (GtkWidget *) _sender, response_id);
+ }
+ 
+ moserialXmodemFilenameDialog*

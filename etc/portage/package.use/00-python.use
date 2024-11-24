@@ -63,14 +63,14 @@
 #dev-python/pyside2                  PYTHON_TARGETS: python3_11
 #dev-python/shiboken2                PYTHON_TARGETS: python3_11
 
-# dev-python/QtPy.
+# dev-python/qtpy.
 # Such package is a small abstraction layer for PyQt5/PySide2 (Qt5)
 # and PyQt6/PySide6 (Qt6). It is useful for fast prototyping. NOTE:
 # on my installation, the 'pyside2' support is disabled (see above);
 # if you need it, enable the 'pyside2' use flag in './00-allpkgs.use'
-# and the above & following lines (PySide2 forces Python-3.11 on QtPy
+# plus the above & following lines (PySide2 forces Python-3.11 on QtPy
 # and requires Python-3.11 support on lot of dev-python/* packages).
-#dev-python/QtPy                     PYTHON_TARGETS: -* python3_11
+#dev-python/qtpy                     PYTHON_TARGETS: -* python3_11
 #dev-python/backports-tarfile        PYTHON_TARGETS: python3_11
 #dev-python/dbus-python              PYTHON_TARGETS: python3_11
 #dev-python/flit-core                PYTHON_TARGETS: python3_11
@@ -82,13 +82,13 @@
 #dev-python/more-itertools           PYTHON_TARGETS: python3_11
 #dev-python/packaging                PYTHON_TARGETS: python3_11
 #dev-python/platformdirs             PYTHON_TARGETS: python3_11
-#dev-python/PyQt-builder             PYTHON_TARGETS: python3_11
-#dev-python/PyQt5                    PYTHON_TARGETS: python3_11
-#dev-python/PyQt5-sip                PYTHON_TARGETS: python3_11
-#dev-python/PyQt6                    PYTHON_TARGETS: python3_11
-#dev-python/PyQt6-sip                PYTHON_TARGETS: python3_11
-#dev-python/PyQt6-WebEngine          PYTHON_TARGETS: python3_11
-#dev-python/PyQtWebEngine            PYTHON_TARGETS: python3_11
+#dev-python/pyqt-builder             PYTHON_TARGETS: python3_11
+#dev-python/pyqt5                    PYTHON_TARGETS: python3_11
+#dev-python/pyqt5-sip                PYTHON_TARGETS: python3_11
+#dev-python/pyqt6                    PYTHON_TARGETS: python3_11
+#dev-python/pyqt6-sip                PYTHON_TARGETS: python3_11
+#dev-python/pyqt6-webengine          PYTHON_TARGETS: python3_11
+#dev-python/pyqtwebengine            PYTHON_TARGETS: python3_11
 #dev-python/pyside6                  PYTHON_TARGETS: python3_11
 #dev-python/setuptools               PYTHON_TARGETS: python3_11
 #dev-python/setuptools-scm           PYTHON_TARGETS: python3_11
