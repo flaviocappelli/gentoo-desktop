@@ -1,5 +1,5 @@
---- /usr/share/applications/thunderbird.desktop	2024-10-07 05:14:05.681447863 +0200
-+++ ./thunderbird.desktop	2024-10-07 05:17:55.500659538 +0200
+--- /usr/share/applications/thunderbird-esr.desktop	2024-11-29 22:19:21.198330911 +0100
++++ ./thunderbird-esr.desktop	2024-11-29 22:21:31.114766804 +0100
 @@ -1,17 +1,20 @@
  [Desktop Entry]
 -Name=Mozilla Thunderbird
