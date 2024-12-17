@@ -56,6 +56,7 @@ app-portage/portpeek
 app-shells/bash-completion
 app-text/aha
 app-text/calibre
+app-text/dos2unix
 app-text/foliate
 app-text/kchmviewer
 app-text/pdfarranger
@@ -70,7 +71,6 @@ dev-debug/ltrace
 dev-debug/strace
 dev-debug/valgrind
 dev-games/godot
-dev-libs/libclc
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
 dev-python/pip
@@ -99,6 +99,7 @@ dev-util/clinfo
 dev-util/cppcheck
 dev-util/cutter
 dev-util/debugedit
+dev-util/diffstat
 dev-util/diffuse
 dev-util/heaptrack
 dev-util/hip
@@ -117,6 +118,7 @@ dev-vcs/git-flow
 dev-vcs/gitqlient
 dev-vcs/mercurial
 dev-vcs/qgit
+dev-vcs/repo
 dev-vcs/subversion
 games-board/gnome-chess
 games-board/gnuchess
@@ -169,6 +171,7 @@ kde-misc/kweather
 kde-misc/markdownpart
 kde-plasma/plasma-meta
 kde-plasma/print-manager
+llvm-core/libclc
 mail-client/s-nail
 mail-client/thunderbird
 mail-mta/opensmtpd
@@ -184,6 +187,7 @@ media-gfx/hugin
 media-gfx/inkscape
 media-gfx/kgraphviewer
 media-gfx/nomacs
+media-gfx/openscad
 media-gfx/povray
 media-gfx/viewnior
 media-gfx/xsane
@@ -267,6 +271,7 @@ sci-mathematics/octave
 sci-mathematics/wxmaxima
 sys-apps/cpuid
 sys-apps/dmidecode
+sys-apps/dtc
 sys-apps/ethtool
 sys-apps/fwupd
 sys-apps/gptfdisk

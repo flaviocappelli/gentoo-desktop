@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied from the 'gentoo' repo, updated to latest version, revert to gtk2.
+# Copied from the 'gentoo' repo, revert to gtk2.
 
 EAPI=8
 
@@ -10,7 +10,7 @@ inherit toolchain-funcs xdg
 
 DESCRIPTION="A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files"
 HOMEPAGE="http://gtkwave.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://downloads.sourceforge.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"

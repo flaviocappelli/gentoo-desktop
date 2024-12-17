@@ -448,7 +448,17 @@ media-fonts/source-han-sans         l10n_zh-CN l10n_zh-TW # Add Chinese China/Ta
 ## this is a bug, ignore it and press "F1" to see if the local help works (it should be displayed in the default browser).
 ## Note also that 'gnome-base/gvfs' is not required to have a working local copy of the gimp help (at least on Gentoo).
 
+media-gfx/freecad                   addonmgr              # Build the addon manager module for automatic handling of 3rd party addons.
+##media-gfx/freecad                 cam                   # Build the CAM module and workbench (for CNC machines).
+##media-gfx/freecad                 designer              # Build the Qt designer plugin (so FreeCAD widgets can be used from within designer).
+##media-gfx/freecad                 fem                   # Build the FEM module and workbench which provides Finite Element Analysis (FEA) workflows.
 media-gfx/freecad                   gui                   # Build the Qt GUI frontend (required).
+##media-gfx/freecad                 netgen                # Build support for the netgen mesher through media-gfx/netgen (see https://ngsolve.org/).
+media-gfx/freecad                   openscad              # Build the OpenSCAD module for interoperability with OpenSCAD.
+##media-gfx/freecad                 pcl points            # Build the points module and workbench and use external sci-libs/pcl for point clouds support.
+media-gfx/freecad                   robot                 # Build the robot module and workbench for studying robot movements.
+##media-gfx/freecad                 spacenav              # Add support for space navigator devices through dev-libs/libspnav.
+media-gfx/freecad                   surface               # Build the surface module and workbench.
 media-gfx/gimp                      aalib                 # Add support for media-libs/aalib (ASCII-Graphics Library).
 media-gfx/gimp                      jpegxl mng xpm        # Add support for graphics formats JPEGXL, MNG, XPM (not enabled by default).
 media-gfx/gimp                      vector-icons          # Enable support for vector icons (experimental).

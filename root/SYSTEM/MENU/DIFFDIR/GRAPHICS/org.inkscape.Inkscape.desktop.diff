@@ -1,6 +1,6 @@
---- /usr/share/applications/org.inkscape.Inkscape.desktop	2024-03-17 14:30:37.111397798 +0100
-+++ ./org.inkscape.Inkscape.desktop	2024-03-17 21:22:45.673154451 +0100
-@@ -2,26 +2,14 @@
+--- /usr/share/applications/org.inkscape.Inkscape.desktop	2024-12-17 09:08:59.818028247 +0100
++++ ./org.inkscape.Inkscape.desktop	2024-12-17 09:14:02.963950070 +0100
+@@ -2,20 +2,14 @@
  Name=Inkscape
  Name[it]=Inkscape
  GenericName=Vector Graphics Editor
@@ -20,12 +20,6 @@
 +Keywords[it]=immagine;disegno;illustrazione;
  StartupNotify=true
 -Actions=new-window;
--
--[X-Drawing Shortcut Group]
--Name=New Drawing
--Name[it]=Nuovo disegno
--Exec=inkscape
--TargetEnvironment=Unity
 -
 -[Desktop Action new-window]
 -Name=Open a New Window

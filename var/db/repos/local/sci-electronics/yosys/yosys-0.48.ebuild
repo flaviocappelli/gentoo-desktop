@@ -13,7 +13,7 @@ DESCRIPTION="Framework for Verilog RTL synthesis"
 HOMEPAGE="http://www.clifford.at/yosys/"
 
 EGIT_REPO_URI=https://github.com/YosysHQ/yosys
-EGIT_COMMIT=$PV
+EGIT_COMMIT=v$PV
 
 LICENSE="ISC"
 SLOT="0"
@@ -24,7 +24,7 @@ PATCHES=( $FILESDIR/$PN-makefile.patch )
 DEPEND="dev-vcs/git
 	media-gfx/xdot
 	dev-libs/boost
-	sys-devel/clang"
+	llvm-core/clang"
 
 src_compile()
 {

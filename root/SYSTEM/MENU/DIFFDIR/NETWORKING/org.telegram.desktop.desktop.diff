@@ -1,9 +1,8 @@
---- /usr/share/applications/org.telegram.desktop.desktop	2024-10-11 09:18:14.085518725 +0200
-+++ ./org.telegram.desktop.desktop	2024-10-11 09:22:38.019061906 +0200
+--- /usr/share/applications/org.telegram.desktop.desktop	2024-12-10 18:18:59.804581646 +0100
++++ ./org.telegram.desktop.desktop	2024-12-10 18:31:52.944663859 +0100
 @@ -1,13 +1,16 @@
  [Desktop Entry]
--Name=Telegram Desktop
-+Name=Telegram
+ Name=Telegram
 +GenericName=Instant Messaging
 +GenericName[it]=Messaggistica istantanea
  TryExec=telegram-desktop
