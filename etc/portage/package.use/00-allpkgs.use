@@ -448,6 +448,7 @@ media-fonts/source-han-sans         l10n_zh-CN l10n_zh-TW # Add Chinese China/Ta
 ## this is a bug, ignore it and press "F1" to see if the local help works (it should be displayed in the default browser).
 ## Note also that 'gnome-base/gvfs' is not required to have a working local copy of the gimp help (at least on Gentoo).
 
+media-gfx/darktable                 opencl                # Enable OpenCL support (computation on GPU).
 media-gfx/freecad                   addonmgr              # Build the addon manager module for automatic handling of 3rd party addons.
 ##media-gfx/freecad                 cam                   # Build the CAM module and workbench (for CNC machines).
 ##media-gfx/freecad                 designer              # Build the Qt designer plugin (so FreeCAD widgets can be used from within designer).
@@ -478,6 +479,7 @@ media-gfx/inkscape                  cdr inkjar            # Enable support for C
 media-gfx/inkscape                  visio wpg             # Enable support for Microsoft Visio diagrams and WordPerfect graphics.
 media-gfx/krita                     color-management      # Enable color management via media-libs/opencolorio.
 media-gfx/krita                     qtmedia               # Enable sound support for animations.
+media-gfx/openscad                  gui                   # Build the GUI frontend (required).
 ##media-gfx/xsane                   gimp                  # Build xsane plugin for GIMP.
 
 media-libs/avidemux-plugins         aften                 # Enable A/52 (AC-3) audio encoder support.
