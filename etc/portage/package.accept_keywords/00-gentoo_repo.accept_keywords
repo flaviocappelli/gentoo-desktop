@@ -12,8 +12,8 @@ app-admin/spectre-meltdown-checker::gentoo **
 
 # Other Qt5 packages in testing useful for development. For Qt5->Qt6 package
 # migration, see https://wiki.gentoo.org/wiki/Project:Qt/Qt6_migration_notes
-~dev-qt/qtplugininfo-5.15.14::gentoo
-~dev-qt/qtserialbus-5.15.14::gentoo
+~dev-qt/qtplugininfo-5.15.16::gentoo
+~dev-qt/qtserialbus-5.15.16::gentoo
 
 # Qt Creator: not emerged (at the moment I'm using
 # the version provided with the Qt Maintenance Tool).
@@ -27,7 +27,6 @@ app-editors/wxhexeditor::gentoo
 app-text/zeal::gentoo
 dev-debug/kdbg::gentoo
 dev-util/heaptrack::gentoo
-dev-util/meld::gentoo
 dev-util/seer::gentoo
 
 # PipeWire Graph Qt GUI Interface.
@@ -100,13 +99,12 @@ net-analyzer/netdata::gentoo
 # https://github.com/vincentdephily/emlop
 # https://www.reddit.com/r/Gentoo/comments/159727l
 # Most useful command: 'emlop s -H -gm -st'.
-app-portage/emlop::gentoo
+#app-portage/emlop::gentoo
 
 # Manage monitor settings such as brightness, color levels, input source (any
 # setting that can be changed by pressing monitor's buttons).  NOTE: does not
 # support laptop displays (which are controlled using a special API, not I2C).
 app-misc/ddcui::gentoo
-app-misc/ddcutil::gentoo
 
 # Utility that shows and sets processor power related values (stable version
 # is too old). Useful to check the acpi-cpufreq / amd-pstate driver status.

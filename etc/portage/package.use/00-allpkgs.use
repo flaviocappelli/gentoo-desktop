@@ -270,6 +270,7 @@ dev-python/pyside6                  speech                # Required by dev-pyth
 dev-python/pyside6                  sql                   # Required by dev-python/qtpy[pyside6 + sql].
 dev-python/pyside6                  svg                   # Required by dev-python/qtpy[pyside6 + svg].
 dev-python/pyside6                  testlib               # Required by dev-python/qtpy[pyside6 + testlib].
+dev-python/pyside6                  uitools               # Required by media-gfx/freecad.
 dev-python/pyside6                  webchannel            # Required by dev-python/qtpy[pyside6 + webchannel].
 dev-python/pyside6                  webengine             # Required by dev-python/qtpy[pyside6 + webengine].
 dev-python/pyside6                  websockets            # Required by dev-python/qtpy[pyside6 + websockets].
