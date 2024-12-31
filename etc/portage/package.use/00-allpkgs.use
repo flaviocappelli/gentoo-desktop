@@ -544,6 +544,7 @@ media-sound/kid3                    kde                   # Add KDE/PLASMA suppo
 ##media-sound/pulseaudio            daemon                # Use the old PulseAudio daemon instead of Pipewire. *** NOT RECOMMENDED ***
 ##media-sound/pulseaudio            ofono-headset         # Build the oFono HFP backend for Bluez 5 (relevant only for the old PulseAudio daemon, not for Pipewire).
 ##media-sound/strawberry            mtp                   # Enable support for Media Transfer Protocol (to transfer music to MTP compatible devices). Pull in gnome-base/gvfs.
+media-sound/strawberry              kde                   # Enable KDE (KGlobalAccel) shortcuts.
 media-sound/timidity++              -gtk -ncurses -X      # Graphic and NCurses UI not required (used only as MIDI sequencer).
 
 ## KODI is an open source home theater application. Currently, it cannot be built for both X11 and wayland, so
