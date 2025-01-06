@@ -32,12 +32,6 @@ dev-util/seer::gentoo
 # PipeWire Graph Qt GUI Interface.
 media-sound/qpwgraph::gentoo
 
-# Package media-gfx/openscad-2021.01-r5 is broken (it
-# does not build). See https://bugs.gentoo.org/946112
-~media-gfx/openscad-20241114::gentoo
-~sci-mathematics/clipper2-1.4.0::gentoo
-~sci-mathematics/manifold-3.0.0_pre20241115::gentoo
-
 # IM: Zoom, Skype, Telegram Desktop (bin version).
 # NOTE: Microsoft has discontinued the Debian Skype packages
 # (on which the ebuild is based) and the related repository,
