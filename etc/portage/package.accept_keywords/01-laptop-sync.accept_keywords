@@ -7,5 +7,5 @@ mail-client/thunderbird           -*
 
 # Allows (restoring 'keywords') a specific version
 # of the above packages (from Gentoo or local repo).
-~app-editors/vscode-1.96.2        **
-~mail-client/thunderbird-128.5.0  **
+~app-editors/vscode-1.96.4        **
+~mail-client/thunderbird-128.6.0  **

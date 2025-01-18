@@ -4,3 +4,12 @@
 
 # Mask Python-3.13 until truly required.
 dev-lang/python:3.13
+
+# VirtualBox 7.1 has still some issues (see for example
+# https://forums.virtualbox.org/viewtopic.php?t=110513).
+# I prefere to delay the update (at least until 7.1.6).
+app-emulation/virtualbox:0/7.1
+app-emulation/virtualbox-additions:0/7.1
+app-emulation/virtualbox-extpack-oracle:0/7.1
+app-emulation/virtualbox-guest-additions:0/7.1
+app-emulation/virtualbox-modules:0/7.1

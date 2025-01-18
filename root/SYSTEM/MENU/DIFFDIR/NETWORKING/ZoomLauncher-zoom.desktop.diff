@@ -1,5 +1,5 @@
---- /usr/share/applications/zoom.desktop	2024-11-22 21:36:14.348580340 +0100
-+++ ./zoom.desktop	2024-11-22 21:37:23.554932697 +0100
+--- /usr/share/applications/ZoomLauncher-zoom.desktop	2025-01-18 18:12:36.173645588 +0100
++++ ./ZoomLauncher-zoom.desktop	2025-01-18 18:14:00.960890139 +0100
 @@ -1,8 +1,11 @@
  [Desktop Entry]
  Name=Zoom

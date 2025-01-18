@@ -115,7 +115,7 @@ dev-util/vulkan-tools
 dev-vcs/cvs
 dev-vcs/git
 dev-vcs/git-flow
-dev-vcs/gitqlient
+dev-vcs/gitahead
 dev-vcs/mercurial
 dev-vcs/qgit
 dev-vcs/repo

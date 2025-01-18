@@ -38,8 +38,9 @@ app-crypt/gocryptfs::gentoo
 #dev-util/gammaray::local
 #dev-util/kdstatemachineeditor::gentoo
 
-# Multi-platform Git client originally forked from QGit.
-dev-vcs/gitqlient::local
+# Cross-platform Git client (no longer developed but still maintained
+# and bug fixed). Gittyup is a continuation of GitAhead (no ebuild yet).
+dev-vcs/gitahead::local
 
 # Plugin for OBS Studio, useful to remove or blur the background
 # of captured images and videos (based on a neural network). See:

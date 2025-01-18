@@ -729,6 +729,7 @@ sci-libs/armadillo                  blas lapack           # Add support for virt
 sci-libs/armadillo                  superlu               # Use SuperLU for sparse linear equation (sci-libs/superlu).
 sci-libs/cgnslib                    hdf5                  # Required by sci-libs/vtk.
 sci-libs/hdf5                       -threads              # Thread support is incompatible with flag "fortran" (see the ebuild).
+sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk.
 sci-libs/hdf5                       fortran               # Required by media-gfx/freecad.
 sci-libs/lapack                     lapacke               # Required by virtual/lapacke.
 sci-libs/netcdf                     -dap                  # Required by sci-misc/nco[-dap].
