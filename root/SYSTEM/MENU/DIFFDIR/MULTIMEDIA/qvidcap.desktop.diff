@@ -1,0 +1,8 @@
+--- /usr/share/applications/qvidcap.desktop	2025-01-19 14:27:37.257768905 +0100
++++ ./qvidcap.desktop	2025-01-19 14:35:24.506011247 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Qt V4L2 video capture utility
+ Exec=qvidcap
+ Icon=qvidcap

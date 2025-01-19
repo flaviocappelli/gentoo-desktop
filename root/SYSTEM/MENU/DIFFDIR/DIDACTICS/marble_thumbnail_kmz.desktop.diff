@@ -1,0 +1,8 @@
+--- /usr/share/applications/marble_thumbnail_kmz.desktop	2025-01-19 13:21:01.731022494 +0100
++++ ./marble_thumbnail_kmz.desktop	2025-01-19 14:01:49.909103324 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=KML Geographic Compressed Data
+ Name[it]=Dati geografici compressi KML
+ Type=Service

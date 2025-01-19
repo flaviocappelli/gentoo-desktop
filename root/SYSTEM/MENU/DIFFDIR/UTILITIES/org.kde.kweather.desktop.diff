@@ -1,0 +1,12 @@
+--- /usr/share/applications/org.kde.kweather.desktop	2025-01-19 14:10:50.153705051 +0100
++++ ./org.kde.kweather.desktop	2025-01-19 14:21:44.029328800 +0100
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+-Name=Weather
+-Name[it]=Meteo
++Name=kweather
++GenericName=Weather Data
++GenericName[it]=Informazioni meteo
+ Exec=kweather
+ Icon=org.kde.kweather
+ Terminal=false

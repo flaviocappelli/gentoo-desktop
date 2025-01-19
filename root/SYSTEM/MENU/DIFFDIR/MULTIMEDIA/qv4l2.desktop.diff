@@ -1,0 +1,15 @@
+--- /usr/share/applications/qv4l2.desktop	2025-01-19 14:27:37.238769162 +0100
++++ ./qv4l2.desktop	2025-01-19 14:39:06.734570666 +0100
+@@ -1,8 +1,10 @@
+ [Desktop Entry]
+-Name=Qt V4L2 test Utility
++Name=qv4l2
++GenericName=Test of V4L2 devices
++GenericName[it]=Test dei dispositivi V4L2
+ Exec=qv4l2
+ Icon=qv4l2
+ Terminal=false
+ Type=Application
+ Categories=AudioVideo;
+-Keywords=video;grabber;V4L;
++Keywords=video;webcam;camera;grabber;V4L;

@@ -3,8 +3,8 @@
 @@ -1,12 +1,13 @@
  [Desktop Entry]
  Name=PDF Arranger
-+GenericName=Perform some operations on PDF documents
-+GenericName[it]=Effettua alcune operazioni sui documenti PDF
++GenericName=Perform operations on PDF documents
++GenericName[it]=Effettua operazioni sui documenti PDF
  Exec=pdfarranger %U
  Icon=com.github.jeromerobert.pdfarranger
  Terminal=false

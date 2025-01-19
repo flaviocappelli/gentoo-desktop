@@ -1,0 +1,8 @@
+--- /usr/share/applications/marble_thumbnail_osm.desktop	2025-01-19 14:04:42.091051070 +0100
++++ ./marble_thumbnail_osm.desktop	2025-01-19 14:05:20.545592330 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=OSM Data
+ Name[it]=Dati OSM
+ Type=Service
