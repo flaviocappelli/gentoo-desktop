@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied from the 'gentoo' repo, revert to gtk2.
+# Copied from the 'gentoo' repo, revert to gtk2 (currently
+# the gtk3+ version has issues under PLASMA6 with wayland).
 
 EAPI=8
 
