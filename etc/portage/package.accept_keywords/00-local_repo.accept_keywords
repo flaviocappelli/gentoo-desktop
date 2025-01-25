@@ -26,7 +26,7 @@ app-benchmarks/kdiskmark::local
 
 # SiriKali (from holgersson overlay) and GoCryptFS (from portage).
 app-crypt/sirikali::local
-app-crypt/gocryptfs::gentoo
+=app-crypt/gocryptfs-2.4*::gentoo
 
 # Other packages useful for development. NOTE: kdstatemachineeditor from
 # portage (optionally required by dev-util/gammaray) is at the moment not
