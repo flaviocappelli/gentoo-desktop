@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.kde.marble.behaim.desktop	2025-02-02 00:13:45.767141671 +0100
++++ ./org.kde.marble.behaim.desktop	2025-02-02 00:20:55.824866860 +0100
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Marble Behaim
+ Name[it]=Behaim di Marble
+ Exec=marble-behaim
