@@ -7,6 +7,7 @@
 # Note that, by default, packages in such repos are also masked
 # (see /etc/portage/package.mask/00-other_repos.mask).
 
+*/*::dev1990-overlay    -*
 */*::gentoo-zh          -*
 */*::guru               -*
 */*::holgersson-overlay -*
@@ -19,6 +20,7 @@
 
 # Enable packages from above repos.
 
+# --- EBUILDS FROM DEV1990-OVERLAY -----------------------------
 # --- EBUILDS FROM GENTOO-ZH -----------------------------------
 # --- EBUILDS FROM GURU ----------------------------------------
 # --- EBUILDS FROM HOLGERSSON-OVERLAY --------------------------

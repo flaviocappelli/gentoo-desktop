@@ -177,9 +177,8 @@ dev-util/hipcc:0/6.1::gentoo
 dev-util/hip:0/6.1::gentoo
 #dev-perl/URI-Encode::gentoo
 
-# Another ROCM OpenCL runtime dependency: portage has currently
-# only one version (i.e. 6.1.2) but it works with all ROCM slots.
-dev-build/rocm-cmake::gentoo
+# Another ROCM OpenCL runtime dependency.
+dev-build/rocm-cmake:0/6.1::gentoo
 
 # ROCIMINFO.
 dev-util/rocminfo:0/6.1::gentoo

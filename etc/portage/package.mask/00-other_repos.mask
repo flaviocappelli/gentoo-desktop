@@ -7,6 +7,7 @@
 # Note that, by default, packages in such repos are also disabled (see
 # /etc/portage/package.accept_keywords/00-other_repos.accept_keywords).
 
+*/*::dev1990-overlay
 */*::gentoo-zh
 */*::guru
 */*::holgersson-overlay

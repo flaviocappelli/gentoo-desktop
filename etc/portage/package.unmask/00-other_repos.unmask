@@ -4,12 +4,13 @@
 # "local") are masked (see /etc/portage/package.mask/00-other_repos.mask).
 # Packages emerged from such repos (if any) must be unmasked here.
 
-# --- EBUILDS FROM GENTOO-ZH ----------------------------
-# --- EBUILDS FROM GURU ---------------------------------
-# --- EBUILDS FROM HOLGERSSON-OVERLAY -------------------
-# --- EBUILDS FROM PF4PUBLIC ----------------------------
-# --- EBUILDS FROM PG_OVERLAY ---------------------------
-# --- EBUILDS FROM PHACKERLAY ---------------------------
-# --- EBUILDS FROM SALFTER ------------------------------
-# --- EBUILDS FROM SUPERTUX88 ---------------------------
-# --- EBUILDS FROM VOWSTAR ------------------------------
+# --- EBUILDS FROM DEV1990-OVERLAY -----------------------------
+# --- EBUILDS FROM GENTOO-ZH -----------------------------------
+# --- EBUILDS FROM GURU ----------------------------------------
+# --- EBUILDS FROM HOLGERSSON-OVERLAY --------------------------
+# --- EBUILDS FROM PF4PUBLIC -----------------------------------
+# --- EBUILDS FROM PG_OVERLAY ----------------------------------
+# --- EBUILDS FROM PHACKERLAY ----------------------------------
+# --- EBUILDS FROM SALFTER -------------------------------------
+# --- EBUILDS FROM SUPERTUX88 ----------------------------------
+# --- EBUILDS FROM VOWSTAR -------------------------------------

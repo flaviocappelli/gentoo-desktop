@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied from the 'gentoo' repo, revert to gtk2 (currently
-# the gtk3+ version has issues under PLASMA6 with wayland).
+# Copied from the 'gentoo' repo, revert to gtk2: currently
+# the gtk3 version has issues under PLASMA6 with wayland
+# (see https://github.com/gtkwave/gtkwave/issues/335).
 
 EAPI=8
 

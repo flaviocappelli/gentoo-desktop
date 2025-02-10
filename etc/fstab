@@ -20,16 +20,19 @@
 # (XFS does not support such option, the filesystem will be mounted ro).
 
 # /dev/nvme0n1p3 (label GENTOO).
-UUID=02de765f-423e-49af-9f21-121ad8b86da3   /              ext4   noatime,errors=remount-ro       0  1
+UUID=02de765f-423e-49af-9f21-121ad8b86da3   /                 ext4   noatime,errors=remount-ro   0  1
 
 # /dev/nvme0n1p2 (label BOOT).
-UUID=7a22b2e1-f58d-4e59-8379-65ca0e98428f   /boot          ext4   noatime,errors=remount-ro       0  2
+UUID=7a22b2e1-f58d-4e59-8379-65ca0e98428f   /boot             ext4   noatime,errors=remount-ro   0  2
 
 # /dev/nvme0n1p1 (label ESP => EFI).
-UUID=062E-2D13                              /boot/efi      vfat   noatime,umask=0077              0  2
+UUID=062E-2D13                              /boot/efi         vfat   noatime,umask=0077          0  2
 
 # /dev/nvme0n1p4 (label VARDATA).
-UUID=4a264017-bd29-4dd8-a944-e36245a4fcad   /mnt/VARDATA   xfs    noatime                         0  2
+UUID=4a264017-bd29-4dd8-a944-e36245a4fcad   /mnt/VARDATA      xfs    noatime                     0  2
+
+# /dev/nvme0n1p5 (label OLLAMA).
+UUID=c565a740-d4bd-4d9d-a42a-d6cf5c3f2222   /var/lib/ollama   xfs    noatime                     0  2
 
 # TMP filesystems. NOTES:
 #  - by default, systemd mount /tmp as tmpfs if not specified in /etc/fstab (to

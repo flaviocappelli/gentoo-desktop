@@ -36,6 +36,7 @@ app-eselect/eselect-repository
 app-forensics/rkhunter
 app-misc/ddcui
 app-misc/fastfetch
+app-misc/ollama
 app-misc/openrgb
 app-misc/radeontop
 app-misc/resolve-march-native

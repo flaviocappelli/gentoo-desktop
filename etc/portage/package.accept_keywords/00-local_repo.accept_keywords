@@ -73,3 +73,11 @@ sci-electronics/qucs-s::local
 
 # Ungoogled-chromium (binary version).
 www-client/ungoogled-chromium-bin::local
+
+# Get up and running with Llama 3, Mistral, Gemma,
+# DeepSeek-R1 and other language models. See docs in
+# https://github.com/ollama/ollama, https://itsfoss.com/ollama/
+# https://itsfoss.com/install-deepseek-r1-locally-linux/
+acct-group/ollama::local
+acct-user/ollama::local
+app-misc/ollama::local
