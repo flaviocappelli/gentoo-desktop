@@ -680,6 +680,7 @@ net-vpn/strongswan           strongswan_plugins_ipseckey  # Provides authenticat
 
 net-wireless/wpa_supplicant         ap                    # Add support for access point mode.
 net-wireless/wpa_supplicant         p2p                   # Required by gnome-extra/gnome-network-displays.
+net-wireless/wpa_supplicant         -qt6                  # GUI frontend not required with KDE/PLASMA and networkmanager.
 net-wireless/wpa_supplicant         tkip                  # Add support for WPA TKIP (deprecated in 2009 due to security flaws, but might still be required).
 
 sci-electronics/gtkwave             fasttree tcl          # Enables Fast SST Tree code and support for the Tcl language.

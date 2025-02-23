@@ -75,7 +75,6 @@ dev-games/godot
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
 dev-python/pip
-dev-qt/assistant
 dev-qt/linguist
 dev-qt/qt-docs:5
 dev-qt/qt-docs:6
@@ -83,7 +82,6 @@ dev-qt/qt3d:5
 dev-qt/qt3d:6
 dev-qt/qtcharts:5
 dev-qt/qtcharts:6
-dev-qt/qtlocation:5
 dev-qt/qtlocation:6
 dev-qt/qtscxml:5
 dev-qt/qtscxml:6
