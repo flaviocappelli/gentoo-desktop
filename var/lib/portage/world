@@ -71,7 +71,6 @@ dev-debug/kdbg
 dev-debug/ltrace
 dev-debug/strace
 dev-debug/valgrind
-dev-games/godot
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
 dev-python/pip

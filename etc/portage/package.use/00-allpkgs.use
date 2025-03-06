@@ -66,7 +66,7 @@ app-emulation/qemu                  virtfs                # Enable VirtFS via vi
 ##app-emulation/qemu                virgl                 # Enable experimental Virgil 3D (virtual software GPU).
 app-emulation/vice                  -sdl                  # Support for Simple Direct Layer not required with flag 'gtk' enabled (from CLD).
 app-emulation/virt-manager          gui                   # Build the GUI frontend (required).
-app-emulation/virtualbox            gui qt5               # Build the GUI frontend (required; the used flag depends on the app-emulation/virtualbox version).
+app-emulation/virtualbox            gui                   # Build the GUI frontend (VirtualBox-7.x).
 app-emulation/wine-proton           -gstreamer            # Drop unnecessary dependency (gstreamer should be used only for streaming) (from CLD).
 ##app-emulation/wine-proton         dos                   # Pull in games-emulation/dosbox to run DOS applications.
 ##app-emulation/wine-proton         odbc                  # Add ODBC Support (Open DataBase Connectivity).
@@ -168,9 +168,7 @@ dev-python/pyqt5                    help                  # Required by dev-pyth
 dev-python/pyqt5                    multimedia            # Required by dev-python/qtpy[pyqt5 + multimedia].
 dev-python/pyqt5                    network               # Required by dev-python/qtpy[pyqt5 + network].
 dev-python/pyqt5                    opengl                # Required by dev-python/qtpy[pyqt5 + opengl].
-dev-python/pyqt5                    positioning           # Required by dev-python/qtpy[pyqt5 + positioning].
 dev-python/pyqt5                    printsupport          # Required by dev-python/qtpy[pyqt5 + printsupport].
-dev-python/pyqt5                    sensors               # Required by dev-python/qtpy[pyqt5 + sensors].
 dev-python/pyqt5                    serialport            # Required by dev-python/qtpy[pyqt5 + serialport].
 dev-python/pyqt5                    speech                # Required by dev-python/qtpy[pyqt5 + speech].
 dev-python/pyqt5                    sql                   # Required by dev-python/qtpy[pyqt5 + sql].
@@ -356,9 +354,10 @@ gnome-base/gvfs                     mtp                   # Enable support for M
 
 gnome-extra/zenity                  -webkit               # Drop unnecessary dependency (from CLD).
 
-kde-apps/akonadi                    -designer -mysql -xml # Drop unnecessary dependency (from CLD).
-kde-apps/akonadi                    -postgres sqlite      # See https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1903060.html
+kde-apps/akonadi                    -designer -xml        # Drop unnecessary dependency (from CLD).
 kde-apps/akonadi                    tools                 # Install tools for developers and testing.
+kde-apps/akonadi-config             -mysql -postgres      # See https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1903060.html
+kde-apps/akonadi-config             sqlite                # See https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1903060.html
 ##kde-apps/gwenview                 fits                  # Enable support for NASA's sci-libs/cfitsio library.
 ##kde-apps/k3b                      sox                   # Add support for Sound eXchange (SoX).
 kde-apps/kalarm                     -pim                  # Disable PIM integration (I don't need it).

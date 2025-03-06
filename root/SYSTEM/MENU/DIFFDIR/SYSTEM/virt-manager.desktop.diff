@@ -1,9 +1,9 @@
---- /usr/share/applications/virt-manager.desktop	2024-03-17 14:30:37.042398463 +0100
-+++ ./virt-manager.desktop	2024-03-17 19:34:16.958596410 +0100
-@@ -1,9 +1,10 @@
+--- /usr/share/applications/virt-manager.desktop	2025-03-05 01:17:29.241435481 +0100
++++ ./virt-manager.desktop	2025-03-05 01:21:43.814465861 +0100
+@@ -1,10 +1,10 @@
  [Desktop Entry]
 -Name=Virtual Machine Manager
--Name[it]=Virtual Machine Manager
+-Name[it]=Gestore macchine virtuali
 +Name=Virt-Manager
 +GenericName=KVM Virtual Machines Manager
 +GenericName[it]=Gestione macchine virtuali KVM
@@ -13,4 +13,5 @@
  Type=Application
  Categories=System;
 -Keywords=vmm;
+-Keywords[it]=vmm;
 +Keywords=vmm;qemu;

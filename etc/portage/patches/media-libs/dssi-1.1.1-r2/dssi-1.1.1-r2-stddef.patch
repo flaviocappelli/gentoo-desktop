@@ -1,0 +1,10 @@
+--- a/jack-dssi-host/jack-dssi-host.c	2025-02-26 13:49:34.309682510 +0100
++++ b/jack-dssi-host/jack-dssi-host.c	2025-02-26 13:51:41.302379453 +0100
+@@ -36,6 +36,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <stddef.h>
+ #include <ladspa.h>
+ #include "dssi.h"
+ #include <alsa/asoundlib.h>

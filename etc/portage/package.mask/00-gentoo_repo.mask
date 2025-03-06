@@ -70,3 +70,7 @@ dev-lang/rust
 
 # Ensures Firefox ESR is installed (i.e. mask the bleeding-edge versions).
 www-client/firefox:rapid
+
+# Python < 3.12 is no longer required. This blocks old versions of Python
+# (and all packages still in portage that depend on old versions of Python).
+<dev-lang/python-3.12.0

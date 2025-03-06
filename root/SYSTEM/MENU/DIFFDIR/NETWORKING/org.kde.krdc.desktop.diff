@@ -1,5 +1,5 @@
---- /usr/share/applications/org.kde.krdc.desktop	2024-03-17 14:30:37.062398270 +0100
-+++ ./org.kde.krdc.desktop	2024-03-17 20:23:00.571740431 +0100
+--- /usr/share/applications/org.kde.krdc.desktop	2025-03-05 23:55:26.843271976 +0100
++++ ./org.kde.krdc.desktop	2025-03-05 23:56:54.889668024 +0100
 @@ -2,12 +2,12 @@
  Name=KRDC
  Name[it]=KRDC
@@ -10,7 +10,7 @@
  Icon=krdc
  Terminal=false
  Type=Application
- MimeType=x-scheme-handler/vnc;x-scheme-handler/rdp
+ MimeType=application/x-krdc;x-scheme-handler/rdp;x-scheme-handler/vnc;
 -Categories=Qt;KDE;Network;RemoteAccess;
 +Categories=Network;
  StartupWMClass=krdc

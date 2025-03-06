@@ -54,9 +54,10 @@ net-im/telegram-desktop-bin::gentoo
 ~media-sound/dcaenc-2::gentoo
 
 # Godot Engine.
-dev-games/godot::gentoo
-dev-games/recastnavigation::gentoo
-net-libs/wslay::gentoo
+#dev-games/godot::gentoo
+#dev-games/recastnavigation::gentoo
+#net-libs/mbedtls::gentoo
+#net-libs/wslay::gentoo
 
 # Xonotic.
 games-fps/xonotic::gentoo

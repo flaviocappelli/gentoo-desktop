@@ -1,21 +1,23 @@
---- a/app/compressfileitemaction.cpp	2024-07-02 05:05:15.000000000 +0200
-+++ b/app/compressfileitemaction.cpp	2024-09-26 13:29:15.379405384 +0200
-@@ -55,6 +55,7 @@
-     QMenu *compressMenu = new QMenu(parentWidget);
+--- a/app/compressfileitemaction.cpp	2025-03-06 00:02:17.016972299 +0100
++++ b/app/compressfileitemaction.cpp	2025-03-06 00:23:53.364565938 +0100
+@@ -58,6 +58,8 @@
  
      compressMenu->addAction(createAction(icon, parentWidget, urlList, QStringLiteral("tar.gz")));
+     actionsToBeDisabledInReadOnlyDir << compressMenu->actions().last();
 +    compressMenu->addAction(createAction(icon, parentWidget, urlList, QStringLiteral("tar.bz2")));
++    actionsToBeDisabledInReadOnlyDir << compressMenu->actions().last();
  
      const QMimeType zipMime = QMimeDatabase().mimeTypeForName(QStringLiteral("application/zip"));
      // Don't offer zip compression if no zip plugin is available.
-@@ -62,6 +63,12 @@
-         compressMenu->addAction(createAction(icon, parentWidget, urlList, QStringLiteral("zip")));
+@@ -66,6 +68,13 @@
+         actionsToBeDisabledInReadOnlyDir << compressMenu->actions().last();
      }
  
 +    const QMimeType sevenZipMime = QMimeDatabase().mimeTypeForName(QStringLiteral("application/x-7z-compressed"));
 +    // Don't offer 7z compression if no 7-zip plugin is available.
 +    if (!m_pluginManager->preferredWritePluginsFor(sevenZipMime).isEmpty()) {
 +        compressMenu->addAction(createAction(icon, parentWidget, urlList, QStringLiteral("7z")));
++        actionsToBeDisabledInReadOnlyDir << compressMenu->actions().last();
 +    }
 +
      compressMenu->addAction(createAction(icon, parentWidget, urlList, QString()));
