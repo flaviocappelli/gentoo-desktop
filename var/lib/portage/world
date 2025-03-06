@@ -219,7 +219,6 @@ net-dns/bind-tools
 net-firewall/firewalld
 net-fs/nfs-utils
 net-ftp/filezilla
-net-im/skypeforlinux
 net-im/telegram-desktop-bin
 net-im/zoom
 net-misc/bridge-utils

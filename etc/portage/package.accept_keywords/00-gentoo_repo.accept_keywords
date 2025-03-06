@@ -32,14 +32,11 @@ dev-util/seer::gentoo
 # PipeWire Graph Qt GUI Interface.
 media-sound/qpwgraph::gentoo
 
-# IM: Zoom, Skype, Telegram Desktop (bin version).
-# NOTE: Microsoft has discontinued the Debian Skype packages
-# (on which the ebuild is based) and the related repository,
-# so there will likely be no more updates of 'skypeforlinux'.
-# Switching to Skype for Web (SfW) is highly recommended. See:
-# https://forums.debian.net/viewtopic.php?t=155419&start=20
+# IM: Zoom and Telegram Desktop (bin version).
+# Microsoft is shutting down Skype in favor of Teams
+# (Skype will be permanently retired on May 5, 2025)
+# so I uninstalled the net-im/skypeforlinux package.
 net-im/zoom::gentoo
-net-im/skypeforlinux::gentoo
 net-im/telegram-desktop-bin::gentoo
 
 # OBS Studio. Seee also
