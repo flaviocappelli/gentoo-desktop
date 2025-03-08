@@ -335,10 +335,12 @@ dev-qt/qtxmlpatterns                qml                   # Build the XmlListMod
 ##dev-util/cutter                   graphviz              # Add graphviz support.
 dev-util/gammaray                   3d                    # Build the Qt3D plugin.
 dev-util/gammaray                   geolocation           # Build the positioning plugin.
-dev-util/gammaray                   printsupport          # Required for widget PDF export support.
+dev-util/gammaray                   qml                   # Add QML support.
 dev-util/gammaray                   script                # Build the script engine debugger plugin.
 dev-util/gammaray                   scxml                 # Build the state machine viewer plugin.
+dev-util/gammaray                   -wayland              # Exclude the wayland compositor inspector plugin (I don't need it).
 dev-util/heaptrack                  gui                   # Build the GUI frontend.
+dev-util/kdstatemachineeditor       gui                   # Build the GUI frontend.
 dev-util/kdevelop                   gdbui                 # Enable GUI for attaching GDB to a running process.
 ##dev-util/kdevelop                 hex                   # Enable hex editor plugin via app-editors/okteta (for the moment such flag is ignored, see the ebuild).
 ##dev-util/kdevelop                 plasma                # Build optional KDE plasma addons.
@@ -693,6 +695,11 @@ sci-electronics/nextpnr             gowin himbaechel      # Pull in tools for Go
 sci-libs/armadillo                  arpack                # Link with sci-libs/arpack libraries for eigen decomposition.
 sci-libs/armadillo                  blas lapack           # Add support for virtual/blas and virtual/lapack numerical libraries.
 sci-libs/armadillo                  superlu               # Use SuperLU for sparse linear equation (sci-libs/superlu).
+##sci-libs/caffe2                   cuda                  # Enable NVidia CUDA support.
+sci-libs/caffe2                     fbgemm                # Enable backends FBGEMM.
+sci-libs/caffe2                     onednn                # Enable backends oneDNN.
+sci-libs/caffe2                     openblas              # Enable backends OpenBLAS.
+sci-libs/caffe2                     rocm                  # Enable ROCm GPU computing support.
 sci-libs/cgnslib                    hdf5                  # Required by sci-libs/vtk.
 sci-libs/hdf5                       -threads              # Thread support is incompatible with flag "fortran" (see the ebuild).
 sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk.

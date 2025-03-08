@@ -35,6 +35,7 @@ app-eselect/eselect-python
 app-eselect/eselect-repository
 app-forensics/rkhunter
 app-misc/ddcui
+app-misc/ellama
 app-misc/fastfetch
 app-misc/ollama
 app-misc/openrgb
@@ -95,10 +96,12 @@ dev-util/cutter
 dev-util/debugedit
 dev-util/diffstat
 dev-util/diffuse
+dev-util/gammaray
 dev-util/heaptrack
 dev-util/hip
 dev-util/hipify-clang
 dev-util/kdevelop
+dev-util/kdstatemachineeditor
 dev-util/meld
 dev-util/pahole
 dev-util/rocm_bandwidth_test

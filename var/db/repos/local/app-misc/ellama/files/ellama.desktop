@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Ellama
+GenericName=Friendly interface to Ollama
+GenericName[it]=Interfaccia amichevole per Ollama
+Exec=/usr/bin/ellama
+Icon=ellama
+Terminal=false
+Type=Application
+Categories=Education;

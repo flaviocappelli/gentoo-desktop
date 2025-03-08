@@ -1,8 +1,0 @@
---- /usr/share/applications/assistant.desktop	2024-03-17 16:56:04.622360292 +0100
-+++ ./assistant.desktop	2024-03-17 16:58:16.461033537 +0100
-@@ -1,4 +1,5 @@
- [Desktop Entry]
-+Hidden=true
- Name=Qt 5 Assistant
- TryExec=/usr/lib64/qt5/bin/assistant
- Exec=/usr/lib64/qt5/bin/assistant
