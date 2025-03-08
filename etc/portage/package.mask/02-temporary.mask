@@ -8,15 +8,10 @@ dev-lang/python:3.13
 # VirtualBox 7.1 has still issues (see for example
 # https://forums.virtualbox.org/viewtopic.php?t=110513
 # and https://www.reddit.com/r/Gentoo/comments/1ifh71j/).
-# I prefere to delay the update (at least until 7.1.8).
+# I prefer to delay the update (at least until the release
+# and the stabilization in Gentoo of VirtualBox-7.1.8).
 app-emulation/virtualbox:0/7.1
 app-emulation/virtualbox-additions:0/7.1
 app-emulation/virtualbox-extpack-oracle:0/7.1
 app-emulation/virtualbox-guest-additions:0/7.1
 app-emulation/virtualbox-modules:0/7.1
-
-# Delay the upgrade to kernel 6.12 LTS for a while (I must first
-# verify that the external modules in my local overlay are still
-# compatible and also update the kernel patches and configuration).
->=sys-kernel/gentoo-kernel-6.12.0
->=virtual/dist-kernel-6.12.0

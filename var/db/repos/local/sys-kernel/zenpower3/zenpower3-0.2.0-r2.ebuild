@@ -18,12 +18,16 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="!sys-kernel/zenpower"
+RDEPEND="
+	!sys-kernel/zenpower
+	!sys-kernel/zenstats
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-add-lucienne-support.patch"
 	"${FILESDIR}/${P}-no-implicit-fallthrough.patch"
 	"${FILESDIR}/${P}-use-symlink-to-detect-kernel-version.patch"
+	"${FILESDIR}/${P}-fix-build-on-kernel-6.14.patch"
 )
 
 # A kernel >= 5.4 is required; also, to use this driver, the K10TEMP

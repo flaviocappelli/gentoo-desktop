@@ -1,0 +1,22 @@
+by F.C.
+
+On my Gentoo system dmesg shows the message
+
+	nvme nvme0: missing or invalid SUBNQN field.
+
+The nvme0 is a 'Sabrent Rocket 4 Plus-G SSD' (equipped with a
+Phison E18 controller). No firmware upgrades has been released
+by the vendor, and no fixes are currently included in the Linux
+kernel (up to 6.11-rc5). This patch add the required quirks.
+
+--- a/drivers/nvme/host/pci.c	2024-08-29 06:04:05.278559613 +0200
++++ b/drivers/nvme/host/pci.c	2024-08-29 06:11:17.153427960 +0200
+@@ -3410,6 +3410,8 @@
+ 	{ PCI_DEVICE(0x1987, 0x5016),	/* Phison E16 */
+ 		.driver_data = NVME_QUIRK_IGNORE_DEV_SUBNQN |
+ 				NVME_QUIRK_BOGUS_NID, },
++	{ PCI_DEVICE(0x1987, 0x5018),	/* Phison E18 */
++		.driver_data = NVME_QUIRK_IGNORE_DEV_SUBNQN, },
+ 	{ PCI_DEVICE(0x1987, 0x5019),  /* phison E19 */
+ 		.driver_data = NVME_QUIRK_DISABLE_WRITE_ZEROES, },
+ 	{ PCI_DEVICE(0x1987, 0x5021),   /* Phison E21 */

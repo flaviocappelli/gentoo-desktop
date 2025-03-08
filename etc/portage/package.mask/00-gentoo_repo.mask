@@ -2,27 +2,27 @@
 #
 # Mask unwanted/problematic packages (gentoo repo).
 
+# NOTE THAT NOW I'M TESTING THE NEW LTS KERNEL 6.12!
+#
 # Kernels < 6.6 LTS do not have adequate support for the
 # AMD P-State EPP (Energy Performance Preference) driver
 # (this host has a AMD CPU Zen3 Ryzen 9 5900X). Note: only
 # sys-kernel/*-kernel are Gentoo Distribution Kernels, see
 # https://wiki.gentoo.org/wiki/Project:Distribution_Kernel.
-# I am currently using 'gentoo-kernel' + additional patches
-# from 'pf-sources' (see /etc/portage/patches/sys-kernel/*)
+# I am currently using 'gentoo-kernel' with some additional
+# patches (see /etc/portage/patches/sys-kernel/gentoo-kernel*)
 # and a custom configuration (see /etc/kernel/config.d/*).
 <sys-kernel/linux-headers-6.6
 <sys-kernel/gentoo-kernel-6.6.0
 <sys-kernel/gentoo-kernel-bin-6.6.0
 <sys-kernel/gentoo-sources-6.6.0
-<sys-kernel/pf-sources-6.6.0
 <sys-kernel/rt-sources-6.6.0
 <sys-kernel/vanilla-kernel-6.6.0
 <sys-kernel/vanilla-sources-6.6.0
 
-# Kernel 6.6 LTS needs OpenZFS >= 2.1.15. I suggest to use
-# v2.2.5 or above (I have upgraded my zpools without issues).
-<sys-fs/zfs-2.2.5
-<sys-fs/zfs-kmod-2.2.5
+# Kernel 6.12 LTS needs OpenZFS >= 2.2.7.
+<sys-fs/zfs-2.2.7
+<sys-fs/zfs-kmod-2.2.7
 
 # It is a common misconception that genkernel "automatically"
 # generates a custom kernel configuration, but it is not true:
@@ -38,12 +38,6 @@ sys-apps/openrc
 # The audio daemon in now provided by pipewire.
 media-sound/pulseaudio-daemon
 
-# NVidia proprietary video drivers are not required.
-x11-drivers/nvidia-drivers
-
-# This generates conflicts in emerge updates (not required).
-sys-libs/e2fsprogs-libs
-
 # We want to globally use at least "-march=x86-64-v2". Generic
 # CPU architecture x86-64-v* need GCC >= 11 or LLVM/Clang >= 12
 # (previous versions generate build errors with -march=x86-64-v2
@@ -51,9 +45,9 @@ sys-libs/e2fsprogs-libs
 # portage. See also /etc/portage/make.conf/00-cflags.conf
 <sys-devel/gcc-11.0.0
 
-# Without this entry firefox/thunderbird/libreoffice pulls in lld:0
-# (unslotted) that conflicts with lld:xx (slotted) required by ROCM.
-sys-devel/lld:0
+# Python < 3.12 is no longer required. This blocks old versions of Python
+# (and all packages still in portage that depend on old versions of Python).
+<dev-lang/python-3.12.0
 
 # Ensures use of dev-lang/rust-bin (dev-lang/rust take a long time to build). See:
 # https://wiki.gentoo.org/wiki/User:Vazhnov/Knowledge_Base:replace_rust_with_rust-bin
@@ -65,12 +59,11 @@ dev-lang/rust
 # so it cannot be used as dependency of source ebuilds, only binary ones (i.e. *-bin).
 <dev-libs/openssl-3.0.0
 
-# Some wrong USE flags can trigger a downgrade to ffmpeg-4. This prevents that.
+# Prevents some incorrect USE flags from triggering a downgrade to ffmpeg-4.
 <media-video/ffmpeg-6.0.0
 
 # Ensures Firefox ESR is installed (i.e. mask the bleeding-edge versions).
 www-client/firefox:rapid
 
-# Python < 3.12 is no longer required. This blocks old versions of Python
-# (and all packages still in portage that depend on old versions of Python).
-<dev-lang/python-3.12.0
+# NVidia proprietary video drivers are not required on this system.
+x11-drivers/nvidia-drivers

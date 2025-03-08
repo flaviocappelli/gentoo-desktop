@@ -23,9 +23,9 @@ S="${WORKDIR}/zenmonitor3"
 
 DEPEND="
 	!sys-apps/zenmonitor
+	|| ( sys-kernel/zenpower3 sys-kernel/zenstats )
 	cli? ( sys-libs/ncurses[tinfo] )
 	filecaps? ( sys-libs/libcap )
-	sys-kernel/zenpower3
 	x11-libs/gtk+:3
 "
 RDEPEND="${DEPEND}"
