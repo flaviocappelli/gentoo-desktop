@@ -296,6 +296,7 @@ dev-qt/qt-docs                      virtualkeyboard       # Install documentatio
 dev-qt/qt-docs                      webengine widgets     # Install documentation for dev-qt/qtwebengine and dev-qt/qtwidgets.
 dev-qt/qt-docs                      xml                   # Install documentation for dev-qt/qtxml.
 ##dev-qt/qt3d                       gamepad               # Add support for gamepad hardware via dev-qt/qtgamepad.
+dev-qt/qt5compat                    gui                   # If disabled, force emerge of dev-qt/qtbase[-gui].
 dev-qt/qt5compat                    icu                   # If disabled, force emerge of dev-qt/qtbase[-icu].
 dev-qt/qt5compat                    qml                   # Many Qt6 packages need this flag.
 dev-qt/qtbase                       -mysql                # MySQL/MariaDB support not required (see also 'kde-apps/akonadi' below).
@@ -510,8 +511,6 @@ media-plugins/gst-plugins-meta      http taglib           # Enable http streamin
 media-sound/fluid-soundfont         timidity              # Include Timidity++ (MIDI sequencer) support.
 media-sound/fluidsynth              network               # Required for server mode (i.e. ALSA sequencer).
 media-sound/kid3                    kde                   # Add KDE/PLASMA support.
-##media-sound/pulseaudio            daemon                # Use the old PulseAudio daemon instead of Pipewire. *** NOT RECOMMENDED ***
-##media-sound/pulseaudio            ofono-headset         # Build the oFono HFP backend for Bluez 5 (relevant only for the old PulseAudio daemon, not for Pipewire).
 ##media-sound/strawberry            mtp                   # Enable support for Media Transfer Protocol (to transfer music to MTP compatible devices). Pull in gnome-base/gvfs.
 media-sound/strawberry              kde                   # Enable KDE (KGlobalAccel) shortcuts.
 media-sound/timidity++              -gtk -ncurses -X      # Graphic and NCurses UI not required (used only as MIDI sequencer).
