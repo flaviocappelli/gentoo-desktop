@@ -41,7 +41,7 @@ net-im/telegram-desktop-bin::gentoo
 
 # OBS Studio. Seee also
 # https://github.com/umlaeute/v4l2loopback.
-~media-video/obs-studio-30.2.3::gentoo
+~media-video/obs-studio-31.0.3::gentoo
 ~media-video/v4l2loopback-0.13.1::gentoo
 
 # Avidemux.
@@ -74,10 +74,9 @@ games-strategy/wesnoth::gentoo
 games-fps/gzdoom::gentoo
 media-libs/zmusic::gentoo
 
-# CHM support has gone away from okular, while
-# kchmviewer has come back (still in testing).
-# See https://bugs.gentoo.org/806296
-app-text/kchmviewer::gentoo
+# KChmViewer is now masked and will be soon removed from portage
+# (see Gentoo bug #823008). We can use app-text/uchmviewer instead.
+app-text/uchmviewer::gentoo
 
 # Android emulator which includes a complete set of sensors and features in order
 # to interact with a virtual Android environment. Is is free for personal use, see:
@@ -108,6 +107,7 @@ app-misc/radeontop::gentoo
 
 # Display info about the system's OpenCL capabilities.
 dev-util/clinfo::gentoo
+
 
 # ======== OpenCL / ROCM / HIP / CUDA ========
 # See:
@@ -149,12 +149,14 @@ dev-util/clinfo::gentoo
 #    package 'xxxYYYY' (e.g. rocBLAS -> https://rocm.docs.amd.com/projects/rocBLAS/en/latest/)
 #
 # MY TESTS FOR "dev-libs/rocm-opencl-runtime" WITH THE GPU "AMD Radeon RX 6900XT":
-#  * 5.5.1     ->  luxmark-3.1 works, darktable-4.8 cltest works
+#  * 5.5.1     ->  luxmark-3.1 works, darktable-4.8 cltest works, removed from portage
 #  * 5.7.1-r1  ->  luxmark-3.1 CRASHES, darktable-4.8 cltest works
 #  * 6.1.1     ->  NOT TESTED
 #  * 6.1.2     ->  NOT TESTED RECENTLY (previously worked)
 #  * 6.1.2-r1  ->  luxmark-3.1 works, darktable-4.4 cltest works, fix a segfault (see Gentoo changelog)
-#  * 6.2.4     ->  MASKED IN PORTAGE
+#  * 6.2.4     ->  removed from portage (not tested, was masked)
+#  * 6.3.2     ->  NOT YET TESTED
+#  * 6.3.3     ->  NOT YET TESTED
 #
 # It seems that ROC OpenCL version 5.7 has poor performances compared to 5.5, at least on Fedora. See:
 # https://community.amd.com/t5/discussions/issue-with-poor-integer-performance-rocm-opencl-5-7-1/m-p/646380
@@ -182,8 +184,8 @@ dev-build/rocm-cmake:0/6.1::gentoo
 dev-util/rocminfo:0/6.1::gentoo
 
 # BANDWIDTH_TEST.
-# Display some infos about performance characteristics of buffer copying and kernel
-# read / write operation. The latest version is 5.7.1, but it works with ROCM 6.x.
+# Display some infos about performance characteristics
+# of buffer copying and kernel read / write operation.
 dev-util/rocm_bandwidth_test::gentoo
 
 # Tools to translate CUDA source code into portable HIP C++.

@@ -1,13 +1,14 @@
---- /usr/share/applications/org.telegram.desktop.desktop	2024-12-10 18:18:59.804581646 +0100
-+++ ./org.telegram.desktop.desktop	2024-12-10 18:31:52.944663859 +0100
-@@ -1,13 +1,16 @@
+--- /usr/share/applications/org.telegram.desktop.desktop	2025-04-06 23:24:50.297296641 +0200
++++ ./org.telegram.desktop.desktop	2025-04-06 23:26:55.142231416 +0200
+@@ -1,21 +1,23 @@
  [Desktop Entry]
  Name=Telegram
 +GenericName=Instant Messaging
 +GenericName[it]=Messaggistica istantanea
  TryExec=telegram-desktop
  Exec=telegram-desktop -- %u
- Icon=telegram
+-Icon=org.telegram.desktop
++Icon=telegram
  Terminal=false
  Type=Application
  MimeType=x-scheme-handler/tg;x-scheme-handler/tonsite;
@@ -19,7 +20,9 @@
  StartupWMClass=TelegramDesktop
  DBusActivatable=true
  SingleMainWindow=true
-@@ -17,5 +20,6 @@
+-X-GNOME-UsesNotifications=true
+-X-GNOME-SingleWindow=true
+ Actions=quit;
  
  [Desktop Action quit]
  Name=Quit Telegram

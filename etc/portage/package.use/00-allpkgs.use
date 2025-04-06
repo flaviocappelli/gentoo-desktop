@@ -147,41 +147,17 @@ dev-libs/xerces-c                   -iconv                # ICU take precedenze 
 dev-libs/xerces-c                   icu                   # Required by media-gfx/freecad.
 dev-libs/zziplib                    -sdl                  # Drop unnecessary dependency (SDL integration not required).
 
-## QtPy is a small abstraction layer for PyQt5/PySide2 (Qt5) and PyQt6/PySide6 (Qt6). It is very useful for
-## fast prototyping (see https://github.com/spyder-ide/qtpy/). Some use flags are already enabled by default,
-## but I set them here anyway to be sure future updates will not remove Qt components (I use the Qt framework
-## for development in both Python and C++, so I need to have all Qt packages installed). Note that PySide2 is
-## unmaintained and deprecated (does not build with LLVM >= 16, nor with Python >= 3.12) and, on 04/02/2025,
-## dev-python/pyside2 has been removed from portage and dev-python/pyside6 renamed dev-python/pyside. Note
-## also that QtPy does not cover all Qt modules available in PyQt5/PyQt6/PySide2/PySide6 (see the ebuild).
+## QtPy is a small abstraction layer for PyQt5/PySide2 (Qt5) and PyQt6/PySide6 (Qt6): it is very useful
+## for fast prototyping (see https://github.com/spyder-ide/qtpy/). NOTES: 1) Gentoo has recently dropped
+## support for Qt5 in QtPy; 2) PySide2 has been removed from portage; 3) dev-python/pyside6 (i.e. PySide6)
+## has been renamed dev-python/pyside; 4) few packages still depends on PyQt5, so probably PyQt5 will be
+## soon removed as well; 5) QtPy does not currently cover all Qt modules available in PyQt6/PySide6.
 
 dev-python/matplotlib               -wxwidgets            # Do not build the WxWidgets integration (not required).
 dev-python/numpy                    lapack                # Add support for the virtual/lapack numerical library.
 dev-python/pillow                   lcms                  # Required by app-text/pdfarranger.
-##dev-python/pyqt5                  bluetooth             # Build bindings for the QtBluetooth module. NOT AVAILABLE IN QtPy.
-##dev-python/pyqt5                  dbus                  # Build bindings for the QtDBus module. NOT AVAILABLE IN QtPy.
-dev-python/pyqt5                    declarative           # Required by dev-python/qtpy[pyqt5 + qml,quick].
-dev-python/pyqt5                    designer              # Required by dev-python/qtpy[pyqt5 + designer].
-dev-python/pyqt5                    gui                   # Required by dev-python/qtpy[pyqt5 + gui].
-dev-python/pyqt5                    help                  # Required by dev-python/qtpy[pyqt5 + help].
-##dev-python/pyqt5                  location              # Build bindings for the QtLocation module. NOT AVAILABLE IN QtPy.
-dev-python/pyqt5                    multimedia            # Required by dev-python/qtpy[pyqt5 + multimedia].
-dev-python/pyqt5                    network               # Required by dev-python/qtpy[pyqt5 + network].
-dev-python/pyqt5                    opengl                # Required by dev-python/qtpy[pyqt5 + opengl].
-dev-python/pyqt5                    printsupport          # Required by dev-python/qtpy[pyqt5 + printsupport].
-dev-python/pyqt5                    serialport            # Required by dev-python/qtpy[pyqt5 + serialport].
-dev-python/pyqt5                    speech                # Required by dev-python/qtpy[pyqt5 + speech].
-dev-python/pyqt5                    sql                   # Required by dev-python/qtpy[pyqt5 + sql].
-dev-python/pyqt5                    svg                   # Required by dev-python/qtpy[pyqt5 + svg].
-dev-python/pyqt5                    testlib               # Required by dev-python/qtpy[pyqt5 + testlib].
-dev-python/pyqt5                    webchannel            # Required by dev-python/qtpy[pyqt5 + webchannel].
-dev-python/pyqt5                    websockets            # Required by dev-python/qtpy[pyqt5 + websockets].
-dev-python/pyqt5                    widgets               # Required by dev-python/qtpy[pyqt5 + widgets].
-##dev-python/pyqt5                  xml                   # Required by dev-python/qtpy[pyqt5 + xml] (currently this flag doesn't exist, PyQt5 always includes xml support).
-##dev-python/pyqt5                  x11extras             # Build bindings for the QtX11Extras module. NOT AVAILABLE IN QtPy.
-##dev-python/pyqt5                  xmlpatterns           # Build bindings for the QtXmlPatterns module. NOT AVAILABLE IN QtPy.
-##dev-python/pyqt6                  bluetooth             # Build bindings for the QtBluetooth module. NOT AVAILABLE IN QtPy.
-##dev-python/pyqt6                  dbus                  # Build bindings for the QtDBus module. NOT AVAILABLE IN QtPy.
+dev-python/pyqt5                    gui                   # Required by app-editors/qhexedit2 and media-gfx/asymptote.
+dev-python/pyqt5                    widgets               # Required by app-editors/qhexedit2 and media-gfx/asymptote.
 dev-python/pyqt6                    designer              # Required by dev-python/qtpy[pyqt6 + designer].
 dev-python/pyqt6                    gui                   # Required by dev-python/qtpy[pyqt6 + gui].
 dev-python/pyqt6                    help                  # Required by dev-python/qtpy[pyqt6 + help].
@@ -196,6 +172,7 @@ dev-python/pyqt6                    printsupport          # Required by dev-pyth
 dev-python/pyqt6                    qml                   # Required by dev-python/qtpy[pyqt6 + qml].
 dev-python/pyqt6                    quick                 # Required by dev-python/qtpy[pyqt6 + quick].
 ##dev-python/pyqt6                  quick3d               # Required by dev-python/qtpy[pyqt6 + quick3d].
+##dev-python/pyqt6                  scxml                 # Required by dev-python/qtpy[pyqt6 + scxml].
 dev-python/pyqt6                    sensors               # Required by dev-python/qtpy[pyqt6 + sensors].
 dev-python/pyqt6                    serialport            # Required by dev-python/qtpy[pyqt6 + serialport].
 ##dev-python/pyqt6                  spatialaudio          # Required by dev-python/qtpy[pyqt6 + spatialaudio].
@@ -210,10 +187,8 @@ dev-python/pyqt6                    xml                   # Required by dev-pyth
 dev-python/pyqt6-webengine          quick                 # Required by dev-python/qtpy[pyqt6 + webengine + quick].
 dev-python/pyqt6-webengine          widgets               # Required by dev-python/qtpy[pyqt6 + webengine + widgets].
 ##dev-python/pyside                 3d                    # Build Qt3DCore, Qt3DAnimation, Qt3DExtras, Qt3DInput, Qt3DLogic, and Qt3DRender modules. NOT AVAILABLE IN QtPy.
-##dev-python/pyside                 bluetooth             # Build QtBluetooth module. NOT AVAILABLE IN QtPy.
 ##dev-python/pyside                 charts                # Build QtCharts module. NOT AVAILABLE IN QtPy.
 ##dev-python/pyside                 concurrent            # Build QtConcurrent module. NOT AVAILABLE IN QtPy.
-##dev-python/pyside                 dbus                  # Build QtDBus module. NOT AVAILABLE IN QtPy.
 dev-python/pyside                   designer              # Required by dev-python/qtpy[pyside6 + designer].
 dev-python/pyside                   gui                   # Required by dev-python/qtpy[pyside6 + gui].
 dev-python/pyside                   help                  # Required by dev-python/qtpy[pyside6 + help].
@@ -229,7 +204,7 @@ dev-python/pyside                   printsupport          # Required by dev-pyth
 dev-python/pyside                   qml                   # Required by dev-python/qtpy[pyside6 + qml].
 dev-python/pyside                   quick                 # Required by dev-python/qtpy[pyside6 + quick].
 ##dev-python/pyside                 quick3d               # Required by dev-python/qtpy[pyside6 + quick3d].
-##dev-python/pyside                 scxml                 # Build QtScxml module. NOT AVAILABLE IN QtPy.
+##dev-python/pyside                 scxml                 # Required by dev-python/qtpy[pyside6 + scxml].
 dev-python/pyside                   sensors               # Required by dev-python/qtpy[pyside6 + sensors].
 dev-python/pyside                   serialport            # Required by dev-python/qtpy[pyside6 + serialport].
 ##dev-python/pyside                 spatialaudio          # Required by dev-python/qtpy[pyside6 + spatialaudio].
@@ -258,6 +233,7 @@ dev-python/qtpy                     pyqt6 pyside6         # Provides support for
 dev-python/qtpy                     qml                   # Build bindings for the QtQml.
 dev-python/qtpy                     quick                 # Build bindings for the QtQuick.
 ##dev-python/qtpy                   quick3d               # Build bindings for the QtQuick3D.
+##dev-python/qtpy                   scxml                 # Pull in bindings for the QtScXml module.
 dev-python/qtpy                     sensors               # Pull in bindings for the QtSensors module.
 dev-python/qtpy                     serialport            # Pull in bindings for the QtSerialPort module.
 ##dev-python/qtpy                   spatialaudio          # Pull in bindings for the QtSpatialAudio module.
@@ -326,6 +302,7 @@ dev-qt/qttools                      qtattributionsscanner # Required by dev-qt/q
 dev-qt/qttools                      clang designer        # Required by dev-qt/qt-creator >= 12 (Qt6 based).
 dev-qt/qttools                      qdoc qml              # Required by dev-qt/qt-creator >= 12 (Qt6 based).
 dev-qt/qttools                      widgets               # Required by dev-qt/qttools[assistant].
+##dev-qt/qtwayland:6                compositor qml        # Required by net-im/telegram-desktop[webkit,wayland].
 dev-qt/qtwebchannel                 qml                   # Required by dev-qt/qtwebengine.
 dev-qt/qtwebengine                  widgets               # Required by www-client/falkon, media-gfx/freecad, kde-apps/khelpcenter, app-text/zeal and many other packages.
 dev-qt/qtwebengine                  pdfium                # Required by media-gfx/skanpage, dev-python/pyqt6[pdfium].
@@ -487,7 +464,6 @@ media-libs/phonon                   qt5                   # Re-enable flag +QT5 
 media-libs/phonon-vlc               qt5                   # Required by media-libs/phonon[qt5] (NOTE: gstreamer backend dead, only vlc available).
 media-libs/suil                     gtk2                  # Required by media-sound/ardour.
 media-libs/simage                   -tiff                 # Drop unnecessary dependency (from CLD).
-media-libs/tg_owt                   -screencast           # Required by telegram-desktop[-screencast].
 media-libs/vulkan-loader            layers                # Include the vulkan layers.
 media-libs/zmusic                   fluidsynth            # Enable support for MIDI via media-sound/fluidsynth.
 media-libs/zmusic                   mpg123                # Enable support for MPEG audio playback via media-sound/mpg123.
@@ -627,8 +603,6 @@ net-fs/samba                        winbind               # Enables support for 
 ##net-fs/samba                      -addc -gpg            # Disable Active Directory Domain Controller support (default, -gpg required by samba ebuild).
 ##net-fs/samba                      addc -system-mitkrb5  # Enable Active Directory Domain Controller support (-system-mitkrb5 required by samba ebuild).
 net-fs/samba                        ldap python           # Required by net-fs/samba[ads].
-
-net-im/telegram-desktop             -screencast           # Drop screencast support (unnecessary) (from CLD).
 
 net-irc/kvirc                       -audiofile -phonon    # Drop unnecessary dependency (from CLD).
 net-irc/kvirc                       -spell -theora        # Drop unnecessary dependency (from CLD).

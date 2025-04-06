@@ -7,8 +7,8 @@
 #    any future updates. However, note that this is only a temporary
 #    solution and you will need to perform the migration ASAP:
 #
-#        */* PYTHON_TARGETS: -* python3_12
-#        */* PYTHON_SINGLE_TARGET: -* python3_12
+        */* PYTHON_TARGETS: -* python3_12
+        */* PYTHON_SINGLE_TARGET: -* python3_12
 
 # 2) SAFER UPGRADE PROCEDURE. Add Python 3.13 support to your system
 #    first, and only then remove Python 3.12. This involves 3 rebuilds
@@ -48,51 +48,3 @@
 # Please note that there may be a transition period (two/three months)
 # where both the old and new versions of Python need to be enabled for
 # some packages.
-
-
-
-# ========================================================== #
-# The following installed packages still require Python 3.11 #
-# See also the 3.12 porting (https://bugs.gentoo.org/921826) #
-# ========================================================== #
-
-# dev-python/pyside2.
-# Such package is unmaintained and deprecated; it also pull in
-# LLVM-15 and needs Python-3.11. It is not more required on my
-# installation. If you need it, uncomment the following lines.
-#dev-python/pyside2                  PYTHON_TARGETS: python3_11
-#dev-python/shiboken2                PYTHON_TARGETS: python3_11
-
-# dev-python/qtpy.
-# Such package is a small abstraction layer for PyQt5/PySide2 (Qt5)
-# and PyQt6/PySide6 (Qt6). It is useful for fast prototyping. NOTE:
-# on my installation, the 'pyside2' support is disabled (see above);
-# if you need it, enable the 'pyside2' use flag in './00-allpkgs.use'
-# plus the above & following lines (PySide2 forces Python-3.11 on QtPy
-# and requires Python-3.11 support on lot of dev-python/* packages).
-#dev-python/qtpy                     PYTHON_TARGETS: -* python3_11
-#dev-python/backports-tarfile        PYTHON_TARGETS: python3_11
-#dev-python/dbus-python              PYTHON_TARGETS: python3_11
-#dev-python/flit-core                PYTHON_TARGETS: python3_11
-#dev-python/gpep517                  PYTHON_TARGETS: python3_11
-#dev-python/installer                PYTHON_TARGETS: python3_11
-#dev-python/jaraco-context           PYTHON_TARGETS: python3_11
-#dev-python/jaraco-functools         PYTHON_TARGETS: python3_11
-#dev-python/jaraco-text              PYTHON_TARGETS: python3_11
-#dev-python/more-itertools           PYTHON_TARGETS: python3_11
-#dev-python/packaging                PYTHON_TARGETS: python3_11
-#dev-python/platformdirs             PYTHON_TARGETS: python3_11
-#dev-python/pyqt-builder             PYTHON_TARGETS: python3_11
-#dev-python/pyqt5                    PYTHON_TARGETS: python3_11
-#dev-python/pyqt5-sip                PYTHON_TARGETS: python3_11
-#dev-python/pyqt6                    PYTHON_TARGETS: python3_11
-#dev-python/pyqt6-sip                PYTHON_TARGETS: python3_11
-#dev-python/pyqt6-webengine          PYTHON_TARGETS: python3_11
-#dev-python/pyqtwebengine            PYTHON_TARGETS: python3_11
-#dev-python/pyside6                  PYTHON_TARGETS: python3_11
-#dev-python/setuptools               PYTHON_TARGETS: python3_11
-#dev-python/setuptools-scm           PYTHON_TARGETS: python3_11
-#dev-python/shiboken6                PYTHON_TARGETS: python3_11
-#dev-python/sip                      PYTHON_TARGETS: python3_11
-#dev-python/trove-classifiers        PYTHON_TARGETS: python3_11
-#dev-python/wheel                    PYTHON_TARGETS: python3_11

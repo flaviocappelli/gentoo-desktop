@@ -60,10 +60,10 @@ app-text/aha
 app-text/calibre
 app-text/dos2unix
 app-text/foliate
-app-text/kchmviewer
 app-text/pdfarranger
 app-text/texlive
 app-text/tree
+app-text/uchmviewer
 app-text/xchm
 app-text/zeal
 dev-db/sqlitebrowser
