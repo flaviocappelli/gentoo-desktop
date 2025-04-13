@@ -27,6 +27,7 @@ app-editors/okteta
 app-editors/qxmledit
 app-editors/vscode
 app-editors/wxhexeditor
+app-editors/zed
 app-emulation/virt-manager
 app-emulation/virtualbox
 app-emulation/virtualbox-additions
@@ -167,7 +168,6 @@ kde-misc/kshutdown
 kde-misc/kweather
 kde-misc/markdownpart
 kde-plasma/plasma-meta
-kde-plasma/print-manager
 llvm-core/libclc
 mail-client/s-nail
 mail-client/thunderbird

@@ -26,6 +26,7 @@
 # configuration is not provided, genkernel will use a generic
 # configuration to build a kernel for general uses. Genkernel
 # gives no advantages over the Gentoo Distribution Kernels.
+# Also genkernel is now deprecated (see Gentoo handbook).
 sys-kernel/genkernel
 
 # This gentoo installation uses systemd.
