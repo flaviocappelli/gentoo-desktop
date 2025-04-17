@@ -1,12 +1,12 @@
---- /usr/share/applications/audacity.desktop	2024-05-18 06:48:43.027407727 +0200
-+++ ./audacity.desktop	2024-05-18 06:51:26.068081354 +0200
+--- /usr/share/applications/audacity.desktop	2025-04-14 18:55:13.644574694 +0200
++++ ./audacity.desktop	2025-04-14 18:58:24.232033328 +0200
 @@ -1,13 +1,14 @@
  [Desktop Entry]
  Name=Audacity
  GenericName=Sound Editor
 -GenericName[it]=editore di suoni
 +GenericName[it]=Editor audio
- Exec=env UBUNTU_MENUPROXY=0 audacity %F
+ Exec=env GDK_BACKEND=x11 UBUNTU_MENUPROXY=0 audacity %F
  Icon=audacity
  Terminal=false
  Type=Application

@@ -136,10 +136,6 @@ dev-util/clinfo::gentoo
 #    TESTS:  untested
 #
 # -------- OpenCL + ROCM + HIP --------
-# ROCM is a mess, only a small number of video cards are officially supported by AMD.
-# Also, on Gentoo, some packages sometimes do not build, while others build but do
-# not work, so we have to try different versions to see wich works on our system.
-#
 # emerge -pv rocm-opencl-runtime clinfo rocminfo
 # emerge -pv dev-util/hip hipBLAS hipFFT hipCUB hipRAND ... (see below)
 #
@@ -154,34 +150,33 @@ dev-util/clinfo::gentoo
 #  * 6.1.1     ->  NOT TESTED
 #  * 6.1.2     ->  NOT TESTED RECENTLY (previously worked)
 #  * 6.1.2-r1  ->  luxmark-3.1 works, darktable-4.4 cltest works, fix a segfault (see Gentoo changelog)
-#  * 6.2.4     ->  removed from portage (not tested, was masked)
-#  * 6.3.2     ->  NOT YET TESTED
-#  * 6.3.3     ->  NOT YET TESTED
+#  * 6.2.4     ->  NOT TESTED (was masked), removed from portage
+#  * 6.3.2     ->  NOT TESTED
+#  * 6.3.3     ->  luxmark-3.1 works, darktable-4.8 cltest works
 #
 # It seems that ROC OpenCL version 5.7 has poor performances compared to 5.5, at least on Fedora. See:
 # https://community.amd.com/t5/discussions/issue-with-poor-integer-performance-rocm-opencl-5-7-1/m-p/646380
 #
 # NOTE: with ROCM OpenCL runtime 0/5.5 we can emerge the 0/5.7 slot for all other ROCM components; instead,
-# the 0/6.1 runtime needs the 0/6.1 slot for all other ROCM components (aside rocm_bandwidth_test, see below).
-dev-libs/rocm-opencl-runtime:0/6.1::gentoo
+# the 0/6.x runtime needs the 0/6.x slot for all other ROCM components (aside rocm_bandwidth_test, see below).
+dev-libs/rocm-opencl-runtime:0/6.3::gentoo
 
 # ROCM OpenCL runtime dependencies + HIP compiler: the MAJOR version
-# of such packages must be the same of the ROCM OpenCL runtime. Note
-# that all versions >= 6.2.0 are currently masked in portage. Also,
+# of such packages must be the same of the ROCM OpenCL runtime. Note:
 # package "dev-perl/URI-Encode" is required only for ROCM < 6.0.
-dev-libs/rocm-comgr:0/6.1::gentoo
-dev-libs/rocm-device-libs:0/6.1::gentoo
-dev-libs/rocr-runtime:0/6.1::gentoo
-dev-libs/roct-thunk-interface:0/6.1::gentoo
-dev-util/hipcc:0/6.1::gentoo
-dev-util/hip:0/6.1::gentoo
+dev-libs/rocm-comgr:0/6.3::gentoo
+dev-libs/rocm-device-libs:0/6.3::gentoo
+dev-libs/rocr-runtime:0/6.3::gentoo
+dev-libs/roct-thunk-interface:0/6.3::gentoo
+dev-util/hipcc:0/6.3::gentoo
+dev-util/hip:0/6.3::gentoo
 #dev-perl/URI-Encode::gentoo
 
 # Another ROCM OpenCL runtime dependency.
-dev-build/rocm-cmake:0/6.1::gentoo
+dev-build/rocm-cmake:0/6.3::gentoo
 
 # ROCIMINFO.
-dev-util/rocminfo:0/6.1::gentoo
+dev-util/rocminfo:0/6.3::gentoo
 
 # BANDWIDTH_TEST.
 # Display some infos about performance characteristics
@@ -189,44 +184,45 @@ dev-util/rocminfo:0/6.1::gentoo
 dev-util/rocm_bandwidth_test::gentoo
 
 # Tools to translate CUDA source code into portable HIP C++.
-dev-util/hipify-clang:0/6.1::gentoo
+dev-util/hipify-clang:0/6.3::gentoo
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # FOLLOWING PACKAGES CAN HAVE VERSION != ROCM RUNTIME (ANYWAY, IT MUST BE <= HIP)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # hipBLAS needs rocBLAS, rocPRIM, rocSOLVER, rocSPARSE, Tensile, rocm-smi.
-sci-libs/hipBLAS:0/6.1::gentoo
-sci-libs/rocBLAS:0/6.1::gentoo     # Same version of sci-libs/hipBLAS.
-sci-libs/rocPRIM:0/6.1::gentoo     # Same version of sci-libs/hipBLAS.
-sci-libs/rocSOLVER:0/6.1::gentoo   # Same version of sci-libs/hipBLAS.
-sci-libs/rocSPARSE:0/6.1::gentoo   # Same version of sci-libs/hipBLAS.
-dev-util/Tensile:0/6.1::gentoo     # Same version of sci-libs/hipBLAS.
-dev-util/rocm-smi:0/6.1::gentoo    # Any version accepted.
+sci-libs/hipBLAS-common:0/6.3::gentoo
+sci-libs/hipBLAS:0/6.3::gentoo
+sci-libs/rocBLAS:0/6.3::gentoo     # Same version of sci-libs/hipBLAS.
+sci-libs/rocPRIM:0/6.3::gentoo     # Same version of sci-libs/hipBLAS.
+sci-libs/rocSOLVER:0/6.3::gentoo   # Same version of sci-libs/hipBLAS.
+sci-libs/rocSPARSE:0/6.3::gentoo   # Same version of sci-libs/hipBLAS.
+dev-util/Tensile:0/6.3::gentoo     # Same version of sci-libs/hipBLAS.
+dev-util/rocm-smi:0/6.3::gentoo    # Any version accepted.
 
 # hipSPARSE needs above rocPRIM, rocSPARSE (same version).
-sci-libs/hipSPARSE:0/6.1::gentoo
+sci-libs/hipSPARSE:0/6.3::gentoo
 
 # hipSOLVER needs above rocSOLVER (same version).
-sci-libs/hipSOLVER:0/6.1::gentoo
+sci-libs/hipSOLVER:0/6.3::gentoo
 
 # hipCUB needs above rocPRIM (same version).
-sci-libs/hipCUB:0/6.1::gentoo
+sci-libs/hipCUB:0/6.3::gentoo
 
 # rocTrush needs above rocPRIM (same version).
-sci-libs/rocThrust:0/6.1::gentoo
+sci-libs/rocThrust:0/6.3::gentoo
 
 # hipFFT needs below rocFFT (can have version != previous packages).
-sci-libs/hipFFT:0/6.1::gentoo
-sci-libs/rocFFT:0/6.1::gentoo    # Same version of sci-libs/hipFFT.
+sci-libs/hipFFT:0/6.3::gentoo
+sci-libs/rocFFT:0/6.3::gentoo    # Same version of sci-libs/hipFFT.
 
 # hipRAND needs below rocRAND (can have version != previous packages).
-sci-libs/hipRAND:0/6.1::gentoo
-sci-libs/rocRAND:0/6.1::gentoo    # Same version of sci-libs/hipRAND.
+sci-libs/hipRAND:0/6.3::gentoo
+sci-libs/rocRAND:0/6.3::gentoo    # Same version of sci-libs/hipRAND.
 
 # These ROCM packages do not currently support my GPU (gfx1030).
-#sci-libs/hipBLASLt # Only ROCM-6, same version of sci-libs/hipBLAS)
-#sci-libs/rocWMMA
+# sci-libs/hipBLASLt # Only ROCM-6, same version of sci-libs/hipBLAS.
+# sci-libs/rocWMMA
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
 # CUSTOM ROCM BUILDS AND OTHER INTERESTING STUFFS
