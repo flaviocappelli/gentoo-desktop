@@ -2,10 +2,10 @@
 
 # Blocks (removing 'keywords') all versions of
 # packages that must be in sync with my laptop.
-app-editors/vscode                -*
-mail-client/thunderbird           -*
+app-editors/vscode::gentoo                -*
+mail-client/thunderbird::gentoo           -*
 
 # Allows (restoring 'keywords') a specific version
 # of the above packages (from Gentoo or local repo).
-~app-editors/vscode-1.99.2        **
-~mail-client/thunderbird-128.9.0  **
+~app-editors/vscode-1.99.3::gentoo        **
+~mail-client/thunderbird-128.9.0::gentoo  **

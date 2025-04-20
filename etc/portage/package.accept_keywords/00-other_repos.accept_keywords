@@ -21,12 +21,22 @@
 # Enable packages from above repos.
 
 # --- EBUILDS FROM DEV1990-OVERLAY -----------------------------
+
 # --- EBUILDS FROM GENTOO-ZH -----------------------------------
+
 # --- EBUILDS FROM GURU ----------------------------------------
+
 # --- EBUILDS FROM HOLGERSSON-OVERLAY --------------------------
+
 # --- EBUILDS FROM PF4PUBLIC -----------------------------------
+www-client/ungoogled-chromium-bin::pf4public **
+
 # --- EBUILDS FROM PG_OVERLAY ----------------------------------
+
 # --- EBUILDS FROM PHACKERLAY ----------------------------------
+
 # --- EBUILDS FROM SALFTER -------------------------------------
+
 # --- EBUILDS FROM SUPERTUX88 ----------------------------------
+
 # --- EBUILDS FROM VOWSTAR -------------------------------------
