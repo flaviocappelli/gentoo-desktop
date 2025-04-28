@@ -76,10 +76,8 @@ dev-debug/valgrind
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
 dev-python/pip
-dev-qt/linguist
 dev-qt/qt-docs:5
 dev-qt/qt-docs:6
-dev-qt/qt3d:5
 dev-qt/qt3d:6
 dev-qt/qtcharts:5
 dev-qt/qtcharts:6
@@ -208,7 +206,6 @@ media-video/avidemux
 media-video/gaupol
 media-video/guvcview
 media-video/libva-utils
-media-video/mkvtoolnix
 media-video/obs-studio
 media-video/smplayer
 media-video/v4l2loopback

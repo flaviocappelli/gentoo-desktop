@@ -314,7 +314,6 @@ dev-qt/qtxmlpatterns                qml                   # Build the XmlListMod
 dev-util/gammaray                   3d                    # Build the Qt3D plugin.
 dev-util/gammaray                   geolocation           # Build the positioning plugin.
 dev-util/gammaray                   qml                   # Add QML support.
-dev-util/gammaray                   script                # Build the script engine debugger plugin.
 dev-util/gammaray                   scxml                 # Build the state machine viewer plugin.
 dev-util/gammaray                   -wayland              # Exclude the wayland compositor inspector plugin (I don't need it).
 dev-util/heaptrack                  gui                   # Build the GUI frontend.
@@ -460,12 +459,9 @@ media-libs/opencolorio              -opengl               # Drop unnecessary dep
 media-libs/opencv                   -gtk3                 # Prefere qt5/qt6, required by "media-plugins/frei0r-plugins.
 ##media-libs/opencv                 lapack                # Add support for the virtual/lapack numerical library.
 ##media-libs/opencv                 lto                   # Build using Link Time Optimizations (LTO).
-media-libs/phonon                   qt5                   # Re-enable flag +QT5 (see the ebuild).
-media-libs/phonon-vlc               qt5                   # Required by media-libs/phonon[qt5] (NOTE: gstreamer backend dead, only vlc available).
 media-libs/suil                     gtk2                  # Required by media-sound/ardour.
 media-libs/simage                   -tiff                 # Drop unnecessary dependency (from CLD).
 media-libs/vulkan-loader            layers                # Include the vulkan layers.
-media-libs/zmusic                   fluidsynth            # Enable support for MIDI via media-sound/fluidsynth.
 media-libs/zmusic                   mpg123                # Enable support for MPEG audio playback via media-sound/mpg123.
 
 ## NOTE: Pipewire is now the default audio server on Gentoo (and other recent Linux distributions).
@@ -653,7 +649,6 @@ net-vpn/strongswan           strongswan_plugins_ipseckey  # Provides authenticat
 ##net-vpn/vpnc                      resolvconf            # Enable support for DNS managing framework net-dns/openresolv.
 
 net-wireless/wpa_supplicant         ap                    # Add support for access point mode.
-net-wireless/wpa_supplicant         p2p                   # Required by gnome-extra/gnome-network-displays.
 net-wireless/wpa_supplicant         -qt6                  # GUI frontend not required with KDE/PLASMA and networkmanager.
 net-wireless/wpa_supplicant         tkip                  # Add support for WPA TKIP (deprecated in 2009 due to security flaws, but might still be required).
 
@@ -668,11 +663,6 @@ sci-electronics/nextpnr             gowin himbaechel      # Pull in tools for Go
 sci-libs/armadillo                  arpack                # Link with sci-libs/arpack libraries for eigen decomposition.
 sci-libs/armadillo                  blas lapack           # Add support for virtual/blas and virtual/lapack numerical libraries.
 sci-libs/armadillo                  superlu               # Use SuperLU for sparse linear equation (sci-libs/superlu).
-##sci-libs/caffe2                   cuda                  # Enable NVidia CUDA support.
-sci-libs/caffe2                     fbgemm                # Enable backends FBGEMM.
-sci-libs/caffe2                     onednn                # Enable backends oneDNN.
-sci-libs/caffe2                     openblas              # Enable backends OpenBLAS.
-sci-libs/caffe2                     rocm                  # Enable ROCm GPU computing support.
 sci-libs/cgnslib                    hdf5                  # Required by sci-libs/vtk.
 sci-libs/hdf5                       -threads              # Thread support is incompatible with flag "fortran" (see the ebuild).
 sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk.
@@ -702,7 +692,6 @@ sci-misc/nco                        -dap                  # Remote data access n
 ##sys-apps/fwupd                    fastboot              # Add support to update hardware that uses the fastboot protocol.
 ##sys-apps/fwupd                    flashrom              # Enable flashrom plugin via sys-apps/flashrom.
 ##sys-apps/fwupd                    gnutls                # Prefer net-libs/gnutls as SSL/TLS provide (required by 'synaptics' and 'uefi' use flag).
-sys-apps/fwupd                      gusb                  # Without it the build fails with "undefined reference to 'g_usb_device_bulk_transfer'".
 ##sys-apps/fwupd                    logitech              # Add support to update firmware in some Logitech devices.
 ##sys-apps/fwupd                    nvme                  # Build and install NVMe plugin.
 ##sys-apps/fwupd                    spi                   # Install Intel-SPI plugin.

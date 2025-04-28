@@ -1,0 +1,11 @@
+--- /usr/share/applications/org.kde.khelpcenter.desktop	2025-04-28 20:20:13.593394289 +0200
++++ ./org.kde.khelpcenter.desktop	2025-04-28 20:34:12.794631759 +0200
+@@ -1,7 +1,6 @@
+ [Desktop Entry]
+ OnlyShowIn=KDE;
+-Name=Help Center
+-Name[it]=Centro documentazione
++Name=khelpcenter
+ GenericName=Help Center
+ GenericName[it]=Centro documentazione
+ Exec=khelpcenter %u

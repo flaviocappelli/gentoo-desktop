@@ -1,0 +1,12 @@
+--- /usr/share/applications/org.kde.kwatchgnupg.desktop	2025-04-28 20:58:49.063744806 +0200
++++ ./org.kde.kwatchgnupg.desktop	2025-04-28 21:08:42.249295095 +0200
+@@ -1,6 +1,7 @@
+ [Desktop Entry]
+-Name=GnuPG Log Viewer
+-Name[it]=Visualizzatore log di GnuPG
++Name=kwatchgnupg
++GenericName=GnuPG Log Viewer
++GenericName[it]=Visualizzatore log di GnuPG
+ Exec=kwatchgnupg
+ Icon=org.kde.kwatchgnupg
+ Terminal=false

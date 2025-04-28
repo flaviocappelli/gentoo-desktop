@@ -4,23 +4,8 @@
 # "local") are masked (see /etc/portage/package.mask/00-other_repos.mask).
 # Packages emerged from such repos (if any) must be unmasked here.
 
-# --- EBUILDS FROM DEV1990-OVERLAY -----------------------------
 
-# --- EBUILDS FROM GENTOO-ZH -----------------------------------
+# === UNMASKED EBUILDS (FROM INSTALLED OVERLAYS) =========================
 
-# --- EBUILDS FROM GURU ----------------------------------------
-
-# --- EBUILDS FROM HOLGERSSON-OVERLAY --------------------------
-
-# --- EBUILDS FROM PF4PUBLIC -----------------------------------
+# Chromium without Google integration (i.e. with enhanced privacy).
 www-client/ungoogled-chromium-bin::pf4public
-
-# --- EBUILDS FROM PG_OVERLAY ----------------------------------
-
-# --- EBUILDS FROM PHACKERLAY ----------------------------------
-
-# --- EBUILDS FROM SALFTER -------------------------------------
-
-# --- EBUILDS FROM SUPERTUX88 ----------------------------------
-
-# --- EBUILDS FROM VOWSTAR -------------------------------------
