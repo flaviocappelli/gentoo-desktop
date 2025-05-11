@@ -2,9 +2,6 @@
 #
 # These are temporary fix (will be removed in the future).
 
-# Mask Python-3.13 until truly required.
-dev-lang/python:3.13
-
 # VirtualBox 7.1 has still issues (see for example
 # https://forums.virtualbox.org/viewtopic.php?t=110513
 # and https://www.reddit.com/r/Gentoo/comments/1ifh71j/).

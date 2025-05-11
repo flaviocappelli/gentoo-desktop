@@ -3,12 +3,11 @@
 # Ebuilds from the gentoo official repository.
 # NOTE: sign ~ (tilde) let in -r# package revisions.
 
+# Packages required for Python-3.13.
+~media-gfx/asymptote-3.02::gentoo
+
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
-
-# The stable splix driver (for some Samsung printers) is very old and
-# sometimes causes a SPL ERROR 11-1114. Version 2.0.1 adds some fixes.
-~net-print/splix-2.0.1::gentoo
 
 # Other Qt5 packages in testing useful for development. For Qt5->Qt6 package
 # migration, see https://wiki.gentoo.org/wiki/Project:Qt/Qt6_migration_notes
@@ -34,7 +33,7 @@ media-sound/qpwgraph::gentoo
 
 # IM: Zoom and Telegram Desktop (bin version).
 # Microsoft is shutting down Skype in favor of Teams
-# (Skype will be permanently retired on May 5, 2025)
+# (Skype has been permanently retired on May 5, 2025)
 # so I uninstalled the net-im/skypeforlinux package.
 net-im/zoom::gentoo
 net-im/telegram-desktop-bin::gentoo
@@ -49,6 +48,20 @@ net-im/telegram-desktop-bin::gentoo
 ~media-libs/avidemux-core-2.8.1::gentoo
 ~media-libs/avidemux-plugins-2.8.1::gentoo
 ~media-sound/dcaenc-2::gentoo
+
+# Blender-4.4. Previous versions are not ncompatible with ffmpeg-7
+# (https://bugs.gentoo.org/953827 + https://bugs.gentoo.org/951199).
+=media-gfx/blender-4.4*
+
+# KiCad (meta package, latest version).
+sci-electronics/kicad-meta::gentoo
+app-doc/kicad-doc
+sci-electronics/kicad::gentoo
+sci-electronics/kicad-footprints::gentoo
+sci-electronics/kicad-packages3d::gentoo
+sci-electronics/kicad-symbols::gentoo
+sci-electronics/kicad-templates::gentoo
+app-text/dblatex
 
 # Godot Engine.
 #dev-games/godot::gentoo
@@ -74,8 +87,8 @@ games-strategy/wesnoth::gentoo
 games-fps/gzdoom::gentoo
 media-libs/zmusic::gentoo
 
-# KChmViewer is now masked and will be soon removed from portage
-# (see Gentoo bug #823008). We can use app-text/uchmviewer instead.
+# KChmViewer has been removed from portage (see Gentoo
+# bug #823008). We can use app-text/uchmviewer instead.
 app-text/uchmviewer::gentoo
 
 # Android emulator which includes a complete set of sensors and features in order
@@ -103,13 +116,13 @@ sys-power/cpupower::gentoo
 
 # Show the GPU utilization (AMD GPU only)
 # (see https://github.com/clbr/radeontop).
-app-misc/radeontop::gentoo
+#app-misc/radeontop::gentoo
 
 # Display info about the system's OpenCL capabilities.
 dev-util/clinfo::gentoo
 
 
-# ======== OpenCL / ROCM / HIP / CUDA ========
+# ============================= OpenCL / ROCM / HIP / CUDA ==============================
 # See:
 #   https://wiki.gentoo.org/wiki/HIP
 #   https://wiki.gentoo.org/wiki/ROCm
@@ -193,12 +206,12 @@ dev-util/hipify-clang:0/6.3::gentoo
 # hipBLAS needs rocBLAS, rocPRIM, rocSOLVER, rocSPARSE, Tensile, rocm-smi.
 sci-libs/hipBLAS-common:0/6.3::gentoo
 sci-libs/hipBLAS:0/6.3::gentoo
-sci-libs/rocBLAS:0/6.3::gentoo     # Same version of sci-libs/hipBLAS.
-sci-libs/rocPRIM:0/6.3::gentoo     # Same version of sci-libs/hipBLAS.
-sci-libs/rocSOLVER:0/6.3::gentoo   # Same version of sci-libs/hipBLAS.
-sci-libs/rocSPARSE:0/6.3::gentoo   # Same version of sci-libs/hipBLAS.
-dev-util/Tensile:0/6.3::gentoo     # Same version of sci-libs/hipBLAS.
-dev-util/rocm-smi:0/6.3::gentoo    # Any version accepted.
+sci-libs/rocBLAS:0/6.3::gentoo              # Same version of sci-libs/hipBLAS.
+sci-libs/rocPRIM:0/6.3::gentoo              # Same version of sci-libs/hipBLAS.
+sci-libs/rocSOLVER:0/6.3::gentoo            # Same version of sci-libs/hipBLAS.
+sci-libs/rocSPARSE:0/6.3::gentoo            # Same version of sci-libs/hipBLAS.
+dev-util/Tensile:0/6.3::gentoo              # Same version of sci-libs/hipBLAS.
+dev-util/rocm-smi:0/6.3::gentoo             # Any version accepted.
 
 # hipSPARSE needs above rocPRIM, rocSPARSE (same version).
 sci-libs/hipSPARSE:0/6.3::gentoo
@@ -214,17 +227,46 @@ sci-libs/rocThrust:0/6.3::gentoo
 
 # hipFFT needs below rocFFT (can have version != previous packages).
 sci-libs/hipFFT:0/6.3::gentoo
-sci-libs/rocFFT:0/6.3::gentoo    # Same version of sci-libs/hipFFT.
+sci-libs/rocFFT:0/6.3::gentoo               # Same version of sci-libs/hipFFT.
 
 # hipRAND needs below rocRAND (can have version != previous packages).
 sci-libs/hipRAND:0/6.3::gentoo
-sci-libs/rocRAND:0/6.3::gentoo    # Same version of sci-libs/hipRAND.
-
-# These ROCM packages do not currently support my GPU (gfx1030).
-# sci-libs/hipBLASLt # Only ROCM-6, same version of sci-libs/hipBLAS.
-# sci-libs/rocWMMA
+sci-libs/rocRAND:0/6.3::gentoo              # Same version of sci-libs/hipRAND.
 
 # - - - - - - - - - - - - - - - - - - - - - - - -
 # CUSTOM ROCM BUILDS AND OTHER INTERESTING STUFFS
 # - - - - - - - - - - - - - - - - - - - - - - - -
 # See https://github.com/lamikr/rocm_sdk_builder
+
+
+# ======================================= PyTorch =======================================
+# 'PyTorch' powers a wide range of cutting-edge AI applications: ROCM support is provided
+# by sci-libs/caffe2[rocm] (see https://bugs.gentoo.org/940356). Library sci-libs/hipBLASLt
+# is required by PyTorch for GEMM operations that extend functionalities of traditional BLAS
+# (see https://rocm.docs.amd.com/projects/hipBLASLt/en/latest/what-is-hipBLASLt.html), but
+# it does not currently support my GPU (gfx1030); anyway pytorch code should automatically
+# fallback to some old hipBLAS code (see https://github.com/ROCm/hipBLASLt/issues/648); if
+# not (i.e., on errors), try to define TORCH_BLAS_PREFER_HIPBLASLT=0 in the environment.
+# PyTorch benchmark: https://github.com/lamikr/pytorch-gpu-benchmark/
+sci-ml/pytorch::gentoo
+dev-libs/dynolog::gentoo
+dev-libs/pfs::gentoo
+dev-libs/pocketfft::gentoo
+dev-libs/psimd::gentoo
+dev-libs/pthreadpool::gentoo
+sci-ml/FP16::gentoo
+sci-ml/caffe2::gentoo
+sci-ml/kineto::gentoo
+sci-ml/onnx::gentoo
+# --- oneDNN backend deps ---
+sci-ml/ideep::gentoo
+# ---- ROCM backend deps ----
+dev-cpp/frugally-deep::gentoo
+dev-cpp/functional-plus::gentoo
+dev-libs/half::gentoo
+dev-libs/rccl:0/6.3::gentoo                 # Same slot of dev-util/hip.
+sci-libs/composable-kernel:0/6.3::gentoo    # Same slot of dev-util/hip.
+sci-libs/hipBLASLt:0/6.3::gentoo            # Same slot of dev-util/hip and sci-libs/hipBLAS.
+sci-libs/miopen:0/6.3::gentoo               # Same slot of dev-util/hip and sci-libs/rocBLAS.
+dev-python/cppheaderparser::gentoo
+dev-util/roctracer:0/6.3::gentoo            # Same slot of dev-util/hip.

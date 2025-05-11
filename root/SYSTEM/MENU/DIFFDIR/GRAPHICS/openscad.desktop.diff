@@ -1,12 +1,13 @@
---- /usr/share/applications/openscad.desktop	2024-03-17 14:30:37.036398521 +0100
-+++ ./openscad.desktop	2024-03-17 21:18:04.790021826 +0100
+--- /usr/share/applications/openscad.desktop	2025-05-08 20:44:04.505151102 +0200
++++ ./openscad.desktop	2025-05-08 20:51:48.902981878 +0200
 @@ -1,8 +1,11 @@
  [Desktop Entry]
  Name=OpenSCAD
 +GenericName=3D CAD Modelling
 +GenericName[it]=Modellazione CAD 3D
  Exec=openscad %f
- Icon=openscad
+-Icon=openscad-nightly
++Icon=openscad
  Type=Application
  MimeType=application/x-openscad;
 -Categories=Graphics;3DGraphics;Engineering;

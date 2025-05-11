@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied from the 'gentoo-zh' overlay.
+# Copied from the 'gentoo-zh' overlay (latest version is 9.3.2).
 
 EAPI=8
 

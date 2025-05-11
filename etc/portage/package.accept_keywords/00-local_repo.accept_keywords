@@ -26,7 +26,7 @@ app-benchmarks/kdiskmark::local
 
 # SiriKali (from holgersson overlay) and GoCryptFS (from portage).
 app-crypt/sirikali::local
-=app-crypt/gocryptfs-2.4*::gentoo
+=app-crypt/gocryptfs-2.5*::gentoo
 
 # Other packages useful for development.
 dev-util/kdstatemachineeditor::gentoo
@@ -65,6 +65,7 @@ sci-electronics/circuitjs1-bin::local
 # Electronic circuit simulator.
 sci-electronics/qucs-s::local
 
+# Ellama is a friendly interface to Ollama.
 # Run LLMs locally: Llama 3, Mistral, Gemma, DeepSeek-R1, ...
 # NOTE: a high-end AMD or NVidia GPU is required. See docs in
 # https://github.com/ollama/ollama, https://itsfoss.com/ollama/
@@ -72,8 +73,7 @@ sci-electronics/qucs-s::local
 #
 # There are also an updated ebuild "app-misc/ollama-bin" in:
 # https://gpo.zugaina.org/Overlays/arrans-overlay/app-misc/ollama-bin
-# NOTE: Ellama is a friendly interface to Ollama.
+app-misc/ellama::local
 acct-group/ollama::local
 acct-user/ollama::local
-app-misc/ollama::local
-app-misc/ellama::local
+sci-ml/ollama::local

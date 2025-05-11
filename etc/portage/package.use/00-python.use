@@ -1,37 +1,37 @@
 # by F.C.
 
-# PYHON UPGRADE 3.12 -> 3.13
-# ==========================
+# NEXT PYHON UPGRADE 3.13 -> 3.14
+# ===============================
 
-# 1) DEFERRING THE UPGRADE. This will enforce Python 3.12 and block
+# 1) DEFERRING THE UPGRADE. This will enforce Python 3.13 and block
 #    any future updates. However, note that this is only a temporary
 #    solution and you will need to perform the migration ASAP:
 #
-        */* PYTHON_TARGETS: -* python3_12
-        */* PYTHON_SINGLE_TARGET: -* python3_12
+#        */* PYTHON_TARGETS: -* python3_13
+#        */* PYTHON_SINGLE_TARGET: -* python3_13
 
-# 2) SAFER UPGRADE PROCEDURE. Add Python 3.13 support to your system
-#    first, and only then remove Python 3.12. This involves 3 rebuilds
+# 2) SAFER UPGRADE PROCEDURE. Add Python 3.14 support to your system
+#    first, and only then remove Python 3.13. This involves 3 rebuilds
 #    of all affected packages, so it will take some time:
 #
-#    - First, enable both Python 3.12 and Python 3.13, and run the 1st
+#    - First, enable both Python 3.13 and Python 3.14, and run the 1st
 #      upgrade (see below):
 #
-#        */* PYTHON_TARGETS: -* python3_12 python3_13
-#        */* PYTHON_SINGLE_TARGET: -* python3_12
+#        */* PYTHON_TARGETS: -* python3_13 python3_14
+#        */* PYTHON_SINGLE_TARGET: -* python3_13
 #
 #    - Then switch PYTHON_SINGLE_TARGET and run the 2nd upgrade:
 #
-#        */* PYTHON_TARGETS: -* python3_12 python3_13
-#        */* PYTHON_SINGLE_TARGET: -* python3_13
+#        */* PYTHON_TARGETS: -* python3_13 python3_14
+#        */* PYTHON_SINGLE_TARGET: -* python3_14
 #
 #    - Finally, switch to the final version and run the 3rd upgrade:
 #
-#        */* PYTHON_TARGETS: -* python3_13
-#        */* PYTHON_SINGLE_TARGET: -* python3_13
+#        */* PYTHON_TARGETS: -* python3_14
+#        */* PYTHON_SINGLE_TARGET: -* python3_14
 #
 #      Keep the latest two lines to block the next automatic upgrade
-#      to Python 3.14.
+#      to Python 3.15.
 
 # UPGRADE CMDS. The cleanup requires that the old Python is removed
 # from the complete dependency trees in batch. If some installed
@@ -45,6 +45,70 @@
 #    emerge -1avUD @world
 #    emerge --depclean
 #
-# Please note that there may be a transition period (two/three months)
-# where both the old and new versions of Python need to be enabled for
-# some packages.
+# Please note that there may be a transition period where both the
+# old and new versions of Python need to be enabled for some packages.
+
+
+# SYSTEM PYTHON IS NOW 3.13
+# Following packages still need Python 3.12
+# ==============================================================
+# See https://bugs.gentoo.org/953643
+
+# media-gfx/freecad
+# See https://bugs.gentoo.org/952517
+# --------------------------------------------------------------
+=media-gfx/freecad-1.0.0-r3                  python_single_target_python3_12
+>=sci-libs/vtk-9.3.1                         python_single_target_python3_12
+>=dev-python/appdirs-1.4.4-r3                python_targets_python3_12
+>=dev-python/cairocffi-1.7.1                 python_targets_python3_12
+>=dev-python/cffi-1.17.1                     python_targets_python3_12
+>=dev-python/contourpy-1.3.1                 python_targets_python3_12
+>=dev-python/cppy-1.3.1                      python_targets_python3_12
+>=dev-python/cycler-0.12.1                   python_targets_python3_12
+>=dev-python/cython-3.0.12-r1                python_targets_python3_12
+>=dev-python/distro-1.9.0                    python_targets_python3_12
+>=dev-python/flit-core-3.12.0                python_targets_python3_12
+>=dev-python/fonttools-4.57.0                python_targets_python3_12
+>=dev-python/fs-2.4.16                       python_targets_python3_12
+>=dev-python/gpep517-17                      python_targets_python3_12
+>=dev-python/installer-0.7.0                 python_targets_python3_12
+>=dev-python/jaraco-collections-5.1.0        python_targets_python3_12
+>=dev-python/jaraco-context-6.0.1-r1         python_targets_python3_12
+>=dev-python/jaraco-functools-4.1.0          python_targets_python3_12
+>=dev-python/jaraco-text-4.0.0               python_targets_python3_12
+>=dev-python/kiwisolver-1.4.8                python_targets_python3_12
+>=dev-python/matplotlib-3.10.1               python_targets_python3_12
+>=dev-python/meson-python-0.17.1             python_targets_python3_12
+>=dev-python/more-itertools-10.6.0           python_targets_python3_12
+>=dev-python/numpy-2.2.4                     python_targets_python3_12
+>=dev-python/olefile-0.47                    python_targets_python3_12
+>=dev-python/packaging-24.2                  python_targets_python3_12
+>=dev-python/pillow-11.1.0                   python_targets_python3_12
+>=dev-python/pivy-0.6.8                      python_targets_python3_12
+>=dev-python/platformdirs-4.3.7              python_targets_python3_12
+>=dev-python/ply-3.11-r2                     python_targets_python3_12
+>=dev-python/pybind11-2.13.6                 python_targets_python3_12
+>=dev-python/pycparser-2.22                  python_targets_python3_12
+>=dev-python/pyparsing-3.2.3                 python_targets_python3_12
+>=dev-python/pyproject-metadata-0.9.1        python_targets_python3_12
+>=dev-python/pyside-6.8.3                    python_targets_python3_12
+>=dev-python/python-dateutil-2.9.0_p0        python_targets_python3_12
+>=dev-python/pytz-2025.2                     python_targets_python3_12
+>=dev-python/pyyaml-6.0.2                    python_targets_python3_12
+>=dev-python/setuptools-78.1.0               python_targets_python3_12
+>=dev-python/setuptools-scm-8.2.1            python_targets_python3_12
+>=dev-python/six-1.17.0                      python_targets_python3_12
+>=dev-python/trove-classifiers-2025.4.11.15  python_targets_python3_12
+>=dev-python/wheel-0.45.1                    python_targets_python3_12
+>=dev-python/xcffib-1.7.1                    python_targets_python3_12
+
+# media-video/avidemux
+# See https://bugs.gentoo.org/952530
+# --------------------------------------------------------------
+=media-libs/avidemux-plugins-2.8.1-r2        python_single_target_python3_12
+
+# sci-electronics/kicad-meta
+# See https://bugs.gentoo.org/952659
+# KiCad-9.x has only this dependency which need Python-3.12
+# --------------------------------------------------------------
+>=app-text/dblatex-0.3.12-r4                 python_targets_python3_12

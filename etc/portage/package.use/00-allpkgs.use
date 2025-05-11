@@ -459,6 +459,7 @@ media-libs/opencolorio              -opengl               # Drop unnecessary dep
 media-libs/opencv                   -gtk3                 # Prefere qt5/qt6, required by "media-plugins/frei0r-plugins.
 ##media-libs/opencv                 lapack                # Add support for the virtual/lapack numerical library.
 ##media-libs/opencv                 lto                   # Build using Link Time Optimizations (LTO).
+media-libs/opensubdiv               tbb                   # Required by media-gfx/blender[opensubdiv].
 media-libs/suil                     gtk2                  # Required by media-sound/ardour.
 media-libs/simage                   -tiff                 # Drop unnecessary dependency (from CLD).
 media-libs/vulkan-loader            layers                # Include the vulkan layers.
@@ -668,6 +669,9 @@ sci-libs/hdf5                       -threads              # Thread support is in
 sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk.
 sci-libs/hdf5                       fortran               # Required by media-gfx/freecad.
 sci-libs/lapack                     lapacke               # Required by virtual/lapacke.
+sci-libs/miopen                     composable-kernel     # Use composable-kernel for GEMM-like and reduction-like operators.
+##sci-libs/miopen                   hipblaslt             # Use hipBLASLt (disabled because my GPU is not currently supported by hipBLASLt).
+sci-libs/miopen                     rocblas               # Build with rocBLAS support.
 sci-libs/netcdf                     -dap                  # Required by sci-misc/nco[-dap].
 sci-libs/opencascade                -ffmpeg               # Prevents opencascade to pull in ffmpeg < 5 (downgrade). I don't need the ffmpeg support in opencascade.
 sci-libs/opencascade                json vtk              # Required by media-gfx/freecad.
@@ -685,6 +689,17 @@ sci-mathematics/octave              sndfile               # Add support for read
 ##sci-mathematics/octave            sundials              # Enable the "ode15i" and "ode15s" solvers using sci-libs/sundials (octave >= 6.0).
 
 sci-misc/nco                        -dap                  # Remote data access not required.
+
+##sci-ml/caffe2                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
+sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
+sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
+sci-ml/caffe2                       openblas              # Enable backends OpenBLAS.
+sci-ml/caffe2                       rocm                  # Enable ROCM support (at most one of [cuda,rocm] can be enabled).
+##sci-ml/ollama                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
+sci-ml/ollama                       blas                  # Enable virtual/blas support.
+sci-ml/ollama                       rocm                  # Enable ROCM support (at most one of [cuda,rocm] can be enabled).
+
+sci-physics/bullet                  double-precision      # Required by media-gfx/blender[bullet].
 
 ##sys-apps/fwupd                    amdgpu                # Build and install AMD dGPU (Navi3x and above) plugin.
 ##sys-apps/fwupd                    amt                   # Build and install Intel AMT plugin.
