@@ -14,7 +14,7 @@
 ## of zram: having both enabled is bad because zram would remain mostly unused (and
 ## zramctl(8) would return wrong statistics); this happens because zswap intercepts
 ## and compresses memory pages being swapped out (before they can reach zram). NOTE:
-## on Gentoo (kernel 6.6), zswap is not enabled by default (see kernel config).
+## on Gentoo (kernel 6.12), zswap is not enabled by default (see kernel config).
 #if [ -d /sys/module/zswap ]; then
 #    echo 0 > /sys/module/zswap/parameters/enabled
 #fi
