@@ -31,8 +31,9 @@ UUID=062E-2D13                              /boot/efi         vfat   noatime,uma
 # /dev/nvme0n1p4 (label VARDATA).
 UUID=4a264017-bd29-4dd8-a944-e36245a4fcad   /mnt/VARDATA      xfs    noatime                     0  2
 
-# /dev/nvme0n1p5 (label OLLAMA).
-UUID=c565a740-d4bd-4d9d-a42a-d6cf5c3f2222   /var/lib/ollama   xfs    noatime                     0  2
+# OLLAMA FOLDER for AI MODELS.
+/mnt/VARDATA/OLLAMA                         /var/lib/ollama   none   bind,nofail                 0  0
+
 
 # TMP filesystems. NOTES:
 #  - by default, systemd mount /tmp as tmpfs if not specified in /etc/fstab (to
