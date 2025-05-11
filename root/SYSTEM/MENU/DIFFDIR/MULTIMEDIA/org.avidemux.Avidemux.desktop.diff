@@ -1,11 +1,12 @@
---- /usr/share/applications/org.avidemux.Avidemux.desktop	2024-03-17 14:30:37.017398703 +0100
-+++ ./org.avidemux.Avidemux.desktop	2024-03-17 21:02:39.351474780 +0100
+--- /usr/share/applications/org.avidemux.Avidemux.desktop	2025-05-03 16:45:03.666573223 +0200
++++ ./org.avidemux.Avidemux.desktop	2025-05-03 16:49:17.911093645 +0200
 @@ -1,9 +1,12 @@
  [Desktop Entry]
  Name=Avidemux
  GenericName=Video Editor
+-Exec=avidemux3_qt5 %f
 +GenericName[it]=Editor video
- Exec=avidemux3_qt5 %f
++Exec=avidemux3_qt5 --platform 'xcb' %f
  Icon=org.avidemux.Avidemux
  Terminal=false
  Type=Application
