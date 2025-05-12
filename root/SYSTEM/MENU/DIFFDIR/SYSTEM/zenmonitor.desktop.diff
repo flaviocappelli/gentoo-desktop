@@ -1,12 +1,13 @@
---- /usr/share/applications/zenmonitor.desktop	2024-03-17 14:30:37.029398588 +0100
-+++ ./zenmonitor.desktop	2024-03-17 18:24:51.552201034 +0100
-@@ -1,7 +1,11 @@
+--- /usr/share/applications/zenmonitor.desktop	2025-05-12 15:23:02.777943500 +0200
++++ ./zenmonitor.desktop	2025-05-12 15:25:48.202225757 +0200
+@@ -1,8 +1,11 @@
  [Desktop Entry]
 -Name=Zenmonitor
 +Name=Zenmonitor3
 +GenericName=Monitor for AMD Ryzen CPUs
 +GenericName[it]=Monitora CPU AMD Ryzen
  Exec=/usr/bin/zenmonitor
+-Icon=utilities-system-monitor
 +Icon=/usr/share/pixmaps/zenmonitor.png
  Terminal=false
  Type=Application
