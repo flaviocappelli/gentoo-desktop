@@ -654,8 +654,6 @@ net-wireless/wpa_supplicant         -qt6                  # GUI frontend not req
 net-wireless/wpa_supplicant         tkip                  # Add support for WPA TKIP (deprecated in 2009 due to security flaws, but might still be required).
 
 sci-electronics/gtkwave             fasttree tcl          # Enables Fast SST Tree code and support for the Tcl language.
-sci-electronics/nextpnr             ecp5 ice40            # Pull in tools for Lattice ECP/iCE40 FPGAs (see local overlay).
-sci-electronics/nextpnr             gowin himbaechel      # Pull in tools for Gowin FPGAs (see local overlay).
 
 ## Flag 'hdf5' has been removed from sci-libs/armadillo because HDF5 support is absent in CMakeLists.txt,
 ## see https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=bcfd284b7aa8eaba61aae5040737143c8f219f44 (the

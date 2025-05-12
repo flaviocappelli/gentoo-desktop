@@ -238,16 +238,10 @@ sci-calculators/speedcrunch
 sci-electronics/circuitjs1-bin
 sci-electronics/electronics-menu
 sci-electronics/gtkwave
-sci-electronics/icestorm
-sci-electronics/iverilog
 sci-electronics/kicad-meta
-sci-electronics/nextpnr
 sci-electronics/openfpgaloader
-sci-electronics/prjtrellis
 sci-electronics/qucs-s
 sci-electronics/tinyprog
-sci-electronics/verilator
-sci-electronics/yosys
 sci-libs/armadillo
 sci-libs/hipBLAS
 sci-libs/hipCUB
