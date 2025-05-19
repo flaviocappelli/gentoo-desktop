@@ -3,9 +3,6 @@
 # By default, all packages in all added repos (other than "gentoo"
 # and "local") are disabled below. Packages emerged from such repos
 # (if any) must be explicitly enabled in this file (after the list).
-#
-# Note that, by default, packages in such repos are also masked
-# (see /etc/portage/package.mask/00-other_repos.mask).
 
 */*::dev1990-overlay    -*
 */*::gentoo-zh          -*

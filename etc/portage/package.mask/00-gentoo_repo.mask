@@ -56,8 +56,8 @@ dev-lang/rust
 # so it cannot be used as dependency of source ebuilds, only binary ones (i.e. *-bin).
 <dev-libs/openssl-3.0.0
 
-# Prevents some incorrect USE flags from triggering a downgrade to ffmpeg-4.
-<media-video/ffmpeg-6.0.0
+# Prevents some incorrect USE flags from triggering a downgrade of ffmpeg.
+<media-video/ffmpeg-7.0.0
 
 # Ensures Firefox ESR is installed (i.e. mask the bleeding-edge versions).
 www-client/firefox:rapid
