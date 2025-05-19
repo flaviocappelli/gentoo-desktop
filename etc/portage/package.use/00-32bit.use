@@ -57,6 +57,7 @@ dev-libs/libverto                       abi_x86_32
 dev-libs/libxml2                        abi_x86_32
 dev-libs/lzo                            abi_x86_32
 dev-libs/nettle                         abi_x86_32
+dev-libs/opencl-icd-loader              abi_x86_32
 dev-libs/openssl                        abi_x86_32
 dev-libs/popt                           abi_x86_32
 dev-libs/protobuf                       abi_x86_32
@@ -246,6 +247,7 @@ virtual/libiconv                        abi_x86_32
 virtual/libintl                         abi_x86_32
 virtual/libudev                         abi_x86_32
 virtual/libusb                          abi_x86_32
+virtual/opencl                          abi_x86_32
 virtual/opengl                          abi_x86_32
 virtual/rust                            abi_x86_32
 x11-libs/cairo                          abi_x86_32

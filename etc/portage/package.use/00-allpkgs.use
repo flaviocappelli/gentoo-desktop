@@ -51,7 +51,6 @@ app-backup/bacula                   qt5                   # Build the GUI fronte
 
 ##app-crypt/gpgme                   python                # Required by kde-apps/kdenetwork-meta[dropbox].
 ##app-crypt/qca                     gpg                   # Provide GnuPG capability to programs that utilize the Qt Cryptographic Architecture (QCA) (from CLD).
-app-crypt/qca                       qt5                   # Required by kde-frameworks/kwallet:5.
 
 app-editors/nano                    -spell                # Dictionary support not required (from CLD).
 app-editors/okteta                  -designer             # The okteta plugin crashes Qt Designer and QtCreator (see QtCreator know issues). TODO: still true?
@@ -83,7 +82,6 @@ app-emulation/winetricks            gui                   # Build the GUI fronte
 
 app-eselect/eselect-php             fpm                   # Required by dev-lang/php[fpm].
 
-app-misc/ddcutil                    drm                   # Required to watch for hotplug events (i.e. monitor disconnection/connection).
 ##app-misc/recoll                   session               # Stop monitoring file alterations when X11 session terminates.
 
 app-office/libreoffice              kde odk               # Enable KDE/PLASMA integration and build the Office Development Kit.
@@ -121,8 +119,6 @@ dev-games/openscenegraph            -wxwidgets            # Drop unnecessary dep
 
 dev-lang/fpc                        source                # Required by dev-lang/lazarus.
 dev-lang/lazarus                    gui                   # Build the GUI IDE.
-##dev-lang/gnat-gpl                 graphite              # Add support for the framework for loop optimizations based on a polyhedral intermediate representation.
-dev-lang/gnat-gpl                   pgo                   # Optimize the build using Profile Guided Optimization (from CLD).
 dev-lang/php                        -spell                # Dictionary support not required (from CLD).
 dev-lang/php                        cgi                   # Required by www-servers/lighttpd[php].
 dev-lang/php                        fpm                   # Enable the FastCGI Process Manager SAPI (required for FastCGI).
@@ -288,7 +284,6 @@ dev-qt/qtgui                        egl                   # Required by dev-qt/q
 ##dev-qt/qtgui                      evdev                 # Required by dev-qt/qtgamepad[evdev].
 dev-qt/qtimageformats               mng                   # Required by app-editors/qxmledit.
 dev-qt/qtmultimedia                 gstreamer qml         # Required by kde-plasma/kwin, kde-apps/spectacle and other packages.
-dev-qt/qtmultimedia                 widgets               # Required by dev-python/pyqt5[multimedia].
 ##dev-qt/qtnetwork                  sctp                  # Add support for Stream Control Transmission Protocol (i.e. QSctpServer & QSctpSocket).
 dev-qt/qtpositioning                geoclue               # Required by kde-misc/kweather.
 dev-qt/qtpositioning                qml                   # Required by dev-qt/qtlocation.
@@ -377,6 +372,7 @@ kde-plasma/plasma-integration       qt5                   # Required by kde-plas
 kde-plasma/plasma-meta              -crypt                # Do not pull in kde-plasma/plasma-vault (I don't use it).
 kde-plasma/plasma-meta              -firewall             # Do not pull in plasma-firewall (not required, I have enabled the firewalld's UI frontend).
 kde-plasma/plasma-meta              kwallet               # Enable support for KWallet auto-unlocking via kde-plasma/kwallet-pam.
+kde-plasma/plasma-meta              qt5                   # Pull in required packages for seamless integration of KF5/Qt5-based applications.
 kde-plasma/plasma-meta              sdk                   # Pull in kde-plasma/plasma-sdk for Plasma development.
 kde-plasma/plasma-meta              thunderbolt           # Pull in kde-plasma/plasma-thunderbolt control center module.
 kde-plasma/plasma-nm                openconnect           # Build support for the OpenConnect VPN client (integrated in networkmanager).
@@ -459,6 +455,7 @@ media-libs/opencolorio              -opengl               # Drop unnecessary dep
 media-libs/opencv                   -gtk3                 # Prefere qt5/qt6, required by "media-plugins/frei0r-plugins.
 ##media-libs/opencv                 lapack                # Add support for the virtual/lapack numerical library.
 ##media-libs/opencv                 lto                   # Build using Link Time Optimizations (LTO).
+media-libs/opencv                   opencl                # Enable OpenCL support (computation on GPU).
 media-libs/opensubdiv               tbb                   # Required by media-gfx/blender[opensubdiv].
 media-libs/suil                     gtk2                  # Required by media-sound/ardour.
 media-libs/simage                   -tiff                 # Drop unnecessary dependency (from CLD).
@@ -625,6 +622,7 @@ net-misc/whois                      xcrypt                # Use sys-libs/libxcry
 ##net-nds/openldap                  -minimal              # Uncomment to enable the LDAP daemon (at the moment, I don't need it).
 
 ##net-p2p/amule                     geoip                 # Add geoip support for country and city lookup based on IPs.
+net-p2p/amule                       gui                   # Build the GUI frontend.
 net-p2p/ktorrent                    -infowidget           # Drop unnecessary dependency (from CLD).
 net-p2p/qbittorrent                 gui                   # Build the GUI frontend (required).
 
@@ -650,7 +648,6 @@ net-vpn/strongswan           strongswan_plugins_ipseckey  # Provides authenticat
 ##net-vpn/vpnc                      resolvconf            # Enable support for DNS managing framework net-dns/openresolv.
 
 net-wireless/wpa_supplicant         ap                    # Add support for access point mode.
-net-wireless/wpa_supplicant         -qt6                  # GUI frontend not required with KDE/PLASMA and networkmanager.
 net-wireless/wpa_supplicant         tkip                  # Add support for WPA TKIP (deprecated in 2009 due to security flaws, but might still be required).
 
 sci-electronics/gtkwave             fasttree tcl          # Enables Fast SST Tree code and support for the Tcl language.
@@ -741,6 +738,8 @@ sys-boot/plymouth                   pango                 # Re-enable flag +PANG
 
 ##sys-devel/binutils                gold                  # Build the ld.gold linker. Flag DEPRECATED (i.e. disabled, will be removed): use sys-devel/lld or sys-devel/mold.
 sys-devel/binutils                  pgo                   # Build binutils with Profile Guided Optimization (PGO).
+sys-devel/distcc                    -ipv6                 # Disable IPv6 support (IPv4 should be enough on the LAN).
+sys-devel/distcc                    zeroconf              # Support for DNS Service Discovery (DNS-SD).
 sys-devel/gcc                       ada                   # Enable ADA frontend (SEE ALSO /etc/portage/make.conf/00-ada.conf).
 sys-devel/gcc                       graphite              # Add support for the framework for loop optimizations based on a polyhedral intermediate representation.
 sys-devel/gcc                       pgo                   # Build using Profile Guided Optimization (PGO).

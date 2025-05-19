@@ -20,4 +20,3 @@
 
 # Chromium without Google integration (i.e. with enhanced privacy).
 www-client/ungoogled-chromium-bin::pf4public **
-~media-libs/libavif-1.2.0::gentoo
