@@ -8,4 +8,4 @@ mail-client/thunderbird::gentoo           -*
 # Allows (restoring 'keywords') a specific version
 # of the above packages (from Gentoo or local repo).
 ~app-editors/vscode-1.100.2::gentoo       **
-~mail-client/thunderbird-128.10.1::gentoo **
+~mail-client/thunderbird-128.11.0::gentoo **

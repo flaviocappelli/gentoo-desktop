@@ -55,6 +55,7 @@ app-portage/genlop
 app-portage/gentoolkit
 app-portage/mirrorselect
 app-portage/portpeek
+app-portage/pycargoebuild
 app-shells/bash-completion
 app-text/aha
 app-text/calibre
@@ -74,6 +75,7 @@ dev-debug/strace
 dev-debug/valgrind
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
+dev-python/ollama
 dev-python/pip
 dev-qt/qt-docs:5
 dev-qt/qt-docs:6

@@ -2,13 +2,20 @@
 #
 # These are temporary fix (will be removed in the future).
 
-# VirtualBox 7.1 has still issues (see for example
-# https://forums.virtualbox.org/viewtopic.php?t=110513
-# and https://www.reddit.com/r/Gentoo/comments/1ifh71j/).
-# I prefer to delay the update (at least until the release
-# and the stabilization in Gentoo of VirtualBox-7.1.8).
-app-emulation/virtualbox:0/7.1
-app-emulation/virtualbox-additions:0/7.1
-app-emulation/virtualbox-extpack-oracle:0/7.1
-app-emulation/virtualbox-guest-additions:0/7.1
-app-emulation/virtualbox-modules:0/7.1
+# VirtualBox is making me crazy: branch 7.1 still has issues
+# (see https://forums.virtualbox.org/viewtopic.php?t=110513,
+# https://www.reddit.com/r/Gentoo/comments/1ifh71j/ and also
+# https://bugs.gentoo.org/941622). Indeed, I tried v7.1.8 on
+# my Gentoo desktop and it did end up with "NS_ERROR_FAILURE".
+# So I can't upgrade. Meanwhile, even branch 7.0 added issues:
+# latest STABLE ebuild (7.0.26-r1) has removed the GUI because
+# based on Qt5, due to Qt5 going away from Gentoo (see Gentoo
+# bug #948836). THIS IS MADNESS: many packages still need Qt5!
+# At the moment, the only possibility is to mask all upgrades.
+# VirtualBox 7.0.22 works well, I hope it will not be removed
+# too soon (otherwise I'll have to copy it into my overlay).
+>=app-emulation/virtualbox-7.0.26
+>=app-emulation/virtualbox-additions-7.0.26
+>=app-emulation/virtualbox-extpack-oracle-7.0.26
+>=app-emulation/virtualbox-guest-additions-7.0.26
+>=app-emulation/virtualbox-modules-7.0.26

@@ -71,4 +71,5 @@ sci-electronics/qucs-s::local
 app-misc/ellama::local
 acct-group/ollama::local
 acct-user/ollama::local
+dev-python/ollama::local
 sci-ml/ollama::local

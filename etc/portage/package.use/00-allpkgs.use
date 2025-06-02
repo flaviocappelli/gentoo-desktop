@@ -693,6 +693,7 @@ sci-ml/caffe2                       rocm                  # Enable ROCM support 
 ##sci-ml/ollama                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
 sci-ml/ollama                       blas                  # Enable virtual/blas support.
 sci-ml/ollama                       rocm                  # Enable ROCM support (at most one of [cuda,rocm] can be enabled).
+sci-ml/ollama                       cpu_flags_x86_bmi2    # Enable support for Bit Manipulation Instructions (required by CPU flags 'avx2' + 'f16c' + 'fma3').
 
 sci-physics/bullet                  double-precision      # Required by media-gfx/blender[bullet].
 
@@ -784,7 +785,6 @@ x11-base/xwayland                   libei                 # Required by kde-plas
 x11-drivers/xf86-video-intel        uxa                   # Enable UMA Acceleration Architecture.
 ##x11-drivers/xf86-video-qxl        xspice                # Include Xspice, a standard X server that is also a Spice server (for QEMU/KVM guest).
 
-x11-libs/qscintilla                 qt5                   # Required by dev-db/sqlitebrowser, media-gfx/openscad, sci-mathematics/octave[gui].
 x11-libs/wxGTK                      gstreamer             # Required by dev-python/wxpython.
 x11-libs/vte                        icu                   # Re-enable flag +ICU (see the ebuild).
 x11-libs/xapp                       vala                  # Required by app-backup/timeshift (for xapp >= 2.8.5).
