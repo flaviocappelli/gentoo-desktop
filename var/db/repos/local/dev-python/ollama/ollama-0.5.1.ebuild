@@ -1,6 +1,10 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# by F.C.
+# Copied from 'HomeAssistantRepository' overlay with some modifications.
+# See https://projects.gentoo.org/python/guide/distutils.html
+
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
@@ -21,6 +25,7 @@ RESTRICT="!test? ( test )"
 DOCS="README.md"
 
 RDEPEND="
+	sci-ml/ollama
 	>=dev-python/httpx-0.27.0[${PYTHON_USEDEP}]
 	>=dev-python/pydantic-2.11.4[${PYTHON_USEDEP}]
 "
