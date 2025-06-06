@@ -9,11 +9,6 @@
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
 
-# Other Qt5 packages in testing useful for development. For Qt5->Qt6 package
-# migration, see https://wiki.gentoo.org/wiki/Project:Qt/Qt6_migration_notes
-~dev-qt/qtplugininfo-5.15.16::gentoo
-~dev-qt/qtserialbus-5.15.16::gentoo
-
 # Qt Creator: not emerged (at the moment I'm using
 # the version provided with the Qt Maintenance Tool).
 #=dev-qt/qt-creator-14*::gentoo
@@ -42,6 +37,7 @@ net-im/telegram-desktop-bin::gentoo
 # https://github.com/umlaeute/v4l2loopback.
 ~media-video/obs-studio-31.0.3::gentoo
 ~media-video/v4l2loopback-0.13.1::gentoo
+~net-libs/mbedtls-3.6.3.1::gentoo
 
 # Avidemux.
 ~media-video/avidemux-2.8.1::gentoo
