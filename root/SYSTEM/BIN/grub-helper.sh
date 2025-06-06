@@ -122,6 +122,10 @@ grub_config_update()
     # Silent grub for Linux boot.
     sed -i "/echo[[:space:]]*'Loading Linux/d" /boot/grub/grub.cfg
     sed -i "/echo[[:space:]]*'Loading initial/d" /boot/grub/grub.cfg
+
+    # Set GRUB default boot entry (first).
+    echo "Set grub default boot to first entry (0)."
+    grub-set-default 0
     echo ""
 }
 
