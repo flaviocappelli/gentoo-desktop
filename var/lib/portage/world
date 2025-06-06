@@ -13,6 +13,7 @@ app-arch/p7zip
 app-arch/rar
 app-backup/timeshift
 app-benchmarks/geekbench
+app-benchmarks/hyperfine
 app-benchmarks/kdiskmark
 app-benchmarks/ramspeed
 app-cdr/dolphin-plugins-mountiso
