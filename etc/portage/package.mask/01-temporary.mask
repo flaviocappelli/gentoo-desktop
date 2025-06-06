@@ -12,8 +12,8 @@
 # based on Qt5, due to Qt5 going away from Gentoo (see Gentoo
 # bug #948836). THIS IS MADNESS: many packages still need Qt5!
 # At the moment, the only possibility is to mask all upgrades.
-# VirtualBox 7.0.22 works well, I hope it will not be removed
-# too soon (otherwise I'll have to copy it into my overlay).
+# VirtualBox 7.0.22 works very well, but it has been removed
+# from portage so I had to copy it into my overlay!
 >=app-emulation/virtualbox-7.0.26
 >=app-emulation/virtualbox-additions-7.0.26
 >=app-emulation/virtualbox-extpack-oracle-7.0.26
