@@ -27,26 +27,30 @@ LICENSE="MIT"
 SLOT="0"
 
 X86_CPU_FLAGS=(
+	sse4_2
 	avx
 	f16c
 	avx2
+	bmi2
 	fma3
 	avx512f
 	avx512vbmi
 	avx512_vnni
-	avx512_bf16
 	avx_vnni
-	amx_tile
-	amx_int8
 )
 CPU_FLAGS=( "${X86_CPU_FLAGS[@]/#/cpu_flags_x86_}" )
-IUSE="${CPU_FLAGS[*]} blas cuda mkl rocm systemd"
+IUSE="${CPU_FLAGS[*]} cuda blas mkl rocm systemd"
 
 REQUIRED_USE="
 	?? ( cuda rocm )
 "
 
+RESTRICT="test"
+
 COMMON_DEPEND="
+	cuda? (
+		dev-util/nvidia-cuda-toolkit:=
+	)
 	blas? (
 		!mkl? (
 			virtual/blas
@@ -55,10 +59,6 @@ COMMON_DEPEND="
 			sci-libs/mkl
 		)
 	)
-	cuda? (
-		dev-util/nvidia-cuda-toolkit:=
-	)
-
 	rocm? (
 		>=sci-libs/hipBLAS-${ROCM_VERSION}:=[${ROCM_USEDEP}]
 	)
@@ -73,7 +73,7 @@ DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	acct-group/ollama
-	acct-user/ollama
+	>=acct-user/ollama-3-r1[cuda?]
 "
 
 PATCHES=(
@@ -81,11 +81,26 @@ PATCHES=(
 )
 
 pkg_pretend() {
+	if use amd64; then
+		if use cpu_flags_x86_f16c && use cpu_flags_x86_avx2 && use cpu_flags_x86_fma3 && ! use cpu_flags_x86_bmi2; then
+			ewarn
+			ewarn "CPU_FLAGS_X86: bmi2 not enabled."
+			ewarn "  Not building haswell runner."
+			ewarn "  Not building skylakex runner."
+			ewarn "  Not building icelake runner."
+			ewarn "  Not building alderlake runner."
+			ewarn
+			if grep bmi2 /proc/cpuinfo > /dev/null; then
+				ewarn "bmi2 found in /proc/cpuinfo"
+				ewarn
+			fi
+		fi
+	fi
 	if use rocm; then
-		einfo "Ollama with ROCm tested only on AMD Radeon RX 6900 XT (gfx1030, ROCm 6.3.3)"
+		einfo "This ebuild has been tested with ROCM >= 6.3.3 on AMD Radeon RX 6900 XT only"
 	fi
 	if use cuda; then
-		einfo "Ollama with CUDA not tested, you are on your own (I don't have an NVidia GPU)"
+		einfo "This ebuild has not yet been tested with CUDA (I don't have an NVidia GPU)"
 	fi
 }
 
@@ -130,63 +145,62 @@ src_prepare() {
 		|| die
 
 	if use amd64; then
-		if ! use cpu_flags_x86_avx; then
-			sed -e "/ggml_add_cpu_backend_variant(sandybridge/s/^/# /g" -i ml/backend/ggml/ggml/src/CMakeLists.txt || die
-			# AVX)
+		if
+			! use cpu_flags_x86_sse4_2; then
+			sed -e "/ggml_add_cpu_backend_variant(sse42/s/^/# /g" -i ml/backend/ggml/ggml/src/CMakeLists.txt || die
+			# SSE42)
 		fi
 		if
+			! use cpu_flags_x86_sse4_2 ||
+			! use cpu_flags_x86_avx; then
+			sed -e "/ggml_add_cpu_backend_variant(sandybridge/s/^/# /g" -i ml/backend/ggml/ggml/src/CMakeLists.txt || die
+			# SSE42 AVX)
+		fi
+		if
+			! use cpu_flags_x86_sse4_2 ||
 			! use cpu_flags_x86_avx ||
 			! use cpu_flags_x86_f16c ||
 			! use cpu_flags_x86_avx2 ||
+			! use cpu_flags_x86_bmi2 ||
 			! use cpu_flags_x86_fma3; then
 			sed -e "/ggml_add_cpu_backend_variant(haswell/s/^/# /g" -i ml/backend/ggml/ggml/src/CMakeLists.txt || die
-			# AVX F16C AVX2 FMA)
+			# SSE42 AVX F16C AVX2 BMI2 FMA)
 		fi
 		if
+			! use cpu_flags_x86_sse4_2 ||
 			! use cpu_flags_x86_avx ||
 			! use cpu_flags_x86_f16c ||
 			! use cpu_flags_x86_avx2 ||
+			! use cpu_flags_x86_bmi2 ||
 			! use cpu_flags_x86_fma3 ||
 			! use cpu_flags_x86_avx512f; then
 			sed -e "/ggml_add_cpu_backend_variant(skylakex/s/^/# /g" -i ml/backend/ggml/ggml/src/CMakeLists.txt ||  die
-			# AVX F16C AVX2 FMA AVX512)
+			# SSE42 AVX F16C AVX2 BMI2 FMA AVX512)
 		fi
 		if
+			! use cpu_flags_x86_sse4_2 ||
 			! use cpu_flags_x86_avx ||
 			! use cpu_flags_x86_f16c ||
 			! use cpu_flags_x86_avx2 ||
+			! use cpu_flags_x86_bmi2 ||
 			! use cpu_flags_x86_fma3 ||
 			! use cpu_flags_x86_avx512f ||
 			! use cpu_flags_x86_avx512vbmi ||
 			! use cpu_flags_x86_avx512_vnni; then
 			sed -e "/ggml_add_cpu_backend_variant(icelake/s/^/# /g" -i ml/backend/ggml/ggml/src/CMakeLists.txt || die
-			# AVX F16C AVX2 FMA AVX512 AVX512_VBMI AVX512_VNNI)
+			# SSE42 AVX F16C AVX2 BMI2 FMA AVX512 AVX512_VBMI AVX512_VNNI)
 		fi
 		if
+			! use cpu_flags_x86_sse4_2 ||
 			! use cpu_flags_x86_avx ||
 			! use cpu_flags_x86_f16c ||
 			! use cpu_flags_x86_avx2 ||
+			! use cpu_flags_x86_bmi2 ||
 			! use cpu_flags_x86_fma3 ||
 			! use cpu_flags_x86_avx_vnni; then
 			sed -e "/ggml_add_cpu_backend_variant(alderlake/s/^/# /g" -i ml/backend/ggml/ggml/src/CMakeLists.txt || die
-			# AVX F16C AVX2 FMA AVX_VNNI)
+			# SSE42 AVX F16C AVX2 BMI2 FMA AVX_VNNI)
 		fi
-
-		if
-			! use cpu_flags_x86_avx ||
-			! use cpu_flags_x86_f16c ||
-			! use cpu_flags_x86_avx2 ||
-			! use cpu_flags_x86_fma3 ||
-			! use cpu_flags_x86_avx512f ||
-			! use cpu_flags_x86_avx512vbmi ||
-			! use cpu_flags_x86_avx512_vnni ||
-			! use cpu_flags_x86_avx512_bf16 ||
-			! use cpu_flags_x86_amx_tile ||
-			! use cpu_flags_x86_amx_int8 ; then
-			sed -e "/ggml_add_cpu_backend_variant(sapphirerapids/s/^/# /g" -i ml/backend/ggml/ggml/src/CMakeLists.txt || die
-			#AVX F16C AVX2 FMA AVX512 AVX512_VBMI AVX512_VNNI AVX512_BF16 AMX_TILE AMX_INT8)
-		fi
-		: # ml/backend/ggml/ggml/src/CMakeLists.txt
 	fi
 
 	if use cuda; then
@@ -225,6 +239,7 @@ src_configure() {
 		CUDAHOSTLD="$(tc-getCXX)"
 
 		cuda_add_sandbox -w
+		addpredict "/dev/char/"
 	else
 		mycmakeargs+=(
 			-DCMAKE_CUDA_COMPILER="NOTFOUND"
@@ -285,6 +300,8 @@ pkg_postinst() {
 		einfo "See available models at https://ollama.com/library"
 	fi
 
-	einfo "When using CUDA or ROCm, the user running ollama has to be in the video group or it"
-	einfo "will not detect the devices. The ebuild acct-user/ollama ensures this for user ollama."
+	if use cuda ; then
+		einfo "When using CUDA, the user 'ollama' has to be in the 'video' group or it"
+		einfo "won't detect the GPU. The ebuild ensures this via 'acct-user/ollama[cuda]'."
+	fi
 }

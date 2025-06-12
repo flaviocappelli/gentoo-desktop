@@ -102,11 +102,6 @@
 >=dev-python/wheel-0.45.1                    python_targets_python3_12
 >=dev-python/xcffib-1.7.1                    python_targets_python3_12
 
-# media-video/avidemux
-# See https://bugs.gentoo.org/952530
-# --------------------------------------------------------------
-=media-libs/avidemux-plugins-2.8.1-r2        python_single_target_python3_12
-
 # sci-electronics/kicad-meta
 # See https://bugs.gentoo.org/952659
 # KiCad-9.x has only this dependency which need Python-3.12
