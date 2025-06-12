@@ -254,8 +254,11 @@ revdep-rebuild
 echo -e "\n"
 
 # Remove sources of unused and superceded packages.
-echo -e "\nREMOVING OUTDATED DISTFILES\n---------------------------\n"
+# Without '-d' will remove every package that does not have an ebuild in the tree.
+# With '-d' (--deep) everything not installed on the host you run it from will be removed.
+echo -e "\nREMOVING OUTDATED DISTFILES AND BINARY PACKAGES\n-----------------------------------------------\n"
 eclean -d distfiles
+eclean -d packages
 echo -e "\n"
 
 # Update configuration files and /etc/profile.
