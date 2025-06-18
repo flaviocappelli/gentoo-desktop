@@ -4,15 +4,10 @@
 # and "local") are disabled below. Packages emerged from such repos
 # (if any) must be explicitly enabled in this file (after the list).
 
-*/*::dev1990-overlay    -*
 */*::gentoo-zh          -*
 */*::guru               -*
-*/*::holgersson-overlay -*
 */*::pf4public          -*
-*/*::pg_overlay         -*
-*/*::phackerlay         -*
 */*::supertux88         -*
-*/*::vowstar            -*
 
 
 # === ENABLED EBUILDS (FROM INSTALLED OVERLAYS) ==========================
