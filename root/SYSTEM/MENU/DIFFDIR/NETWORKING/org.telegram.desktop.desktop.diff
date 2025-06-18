@@ -1,12 +1,12 @@
---- /usr/share/applications/org.telegram.desktop.desktop	2025-04-06 23:24:50.297296641 +0200
-+++ ./org.telegram.desktop.desktop	2025-04-06 23:26:55.142231416 +0200
+--- /usr/share/applications/org.telegram.desktop.desktop	2025-06-13 15:23:48.111384222 +0200
++++ ./org.telegram.desktop.desktop	2025-06-13 16:09:59.193774722 +0200
 @@ -1,21 +1,23 @@
  [Desktop Entry]
  Name=Telegram
 +GenericName=Instant Messaging
 +GenericName[it]=Messaggistica istantanea
- TryExec=telegram-desktop
- Exec=telegram-desktop -- %u
+ TryExec=/usr/bin/telegram-desktop
+ Exec=/usr/bin/telegram-desktop -- %u
 -Icon=org.telegram.desktop
 +Icon=telegram
  Terminal=false
@@ -27,5 +27,5 @@
  [Desktop Action quit]
  Name=Quit Telegram
 +Name[it]=Termina Telegram
- Exec=telegram-desktop -quit
+ Exec=/usr/bin/telegram-desktop -quit
  Icon=application-exit

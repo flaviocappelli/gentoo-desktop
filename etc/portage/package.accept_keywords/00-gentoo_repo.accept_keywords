@@ -188,9 +188,9 @@ dev-build/rocm-cmake:0/6.3::gentoo
 dev-util/rocminfo:0/6.3::gentoo
 
 # BANDWIDTH_TEST.
-# Display some infos about performance characteristics
-# of buffer copying and kernel read / write operation.
-dev-util/rocm_bandwidth_test::gentoo
+# Display infos about performance of buffer copying and kernel read / write
+# operations. If the above slot is not available, use the latest version.
+dev-util/rocm_bandwidth_test:0/6.3::gentoo
 
 # Tools to translate CUDA source code into portable HIP C++.
 dev-util/hipify-clang:0/6.3::gentoo
