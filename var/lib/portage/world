@@ -225,6 +225,7 @@ net-im/telegram-desktop-bin
 net-im/zoom
 net-misc/bridge-utils
 net-misc/chrony
+net-misc/freetube-bin
 net-misc/rclone
 net-misc/socat
 net-misc/whois

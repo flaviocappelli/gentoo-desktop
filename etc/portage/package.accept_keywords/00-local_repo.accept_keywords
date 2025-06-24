@@ -17,24 +17,9 @@ sys-kernel/nct6687d::local **
 # Timeshift system backup, from GURU repo.
 app-backup/timeshift::local
 
-# HDD and SSD benchmark tool with a very friendly graphical user interface
-# (similar to CrystalDiskMark in Windows). It uses 'sys-block/fio' (for the
-# exact tests launched see https://github.com/JonMagon/KDiskMark/issues/130).
-# Note that benchmarks on ZFS are currently not accurate, due to multiple
-# cache levels (see https://github.com/JonMagon/KDiskMark/issues/148).
-app-benchmarks/kdiskmark::local
-
 # SiriKali (from holgersson overlay) and GoCryptFS (from portage).
 app-crypt/sirikali::local
 =app-crypt/gocryptfs-2.5*::gentoo
-
-# Other packages useful for development.
-dev-util/kdstatemachineeditor::gentoo
-dev-util/gammaray::local
-
-# Cross-platform Git client (no longer developed but still maintained
-# and bug fixed). Gittyup is a continuation of GitAhead (no ebuild yet).
-dev-vcs/gitahead::local
 
 # Plugin for OBS Studio, useful to remove or blur the background
 # of captured images and videos (based on a neural network). See:

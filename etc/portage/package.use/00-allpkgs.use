@@ -453,6 +453,7 @@ media-libs/mlt                      -rubberband           # Drop unnecessary dep
 media-libs/mlt                      xml                   # Required by kde-apps/kdenlive.
 media-libs/opencolorio              -opengl               # Drop unnecessary dependency (from CLD).
 media-libs/opencv                   -gtk3                 # Prefere qt5/qt6, required by "media-plugins/frei0r-plugins.
+media-libs/opencv                   features2d            # Required by media-plugins/frei0r-plugins[facedetect].
 ##media-libs/opencv                 lapack                # Add support for the virtual/lapack numerical library.
 ##media-libs/opencv                 lto                   # Build using Link Time Optimizations (LTO).
 media-libs/opencv                   opencl                # Enable OpenCL support (computation on GPU).
@@ -593,6 +594,7 @@ net-firewall/iptables               nftables              # Required by app-cont
 
 net-fs/nfs-utils                    -kerberos -ldap       # Drop unnecessary dependency (from CLD)
 net-fs/samba                        ads                   # Enable Active Directory support.
+net-fs/samba                        -pam                  # I don't know why, but PAM on Gentoo breaks authentication of Windows clients.
 net-fs/samba                        winbind               # Enables support for the winbind auth daemon.
 ##net-fs/samba                      -addc -gpg            # Disable Active Directory Domain Controller support (default, -gpg required by samba ebuild).
 ##net-fs/samba                      addc -system-mitkrb5  # Enable Active Directory Domain Controller support (-system-mitkrb5 required by samba ebuild).

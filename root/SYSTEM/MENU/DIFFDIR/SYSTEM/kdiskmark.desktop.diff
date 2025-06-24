@@ -1,5 +1,5 @@
---- /usr/share/applications/kdiskmark.desktop	2024-09-07 18:28:18.476096430 +0200
-+++ ./kdiskmark.desktop	2024-09-07 18:40:54.006956917 +0200
+--- /usr/share/applications/kdiskmark.desktop	2025-06-24 23:56:26.736644042 +0200
++++ ./kdiskmark.desktop	2025-06-25 00:00:37.729352577 +0200
 @@ -1,11 +1,12 @@
  [Desktop Entry]
  Name=KDiskMark
@@ -11,9 +11,9 @@
  Terminal=false
  Type=Application
  Categories=System;
--Keywords=benchmark;disk;
--Keywords[it]=benchmark;disco;prestazioni;
+-Keywords=benchmark;storage;performance;speed;test;
+-Keywords[it]=test;archiviazione;prestazioni;velocità;
 -StartupNotify=false
-+Keywords=disk;disks;speed;
-+Keywords[it]=disco;dischi;velocità;prestazioni;
++Keywords=disk;disks;storage;speed;performance;
++Keywords[it]=disco;dischi;storage;archiviazione;velocità;prestazioni;
 +StartupNotify=true
