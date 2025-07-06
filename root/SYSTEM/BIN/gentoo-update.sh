@@ -2,7 +2,7 @@
 #
 # Released under MIT License
 # Copyright (c) 2024 Flavio Cappelli
-# Version 1.0
+# Version 1.1
 #
 # Automate (as much as possible) the upgrade of a Gentoo system.
 # This script can also be invoked in "pretend mode", that can be
@@ -224,6 +224,26 @@ if [ ${PRETEND_MODE} -ne 0 -a ${CHECK_LOCAL_ONLY} -ne 0 ] \
     exit 1
 fi
 
+# Check if the packages are installed from a binary repo and more specifically from a
+# network folder (shared by a Gentoo binhost); if so, and such folder is not mounted on
+# the current host, try to mount it and if it fails stop the script and display the error.
+MOUNTED_PKGDIR=0
+EMERGE_INFO_DATA=$(emerge --info)
+if echo "${EMERGE_INFO_DATA}" | grep EMERGE_DEFAULT_OPTS | grep -qlwE -- "-k|--usepkg"; then
+    PKGDIR=$(echo "${EMERGE_INFO_DATA}" | grep PKGDIR | sed 's|PKGDIR="\(.*\)"|\1|')
+    if grep -qe "[[:space:]]${PKGDIR}[[:space:]]" /etc/fstab; then
+        if ! mountpoint -q "${PKGDIR}"; then
+            echo -e -n "\nNetwork folder ${PKGDIR} not yet mounted on local host, try to mount"
+            if ! mount "${PKGDIR}" >/dev/null 2>&1; then
+                echo -e "\nError: mount of Gentoo binhost shared folder failed, aborting\n"
+                exit 1
+            fi
+            echo -e "\nSucceed\n"
+        fi
+        MOUNTED_PKGDIR=1
+    fi
+fi
+
 # Pretend mode / check local only.
 if [ ${PRETEND_MODE} -ne 0 -o ${CHECK_LOCAL_ONLY} -ne 0 ]; then
     sync_gentoo_and_other_repos
@@ -253,12 +273,16 @@ echo ""
 revdep-rebuild
 echo -e "\n"
 
-# Remove sources of unused and superceded packages.
-# Without '-d' will remove every package that does not have an ebuild in the tree.
-# With '-d' (--deep) everything not installed on the host you run it from will be removed.
-echo -e "\nREMOVING OUTDATED DISTFILES AND BINARY PACKAGES\n-----------------------------------------------\n"
+# Remove unused and superceded packages. Note about the eclean '-d' option: without
+# '-d', eclean removes every package that does not have an ebuild in the tree; with
+# '-d' (--deep), eclean removes all packages that are not more installed on the host.
+echo -e "\nREMOVING OUTDATED DISTFILES\n---------------------------\n"
 eclean -d distfiles
-eclean -d packages
+echo -e "\n"
+if [ ${MOUNTED_PKGDIR} -eq 0 ]; then
+    echo -e "\nREMOVING OUTDATED BINARY PACKAGES\n---------------------------------\n"
+    eclean -d packages
+fi
 echo -e "\n"
 
 # Update configuration files and /etc/profile.
