@@ -43,7 +43,7 @@ net-im/telegram-desktop-bin::gentoo
 ~media-video/avidemux-2.8.1::gentoo
 ~media-libs/avidemux-core-2.8.1::gentoo
 ~media-libs/avidemux-plugins-2.8.1::gentoo
-~media-sound/dcaenc-2::gentoo
+~media-sound/dcaenc-3::gentoo
 
 # Blender-4.4. Previous versions are not ncompatible with ffmpeg-7
 # (https://bugs.gentoo.org/953827 + https://bugs.gentoo.org/951199).

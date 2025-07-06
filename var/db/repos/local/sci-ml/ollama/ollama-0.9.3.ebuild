@@ -267,6 +267,20 @@ src_configure() {
 }
 
 src_compile() {
+	# export version information
+	# https://github.com/gentoo/guru/pull/205
+	# https://forums.gentoo.org/viewtopic-p-8831646.html
+	local VERSION
+	if [[ "${PV}" == *9999* ]]; then
+		VERSION=$(
+			git describe --tags --first-parent --abbrev=7 --long --dirty --always \
+			| sed -e "s/^v//g"
+		)
+	else
+		VERSION="${PVR}"
+	fi
+	GOFLAGS+=" '-ldflags=-w -s \"-X=github.com/ollama/ollama/version.Version=$VERSION\" \"-X=github.com/ollama/ollama/server.mode=release\"'"
+
 	ego build
 
 	cmake_src_compile

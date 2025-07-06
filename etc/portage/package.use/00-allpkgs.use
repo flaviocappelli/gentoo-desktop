@@ -340,6 +340,7 @@ kde-apps/kalarm                     -pim                  # Disable PIM integrat
 kde-apps/kdenetwork-meta            -bittorrent           # I don't need bittorrent support (I prefere net-p2p/qbittorrent that works very well).
 ##kde-apps/kdenetwork-meta          dropbox               # Popular cloud storage alternative to Google Drive (see also NextCloud).
 kde-apps/kdesdk-meta                git                   # Enable support for Git VCS in kde-apps/dolphin .
+kde-apps/kdesdk-meta                qt5                   # Pull in kde-apps/umbrello (not yet ported to Qt6).
 ##kde-apps/kdeutils-meta            7zip                  # Install app-arch/p7zip for 7zip archive support in kde-apps/ark.
 ##kde-apps/kdeutils-meta            gpg                   # Install kde-apps/kgpg which depends on kde-apps/akonadi.
 ##kde-apps/kdeutils-meta            lrz                   # Install app-arch/lrzip for LRZ archive support in kde-apps/ark .

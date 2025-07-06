@@ -1,5 +1,5 @@
---- /usr/share/applications/org.gnome.Sysprof.desktop	2024-03-17 14:30:37.116397750 +0100
-+++ ./org.gnome.Sysprof.desktop	2024-03-17 19:52:55.843134409 +0100
+--- /usr/share/applications/org.gnome.Sysprof.desktop	2025-07-01 08:43:31.735424733 +0200
++++ ./org.gnome.Sysprof.desktop	2025-07-01 09:42:46.608541239 +0200
 @@ -1,13 +1,13 @@
  [Desktop Entry]
  Name=Sysprof
@@ -14,6 +14,6 @@
  Terminal=false
  Type=Application
  MimeType=application/x-sysprof-capture;
--Categories=GNOME;GTK;Development;
+-Categories=GNOME;GTK;Development;X-GNOME-Utilities;
 +Categories=System;
  StartupNotify=true
