@@ -7,10 +7,10 @@
 # List known CPU vulnerabilities and mitigations.
 
 if [ -d /sys/devices/system/cpu/vulnerabilities/ ]; then
-    printf "\nVulnerability          | Status\n"
-    printf "--" '-----------------------+-----------------------------------------------------------------------'
+    printf '\nVulnerability             | Status\n'
+    printf -- '--------------------------+-----------------------------------------------------------------------'
     for i in /sys/devices/system/cpu/vulnerabilities/*; do
-        printf '\n%-22s | %s' "$(basename $i)" "$(cat $i)"
+        printf '\n%-25s | %s' "$(basename $i)" "$(cat $i)"
     done
     printf '\n\n'
 else
