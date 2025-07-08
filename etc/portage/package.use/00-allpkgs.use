@@ -326,8 +326,6 @@ gnome-base/gvfs                     fuse                  # Provides limited acc
 ##gnome-base/gvfs                   ios                   # Enable support for Apple's iDevice with iOS operating system (gvfs-afc).
 gnome-base/gvfs                     mtp                   # Enable support for Media Transfer Protocol.
 
-gnome-extra/zenity                  -webkit               # Drop unnecessary dependency (from CLD).
-
 kde-apps/akonadi                    -designer -xml        # Drop unnecessary dependency (from CLD).
 kde-apps/akonadi                    tools                 # Install tools for developers and testing.
 kde-apps/akonadi-config             -mysql -postgres      # See https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1903060.html
