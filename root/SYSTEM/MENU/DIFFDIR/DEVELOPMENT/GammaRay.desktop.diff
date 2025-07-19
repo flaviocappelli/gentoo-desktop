@@ -4,8 +4,8 @@
  [Desktop Entry]
  Name=GammaRay
 -GenericName=Qt Inspection Tool
-+GenericName=Qt5 Inspection Tool
-+GenericName[it]=Ispezione applicazioni Qt5
++GenericName=Qt6 Inspection Tool
++GenericName[it]=Ispezione applicazioni Qt6
  Exec=gammaray
  Icon=GammaRay
  Type=Application

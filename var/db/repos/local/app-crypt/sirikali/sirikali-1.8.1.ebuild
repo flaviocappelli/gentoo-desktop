@@ -3,6 +3,7 @@
 
 # by F.C.
 # From holgersson-overlay.
+# Add patch to fix build error with Qt 6.9.x
 
 EAPI=8
 
@@ -29,6 +30,10 @@ DEPEND="
 	kwallet? ( kde-frameworks/kwallet )
 	pwquality? ( dev-libs/libpwquality )
 "
+
+PATCHES=(
+        "${FILESDIR}/${PN}-1.8.1-qt-6.9-build-fix.patch"
+)
 
 src_configure() {
 	local MY_ENABLE_SECRETS=false

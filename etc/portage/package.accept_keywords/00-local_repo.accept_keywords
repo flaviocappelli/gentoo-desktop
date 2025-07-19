@@ -58,3 +58,9 @@ acct-group/ollama::local
 acct-user/ollama::local
 dev-python/ollama::local
 sci-ml/ollama::local
+
+# Tool useful for development with Qt (kdstatemachineeditor
+# is a dependency). The version in 'guru' overlay is old and
+# not compatible with Qt-6.9 (current Qt6 version in Gentoo).
+dev-util/gammaray::local
+dev-util/kdstatemachineeditor::gentoo

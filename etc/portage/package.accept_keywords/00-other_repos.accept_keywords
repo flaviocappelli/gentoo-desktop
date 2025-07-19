@@ -19,11 +19,6 @@
 # cache levels (see https://github.com/JonMagon/KDiskMark/issues/148).
 app-benchmarks/kdiskmark::guru **
 
-# Tool useful for development with Qt
-# (kdstatemachineeditor is a dependency).
-dev-util/gammaray::guru **
-dev-util/kdstatemachineeditor::gentoo
-
 # Cross-platform Git client (no longer developed but still maintained
 # and bug fixed). Gittyup is a continuation of GitAhead (no ebuild yet).
 dev-vcs/gitahead::guru **

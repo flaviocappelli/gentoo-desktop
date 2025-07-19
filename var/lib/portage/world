@@ -28,7 +28,6 @@ app-editors/okteta
 app-editors/qxmledit
 app-editors/vscode
 app-editors/wxhexeditor
-app-editors/zed
 app-emulation/virt-manager
 app-emulation/virtualbox
 app-emulation/virtualbox-additions
@@ -95,7 +94,6 @@ dev-util/cppcheck
 dev-util/cutter
 dev-util/debugedit
 dev-util/diffstat
-dev-util/diffuse
 dev-util/gammaray
 dev-util/heaptrack
 dev-util/hip
@@ -119,7 +117,6 @@ dev-vcs/repo
 dev-vcs/subversion
 games-board/gnome-chess
 games-board/gnuchess
-games-emulation/dosbox
 games-fps/gzdoom
 games-fps/xonotic
 gnome-base/dconf-editor
@@ -157,7 +154,6 @@ kde-apps/ksudoku
 kde-apps/ktimer
 kde-apps/kwalletmanager
 kde-apps/lokalize
-kde-apps/marble
 kde-apps/rocs
 kde-apps/sweeper
 kde-misc/kdiff3
@@ -199,7 +195,6 @@ media-sound/lilypond
 media-sound/normalize
 media-sound/pavucontrol
 media-sound/qpwgraph
-media-sound/rosegarden
 media-sound/sox
 media-sound/strawberry
 media-sound/timidity++
@@ -216,7 +211,7 @@ net-analyzer/traceroute
 net-analyzer/wireshark
 net-dialup/cutecom
 net-dialup/moserial
-net-dns/bind-tools
+net-dns/bind
 net-firewall/firewalld
 net-fs/nfs-utils
 net-ftp/filezilla
@@ -229,7 +224,6 @@ net-misc/rclone
 net-misc/socat
 net-misc/whois
 net-misc/yt-dlp
-net-p2p/amule
 net-p2p/qbittorrent
 net-print/cups-meta
 net-print/splix
@@ -289,6 +283,7 @@ sys-block/partitionmanager
 sys-boot/efibootmgr
 sys-boot/grub
 sys-boot/os-prober
+sys-devel/mold
 sys-firmware/b43-firmware
 sys-firmware/sof-firmware
 sys-fs/btrfs-progs

@@ -3,18 +3,14 @@
 # Ebuilds from the gentoo official repository.
 # NOTE: sign ~ (tilde) let in -r# package revisions.
 
-# Packages required for Python-3.13.
-~media-gfx/asymptote-3.02::gentoo
-
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
 
-# Qt Creator: not emerged (at the moment I'm using
-# the version provided with the Qt Maintenance Tool).
-#=dev-qt/qt-creator-14*::gentoo
-
 # Hex editor that can edit very BIG files!
 app-editors/wxhexeditor::gentoo
+
+# LaTeX editor. Stable version has bugs!
+app-office/texstudio::gentoo
 
 # Other packages useful for development. dev-util/seer
 # is a new gui frontend to gdb with advanced features.
@@ -35,7 +31,7 @@ net-im/telegram-desktop-bin::gentoo
 
 # OBS Studio. Seee also
 # https://github.com/umlaeute/v4l2loopback.
-~media-video/obs-studio-31.0.3::gentoo
+~media-video/obs-studio-31.0.4::gentoo
 ~media-video/v4l2loopback-0.13.1::gentoo
 ~net-libs/mbedtls-3.6.3.1::gentoo
 
@@ -45,10 +41,6 @@ net-im/telegram-desktop-bin::gentoo
 ~media-libs/avidemux-plugins-2.8.1::gentoo
 ~media-sound/dcaenc-3::gentoo
 
-# Blender-4.4. Previous versions are not ncompatible with ffmpeg-7
-# (https://bugs.gentoo.org/953827 + https://bugs.gentoo.org/951199).
-=media-gfx/blender-4.4*
-
 # KiCad (meta package, latest version).
 sci-electronics/kicad-meta::gentoo
 app-doc/kicad-doc
@@ -57,7 +49,6 @@ sci-electronics/kicad-footprints::gentoo
 sci-electronics/kicad-packages3d::gentoo
 sci-electronics/kicad-symbols::gentoo
 sci-electronics/kicad-templates::gentoo
-app-text/dblatex
 
 # Godot Engine.
 #dev-games/godot::gentoo
