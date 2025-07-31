@@ -76,6 +76,7 @@ dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
 dev-python/ollama
 dev-python/pip
+dev-python/uv
 dev-qt/qt-docs:5
 dev-qt/qt-docs:6
 dev-qt/qt3d:6
@@ -90,6 +91,7 @@ dev-util/bindgen
 dev-util/ccache
 dev-util/clazy
 dev-util/clinfo
+dev-util/cloc
 dev-util/cppcheck
 dev-util/cutter
 dev-util/debugedit
