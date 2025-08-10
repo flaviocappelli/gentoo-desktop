@@ -9,9 +9,6 @@ app-admin/spectre-meltdown-checker::gentoo **
 # Hex editor that can edit very BIG files!
 app-editors/wxhexeditor::gentoo
 
-# LaTeX editor. Stable version has bugs!
-app-office/texstudio::gentoo
-
 # Other packages useful for development. dev-util/seer
 # is a new gui frontend to gdb with advanced features.
 app-text/zeal::gentoo
@@ -31,9 +28,7 @@ net-im/telegram-desktop-bin::gentoo
 
 # OBS Studio. Seee also
 # https://github.com/umlaeute/v4l2loopback.
-~media-video/obs-studio-31.0.4::gentoo
-~media-video/v4l2loopback-0.13.1::gentoo
-~net-libs/mbedtls-3.6.3.1::gentoo
+~media-video/obs-studio-31.1.2::gentoo
 
 # Avidemux.
 ~media-video/avidemux-2.8.1::gentoo

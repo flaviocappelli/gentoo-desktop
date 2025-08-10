@@ -60,7 +60,6 @@ app-shells/bash-completion
 app-text/aha
 app-text/calibre
 app-text/dos2unix
-app-text/pdfarranger
 app-text/texlive
 app-text/tree
 app-text/uchmviewer

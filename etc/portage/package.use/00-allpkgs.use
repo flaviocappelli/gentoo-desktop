@@ -394,6 +394,7 @@ media-fonts/source-han-sans         l10n_zh-CN l10n_zh-TW # Add Chinese China/Ta
 
 media-gfx/darktable                 opencl                # Enable OpenCL support (computation on GPU).
 media-gfx/freecad                   addonmgr              # Build the addon manager module for automatic handling of 3rd party addons.
+media-gfx/freecad                   assembly              # Build the assembly module to create 3D models from distinguishable parts.
 ##media-gfx/freecad                 cam                   # Build the CAM module and workbench (for CNC machines).
 ##media-gfx/freecad                 designer              # Build the Qt designer plugin (so FreeCAD widgets can be used from within designer).
 ##media-gfx/freecad                 fem                   # Build the FEM module and workbench which provides Finite Element Analysis (FEA) workflows.
@@ -669,8 +670,7 @@ sci-libs/miopen                     composable-kernel     # Use composable-kerne
 sci-libs/miopen                     rocblas               # Build with rocBLAS support.
 sci-libs/netcdf                     -dap                  # Required by sci-misc/nco[-dap].
 sci-libs/opencascade                -ffmpeg               # Prevents opencascade to pull in ffmpeg < 5 (downgrade). I don't need the ffmpeg support in opencascade.
-sci-libs/opencascade                json vtk              # Required by media-gfx/freecad.
-sci-libs/vtk                        boost python          # Required by media-gfx/freecad.
+sci-libs/opencascade                json                  # Required by media-gfx/freecad.
 sci-libs/vtk                        tbb                   # Use dev-cpp/tbb to handle smp support (from CLD).
 
 sci-mathematics/glpk                gmp                   # Required by sci-mathematics/4ti2.
