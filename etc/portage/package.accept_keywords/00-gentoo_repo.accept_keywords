@@ -78,6 +78,9 @@ app-text/uchmviewer::gentoo
 # https://blog.desdelinux.net/it/genymotion-un-emulador-de-android-para-gnulinux/
 app-emulation/genymotion-bin::gentoo
 
+# Qt rizin frontend for reverse engineering. Stable version fails to build.
+dev-util/cutter::gentoo
+
 # Realtime monitor.
 net-analyzer/netdata::gentoo
 

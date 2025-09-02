@@ -665,6 +665,7 @@ sci-libs/hdf5                       -threads              # Thread support is in
 sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk.
 sci-libs/hdf5                       fortran               # Required by media-gfx/freecad.
 sci-libs/lapack                     lapacke               # Required by virtual/lapacke.
+sci-libs/libqalculate               gnuplot               # Required by sci-calculators/qalculate-qt for plot support.
 sci-libs/miopen                     composable-kernel     # Use composable-kernel for GEMM-like and reduction-like operators.
 ##sci-libs/miopen                   hipblaslt             # Use hipBLASLt (disabled because my GPU is not currently supported by hipBLASLt).
 sci-libs/miopen                     rocblas               # Build with rocBLAS support.

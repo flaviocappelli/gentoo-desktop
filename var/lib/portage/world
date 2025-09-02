@@ -232,7 +232,7 @@ net-vpn/networkmanager-openvpn
 net-vpn/networkmanager-pptp
 net-vpn/networkmanager-vpnc
 sci-astronomy/stellarium
-sci-calculators/speedcrunch
+sci-calculators/qalculate-qt
 sci-electronics/circuitjs1-bin
 sci-electronics/electronics-menu
 sci-electronics/gtkwave
