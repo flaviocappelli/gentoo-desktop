@@ -1,10 +1,11 @@
 # Configuration file for dircolors, a utility to help you set the
 # LS_COLORS environment variable used by GNU ls with the --color option.
 
-# Copyright (C) 1996-2023 Free Software Foundation, Inc.
+# Copyright (C) 1996-2025 Free Software Foundation, Inc.
 # Copying and distribution of this file, with or without modification,
 # are permitted provided the copyright notice and this notice are preserved.
 
+#
 # The keywords COLOR, OPTIONS, and EIGHTBIT (honored by the
 # slackware version of dircolors) are recognized but ignored.
 
@@ -47,6 +48,7 @@ TERM st
 TERM terminator
 TERM tmux*
 TERM vt100
+TERM vt220
 TERM xterm*
 
 # ===================================================================
@@ -88,7 +90,7 @@ CAPABILITY              30;41       # file with capability (very expensive to lo
 STICKY_OTHER_WRITABLE   30;42       # dir that is sticky and other-writable (+t,o+w)
 OTHER_WRITABLE          34;42       # dir that is other-writable (o+w) and not sticky
 STICKY                  37;44       # dir with the sticky bit set (+t) and not other-writable
-EXEC                    01;32       # files with execute permission
+EXEC                    01;32       # regular files with execute permission
 
 # ===================================================================
 # File extension attributes
@@ -121,52 +123,58 @@ EXEC                    01;32       # files with execute permission
 .apk      01;31     # Android package format
 .arc      01;31     # app-arch/arc (DOS LHARC archive or Macintosh HFS archive)
 .arj      01;31     # app-arch/arj (DOS & Windows archive)
-.bz       01;31
-.bz2      01;31
+.bz       01;31     # app-arch/bzip2 (old bzip format)
+.bz2      01;31     # app-arch/bzip2
 .cab      01;31     # app-arch/cabextract (Windows archive)
 .cpio     01;31     # app-arch/cpio
-.deb      01;31
+.crate    01;31     # https://doc.rust-lang.org/cargo/reference/publishing.html#packaging-a-crate
+.deb      01;31     # app-arch/dpkg (Debian Software Package)
 .dmg      01;31     # Apple DiskImage format
-.dwm      01;31
-.dz       01;31     # dzip compressed file (demo recordings of id's Quake).
-.ear      01;31
-.esd      01;31
-.gz       01;31
-.jar      01;31
+.dwm      01;31     # ?
+.drpm     01;31     # Delta RPM File (Fedora's Presto plugin for yum)
+.dz       01;31     # dzip compressed file (demo recordings of id's Quake)
+.ear      01;31     # https://fileinfo.com/extension/ear
+.egg      01;31     # ALZip Archive / Panda3D
+.esd      01;31     # https://fileinfo.com/extension/esd
+.gz       01;31     # app-arch/gzip
+.jar      01;31     # https://fileinfo.com/extension/jar
 .lha      01;31     # app-arch/lha (DOS)
 .lrz      01;31     # app-arch/lrzip
-.lz       01;31
+.lz       01;31     # https://fileinfo.com/extension/lz
 .lz4      01;31     # app-arch/lz4 (Google fast compressor/decompressor)
 .lzh      01;31     # app-arch/lha (DOS)
 .lzma     01;31     # 7-zip compressed file
 .lzo      01;31     # app-arch/lzop (fast, even real-time, compression/decompression)
 .partimg  01;31     # Partimage backup format
 .pea      01;31     # app-arch/peazip (see "eix -R unalz")
+.pyz      01;31     # https://fileinfo.com/extension/pyz
 .rar      01;31     # app-arch/rar & app-arch/unrar (both required)
-.rpm      01;31
+.rpm      01;31     # app-arch/rpm & app-arch/rpm2targz
 .rz       01;31     # app-arch/rzip
-.sar      01;31
-.swm      01;31
-.t7z      01;31
-.tar      01;31
-.taz      01;31
+.sar      01;31     # https://fileinfo.com/extension/sar
+.swm      01;31     # https://fileinfo.com/extension/swm
+.t7z      01;31     # .tar.7z
+.tar      01;31     # app-arch/tar (Tape Archive, not compressed)
+.taz      01;31     # https://fileinfo.com/extension/taz
 .tb2      01;31     # ?
-.tbz      01;31
-.tbz2     01;31
-.tgz      01;31
-.tlz      01;31
-.txz      01;31
-.tz       01;31
+.tbz      01;31     # https://fileinfo.com/extension/tbz
+.tbz2     01;31     # .tar.bz2
+.tgz      01;31     # .tar.gz
+.tlz      01;31     # https://fileinfo.com/extension/tlz
+.txz      01;31     # .tar.xz
+.tz       01;31     # https://fileinfo.com/extension/tz
 .tz2      01;31     # ?
-.tzo      01;31     # (.tar.lzo)
-.tzst     01;31
-.war      01;31
-.wim      01;31
-.xz       01;31
+.tzo      01;31     # .tar.lzo
+.tzst     01;31     # .tar.zst
+.udeb     01;31     # https://fileinfo.com/extension/udeb
+.war      01;31     # https://fileinfo.com/extension/war
+.whl      01;31     # https://fileinfo.com/extension/whl
+.wim      01;31     # https://fileinfo.com/extension/wim
+.xz       01;31     # app-arch/xz-utils
 .z        01;31     # app-arch/gzip (OLD Unix archive format) & app-arch/ncompress
 .zip      01;31     # app-arch/zip
 .zoo      01;31     # app-arch/zoo
-.zst      01;31
+.zst      01;31     # app-arch/zstd
 
 # Multimedia (image/sound/video) file formats
 .aac      01;35
@@ -189,6 +197,7 @@ EXEC                    01;32       # files with execute permission
 .gl       01;35
 .jpeg     01;35
 .jpg      01;35
+.jxl      01;35     # JPEG XL
 .m2v      01;35     # MPEG-2 Video only
 .m4a      01;35     # AAC audio coding
 .m4v      01;35     # MPEG-4 Video only

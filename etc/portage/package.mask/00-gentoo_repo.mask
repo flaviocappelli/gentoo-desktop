@@ -42,10 +42,6 @@ media-sound/pulseaudio-daemon
 # portage. See also /etc/portage/make.conf/00-cflags.conf
 <sys-devel/gcc-11.0.0
 
-# Python < 3.12 is no longer required. This blocks old versions of Python
-# (and all packages still in portage that depend on old versions of Python).
-<dev-lang/python-3.12.0
-
 # Ensures use of dev-lang/rust-bin (dev-lang/rust take a long time to build). See:
 # https://wiki.gentoo.org/wiki/User:Vazhnov/Knowledge_Base:replace_rust_with_rust-bin
 dev-lang/rust

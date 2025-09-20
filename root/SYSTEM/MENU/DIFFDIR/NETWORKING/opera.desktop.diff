@@ -1,6 +1,6 @@
---- /usr/share/applications/opera.desktop	2024-03-17 14:30:37.106397846 +0100
-+++ ./opera.desktop	2024-03-17 20:26:49.774409263 +0100
-@@ -1,21 +1,22 @@
+--- /usr/share/applications/opera.desktop	2025-09-19 16:23:25.952906255 +0200
++++ ./opera.desktop	2025-09-19 16:25:45.161585584 +0200
+@@ -1,22 +1,23 @@
  [Desktop Entry]
  Name=Opera
 -GenericName=Web browser
@@ -14,6 +14,7 @@
  MimeType=application/x-opera-download;application/xhtml_xml;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;
 -Categories=Network;WebBrowser;
 +Categories=Network;
+ StartupWMClass=Opera
  Actions=new-window;new-private-window;
  
  [Desktop Action new-window]

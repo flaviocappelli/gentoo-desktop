@@ -767,9 +767,8 @@ virtual/notification-daemon         kde                   # Pull in kde-plasma/p
 ##virtual/wine                      proton                # Enable Valve Software's fork of Wine (wine-proton can also be installed manually).
 
 www-client/chromium                 widevine              # Unsupported closed-source DRM capability (required by Netflix VOD).
-www-client/firefox                  -system-av1           # From Calculate Linux (fix).
 www-client/firefox                  -telemetry            # Do not send anonymized usage information to upstream.
-www-client/firefox                  hwaccel               # Force-enable hardware-accelerated rendering (Mozilla bug 594876).
+##www-client/firefox                hwaccel               # Force-enable hardware-accelerated rendering (Mozilla bug 594876).
 ##www-client/firefox                lto                   # Build using Link Time Optimizations (LTO), but not PGO (don't worth the effort).
 www-client/firefox                  openh264              # Use media-libs/openh264 for H264 support instead of downloading binary blob from Mozilla at runtime.
 www-client/uget                     aria2                 # Enable support for net-misc/aria2 (plugin) through xmlrpc.

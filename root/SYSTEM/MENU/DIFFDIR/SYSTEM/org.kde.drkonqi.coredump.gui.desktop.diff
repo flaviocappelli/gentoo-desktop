@@ -1,5 +1,5 @@
---- /usr/share/applications/org.kde.drkonqi.coredump.gui.desktop	2024-03-17 14:30:37.016398713 +0100
-+++ ./org.kde.drkonqi.coredump.gui.desktop	2024-03-17 19:55:01.604846210 +0100
+--- /usr/share/applications/org.kde.drkonqi.coredump.gui.desktop	2025-09-19 16:26:02.173424192 +0200
++++ ./org.kde.drkonqi.coredump.gui.desktop	2025-09-19 16:28:18.410131713 +0200
 @@ -1,6 +1,5 @@
  [Desktop Entry]
 -Name=Crashed Processes Viewer
@@ -8,9 +8,11 @@
  GenericName=Crashed Processes Viewer
  GenericName[it]=Visore dei processi con arresto anomalo
  TryExec=coredumpctl
-@@ -8,3 +7,5 @@
+@@ -8,5 +7,5 @@
  Icon=tools-report-bug
  Type=Application
  Categories=Qt;KDE;System;
-+Keywords=applications;
-+Keywords=applicazioni;crash;interruzioni;
+-Keywords=drkonqi;crash;coredumpd;bug;
+-Keywords[it]=drkonqi;crash;coredumpd;bug;
++Keywords=drkonqi;crash;coredumpd;bug;applications;
++Keywords[it]=drkonqi;crash;coredumpd;bug;applicazioni;
