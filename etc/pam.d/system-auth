@@ -1,5 +1,6 @@
 # by F.C.
 # Best edited with tab 8 (nano -T8).
+# Last edit: 2025/10/04.
 #
 # NOTE: The PAM stack in Gentoo differs significantly from the PAM stack in
 # other Linux distributions. DO NOT BLINDLY APPLY EXAMPLES FOUND ON THE WEB.
@@ -11,35 +12,34 @@
 
 # --------------------------------------------------------------------------------------------------
 
-auth		required	pam_env.so
-auth		requisite	pam_faillock.so preauth
-auth            [success=2 default=ignore]      pam_systemd_home.so
-auth            [success=1 new_authtok_reqd=1 ignore=ignore default=bad]      pam_unix.so nullok  try_first_pass
-auth		[default=die]	pam_faillock.so authfail
+auth		required							pam_env.so
+auth		requisite							pam_faillock.so preauth
+auth		[success=2 default=ignore]					pam_systemd_home.so
+auth		[success=1 new_authtok_reqd=1 ignore=ignore default=bad]	pam_unix.so nullok try_first_pass
+auth		[default=die]							pam_faillock.so authfail
 
 # by F.C.
 # Unlock and mount the user's encrypted ZFS datasets using "pam_exec.so"
 # and my bash script "pam_zfs_helper.sh". Unfortunately "pam_zfs_key.so"
-# doesn't seem to work on Gentoo (at least with my zpool setup).
--auth		optional	pam_exec.so quiet expose_authtok /usr/local/bin/pam_zfs_helper.sh
+# doesn't seem to handle an hierarchy of encrypted datasets (at login).
+-auth		optional	pam_exec.so	quiet expose_authtok /usr/local/bin/pam_zfs_helper.sh
 #-auth		optional	pam_zfs_key.so	homes=storage
-
 auth		optional	pam_cap.so
 
 # --------------------------------------------------------------------------------------------------
 
-account         [success=1 default=ignore]      pam_systemd_home.so
-account		required	pam_unix.so
-account         required        pam_faillock.so
+account		[success=1 default=ignore]	pam_systemd_home.so
+account		required			pam_unix.so
+account		required			pam_faillock.so
 
 # --------------------------------------------------------------------------------------------------
 
-password	required	pam_passwdqc.so config=/etc/security/passwdqc.conf
-password        [success=1 default=ignore]      pam_systemd_home.so
+password	required			pam_passwdqc.so config=/etc/security/passwdqc.conf
+password	[success=1 default=ignore]	pam_systemd_home.so
 
 # by F.C.
 # Use 'yescrypt' with rounds=10 (default 5) to enforce security (but not take too much time).
-password	required	pam_unix.so try_first_pass use_authtok nullok yescrypt shadow rounds=10
+password	required	pam_unix.so try_first_pass shadow use_authtok nullok yescrypt rounds=10
 
 # by F.C.
 # Unfortunately "expose_authtok" (see auth) is not supported by "pam_exec.so"
@@ -52,10 +52,10 @@ password	required	pam_unix.so try_first_pass use_authtok nullok yescrypt shadow 
 
 # --------------------------------------------------------------------------------------------------
 
-session		required	pam_limits.so
-session		required	pam_env.so
-session         [success=1 default=ignore]      pam_systemd_home.so
-session		required	pam_unix.so
+session		required			pam_limits.so
+session		required			pam_env.so
+session		[success=1 default=ignore]	pam_systemd_home.so
+session		required			pam_unix.so
 
 # by F.C.
 # Keeps track of user's open sessions and, if enabled (see my script), unmounts/locks
@@ -70,7 +70,7 @@ session		required	pam_unix.so
 #
 # The following line must be parsed after "pam_unix.so" and before "pam_systemd.so" (on
 # Gentoo "pam_systemd.so" is called in "sddm-greeter", "systemd-user" and "system-login").
--session	optional	pam_exec.so /usr/local/bin/pam_zfs_helper.sh
-#-session	optional	pam_zfs_key.so homes=storage
+-session	optional			pam_exec.so /usr/local/bin/pam_zfs_helper.sh
+#-session	optional			pam_zfs_key.so homes=storage
 
 # --------------------------------------------------------------------------------------------------

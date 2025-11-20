@@ -1,14 +1,15 @@
---- /usr/share/applications/org.kde.kwalletmanager.desktop	2024-10-16 20:08:19.828863953 +0200
-+++ ./org.kde.kwalletmanager.desktop	2024-10-16 20:17:55.140250179 +0200
+--- /usr/share/applications/org.kde.kwalletmanager.desktop	2025-10-22 20:14:30.148562382 +0200
++++ ./org.kde.kwalletmanager.desktop	2025-10-22 20:18:06.260647098 +0200
 @@ -1,13 +1,13 @@
  [Desktop Entry]
 -Name=KWalletManager
 -Name[it]=KWalletManager
-+Name=KDE Wallet Management Tool
-+Name[it]=Gestione del portafogli di KDE
- GenericName=KDE Wallet Management Tool
--GenericName[it]=Strumento per la gestione dei portafogli di KDE
-+GenericName[it]=Gestione del portafogli di KDE
+-GenericName=Password Manager
+-GenericName[it]=Gestore delle password
++Name=KDE Password Manager
++Name[it]=Gestore delle password di KDE
++GenericName=KDE Password Manager
++GenericName[it]=Gestore delle password di KDE
  Exec=kwalletmanager5 %F
  Icon=kwalletmanager
  Type=Application

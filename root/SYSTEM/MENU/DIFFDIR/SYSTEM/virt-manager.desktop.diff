@@ -1,9 +1,11 @@
---- /usr/share/applications/virt-manager.desktop	2025-03-05 01:17:29.241435481 +0100
-+++ ./virt-manager.desktop	2025-03-05 01:21:43.814465861 +0100
-@@ -1,10 +1,10 @@
+--- /usr/share/applications/virt-manager.desktop	2025-10-15 13:41:26.574701379 +0200
++++ ./virt-manager.desktop	2025-10-15 13:50:36.754891497 +0200
+@@ -1,11 +1,11 @@
  [Desktop Entry]
 -Name=Virtual Machine Manager
 -Name[it]=Gestore macchine virtuali
+-GenericName=Virtual machine viewer/manager
+-GenericName[it]=Gestore/visualizzatore di macchine virtuali
 +Name=Virt-Manager
 +GenericName=KVM Virtual Machines Manager
 +GenericName[it]=Gestione macchine virtuali KVM
@@ -11,7 +13,7 @@
  Icon=virt-manager
  Terminal=false
  Type=Application
- Categories=System;
--Keywords=vmm;
--Keywords[it]=vmm;
-+Keywords=vmm;qemu;
+-Categories=System;Emulator;GTK;
++Categories=System;
+ Keywords=virtualization;libvirt;vm;vmm;qemu;xen;lxc;kvm;
++Keywords[it]=virtualizzazione;libvirt;vm;vmm;qemu;xen;lxc;kvm;

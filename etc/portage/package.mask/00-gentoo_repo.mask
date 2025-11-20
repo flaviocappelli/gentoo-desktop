@@ -60,3 +60,8 @@ www-client/firefox:rapid
 
 # NVidia proprietary video drivers are not required on this system.
 x11-drivers/nvidia-drivers
+
+# Inkscape sometimes fails to build. It is not more required (all
+# installed packages can use use gnome-base/librsvg as alternative).
+# Better to use libreoffice-draw or Krita as vector drawing program.
+media-gfx/inkscape

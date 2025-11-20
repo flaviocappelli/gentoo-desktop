@@ -6,6 +6,9 @@
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
 
+# SpeedCruch calculator is back with Qt6 support!
+sci-calculators/speedcrunch::gentoo
+
 # Hex editor that can edit very BIG files!
 app-editors/wxhexeditor::gentoo
 
@@ -28,13 +31,17 @@ net-im/telegram-desktop-bin::gentoo
 
 # OBS Studio. Seee also
 # https://github.com/umlaeute/v4l2loopback.
-~media-video/obs-studio-31.1.2::gentoo
+~media-video/obs-studio-32.0.2::gentoo
 
 # Avidemux.
-~media-video/avidemux-2.8.1::gentoo
-~media-libs/avidemux-core-2.8.1::gentoo
-~media-libs/avidemux-plugins-2.8.1::gentoo
+~media-video/avidemux-2.8.1_p20251019::gentoo
+~media-libs/avidemux-core-2.8.1_p20251019::gentoo
+~media-libs/avidemux-plugins-2.8.1_p20251019::gentoo
+~media-libs/aften-0.0.8::gentoo
 ~media-sound/dcaenc-3::gentoo
+
+# FreeCAD, latest version.
+~media-gfx/freecad-1.0.2::gentoo
 
 # KiCad (meta package, latest version).
 sci-electronics/kicad-meta::gentoo
@@ -45,11 +52,13 @@ sci-electronics/kicad-packages3d::gentoo
 sci-electronics/kicad-symbols::gentoo
 sci-electronics/kicad-templates::gentoo
 
+# GtkWave-3.3.125 solves issues under PLASMA6 + Wayland.
+~sci-electronics/gtkwave-3.3.125
+
 # Godot Engine.
-#dev-games/godot::gentoo
-#dev-games/recastnavigation::gentoo
-#net-libs/mbedtls::gentoo
-#net-libs/wslay::gentoo
+dev-games/godot::gentoo
+dev-games/recastnavigation::gentoo
+net-libs/wslay::gentoo
 
 # Xonotic.
 games-fps/xonotic::gentoo
@@ -72,6 +81,10 @@ media-libs/zmusic::gentoo
 # KChmViewer has been removed from portage (see Gentoo
 # bug #823008). We can use app-text/uchmviewer instead.
 app-text/uchmviewer::gentoo
+
+# Useful PDF tool, stable version gives a runtime
+# error, while the latest version seems to work.
+app-text/pdfarranger::gentoo
 
 # Android emulator which includes a complete set of sensors and features in order
 # to interact with a virtual Android environment. Is is free for personal use, see:

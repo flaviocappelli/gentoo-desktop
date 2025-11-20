@@ -6,7 +6,7 @@
 #
 # - ReiserFs support is deprecated since Linux kernel 5.18 (its removal is planned for 2025).
 #
-# - At the moment, 'iptables' is still preferable to 'nfstable's and some packages require it.
+# - At the moment, 'iptables' is still preferred to 'nfstable's (and some packages require it).
 #
 # - Yescript has replaced SHA512 for password hashing in many Linux distributions, because it is
 #   more resistant to password cracking; I have adopted it (Gentoo still uses SHA512 by default).
@@ -46,10 +46,9 @@ app-arch/unzip                      natspec               # Use dev-libs/libnats
 app-arch/zip                        natspec               # Use dev-libs/libnatspec to correctly decode non-ascii file names archived in Windows.
 app-arch/xz-utils                   pgo                   # Optimize the build using Profile Guided Optimization (from CLD).
 
-app-backup/backintime               gui qt5               # Build the GUI frontend (the used flag depends on the app-backup/backintime version).
+app-backup/backintime               gui                   # Build the GUI frontend.
 app-backup/bacula                   qt5                   # Build the GUI frontend.
 
-##app-crypt/gpgme                   python                # Required by kde-apps/kdenetwork-meta[dropbox].
 ##app-crypt/qca                     gpg                   # Provide GnuPG capability to programs that utilize the Qt Cryptographic Architecture (QCA) (from CLD).
 
 app-editors/nano                    -spell                # Dictionary support not required (from CLD).
@@ -63,32 +62,27 @@ app-emulation/qemu                  spice usbredir        # Required by app-emul
 ##app-emulation/qemu                ssh                   # Enable SSH based block device support via net-libs/libssh2.
 app-emulation/qemu                  virtfs                # Enable VirtFS via virtio-9p-pci (i.e. shared folders). See https://wiki.qemu.org/Documentation/9psetup.
 ##app-emulation/qemu                virgl                 # Enable experimental Virgil 3D (virtual software GPU).
-app-emulation/vice                  -sdl                  # Support for Simple Direct Layer not required with flag 'gtk' enabled (from CLD).
+app-emulation/vice                  -sdl                  # Support for Simple Direct Layer not required with flag 'gtk' enabled (GTK3 interface recommend).
 app-emulation/virt-manager          gui                   # Build the GUI frontend (required).
 app-emulation/virtualbox            gui                   # Build the GUI frontend (VirtualBox-7.x).
 app-emulation/wine-proton           -gstreamer            # Drop unnecessary dependency (gstreamer should be used only for streaming) (from CLD).
-##app-emulation/wine-proton         dos                   # Pull in games-emulation/dosbox to run DOS applications.
-##app-emulation/wine-proton         odbc                  # Add ODBC Support (Open DataBase Connectivity).
-##app-emulation/wine-proton         osmesa                # Add support for OpenGL in bitmaps using libOSMesa.
 app-emulation/wine-staging          -gstreamer            # Drop unnecessary dependency (gstreamer should be used only for streaming) (from CLD).
 ##app-emulation/wine-staging        dos                   # Pull in games-emulation/dosbox to run DOS applications.
 ##app-emulation/wine-staging        odbc                  # Add ODBC Support (Open DataBase Connectivity).
-##app-emulation/wine-staging        osmesa                # Add support for OpenGL in bitmaps using libOSMesa.
 app-emulation/wine-vanilla          -gstreamer            # Drop unnecessary dependency (gstreamer should be used only for streaming) (from CLD).
 ##app-emulation/wine-vanilla        dos                   # Pull in games-emulation/dosbox to run DOS applications.
 ##app-emulation/wine-vanilla        odbc                  # Add ODBC Support (Open DataBase Connectivity).
-##app-emulation/wine-vanilla        osmesa                # Add support for OpenGL in bitmaps using libOSMesa.
 app-emulation/winetricks            gui                   # Build the GUI frontend.
 
 app-eselect/eselect-php             fpm                   # Required by dev-lang/php[fpm].
 
 ##app-misc/recoll                   session               # Stop monitoring file alterations when X11 session terminates.
+app-misc/solaar                     appindicator          # Required to show a systray icon in KDE/PLASMA.
 
+app-office/libreoffice              base java             # Install "LibreOffice Base". NOTE: Base needs the 'java' flag enabled.
 app-office/libreoffice              kde odk               # Enable KDE/PLASMA integration and build the Office Development Kit.
-app-office/libreoffice-l10n         offlinehelp           # Install help files locally instead of using the LibreOffice Wiki.
 app-office/libreoffice              pdfimport             # Enable PDF import via the Poppler library.
-app-office/libreoffice              base java             # Install "LibreOffice Base" (note it needs the 'java' flag enabled).
-
+app-office/libreoffice-l10n         offlinehelp           # Install help files locally instead of using the LibreOffice Wiki.
 ##app-office/lyx                    dot                   # Add support for DOT import (media-gfx/graphviz).
 app-office/lyx                      enchant               # Add support for enchant spellchecking wrapper. Enabled in Arch Linux.
 ##app-office/lyx                    gnumeric              # Add support for importing Gnumeric/OpenOffice/MS Excel spreadsheets.
@@ -99,8 +93,6 @@ app-shells/bash                     pgo                   # Optimize the build u
 
 app-text/mupdf                      archive               # Enable support for CBR and other archive formats using libarchive.
 app-text/poppler                    -boost                # Drop unnecessary dependency (from CLD).
-app-text/poppler                    lcms                  # Required by net-print/cups-filters.
-app-text/poppler                    qt5                   # Required by app-office/texmaker, app-office/texstudio, kde-frameworks/kfilemetadata:5[pdf].
 app-text/texlive                    l10n_es               # Installs dev-texlive/texlive-langspanish (required to build LyX documentation).
 app-text/texlive                    l10n_fr               # Installs dev-texlive/texlive-langfrench (required to build LyX documentation).
 app-text/texlive                    extra                 # Installs dev-texlive/texlive-fontsextra (required to build LyX documentation).
@@ -112,48 +104,46 @@ dev-db/mariadb                      -xml                  # Drop unnecessary dep
 dev-db/postgresql                   -xml icu uuid         # Drop unnecessary dependency, re-enable flag +ICU (see the ebuild) and server side UUID generation (from CLD).
 dev-db/sqlite                       secure-delete         # Enable overwriting of deleted content with zeros by default (set also by Arch Linux).
 
+##dev-debug/strace                  aio                   # Enable dev-libs/libaio support for tracing Asynchronous I/O operations.
+
 dev-embedded/libftdi                cxx                   # Required by dev-embedded/ponyprog (see https://www.lancos.com/prog.html).
 
+##dev-games/godot                   double-precision      # Use double-precision floats (see https://docs.godotengine.org/en/stable/tutorials/physics/large_world_coordinates.html).
 dev-games/godot                     gui                   # Build the GUI frontend (required).
 dev-games/openscenegraph            -wxwidgets            # Drop unnecessary dependency (from CLD).
 
 dev-lang/fpc                        source                # Required by dev-lang/lazarus.
-dev-lang/lazarus                    gui                   # Build the GUI IDE.
-dev-lang/php                        -spell                # Dictionary support not required (from CLD).
+dev-lang/lazarus                    -gtk gui              # Build the GUI IDE (Qt6 interface). NOTE: version in portage is old, enable "pg_overlay".
 dev-lang/php                        cgi                   # Required by www-servers/lighttpd[php].
 dev-lang/php                        fpm                   # Enable the FastCGI Process Manager SAPI (required for FastCGI).
+dev-lang/php                        -spell                # Dictionary support not required (from CLD).
 dev-lang/php                        sqlite                # Add support for sqlite (embedded sql database).
 dev-lang/php                        xml                   # Required by dev-lang/php[simplexml].
 dev-lang/python                     bluetooth             # Build Bluetooth protocol support in socket module (from CLD).
-##dev-lang/python                   lto pgo               # Build using Link Time Optimizations (LTO) and Profile Guided Optimization (PGO).
+##dev-lang/python                   pgo                   # Build using Profile Guided Optimization (PGO).
 dev-lang/rust                       rustfmt               # Install 'rustfmt' (Rust code formatter) (from CLD).
 dev-lang/rust-bin                   rustfmt               # Install 'rustfmt' (Rust code formatter) (from CLD).
 
-dev-libs/boehm-gc                   cxx                   # Required by media-gfx/asymptote.
-dev-libs/boost                      context python        # Required by sci-electronics/kicad.
+dev-libs/boost                      context python        # Required by sci-electronics/kicad and other packages.
 dev-libs/boost                      icu                   # Required by games-strategy/wesnoth.
-dev-libs/libbpf                     static-libs           # Required by dev-util/bcc (that is required by dev-debug/bpftrace).
 dev-libs/libdbusmenu                gtk3                  # Required by x11-libs/xapp.
 dev-libs/libpcre                    pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libpcre2                   pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
-dev-libs/libxml2                    icu                   # Required by dev-qt/qtwebengine.
+dev-libs/libxml2                    icu                   # Required by dev-qt/qtwebengine, www-client/ungoogled-chromium-bin.
 dev-libs/nss                        utils                 # Install utilities included with the library.
-dev-libs/quazip                     qt5                   # Required by app-office/texstudio, media-gfx/nomacs[zip], net-im/zoom.
 dev-libs/xerces-c                   -iconv                # ICU take precedenze over iconv (this remove an annoying elog warning).
 dev-libs/xerces-c                   icu                   # Required by media-gfx/freecad.
 dev-libs/zziplib                    -sdl                  # Drop unnecessary dependency (SDL integration not required).
 
-## QtPy is a small abstraction layer for PyQt5/PySide2 (Qt5) and PyQt6/PySide6 (Qt6): it is very useful
-## for fast prototyping (see https://github.com/spyder-ide/qtpy/). NOTES: 1) Gentoo has recently dropped
-## support for Qt5 in QtPy; 2) PySide2 has been removed from portage; 3) dev-python/pyside6 (i.e. PySide6)
-## has been renamed dev-python/pyside; 4) few packages still depends on PyQt5, so probably PyQt5 will be
-## soon removed as well; 5) QtPy does not currently cover all Qt modules available in PyQt6/PySide6.
+# QtPy is a small abstraction layer for PyQt5/PySide2 (Qt5) and PyQt6/PySide6 (Qt6): it is very useful
+# for fast prototyping (see https://github.com/spyder-ide/qtpy/). NOTES: 1) Gentoo has recently dropped
+# support for Qt5 in QtPy; 2) PySide2 has been removed from portage; 3) dev-python/pyside6 (i.e. PySide6)
+# has been renamed dev-python/pyside; 4) few packages still depends on PyQt5, so probably PyQt5 will be
+# soon removed as well; 5) QtPy does not currently cover all Qt modules available in PyQt6/PySide6.
 
 dev-python/matplotlib               -wxwidgets            # Do not build the WxWidgets integration (not required).
 dev-python/numpy                    lapack                # Add support for the virtual/lapack numerical library.
 dev-python/pillow                   lcms                  # Required by app-text/pdfarranger.
-dev-python/pyqt5                    gui                   # Required by app-editors/qhexedit2 and media-gfx/asymptote.
-dev-python/pyqt5                    widgets               # Required by app-editors/qhexedit2 and media-gfx/asymptote.
 dev-python/pyqt6                    designer              # Required by dev-python/qtpy[pyqt6 + designer].
 dev-python/pyqt6                    gui                   # Required by dev-python/qtpy[pyqt6 + gui].
 dev-python/pyqt6                    help                  # Required by dev-python/qtpy[pyqt6 + help].
@@ -181,10 +171,9 @@ dev-python/pyqt6                    websockets            # Required by dev-pyth
 dev-python/pyqt6                    widgets               # Required by dev-python/qtpy[pyqt6 + widgets].
 dev-python/pyqt6                    xml                   # Required by dev-python/qtpy[pyqt6 + xml] (unlike PyQt5, this flag exists in PyQt6).
 dev-python/pyqt6-webengine          quick                 # Required by dev-python/qtpy[pyqt6 + webengine + quick].
-dev-python/pyqt6-webengine          widgets               # Required by dev-python/qtpy[pyqt6 + webengine + widgets].
+dev-python/pyqt6-webengine          widgets               # Required by app-text/calibre, dev-python/qtpy[pyqt6 + webengine + widgets].
 ##dev-python/pyside                 3d                    # Build Qt3DCore, Qt3DAnimation, Qt3DExtras, Qt3DInput, Qt3DLogic, and Qt3DRender modules. NOT AVAILABLE IN QtPy.
 ##dev-python/pyside                 charts                # Build QtCharts module. NOT AVAILABLE IN QtPy.
-##dev-python/pyside                 concurrent            # Build QtConcurrent module. NOT AVAILABLE IN QtPy.
 dev-python/pyside                   designer              # Required by dev-python/qtpy[pyside6 + designer].
 dev-python/pyside                   gui                   # Required by dev-python/qtpy[pyside6 + gui].
 dev-python/pyside                   help                  # Required by dev-python/qtpy[pyside6 + help].
@@ -224,7 +213,6 @@ dev-python/qtpy                     opengl                # Pull in bindings for
 ##dev-python/qtpy                   pdfium                # Pull in bindings for the QtPDFium module.
 dev-python/qtpy                     positioning           # Pull in bindings for the QtPositioning module.
 dev-python/qtpy                     printsupport          # Pull in bindings for the QtPrintSupport module.
-dev-python/qtpy                     pyqt5                 # Provides support for dev-python/pyqt5 (PyQt5).
 dev-python/qtpy                     pyqt6 pyside6         # Provides support for dev-python/pyqt6 (PyQt6) and dev-python/pyside (PySide6).
 dev-python/qtpy                     qml                   # Build bindings for the QtQml.
 dev-python/qtpy                     quick                 # Build bindings for the QtQuick.
@@ -245,10 +233,11 @@ dev-python/qtpy                     xml                   # Pull in QtXml module
 dev-python/sphinx                   latex                 # Add support for LaTeX (required to generate PDF documents).
 dev-python/translate-toolkit        -html                 # Drop support for conversion between po and html files (not required) (from CLD).
 
-## NOTE: The qt-creator ebuild has lost many use flags: now individual packages must be installed by
-## hand (with some flag enabled) before emerging qt-creator (see the long description in the ebuild).
+# NOTE: The qt-creator ebuild has lost many use flags: now individual packages must be installed by
+# hand (with some flag enabled) before emerging qt-creator (see the long description in the ebuild).
 
 dev-qt/qt-creator                   designer              # Enable designer for QtWidgets-based UIs.
+dev-qt/qt-creator                   keyring               # Enable support for freedesktop.org Secret Service API password store.
 dev-qt/qt-creator                   plugin-dev            # Install the 'Devel' component needed to build external Qt Creator plugins.
 dev-qt/qt-creator                   qmldesigner           # Build QmlDesigner and related plugins (Insight, StudioWelcome).
 dev-qt/qt-creator                   serialterminal        # Build the serial terminal plugin.
@@ -267,23 +256,20 @@ dev-qt/qt-docs                      script timeline       # Install documentatio
 dev-qt/qt-docs                      virtualkeyboard       # Install documentation for dev-qt/qtvirtualkeyboard.
 dev-qt/qt-docs                      webengine widgets     # Install documentation for dev-qt/qtwebengine and dev-qt/qtwidgets.
 dev-qt/qt-docs                      xml                   # Install documentation for dev-qt/qtxml.
-##dev-qt/qt3d                       gamepad               # Add support for gamepad hardware via dev-qt/qtgamepad.
 dev-qt/qt5compat                    gui                   # If disabled, force emerge of dev-qt/qtbase[-gui].
 dev-qt/qt5compat                    icu                   # If disabled, force emerge of dev-qt/qtbase[-icu].
 dev-qt/qt5compat                    qml                   # Many Qt6 packages need this flag.
 dev-qt/qtbase                       -mysql                # MySQL/MariaDB support not required (see also 'kde-apps/akonadi' below).
 dev-qt/qtbase                       gui widgets xml       # Required by dev-qt/qtbase and other Qt6 packages.
-dev-qt/qtbase                       icu                   # Required by dev-qt/qt5compat.
+dev-qt/qtbase                       icu                   # Required by dev-qt/qt5compat, kde-frameworks/kcoreaddons.
 dev-qt/qtcharts                     qml                   # Required by kde-misc/kweather.
-dev-qt/qtcore                       icu                   # Required by kde-frameworks/kcoreaddons.
-dev-qt/qtdeclarative                localstorage          # Build the LocalStorage import for QtQuick (requires QtSql).
-dev-qt/qtdeclarative                widgets               # Required by dev-qt/qtwebengine[widgets] and dev-qt/qttools[qml].
-##dev-qt/qtgamepad                  evdev                 # Enable support for input devices via evdev (normally via SDL is better).
+dev-qt/qtcore:5                     icu                   # Required by kde-frameworks/kcoreaddons:5.
+dev-qt/qtdeclarative:5              localstorage          # Build the LocalStorage import for QtQuick (requires QtSql).
+dev-qt/qtdeclarative                widgets               # Required by many packages (see "equery depends dev-qt/qtdeclarative").
 dev-qt/qtgui                        -vnc                  # Drop unnecessary dependency (from CLD).
 dev-qt/qtgui                        egl                   # Required by dev-qt/qtwayland:5 and kde-plasma/kwayland:5.
-##dev-qt/qtgui                      evdev                 # Required by dev-qt/qtgamepad[evdev].
 dev-qt/qtimageformats               mng                   # Required by app-editors/qxmledit.
-dev-qt/qtmultimedia                 gstreamer qml         # Required by kde-plasma/kwin, kde-apps/spectacle and other packages.
+dev-qt/qtmultimedia                 qml                   # Required by dev-libs/kirigami-addons, kde-misc/kdeconnect, net-im/neochat.
 ##dev-qt/qtnetwork                  sctp                  # Add support for Stream Control Transmission Protocol (i.e. QSctpServer & QSctpSocket).
 dev-qt/qtpositioning                geoclue               # Required by kde-misc/kweather.
 dev-qt/qtpositioning                qml                   # Required by dev-qt/qtlocation.
@@ -293,15 +279,15 @@ dev-qt/qtsql                        -mysql                # MySQL/MariaDB suppor
 dev-qt/qtquickcontrols              widgets               # Enable QtWidgets support.
 dev-qt/qtquickcontrols2             widgets               # Enable QtWidgets support.
 dev-qt/qtsensors                    qml                   # Required by dev-python/pyside[sensors].
-dev-qt/qttools                      qtattributionsscanner # Required by dev-qt/qt-creator >= 12 (Qt6 based).
+dev-qt/qtspeech                     qml                   # Required by net-im/neochat (pulled in by kde-apps/kdenetwork-meta[webengine]).
 dev-qt/qttools                      clang designer        # Required by dev-qt/qt-creator >= 12 (Qt6 based).
 dev-qt/qttools                      qdoc qml              # Required by dev-qt/qt-creator >= 12 (Qt6 based).
-dev-qt/qttools                      widgets               # Required by dev-qt/qttools[assistant].
-##dev-qt/qtwayland:6                compositor qml        # Required by net-im/telegram-desktop[webkit,wayland].
+dev-qt/qttools                      qtattributionsscanner # Required by dev-qt/qt-creator >= 12 (Qt6 based).
+dev-qt/qttools                      widgets               # Required by dev-qt/qttools[assistant,designer,...].
 dev-qt/qtwebchannel                 qml                   # Required by dev-qt/qtwebengine.
-dev-qt/qtwebengine                  widgets               # Required by www-client/falkon, media-gfx/freecad, kde-apps/khelpcenter, app-text/zeal and many other packages.
-dev-qt/qtwebengine                  pdfium                # Required by media-gfx/skanpage, dev-python/pyqt6[pdfium].
-dev-qt/qtwebengine                  qml                   # Required by dev-qt/qtwebview.
+dev-qt/qtwebengine                  widgets               # Required by many packages (see "equery depends dev-qt/qtwebengine").
+dev-qt/qtwebengine                  pdfium                # Required by media-gfx/skanpage, dev-python/pyqt6[pdfium], dev-python/pyside[pdfium].
+dev-qt/qtwebengine                  qml                   # Required by dev-qt/qtwebview, kde-apps/kaccounts-providers, net-libs/signon-ui.
 dev-qt/qtwebsockets                 qml                   # Build QML bindings.
 dev-qt/qtxmlpatterns                qml                   # Build the XmlListModel import for QtQuick.
 
@@ -314,9 +300,7 @@ dev-util/gammaray                   -wayland              # Exclude the wayland 
 dev-util/heaptrack                  gui                   # Build the GUI frontend.
 dev-util/kdstatemachineeditor       gui                   # Build the GUI frontend.
 dev-util/kdevelop                   gdbui                 # Enable GUI for attaching GDB to a running process.
-##dev-util/kdevelop                 hex                   # Enable hex editor plugin via app-editors/okteta (for the moment such flag is ignored, see the ebuild).
-##dev-util/kdevelop                 plasma                # Build optional KDE plasma addons.
-##dev-util/strace                   aio                   # Enable dev-libs/libaio support for tracing Asynchronous I/O operations.
+dev-util/kdevelop                   plasma                # Build optional KDE/PLASMA addons (useful for plasmoids).
 
 ##dev-vcs/git                       cgi                   # Install gitweb too (see https://git-scm.com/book/it/v2/Git-on-the-Server-GitWeb).
 
@@ -325,6 +309,9 @@ gnome-base/gvfs                     archive               # Enables support for 
 gnome-base/gvfs                     fuse                  # Provides limited access to the GVfs filesystems for applications not using GIO (I/O library available in GLib).
 ##gnome-base/gvfs                   ios                   # Enable support for Apple's iDevice with iOS operating system (gvfs-afc).
 gnome-base/gvfs                     mtp                   # Enable support for Media Transfer Protocol.
+
+# Portage has now only KDE/PLASMA6. Applications that still depends on KF5/Qt5 need kde-plasma/plasma-meta[qt5].
+# NOTE: kde-apps/kdeutils-meta is not required, just some dipendencies (see the ebuild and the USE flags below).
 
 kde-apps/akonadi                    -designer -xml        # Drop unnecessary dependency (from CLD).
 kde-apps/akonadi                    tools                 # Install tools for developers and testing.
@@ -335,17 +322,16 @@ kde-apps/akonadi-config             sqlite                # See https://www.mail
 kde-apps/kalarm                     -pim                  # Disable PIM integration (I don't need it).
 ##kde-apps/kdegraphics-meta         color-management      # Enable color management.
 ##kde-apps/kdegraphics-meta         -scanner              # Do not build kde-misc/skanlite (NOTE: not related with kde-apps/kolourpaint[scanner]).
-kde-apps/kdenetwork-meta            -bittorrent           # I don't need bittorrent support (I prefere net-p2p/qbittorrent that works very well).
+kde-apps/kdenetwork-meta            -bittorrent           # I don't need bittorrent support (I prefere net-p2p/qbittorrent).
 ##kde-apps/kdenetwork-meta          dropbox               # Popular cloud storage alternative to Google Drive (see also NextCloud).
-kde-apps/kdesdk-meta                git                   # Enable support for Git VCS in kde-apps/dolphin .
-kde-apps/kdesdk-meta                qt5                   # Pull in kde-apps/umbrello (not yet ported to Qt6).
+kde-apps/kdesdk-meta                git                   # Enable support for Git integration in kde-apps/dolphin.
 ##kde-apps/kdeutils-meta            7zip                  # Install app-arch/p7zip for 7zip archive support in kde-apps/ark.
 ##kde-apps/kdeutils-meta            gpg                   # Install kde-apps/kgpg which depends on kde-apps/akonadi.
-##kde-apps/kdeutils-meta            lrz                   # Install app-arch/lrzip for LRZ archive support in kde-apps/ark .
+##kde-apps/kdeutils-meta            lrz                   # Install app-arch/lrzip for LRZ archive support in kde-apps/ark.
 ##kde-apps/kdeutils-meta            rar                   # Install app-arch/rar or app-arch/unrar or app-arch/unar for RAR archive support in kde-apps/ark (CHOOSE rar).
 kde-apps/kio-extras                 -phonon               # Audio preview plugin not required (from CLD).
 kde-apps/kio-extras                 mtp taglib            # Enable support for Media Transfer Protocol and audio thumbnails.
-##kde-apps/ksystemlog               kdesu                 # Run as root using kdesu from kde-plasma/kde-cli-tools.
+##kde-apps/ksystemlog               kdesu                 # Run as root using kdesu (currently not compatible with wayland, see the ebuild).
 ##kde-apps/libkcddb                 musicbrainz           # Lookup audio metadata using MusicBrainz community service.
 kde-apps/marble                     -phonon kde           # Disable sound support (not required) and re-enable flag +KDE (see the ebuild).
 kde-apps/okular                     epub                  # Enable E-Book support via app-text/ebook-tools.
@@ -353,30 +339,28 @@ kde-apps/okular                     markdown              # Enable Markdown supp
 kde-apps/okular                     mobi                  # Enable mobipocket support.
 kde-apps/okular                     phonon                # Enable sound support.
 
-kde-frameworks/kconfig              qml                   # Required by kde-plasma/libplasma, kde-plasma/kwin, kde-plasma/kscreenlocker.
+kde-frameworks/kconfig              qml                   # Required by kde-apps/filelight, kde-misc/kdeconnect, kde-plasma/kscreenlocker, kde-plasma/kwin, ...
 kde-frameworks/kfilemetadata        epub mobi             # Enable support for reading EPUB and MOBI ebook metadata.
-kde-frameworks/kimageformats        avif jpegxl           # Additional supported formats, useful for package net-im/telegram-desktop.
+kde-frameworks/kimageformats        avif eps jpegxl       # Additional supported image formats.
 kde-frameworks/kio                  kwallet               # Re-enable flag +KWALLET (see the ebuild).
-kde-frameworks/knotifications       qml                   # Enable QML support via dev-qt/qtdeclarative (from CLD).
-kde-frameworks/prison               qml                   # Required by kde-plasma/plasma-workspace.
-kde-frameworks/sonnet               qml                   # Required by kde-frameworks/qqc2-desktop-style.
+kde-frameworks/knotifications:5     qml                   # Enable QML support via dev-qt/qtdeclarative:5 (from CLD).
+kde-frameworks/prison               qml                   # Required by kde-plasma/plasma-workspace and net-im/neochat.
+kde-frameworks/sonnet               qml                   # Required by kde-frameworks/qqc2-desktop-style and net-im/neochat.
 
 kde-misc/krename                    taglib                # Enable tagging support with taglib (from CLD).
 kde-misc/kshutdown                  kde                   # Re-enable flag +KDE (see the ebuild).
 
-kde-plasma/breeze                   qt5                   # Required by kde-plasma/plasma-meta:6.
-kde-plasma/kde-cli-tools            kdesu                 # Build graphical frontend for kde-frameworks/kdesu, required by kde-apps/ksystemlog[kdesu].
-##kde-plasma/plasma-firewall        -ufw firewalld        # Use net-firewall/firewalld as backend.
-kde-plasma/plasma-integration       qt5                   # Required by kde-plasma/plasma-meta:6.
+kde-plasma/breeze                   qt5                   # Required by kde-plasma/plasma-meta[qt5].
+##kde-plasma/plasma-firewall        -ufw firewalld        # Use net-firewall/firewalld as backend. I prefere firewalld's GUI (plasma-firewall is too bare).
+kde-plasma/plasma-integration       qt5                   # Required by kde-plasma/plasma-meta[qt5].
 kde-plasma/plasma-meta              -crypt                # Do not pull in kde-plasma/plasma-vault (I don't use it).
-kde-plasma/plasma-meta              -firewall             # Do not pull in plasma-firewall (not required, I have enabled the firewalld's UI frontend).
+kde-plasma/plasma-meta              -firewall             # Do not pull in kde-plasma/plasma-firewall (I prefere firewalld's GUI, see above).
 kde-plasma/plasma-meta              kwallet               # Enable support for KWallet auto-unlocking via kde-plasma/kwallet-pam.
 kde-plasma/plasma-meta              qt5                   # Pull in required packages for seamless integration of KF5/Qt5-based applications.
 kde-plasma/plasma-meta              sdk                   # Pull in kde-plasma/plasma-sdk for Plasma development.
 kde-plasma/plasma-meta              thunderbolt           # Pull in kde-plasma/plasma-thunderbolt control center module.
 kde-plasma/plasma-nm                openconnect           # Build support for the OpenConnect VPN client (integrated in networkmanager).
-
-##mail-client/thunderbird           lto                   # Build using Link Time Optimizations (LTO). Needs rust-bin LLVM aligned with ld.lld.
+##kde-plasma/plasma-nm              teamd                 # Enable Teamd control support for channel bonding (see libteam.org).
 
 media-fonts/fonts-meta              cjk                   # Add support for Chinese, Japanese, Korean.
 media-fonts/fonts-meta              emoji                 # Install a font supporting emojis.
@@ -386,11 +370,11 @@ media-fonts/noto                    -extra                # Do not install the f
 media-fonts/source-han-sans         l10n_ja l10n_ko       # Add Japanese and Korean fonts.
 media-fonts/source-han-sans         l10n_zh-CN l10n_zh-TW # Add Chinese China/Taiwan fonts.
 
-## To get the local GIMP help, the 'app-doc/gimp-help' package must be installed, and such local help must be selected in
-## GIMP ("Edit" -> "Preferences" -> "Interface" -> "Help System" -> "User manual" -> "Use a locally installed copy"). Note
-## that GIMP might complain that "There is no local help installed" (particularly with non english UIs, try 'LANG=en gimp'):
-## this is a bug, ignore it and press "F1" to see if the local help works (it should be displayed in the default browser).
-## Note also that 'gnome-base/gvfs' is not required to have a working local copy of the gimp help (at least on Gentoo).
+# To get the local GIMP help, the 'app-doc/gimp-help' package must be installed, and such local help must be selected in
+# GIMP ("Edit" -> "Preferences" -> "Interface" -> "Help System" -> "User manual" -> "Use a locally installed copy"). Note
+# that GIMP might complain that "There is no local help installed" (particularly with non english UIs, try 'LANG=en gimp'):
+# this is a bug, ignore it and press "F1" to see if the local help works (it should be displayed in the default browser).
+# Note also that 'gnome-base/gvfs' is not required to have a working local copy of the gimp help (at least on Gentoo).
 
 media-gfx/darktable                 opencl                # Enable OpenCL support (computation on GPU).
 media-gfx/freecad                   addonmgr              # Build the addon manager module for automatic handling of 3rd party addons.
@@ -417,68 +401,61 @@ media-gfx/imagemagick               -raw                  # Drop unnecessary dep
 ##media-gfx/imagemagick             corefonts             # Use media-fonts/corefonts which is required by some commands.
 ##media-gfx/imagemagick             hdri                  # Enable High Dynamic Range Images formats.
 ##media-gfx/imagemagick             lqr                   # Enable experimental liquid rescale support using media-libs/liblqr.
-media-gfx/imagemagick               perl                  # Required by virtual/imagemagick-tools[svg + perl].
 media-gfx/imagemagick               xml                   # Required by media-gfx/imagemagick[svg].
 media-gfx/inkscape                  -spell                # Dictionary support not required (from CLD).
 media-gfx/inkscape                  cdr inkjar            # Enable support for CorelDRAW files and for OpenOffice.org SVG jar files.
 media-gfx/inkscape                  visio wpg             # Enable support for Microsoft Visio diagrams and WordPerfect graphics.
 media-gfx/krita                     color-management      # Enable color management via media-libs/opencolorio.
-media-gfx/krita                     qtmedia               # Enable sound support for animations.
+media-gfx/krita                     media                 # Enable sound support for animations via media-libs/mlt.
 media-gfx/openscad                  gui                   # Build the GUI frontend (required).
 ##media-gfx/xsane                   gimp                  # Build xsane plugin for GIMP.
 
 media-libs/avidemux-plugins         aften                 # Enable A/52 (AC-3) audio encoder support.
 media-libs/avidemux-plugins         dcaenc                # Enable DTS Coherent Acoustics audio encoder support.
 media-libs/avidemux-plugins         gui                   # Required by media-video/avidemux[gui].
-media-libs/freetype                 harfbuzz              # Required by dev-games/godot. Also see bugzilla #712374.
+media-libs/freetype                 harfbuzz              # Required by dev-games/godot and media-libs/sdl2-ttf[harfbuzz]. Also see bugzilla #712374.
 media-libs/freetype                 brotli                # Enable brotli compression support, required by dev-games/godot and media-gfx/blender.
 media-libs/gst-plugins-base         pango                 # Re-enable flag +PANGO (see the ebuild).
 media-libs/harfbuzz                 icu                   # Required by app-office/libreoffice, app-text/texlive-core, dev-games/godot, net-libs/webkit-gtk.
 media-libs/libao                    -alsa                 # Force output on PulseAudio (or Pipewire) without any config file.
 media-libs/libbluray                xml                   # Re-enable flag +XML (see the ebuild).
 media-libs/libplacebo               lcms                  # Re-enable flag +LCMS (see the ebuild).
-media-libs/libquicktime             -ffmpeg               # Prevents libquicktime to pull in ffmpeg < 5 (downgrade). I don't need the ffmpeg support in libquicktime.
+media-libs/libquicktime             -ffmpeg               # Prevents libquicktime to pull in media-video/ffmpeg-compat[abi_x86_32] (ffmpeg support not required).
 media-libs/libraw                   lcms                  # Re-enable flag +LCMS (see the ebuild).
-media-libs/libsdl                   sound                 # Required by media-libs/libsdl2[sound] (libSDL is now a wrapper around  libSDL2).
-media-libs/libsdl2                  sound                 # Required by media-video/ffmpeg[sdl].
+media-libs/libsdl                   sound                 # Forced by media-libs/libsdl2[sound] (libSDL is now a wrapper around libSDL2).
+media-libs/libsdl2                  sound                 # Required by media-video/ffmpeg[sdl] and media-libs/libsdl2[alsa,pulseaudio].
 media-libs/libsdl2                  haptic                # Enable the haptic (force feedback) subsystem.
 media-libs/libsdl2                  gles2                 # OpenGL ES 2.0 support, required by media-libs/libsdl2[wayland].
 media-libs/libvpx                   postproc              # Required by mail-client/thunderbird[system-libvpx], www-client/firefox[system-libvpx].
-media-libs/mesa                     d3d9                  # Enable Direct3D 9 API through Nine state tracker (required by app-emulation/gallium-nine-standalone).
-##media-libs/mesa                   opencl                # Enable OpenCL support in Mesa (rusticl). Currently interferes with ROCM OpenCL, leading to segfaults.
-##media-libs/mesa                   osmesa                # Add support for OpenGL off-screen rendering (https://docs.mesa3d.org/osmesa.html). Required by wine-*[osmesa].
+##media-libs/mesa                   opencl                # Enable OpenCL support in Mesa (rusticl). Currently interferes with ROCm (it needs mesa[-opencl]).
 media-libs/mesa                     xa                    # Enable the XA (X Acceleration) API for Gallium3D. Required by x11-drivers/xf86-video-vmware.
-##media-libs/mesa                   vulkan-overlay        # Build vulkan-overlay-layer which displays FPS and other statistics.
 media-libs/mlt                      -rubberband           # Drop unnecessary dependency (from CLD).
 media-libs/mlt                      xml                   # Required by kde-apps/kdenlive.
 media-libs/opencolorio              -opengl               # Drop unnecessary dependency (from CLD).
-media-libs/opencv                   -gtk3                 # Prefere qt5/qt6, required by "media-plugins/frei0r-plugins.
+media-libs/opencv                   -gtk3                 # Prefere Qt6 for window drawing.
 media-libs/opencv                   features2d            # Required by media-plugins/frei0r-plugins[facedetect].
 ##media-libs/opencv                 lapack                # Add support for the virtual/lapack numerical library.
-##media-libs/opencv                 lto                   # Build using Link Time Optimizations (LTO).
 media-libs/opencv                   opencl                # Enable OpenCL support (computation on GPU).
 media-libs/opensubdiv               tbb                   # Required by media-gfx/blender[opensubdiv].
-media-libs/suil                     gtk2                  # Required by media-sound/ardour.
 media-libs/simage                   -tiff                 # Drop unnecessary dependency (from CLD).
 media-libs/vulkan-loader            layers                # Include the vulkan layers.
 media-libs/zmusic                   mpg123                # Enable support for MPEG audio playback via media-sound/mpg123.
 
-## NOTE: Pipewire is now the default audio server on Gentoo (and other recent Linux distributions).
-## The useful plugin that allows a program with an 'ALSA only' output to be integrated into the audio
-## stream along with the audio from other applications (i.e. without monopolizing the ALSA hardware)
-## is provided by the following two options, which MUST NOT BE BOTH ACTIVE AT THE SAME TIME:
-##
-##  - media-plugins/alsa-plugins[pulseaudio]  -> use with the old PulseAudio daemon;
-##  - media-video/pipewire[pipewire-alsa]     -> use with Pipewire.
-##
-## The 2nd option replace the PulseAudio's ALSA plugin with the native PipeWire's plugin and it is
-## recommended for Pipewire. Note: the 'pipewire-alsa' flag is planned to be removed in the future,
-## with such plugin permanently embedded in Pipewire (and PulseAudio probably dropped from Gentoo).
+# NOTE: Pipewire is now the default audio server on Gentoo (and other recent Linux distributions).
+# The useful plugin that allows a program with an 'ALSA only' output to be integrated into the audio
+# stream along with the audio from other applications (i.e. without monopolizing the ALSA hardware)
+# is provided by the following two options, which MUST NOT BE BOTH ACTIVE AT THE SAME TIME:
+#
+#  - media-plugins/alsa-plugins[pulseaudio]  -> use with the old PulseAudio daemon;
+#  - media-video/pipewire[pipewire-alsa]     -> use with Pipewire.
+#
+# The 2nd option replace the PulseAudio's ALSA plugin with the native PipeWire's plugin and it is
+# recommended for Pipewire. Note: the 'pipewire-alsa' flag is planned to be removed in the future,
+# with such plugin permanently embedded in Pipewire (and PulseAudio probably dropped from Gentoo).
 
 media-plugins/alsa-plugins          -pulseaudio           # This flag must be disabled with Pipewire (see comments above).
 media-plugins/gst-plugins-meta      http taglib           # Enable http streaming and tagging support (from CLD).
 
-##media-sound/clementine            moodbar projectm      # Enable moodbar and ProjectM visualization.
 media-sound/fluid-soundfont         timidity              # Include Timidity++ (MIDI sequencer) support.
 media-sound/fluidsynth              network               # Required for server mode (i.e. ALSA sequencer).
 media-sound/kid3                    kde                   # Add KDE/PLASMA support.
@@ -486,14 +463,8 @@ media-sound/kid3                    kde                   # Add KDE/PLASMA suppo
 media-sound/strawberry              kde                   # Enable KDE (KGlobalAccel) shortcuts.
 media-sound/timidity++              -gtk -ncurses -X      # Graphic and NCurses UI not required (used only as MIDI sequencer).
 
-## KODI is an open source home theater application. Currently, it cannot be built for both X11 and wayland, so
-## we must choose one of the two option below (with 'X' it should run on X11, and on wayland through xwayland).
-
-media-tv/kodi                       X -wayland            # Build media-tv/kodi for X11.
-media-tv/kodi                       -X -vdpau wayland     # Build media-tv/kodi for wayland. NOTE: 'vdpau' needs X11.
-
-## There are currently three AV1 encoders supported by FFmpeg: 'libaom', 'SVT-AV1' and 'rav1e'. The
-## first is the reference encoder for the AV1 format (see https://trac.ffmpeg.org/wiki/Encode/AV1).
+# There are currently three AV1 encoders supported by FFmpeg: 'libaom', 'SVT-AV1' and 'rav1e'. The
+# first is the reference encoder for the AV1 format (see https://trac.ffmpeg.org/wiki/Encode/AV1).
 
 media-video/avidemux                gui                   # Build the GUI frontend (required).
 media-video/ffmpeg                  -samba                # Drop unnecessary dependency (from CLD).
@@ -510,11 +481,8 @@ media-video/ffmpeg                  fdk                   # Required by media-vi
 media-video/ffmpeg                  libaom                # Enables media-libs/libaom based AV1 codec support.
 media-video/ffmpeg                  libass                # Required by kde-apps/kdenlive.
 ##media-video/ffmpeg                libcaca               # Add support for colored ASCII-art graphics.
-##media-video/ffmpeg                libdrm                # Enables x11-libs/libdrm support for better screen grabbing and hardware accelerated codecs.
 ##media-video/ffmpeg                librtmp               # Use librtmp (media-video/rtmpdump) in addition to FFmpeg's native implementation.
 ##media-video/ffmpeg                libsoxr               # Enables audio resampling through media-libs/soxr.
-##media-video/ffmpeg                libv4l                # Use media-libs/libv4l for video4linux instead of direct calls.
-##media-video/ffmpeg                libxml2               # Use dev-libs/libxml2 to parse XML.
 ##media-video/ffmpeg                modplug               # Add libmodplug support for playing SoundTracker-style music files.
 media-video/ffmpeg                  openssl               # Adds support for encrypted network protocols (TLS/HTTPS) via dev-libs/openssl (from CLD).
 ##media-video/ffmpeg                rav1e                 # Enables AV1 encoding support via media-video/rav1e.
@@ -526,6 +494,7 @@ media-video/ffmpeg                  srt                   # Enable support for S
 ##media-video/ffmpeg                vidstab               # Enables video stabilization filter using media-libs/vidstab library.
 media-video/ffmpeg                  vmaf                  # Enables Netflix's perceptual video quality assessment filter.
 ##media-video/ffmpeg                zimg                  # Enable libzimg support (scaling, colorspace conversion and dithering library).
+media-video/handbrake               gui                   # Build the GUI frontend.
 media-video/mjpegtools              -quicktime            # Drop unnecessary dependency (from CLD).
 ##media-video/mpv                   archive               # Enable support to play directly from various archives via app-arch/libarchive.
 ##media-video/mpv                   sdl                   # Enable media-libs/libsdl2 based video and audio outputs (NOTE: these outputs exist for compatibility reasons only, avoid if possible).
@@ -538,8 +507,6 @@ media-video/pipewire                jack-sdk              # Use PipeWire as JACK
 media-video/pipewire                pipewire-alsa         # Replace PulseAudio's ALSA plugin with PipeWire's plugin (see comments above).
 media-video/pipewire                sound-server          # Provide sound server using ALSA and bluetooth devices, see 'eselect news' 2022-07-29.
 media-video/vcdimager               xml                   # Re-enable flag +XML (see the ebuild).
-media-video/vlc                     -vaapi                # Prevents vlc to pull in ffmpeg < 5 (downgrade). See https://bugs.gentoo.org/864721.
-media-video/vlc                     -vdpau                # VLC build fails with vdpau enabled (due to issues in sys-apps/install-xattr-0.8-r1, see https://bugs.gentoo.org/914298).
 ##media-video/vlc                   aom                   # Enable AV1 encoding/decoding support using media-libs/libaom.
 media-video/vlc                     archive               # Required by media-video/vlc[skins].
 ##media-video/vlc                   aribsub               # Enable support for decoding ARIB STD-B24 subtitles.
@@ -584,40 +551,37 @@ net-dns/avahi                       -gtk                  # Do not build the GTK
 net-dns/avahi                       autoipd               # Build the IPv4LL (RFC3927) network address configuration daemon.
 ##net-dns/avahi                     bookmarks             # Install the avahi-bookmarks application.
 net-dns/avahi                       mdnsresponder-compat  # Enable compat libraries for mDNSResponder (required for Bonjour).
-net-dns/avahi                       python                # Required by net-print/hplip[snmp].
+##net-dns/avahi                     python                # Required by net-print/hplip[snmp].
 net-dns/bind                        gssapi                # Required by net-fs/samba[ads].
-net-dns/dnsmasq                     script                # Required by app-emulation/virt-manager[virt-network].
+net-dns/dnsmasq                     script                # Required by app-emulation/libvirt[virt-network].
 
-net-firewall/firewalld              gui                   # Build the UI frontend (useful).
-net-firewall/iptables               nftables              # Required by app-containers/containers-common that is required app-containers/podman.
+net-firewall/firewalld              gui                   # Build the UI frontend (way better than kde-plasma/plasma-firewall[firewalld]).
+net-firewall/iptables               nftables              # Required by app-containers/containers-common that is required by app-containers/podman.
 
 net-fs/nfs-utils                    -kerberos -ldap       # Drop unnecessary dependency (from CLD)
 net-fs/samba                        ads                   # Enable Active Directory support.
-net-fs/samba                        -pam                  # I don't know why, but PAM on Gentoo breaks authentication of Windows clients.
+net-fs/samba                        -pam                  # I don't know why, but SAMBA+PAM on Gentoo breaks authentication of Windows clients.
 net-fs/samba                        winbind               # Enables support for the winbind auth daemon.
 ##net-fs/samba                      -addc -gpg            # Disable Active Directory Domain Controller support (default, -gpg required by samba ebuild).
 ##net-fs/samba                      addc -system-mitkrb5  # Enable Active Directory Domain Controller support (-system-mitkrb5 required by samba ebuild).
 net-fs/samba                        ldap python           # Required by net-fs/samba[ads].
 
-net-irc/kvirc                       -audiofile -phonon    # Drop unnecessary dependency (from CLD).
+net-irc/kvirc                       -audiofile            # Drop unnecessary dependency (from CLD).
 net-irc/kvirc                       -spell -theora        # Drop unnecessary dependency (from CLD).
 
 net-libs/glib-networking            -gnome                # Unnecessary with KDE/PLASMA (when enabled, extract HTTP/HTTPS/SOCKS proxy configuration stored using GSettings).
 net-libs/gnutls                     pkcs11 tools          # Required by app-crypt/swtpm.
-net-libs/libssh                     server                # Required by dev-db/mysql-workbench.
+##net-libs/libssh                   server                # Required by dev-db/mysql-workbench.
 net-libs/libwebsockets              libuv                 # Required by net-libs/libwebsockets[smtp].
-net-libs/libwebsockets              mbedtls               # Required by net-libs/libwebsockets[ssl].
-net-libs/nodejs                     inspector             # Required by www-client/chromium.
-net-libs/nodejs                     icu                   # Required by net-libs/nodejs[inspector,system-icu].
+##net-libs/nodejs                   inspector             # Required by www-client/chromium.
+net-libs/nodejs                     icu                   # Required by net-libs/nodejs[inspector,system-icu] and dev-qt/qtwebengine.
 
-net-misc/aria2                      bittorrent            # Enable support for the bittorrent protocol (required by www-misc/kiwix-desktop from guru overlay).
-net-misc/aria2                      xmlrpc                # Required by www-client/uget[aria2].
 net-misc/freerdp                    icu                   # Re-enable flag +ICU (see the ebuild).
 net-misc/networkmanager             connection-sharing    # Support connection sharing (via net-dns/dnsmasq).
 net-misc/networkmanager             iptables              # Required by net-misc/networkmanager[connection-sharing] (alternatively, 'nftables').
 ##net-misc/networkmanager           ofono                 # Use net-misc/ofono for telephony support.
 ##net-misc/networkmanager           resolvconf            # Use net-dns/openresolv for managing DNS information in /etc/resolv.conf (useful with OpenRC).
-net-misc/spice-gtk                  usbredir              # Required by app-emulation/virt-manager.
+net-misc/spice-gtk                  usbredir              # Required by app-emulation/virt-manager[gui].
 net-misc/whois                      xcrypt                # Use sys-libs/libxcrypt (for support of 'yescrypt' method in mkpasswd).
 
 ##net-nds/openldap                  -minimal              # Uncomment to enable the LDAP daemon (at the moment, I don't need it).
@@ -630,7 +594,6 @@ net-p2p/qbittorrent                 gui                   # Build the GUI fronte
 net-print/cups                      zeroconf              # Required by net-print/cups-meta[zeroconf].
 net-print/cups                      -X                    # Drop unnecessary dependency (from CLD).
 net-print/cups-meta                 zeroconf              # Enable network printer discovery through Bonjour protocol (DNS-SD).
-##net-print/cups-filters            pclm                  # Add support for PCLm (Printer Command Language mobile). Required by WiFi Direct standard.
 net-print/gutenprint                gimp ppds             # Build a plugin for the GIMP and add support for automatically generated ppd (from CLD).
 net-print/hplip                     fax                   # Enable fax on multifunction devices which support it.
 net-print/hplip                     hpijs                 # Build the IJS driver for cups (from CLD).
@@ -641,36 +604,34 @@ net-print/hplip                     -X                    # Do not pull in any s
 net-vpn/networkmanager-openconnect  -gtk                  # Not required with KDE/PLASMA.
 net-vpn/networkmanager-openvpn      -gtk                  # Not required with KDE/PLASMA.
 net-vpn/networkmanager-pptp         -gtk                  # Not required with KDE/PLASMA.
-net-vpn/networkmanager-sstp         -gtk -gtk4            # Not required with KDE/PLASMA.
-##net-vpn/networkmanager-vpnc       -gtk                  # Not required with KDE/PLASMA but v1.2.8 build fails without it (see https://bugs.gentoo.org/837365).
+##net-vpn/networkmanager-vpnc       -gtk                  # Not required with KDE/PLASMA but build of v1.2.8/1.4.0 fails without it (see https://bugs.gentoo.org/837365).
 ##net-vpn/openvpn                   inotify               # Enable the "Asynchronous Push Reply" feature (needs openvpn-2.49 or up).
 ##net-vpn/openvpn                   pkcs11                # Enable PKCS#11 smartcard support.
 net-vpn/strongswan           strongswan_plugins_ipseckey  # Provides authentication via IPSECKEY RRs protected by DNSSEC (l2tp+ipsec support) (from CLD).
 ##net-vpn/vpnc                      resolvconf            # Enable support for DNS managing framework net-dns/openresolv.
 
 net-wireless/wpa_supplicant         ap                    # Add support for access point mode.
-net-wireless/wpa_supplicant         tkip                  # Add support for WPA TKIP (deprecated in 2009 due to security flaws, but might still be required).
+net-wireless/wpa_supplicant         tkip                  # Add support for WPA TKIP (deprecated in 2009 due to security flaws, but it might be still useful).
 
 sci-electronics/gtkwave             fasttree tcl          # Enables Fast SST Tree code and support for the Tcl language.
 
-## Flag 'hdf5' has been removed from sci-libs/armadillo because HDF5 support is absent in CMakeLists.txt,
-## see https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=bcfd284b7aa8eaba61aae5040737143c8f219f44 (the
-## reason and a workaround are explained in https://gitlab.com/conradsnicta/armadillo-code/-/issues/236).
+# Flag 'hdf5' has been removed from sci-libs/armadillo because HDF5 support is absent in CMakeLists.txt,
+# see https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=bcfd284b7aa8eaba61aae5040737143c8f219f44 (the
+# reason and a workaround are explained in https://gitlab.com/conradsnicta/armadillo-code/-/issues/236).
 
 sci-libs/armadillo                  arpack                # Link with sci-libs/arpack libraries for eigen decomposition.
 sci-libs/armadillo                  blas lapack           # Add support for virtual/blas and virtual/lapack numerical libraries.
 sci-libs/armadillo                  superlu               # Use SuperLU for sparse linear equation (sci-libs/superlu).
-sci-libs/cgnslib                    hdf5                  # Required by sci-libs/vtk.
-sci-libs/hdf5                       -threads              # Thread support is incompatible with flag "fortran" (see the ebuild).
-sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk.
-sci-libs/hdf5                       fortran               # Required by media-gfx/freecad.
+sci-libs/cgnslib                    hdf5                  # Required by sci-libs/vtk[cgns].
+sci-libs/hdf5                       -threads              # Thread support is incompatible with flags "cxx", "fortran", "hl", "mpi" (see the ebuild).
+sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk[cgns].
 sci-libs/lapack                     lapacke               # Required by virtual/lapacke.
 sci-libs/libqalculate               gnuplot               # Required by sci-calculators/qalculate-qt for plot support.
 sci-libs/miopen                     composable-kernel     # Use composable-kernel for GEMM-like and reduction-like operators.
 ##sci-libs/miopen                   hipblaslt             # Use hipBLASLt (disabled because my GPU is not currently supported by hipBLASLt).
 sci-libs/miopen                     rocblas               # Build with rocBLAS support.
-sci-libs/netcdf                     -dap                  # Required by sci-misc/nco[-dap].
-sci-libs/opencascade                -ffmpeg               # Prevents opencascade to pull in ffmpeg < 5 (downgrade). I don't need the ffmpeg support in opencascade.
+sci-libs/netcdf                     -dap                  # Support for remote data access not required.
+sci-libs/opencascade                -ffmpeg               # Prevents opencascade to pull in ffmpeg < 5 (downgrade). Support of ffmpeg is not required.
 sci-libs/opencascade                json                  # Required by media-gfx/freecad.
 sci-libs/vtk                        tbb                   # Use dev-cpp/tbb to handle smp support (from CLD).
 
@@ -684,16 +645,14 @@ sci-mathematics/octave              portaudio             # Provides "audioplaye
 sci-mathematics/octave              sndfile               # Add support for reading/writing files containing sampled audio data.
 ##sci-mathematics/octave            sundials              # Enable the "ode15i" and "ode15s" solvers using sci-libs/sundials (octave >= 6.0).
 
-sci-misc/nco                        -dap                  # Remote data access not required.
-
 ##sci-ml/caffe2                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
 sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
 sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
 sci-ml/caffe2                       openblas              # Enable backends OpenBLAS.
-sci-ml/caffe2                       rocm                  # Enable ROCM support (at most one of [cuda,rocm] can be enabled).
+sci-ml/caffe2                       rocm                  # Enable ROCm support (at most one of [cuda,rocm] can be enabled).
 ##sci-ml/ollama                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
 sci-ml/ollama                       blas                  # Enable virtual/blas support.
-sci-ml/ollama                       rocm                  # Enable ROCM support (at most one of [cuda,rocm] can be enabled).
+sci-ml/ollama                       rocm                  # Enable ROCm support (at most one of [cuda,rocm] can be enabled).
 sci-ml/ollama                       cpu_flags_x86_bmi2    # Enable support for Bit Manipulation Instructions (required by CPU flags 'avx2' + 'f16c' + 'fma3').
 
 sci-physics/bullet                  double-precision      # Required by media-gfx/blender[bullet].
@@ -711,7 +670,7 @@ sci-physics/bullet                  double-precision      # Required by media-gf
 ##sys-apps/fwupd                    tpm                   # Install Trusted Platform Module plugin.
 ##sys-apps/fwupd                    uefi                  # Enable UEFI support (required by 'dell' use flag).
 sys-apps/kmod                       pkcs7                 # Required to get the module signature. See https://wiki.gentoo.org/wiki/Signed_kernel_module_support
-sys-apps/openrc                     sysv-utils            # Use OpenRC init code instead of sys-apps/sysvinit (just for reference, this system uses systemd).
+##sys-apps/systemd                  bpf                   # Enable BPF support for sandboxing and firewalling.
 sys-apps/shadow                     -cracklib             # USE flags 'pam' and 'cracklib' cannot be both enabled (from CLD).
 sys-apps/systemd                    cryptsetup            # Enable cryptsetup tools (includes unit generator for crypttab).
 sys-apps/systemd                    elfutils              # Enable coredump stacktraces in the journal.
@@ -725,10 +684,10 @@ sys-apps/util-linux                 tty-helpers           # Install mesg/wall/wr
 
 sys-auth/pambase                    homed                 # Required for systemd-homed (i.e. systemd[homed]).
 sys-auth/pambase                    -sha512 yescrypt      # Use safer password hashing function (see https://bugs.gentoo.org/905678).
-sys-auth/polkit                     -gtk                  # Drop unnecessary dependency (from CLD).
+sys-auth/polkit                     -gtk                  # Drop unnecessary dependency (from CLD). NOTE: flag "kde" not required for KDE/PLASMA.
 sys-auth/polkit-qt                  qt5                   # Required by kde-frameworks/kauth:5.
 
-sys-block/fio                       aio                   # Enable AIO ioengine, required by app-benchmarks/kdiskmark (from local overlay).
+sys-block/fio                       aio                   # Enable AIO ioengine, required by app-benchmarks/kdiskmark (from guru overlay).
 
 # NOTE: the 'device-mapper' USE flag on grub is required to boot from an LVM partition
 # (see https://wiki.gentoo.org/wiki/GRUB/Advanced_storage, plus other packages with the
@@ -738,40 +697,35 @@ sys-boot/grub                       -device-mapper        # Drop unnecessary dep
 sys-boot/grub                       mount                 # Build and install the grub-mount utility, required by sys-boot/os-prober.
 sys-boot/plymouth                   pango                 # Re-enable flag +PANGO (see the ebuild).
 
-##sys-devel/binutils                gold                  # Build the ld.gold linker. Flag DEPRECATED (i.e. disabled, will be removed): use sys-devel/lld or sys-devel/mold.
+# NOTE: the ld.gold linker in sys-devel/binutils has been removed; use sys-devel/lld or sys-devel/mold.
+
 sys-devel/binutils                  pgo                   # Build binutils with Profile Guided Optimization (PGO).
 sys-devel/distcc                    -ipv6                 # Disable IPv6 support (IPv4 should be enough on the LAN).
 sys-devel/distcc                    zeroconf              # Support for DNS Service Discovery (DNS-SD).
 sys-devel/gcc                       ada                   # Enable ADA frontend (SEE ALSO /etc/portage/make.conf/00-ada.conf).
 sys-devel/gcc                       graphite              # Add support for the framework for loop optimizations based on a polyhedral intermediate representation.
-sys-devel/gcc                       pgo                   # Build using Profile Guided Optimization (PGO).
+##sys-devel/gcc                     lto                   # Build GCC using Link Time Optimizations (LTO).
+sys-devel/gcc                       pgo                   # Build GCC using Profile Guided Optimization (PGO).
 
 sys-fs/cryptsetup                   -gcrypt -nettle       # Prefere OpenSSL over GCrypt and Nettle (only one must be enabled).
-sys-fs/lvm2                         lvm                   # Required to manage disk and partitions with LVM2.
+sys-fs/lvm2                         lvm                   # Required to manage disk and partitions with LVM2 (add tools and daemons).
 ##sys-fs/ntfs3g                     ntfsdecrypt           # Build and install the ntfsdecrypt application (enable crypto).
 
 sys-kernel/installkernel            -systemd              # See 'eselect news' 2024-01-18 and https://wiki.gentoo.org/wiki/Installkernel.
-sys-kernel/installkernel            dracut                # Generate an initrd on each kernel installation (needed by sys-kernel/gentoo-kernel).
+sys-kernel/installkernel            dracut                # Generate initrd on kernel installation (required by sys-kernel/gentoo-kernel[initramfs], see kernel-install.eclass).
 
-sys-libs/ldb                        ldap python           # Required by net-fs/samba[python].
-##sys-libs/libblockdev              bcache                # Enable block device cache support.
-##sys-libs/libblockdev              dmraid                # Support for dmraid devices, also known as ATA-RAID, or Fake RAID.
-sys-libs/tdb                        python                # Required by sys-libs/ldb[python].
-sys-libs/tevent                     python                # Required by sys-libs/ldb[python].
+sys-libs/tdb                        python                # Required by net-fs/samba[python].
+sys-libs/tevent                     python                # Required by net-fs/samba[python].
 
 sys-process/lsof                    rpc                   # Required by app-forensics/rkhunter.
 
-virtual/imagemagick-tools           perl                  # Required by x11-misc/shutter.
 virtual/linux-sources               firmware              # Ensure sys-kernel/linux-firmware is installed.
 virtual/notification-daemon         kde                   # Pull in kde-plasma/plasma-workspace (for notifications in KDE/PLASMA).
-##virtual/wine                      proton                # Enable Valve Software's fork of Wine (wine-proton can also be installed manually).
 
 www-client/chromium                 widevine              # Unsupported closed-source DRM capability (required by Netflix VOD).
 www-client/firefox                  -telemetry            # Do not send anonymized usage information to upstream.
-##www-client/firefox                hwaccel               # Force-enable hardware-accelerated rendering (Mozilla bug 594876).
-##www-client/firefox                lto                   # Build using Link Time Optimizations (LTO), but not PGO (don't worth the effort).
+##www-client/firefox                hwaccel               # Force-enable hardware-accelerated rendering (Mozilla bug 594876). OBSOLETED.
 www-client/firefox                  openh264              # Use media-libs/openh264 for H264 support instead of downloading binary blob from Mozilla at runtime.
-www-client/uget                     aria2                 # Enable support for net-misc/aria2 (plugin) through xmlrpc.
 www-client/ungoogled-chromium-bin   widevine              # Unsupported closed-source DRM capability (required by Netflix VOD).
 www-client/vivaldi                  proprietary-codecs    # Enable codecs for patent-encumbered audio and video formats.
 www-client/vivaldi                  widevine              # Unsupported closed-source DRM capability (required by Netflix VOD).
@@ -779,8 +733,8 @@ www-client/vivaldi                  widevine              # Unsupported closed-s
 www-servers/lighttpd                dbi                   # Enable dev-db/libdbi (database-independent abstraction layer) support.
 www-servers/lighttpd                php                   # Include support for the PHP language (required for any non static website).
 
-x11-base/xorg-server                xvfb                  # Required by dev-libs/libdbusmenu[gtk,gtk3], media-libs/libglvnd[X], www-client/firefox[X].
-x11-base/xwayland                   libei                 # Required by kde-plasma/kwin.
+x11-base/xorg-server                xvfb                  # Required by dev-libs/libdbusmenu[gtk,gtk3], mail-client/thunderbird[X], media-libs/libglvnd[X], www-client/firefox[X].
+x11-base/xwayland                   libei                 # Required by kde-plasma/kwin[X].
 
 x11-drivers/xf86-video-intel        uxa                   # Enable UMA Acceleration Architecture.
 ##x11-drivers/xf86-video-qxl        xspice                # Include Xspice, a standard X server that is also a Spice server (for QEMU/KVM guest).
@@ -789,18 +743,16 @@ x11-libs/wxGTK                      gstreamer             # Required by dev-pyth
 x11-libs/vte                        icu                   # Re-enable flag +ICU (see the ebuild).
 x11-libs/xapp                       vala                  # Required by app-backup/timeshift (for xapp >= 2.8.5).
 
-x11-misc/appmenu-gtk-module         gtk2                  # Required by sci-electronics/gtkwave (gtk2 version from local overlay).
-
 x11-themes/gtk-engines-murrine      -themes               # Does not install default "Murrine" themes.
 
 
-## From 'eselect news' 2024-05-17 (Changes to dracut kernel module/microcode handling):
-##
-## Packages installing CPU microcode (sys-kernel/linux-firmware and sys-firmware/intel-microcode) have gained
-## the "dist-kernel" USE flag, and the "initramfs" flag is now enabled by default. When both flags are enabled,
-## dracut is automatically configured to include the installed microcode in the initramfs (for early microcode
-## loading) and the initramfs is regenerated.
-##
-## We can confirm the microcode update is working by looking at "microcode: updated early" in dmesg, but NOTE
-## THAT SUCH STRING IS NOT EMITTED IF THE CPU MICROCODE IS UPDATED BY BIOS AND IS ALREADY THE LATEST AVAILABLE.
-## For more details, see https://wiki.gentoo.org/wiki/Microcode (and /etc/dracut.conf.d/microcode.conf).
+# From 'eselect news' 2024-05-17 (Changes to dracut kernel module/microcode handling):
+#
+# Packages installing CPU microcode (sys-kernel/linux-firmware and sys-firmware/intel-microcode) have gained
+# the "dist-kernel" USE flag, and the "initramfs" flag is now enabled by default. When both flags are enabled,
+# dracut is automatically configured to include the installed microcode in the initramfs (for early microcode
+# loading) and the initramfs is regenerated.
+#
+# We can confirm the microcode update is working by looking at "microcode: updated early" in dmesg, but NOTE
+# THAT SUCH STRING IS NOT EMITTED IF THE CPU MICROCODE IS UPDATED BY BIOS AND IS ALREADY THE LATEST AVAILABLE.
+# For more details, see https://wiki.gentoo.org/wiki/Microcode (and /etc/dracut.conf.d/microcode.conf).

@@ -1,9 +1,9 @@
---- /usr/share/applications/org.kde.gwenview.desktop	2024-09-02 21:47:24.778407025 +0200
-+++ ./org.kde.gwenview.desktop	2024-09-02 21:49:57.209524775 +0200
+--- /usr/share/applications/org.kde.gwenview.desktop	2025-10-22 19:46:32.398209584 +0200
++++ ./org.kde.gwenview.desktop	2025-10-22 20:14:10.571735907 +0200
 @@ -7,7 +7,9 @@
  Icon=gwenview
  Type=Application
- MimeType=application/x-krita;image/avif;image/bmp;image/gif;image/heif;image/jpeg;image/jxl;image/png;image/tiff;image/webp;image/x-eps;image/x-icns;image/x-ico;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-psd;image/x-tga;image/x-webp;image/x-xbitmap;image/x-xcf;image/x-xpixmap;inode/directory;
+ MimeType=application/x-krita;image/avif;image/bmp;image/gif;image/heif;image/jpeg;image/jxl;image/openraster;image/png;image/svg+xml;image/svg+xml-compressed;image/tiff;image/webp;image/x-eps;image/x-icns;image/x-ico;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-psd;image/x-tga;image/x-webp;image/x-xbitmap;image/x-xcf;image/x-xpixmap;inode/directory;
 -Categories=Qt;KDE;Graphics;Viewer;Photography;
 +Categories=Qt;KDE;Graphics;
 +Keywords=images;photos;

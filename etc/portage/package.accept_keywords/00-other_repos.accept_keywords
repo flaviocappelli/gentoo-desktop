@@ -27,5 +27,8 @@ dev-vcs/gitahead::guru **
 # (best method to watch YouTube privately on desktop).
 net-misc/freetube-bin::guru **
 
+# Universal utility for programming FPGAs.
+sci-electronics/openfpgaloader::gentoo-zh **
+
 # Chromium without Google integration (i.e. with enhanced privacy).
 www-client/ungoogled-chromium-bin::pf4public **

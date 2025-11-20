@@ -1,12 +1,12 @@
---- /usr/share/applications/org.freecad.FreeCAD.desktop	2024-09-16 00:39:22.973720182 +0200
-+++ ./org.freecad.FreeCAD.desktop	2024-09-16 00:43:08.566560035 +0200
+--- /usr/share/applications/org.freecad.FreeCAD.desktop	2025-10-06 22:29:45.741162660 +0200
++++ ./org.freecad.FreeCAD.desktop	2025-10-06 22:37:23.943305369 +0200
 @@ -1,11 +1,14 @@
  [Desktop Entry]
  Name=FreeCAD
 -GenericName=CAD Application
 +GenericName=3D CAD Modelling
 +GenericName[it]=Modellazione CAD 3D
- Exec=freecad - --single-instance %F
+ Exec=FreeCAD - --single-instance %F
  Icon=org.freecad.FreeCAD
  Terminal=false
  Type=Application

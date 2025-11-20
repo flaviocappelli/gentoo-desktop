@@ -26,17 +26,17 @@ app-crypt/sirikali::local
 # https://github.com/occ-ai/obs-backgroundremoval
 media-plugins/obs-backgroundremoval::local
 
-# Some tools for FPGA development. The ebuilds of Icarus Verilog, Verilator,
-# Yosys, iCEstorm, PrjTrellis, Apicula, and NextPNR have been removed due to
-# the high maintenance and testing workload. These tools are interrelated, and
-# sometimes issues arise when updated individually. Instead, the OSS-CAD-SUITE
-# environment (https://github.com/YosysHQ/oss-cad-suite-build) is recommended:
+# Programmer for TinyFPGA board (see also sci-electronics/openfpgaloader
+# in /etc/portage/package.accept_keywords/00-other_repos.accept_keywords).
+# NOTE: The ebuilds of Icarus Verilog, Verilator, Yosys, iCEstorm, PrjTrellis,
+# Apicula, and NextPNR have been removed from the local repo due to the high
+# maintenance and testing workload. These tools are interrelated, and sometimes
+# issues arise when updated individually. Instead, the OSS-CAD-SUITE environment
+# (see https://github.com/YosysHQ/oss-cad-suite-build), is recommended because
 # it offers a comprehensive all-in-one solution that works seamlessly on Gentoo
-# (as well as on other Linux x86_64/Arm64 distributions, MacOS, and Windows)
-# and we can even have multiple versions of the OSS-CAD-SUITE installed.
+# (as well as on other Linux x86_64/Arm64 distributions, MacOS, and Windows);
+# we can even have multiple versions of the OSS-CAD-SUITE installed.
 sci-electronics/tinyprog::local
-sci-electronics/openfpgaloader::local
-sci-electronics/gtkwave::local
 =dev-python/jsonmerge-1.9*::gentoo
 
 # Electronic circuit simulator (browser based) with lot of examples.
@@ -67,3 +67,7 @@ app-misc/chatbox-appimage::local
 # not compatible with Qt-6.9 (current Qt6 version in Gentoo).
 dev-util/gammaray::local
 dev-util/kdstatemachineeditor::gentoo
+
+# Nintendo Switch Emulator. See:
+# https://git.ryujinx.app/ryubing/ryujinx/
+games-emulation/ryujinx-bin::local

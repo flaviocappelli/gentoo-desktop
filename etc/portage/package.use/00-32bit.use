@@ -17,6 +17,7 @@ app-emulation/wine-gecko                abi_x86_32
 dev-cpp/abseil-cpp                      abi_x86_32
 dev-cpp/glibmm                          abi_x86_32
 dev-cpp/gtest                           abi_x86_32
+dev-cpp/highway                         abi_x86_32
 dev-cpp/libxmlpp                        abi_x86_32
 dev-cpp/tbb                             abi_x86_32
 dev-db/lmdb                             abi_x86_32
@@ -85,6 +86,7 @@ media-libs/freeglut                     abi_x86_32
 media-libs/freetype                     abi_x86_32
 media-libs/gavl                         abi_x86_32
 media-libs/gd                           abi_x86_32
+media-libs/giflib                       abi_x86_32
 media-libs/glu                          abi_x86_32
 media-libs/graphene                     abi_x86_32
 media-libs/gst-plugins-bad              abi_x86_32
@@ -97,6 +99,7 @@ media-libs/ladspa-sdk                   abi_x86_32
 media-libs/lcms                         abi_x86_32
 media-libs/libaom                       abi_x86_32
 media-libs/libass                       abi_x86_32
+media-libs/libavif                      abi_x86_32
 media-libs/libbluray                    abi_x86_32
 media-libs/libbs2b                      abi_x86_32
 media-libs/libcaca                      abi_x86_32
@@ -115,6 +118,7 @@ media-libs/libgphoto2                   abi_x86_32
 media-libs/libheif                      abi_x86_32
 media-libs/libiec61883                  abi_x86_32
 media-libs/libjpeg-turbo                abi_x86_32
+media-libs/libjxl                       abi_x86_32
 media-libs/libmodplug                   abi_x86_32
 media-libs/libmpeg2                     abi_x86_32
 media-libs/libogg                       abi_x86_32
@@ -128,6 +132,7 @@ media-libs/libsndfile                   abi_x86_32
 media-libs/libtheora                    abi_x86_32
 media-libs/libv4l                       abi_x86_32
 media-libs/libva                        abi_x86_32
+media-libs/libvmaf                      abi_x86_32
 media-libs/libvorbis                    abi_x86_32
 media-libs/libvpx                       abi_x86_32
 media-libs/libwebp                      abi_x86_32
@@ -184,7 +189,6 @@ media-sound/jack2                       abi_x86_32
 media-sound/lame                        abi_x86_32
 media-sound/mpg123                      abi_x86_32
 media-sound/mpg123-base                 abi_x86_32
-media-sound/pulseaudio                  abi_x86_32
 media-sound/twolame                     abi_x86_32
 media-sound/wavpack                     abi_x86_32
 media-video/ffmpeg                      abi_x86_32
@@ -250,6 +254,7 @@ virtual/libusb                          abi_x86_32
 virtual/opencl                          abi_x86_32
 virtual/opengl                          abi_x86_32
 virtual/rust                            abi_x86_32
+virtual/zlib                            abi_x86_32
 x11-libs/cairo                          abi_x86_32
 x11-libs/gdk-pixbuf                     abi_x86_32
 x11-libs/gtk+:3                         abi_x86_32

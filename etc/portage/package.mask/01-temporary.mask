@@ -2,9 +2,16 @@
 #
 # These are temporary fix (will be removed in the future).
 
-# Finally I solved the VirtualBox issue: v7.1.8 works
-# but I had to remove ~/.VirtualBox and reimport all VMs
-# (note: now the configuration is in ~/.config/VirtualBox).
+# Do not pull in Python 3.14 until really required.
+>=dev-lang/python-3.14.0
 
-# FreeCAD <= 1.0.1 needs this (see the ebuild).
->=dev-python/pybind11-3.0.0
+# Mask first patch release of VScode minor versions.
+~app-editors/vscode-1.106.0
+~app-editors/vscode-1.107.0
+~app-editors/vscode-1.108.0
+~app-editors/vscode-1.109.0
+~app-editors/vscode-1.110.0
+
+# NOTE: on any issue with VirtualBox >= 7.1.8 remove
+# ~/.VirtualBox and reimport all VMs (recent versions
+# have configuration in ~/.config/VirtualBox).

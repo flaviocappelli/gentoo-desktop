@@ -4,8 +4,8 @@
  [Desktop Entry]
 -Name=Godot Engine
 -GenericName=Libre game engine
-+Name=Godot Engine 4 (Gentoo version)
-+Name[it]=Godot Engine 4 (versione Gentoo)
++Name=Godot Engine 4
++Name[it]=Godot Engine 4
 +GenericName=Opensource 2D/3D Game Editor
 +GenericName[it]=Editor di giochi 2D/3D opensource
  Exec=godot %f

@@ -1,0 +1,11 @@
+--- /usr/share/applications/org.kde.kcalc.desktop	2025-11-13 19:52:42.493854299 +0100
++++ ./org.kde.kcalc.desktop	2025-11-13 20:01:22.283828038 +0100
+@@ -6,7 +6,7 @@
+ Exec=kcalc
+ Icon=accessories-calculator
+ Type=Application
+-Categories=Qt;KDE;Utility;Calculator;X-KDE-Utilities-Desktop;
++Categories=Mathematics;
+ StartupNotify=true
+ X-DocPath=kcalc/index.html
+ X-KDE-Shortcuts=Calculator

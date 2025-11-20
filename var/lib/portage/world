@@ -19,6 +19,7 @@ app-benchmarks/ramspeed
 app-cdr/dolphin-plugins-mountiso
 app-containers/distrobox
 app-containers/podman
+app-crypt/ccrypt
 app-crypt/gocryptfs
 app-crypt/sirikali
 app-crypt/stoken
@@ -61,6 +62,7 @@ app-shells/bash-completion
 app-text/aha
 app-text/calibre
 app-text/dos2unix
+app-text/pdfarranger
 app-text/texlive
 app-text/tree
 app-text/uchmviewer
@@ -72,6 +74,7 @@ dev-debug/kdbg
 dev-debug/ltrace
 dev-debug/strace
 dev-debug/valgrind
+dev-games/godot
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
 dev-python/ollama
@@ -79,10 +82,9 @@ dev-python/pip
 dev-python/uv
 dev-qt/qt-docs:5
 dev-qt/qt-docs:6
-dev-qt/qt3d:6
-dev-qt/qtcharts:5
-dev-qt/qtcharts:6
-dev-qt/qtlocation:6
+dev-qt/qt3d
+dev-qt/qtcharts
+dev-qt/qtlocation
 dev-qt/qtscxml:5
 dev-qt/qtscxml:6
 dev-qt/qtserialbus
@@ -119,6 +121,7 @@ dev-vcs/repo
 dev-vcs/subversion
 games-board/gnome-chess
 games-board/gnuchess
+games-emulation/ryujinx-bin
 games-fps/gzdoom
 games-fps/xonotic
 gnome-base/dconf-editor
@@ -178,7 +181,6 @@ media-gfx/blender
 media-gfx/freecad
 media-gfx/gimp
 media-gfx/hugin
-media-gfx/inkscape
 media-gfx/kgraphviewer
 media-gfx/nomacs
 media-gfx/openscad
@@ -234,6 +236,7 @@ net-vpn/networkmanager-pptp
 net-vpn/networkmanager-vpnc
 sci-astronomy/stellarium
 sci-calculators/qalculate-qt
+sci-calculators/speedcrunch
 sci-electronics/circuitjs1-bin
 sci-electronics/electronics-menu
 sci-electronics/gtkwave
@@ -316,7 +319,6 @@ sys-process/htop
 sys-process/iotop
 sys-process/lsof
 sys-process/parallel
-virtual/jdk:1.8
 virtual/linux-sources
 www-client/falkon
 www-client/firefox
