@@ -52,7 +52,7 @@ ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue
 # names /dev/sdX are not more persistent, so we must use DEVPATH (device hardware
 # path), ENV{ID_SERIAL_SHORT} (device S/N) or ENV{ID_PART_TABLE_UUID} (GPT UUID).
 #
-# MAP DISK BY PATH (SATA 1 to 4), see "udevadm info /dev/<device>".
+# MAP DISK BY PATH (SATA 1 to 4), see "udevadm info /dev/<device>" (HOST cerberus).
 ACTION=="add|change", KERNEL=="sd[a-z]", DEVPATH=="*0000:*:00.1/ata1/host*", ATTR{queue/scheduler}="none"
 ACTION=="add|change", KERNEL=="sd[a-z]", DEVPATH=="*0000:*:00.1/ata2/host*", ATTR{queue/scheduler}="none"
 ACTION=="add|change", KERNEL=="sd[a-z]", DEVPATH=="*0000:*:00.1/ata3/host*", ATTR{queue/scheduler}="none"
