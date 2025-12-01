@@ -1,0 +1,37 @@
+diff '--color=auto' -u -r zenmonitor3-7f652ba30efc31d7da4af426e3a112cff9bebd1f/src/gui.c zenmonitor3-7f652ba30efc31d7da4af426e3a112cff9bebd1f.new/src/gui.c
+--- a/src/gui.c	2022-08-12 09:44:14.000000000 +0200
++++ b/src/gui.c	2025-11-28 12:34:43.913370236 +0100
+@@ -1,8 +1,8 @@
+ #include <cpuid.h>
+ #include <gtk/gtk.h>
+ #include <stdlib.h>
+-#include "gui.h"
+ #include "zenmonitor.h"
++#include "gui.h"
+ 
+ GtkWidget *window;
+ 
+diff '--color=auto' -u -r zenmonitor3-7f652ba30efc31d7da4af426e3a112cff9bebd1f/src/include/gui.h zenmonitor3-7f652ba30efc31d7da4af426e3a112cff9bebd1f.new/src/include/gui.h
+--- a/src/include/gui.h	2022-08-12 09:44:14.000000000 +0200
++++ b/src/include/gui.h	2025-11-28 12:35:34.071893601 +0100
+@@ -1,6 +1,6 @@
+ #ifndef __ZENMONITOR_GUI_H__
+ #define __ZENMONITOR_GUI_H__
+ 
+-int start_gui();
++int start_gui (SensorSource *ss);
+ 
+ #endif /* __ZENMONITOR_GUI_H__ */
+diff '--color=auto' -u -r zenmonitor3-7f652ba30efc31d7da4af426e3a112cff9bebd1f/src/zenmonitor.c zenmonitor3-7f652ba30efc31d7da4af426e3a112cff9bebd1f.new/src/zenmonitor.c
+--- a/src/zenmonitor.c	2022-08-12 09:44:14.000000000 +0200
++++ b/src/zenmonitor.c	2025-11-28 12:34:27.825523123 +0100
+@@ -5,8 +5,8 @@
+ #include "zenpower.h"
+ #include "msr.h"
+ #include "os.h"
+-#include "gui.h"
+ #include "zenmonitor.h"
++#include "gui.h"
+ 
+ gboolean display_coreid = 0;
+ 

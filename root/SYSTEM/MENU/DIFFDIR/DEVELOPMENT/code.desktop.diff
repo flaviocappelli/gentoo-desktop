@@ -1,20 +1,18 @@
---- /usr/share/applications/code.desktop	2025-01-07 21:12:17.437115860 +0100
-+++ ./code.desktop	2025-01-07 21:14:22.068897908 +0100
+--- /usr/share/applications/code.desktop	2025-11-26 21:06:39.487303924 +0100
++++ ./code.desktop	2025-11-26 21:09:49.899425572 +0100
 @@ -1,18 +1,12 @@
  [Desktop Entry]
--Name=VSCode
--GenericName=Code Editor
-+Name=Visual Studio Code
+ Name=Visual Studio Code
+-GenericName=Text Editor
 +GenericName=Programming Editor
 +GenericName[it]=Editor per programmazione
- Exec=/usr/bin/vscode --ozone-platform-hint=auto --enable-wayland-ime -- %F
+ Exec=/usr/bin/vscode --ozone-platform-hint=auto --enable-wayland-ime %F
  Icon=vscode
  Type=Application
- MimeType=application/x-code-workspace;inode/directory;text/plain;
--Categories=Utility;TextEditor;Development;IDE;
--Keywords=vscode;code;
+ MimeType=application/x-code-workspace;
+-Categories=TextEditor;Development;IDE;
 +Categories=Development;
-+Keywords=vscode;
+ Keywords=vscode;
  StartupWMClass=Code
 -StartupNotify=false
 -Actions=new-empty-window;
@@ -22,6 +20,6 @@
 -[Desktop Action new-empty-window]
 -Name=New Empty Window
 -Name[it]=Nuova finestra vuota
--Exec=/usr/bin/vscode --ozone-platform-hint=auto --enable-wayland-ime --new-window
+-Exec=/usr/bin/vscode --ozone-platform-hint=auto --enable-wayland-ime --new-window %F
 -Icon=vscode
 +StartupNotify=true

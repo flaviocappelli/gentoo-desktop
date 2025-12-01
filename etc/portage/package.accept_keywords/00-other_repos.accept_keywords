@@ -12,6 +12,9 @@
 
 # === ENABLED EBUILDS (FROM INSTALLED OVERLAYS) ==========================
 
+# Universal utility for programming FPGAs.
+sci-electronics/openfpgaloader::gentoo-zh **
+
 # HDD and SSD benchmark tool with a very friendly graphical user interface
 # (similar to CrystalDiskMark in Windows). It uses 'sys-block/fio' (for the
 # exact tests launched see https://github.com/JonMagon/KDiskMark/issues/130).
@@ -19,16 +22,13 @@
 # cache levels (see https://github.com/JonMagon/KDiskMark/issues/148).
 app-benchmarks/kdiskmark::guru **
 
-# Cross-platform Git client (no longer developed but still maintained
-# and bug fixed). Gittyup is a continuation of GitAhead (no ebuild yet).
-dev-vcs/gitahead::guru **
+# Tool for development with Qt (kdstatemachineeditor is a dependency).
+dev-util/gammaray::guru **
+dev-util/kdstatemachineeditor::gentoo
 
 # YouTube client with many features similar to YouTube
 # (best method to watch YouTube privately on desktop).
 net-misc/freetube-bin::guru **
-
-# Universal utility for programming FPGAs.
-sci-electronics/openfpgaloader::gentoo-zh **
 
 # Chromium without Google integration (i.e. with enhanced privacy).
 www-client/ungoogled-chromium-bin::pf4public **

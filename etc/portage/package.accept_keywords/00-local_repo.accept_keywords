@@ -62,12 +62,6 @@ sci-ml/ollama::local
 # Another desktop client for AI Models/LLMs (GPT, Claude, Gemini, Ollama...).
 app-misc/chatbox-appimage::local
 
-# Tool useful for development with Qt (kdstatemachineeditor
-# is a dependency). The version in 'guru' overlay is old and
-# not compatible with Qt-6.9 (current Qt6 version in Gentoo).
-dev-util/gammaray::local
-dev-util/kdstatemachineeditor::gentoo
-
 # Nintendo Switch Emulator. See:
 # https://git.ryujinx.app/ryubing/ryujinx/
 games-emulation/ryujinx-bin::local

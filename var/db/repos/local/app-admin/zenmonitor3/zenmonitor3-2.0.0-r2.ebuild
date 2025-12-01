@@ -39,6 +39,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-makefile.patch"
+	"${FILESDIR}/${PN}-gcc15.patch"
 )
 
 src_compile() {

@@ -79,8 +79,15 @@ app-eselect/eselect-php             fpm                   # Required by dev-lang
 ##app-misc/recoll                   session               # Stop monitoring file alterations when X11 session terminates.
 app-misc/solaar                     appindicator          # Required to show a systray icon in KDE/PLASMA.
 
+## The KDE/PLASMA integration in Libreoffice is still buggy: in X11 the HiDPI doesn't work (menus are too small), while in
+## Wayland the scrolling is rudimentary. In X11 we can use QT_SCALE_FACTOR=1.x as workaround, but for Wayland there no fix
+## yet, so it's better to stick with the Gtk3 or Gtk4 UI backend that works well on KDE/PLASMA, both in X11 and Wayland.
+
+##app-office/libreoffice            -gtk3 gtk4            # Select the Gtk4 UI backend (see above).
+app-office/libreoffice              -kde -qt6             # Disable KDE/PLASMA integration and Qt6 UI backend (see above).
 app-office/libreoffice              base java             # Install "LibreOffice Base". NOTE: Base needs the 'java' flag enabled.
-app-office/libreoffice              kde odk               # Enable KDE/PLASMA integration and build the Office Development Kit.
+app-office/libreoffice              gstreamer             # Enable sound in presentations with Gtk3/Gtk4 UI backends (not required with Qt6 backend).
+app-office/libreoffice              odk                   # Build the Office Development Kit.
 app-office/libreoffice              pdfimport             # Enable PDF import via the Poppler library.
 app-office/libreoffice-l10n         offlinehelp           # Install help files locally instead of using the LibreOffice Wiki.
 ##app-office/lyx                    dot                   # Add support for DOT import (media-gfx/graphviz).
@@ -130,6 +137,7 @@ dev-libs/libdbusmenu                gtk3                  # Required by x11-libs
 dev-libs/libpcre                    pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libpcre2                   pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libxml2                    icu                   # Required by dev-qt/qtwebengine, www-client/ungoogled-chromium-bin.
+dev-libs/libxml2                    python                # Required by app-doc/gimp-help.
 dev-libs/nss                        utils                 # Install utilities included with the library.
 dev-libs/xerces-c                   -iconv                # ICU take precedenze over iconv (this remove an annoying elog warning).
 dev-libs/xerces-c                   icu                   # Required by media-gfx/freecad.
@@ -256,6 +264,7 @@ dev-qt/qt-docs                      script timeline       # Install documentatio
 dev-qt/qt-docs                      virtualkeyboard       # Install documentation for dev-qt/qtvirtualkeyboard.
 dev-qt/qt-docs                      webengine widgets     # Install documentation for dev-qt/qtwebengine and dev-qt/qtwidgets.
 dev-qt/qt-docs                      xml                   # Install documentation for dev-qt/qtxml.
+dev-qt/qt3d                         qml                   # Required by dev-util/gammaray[3d].
 dev-qt/qt5compat                    gui                   # If disabled, force emerge of dev-qt/qtbase[-gui].
 dev-qt/qt5compat                    icu                   # If disabled, force emerge of dev-qt/qtbase[-icu].
 dev-qt/qt5compat                    qml                   # Many Qt6 packages need this flag.
@@ -428,7 +437,6 @@ media-libs/libsdl2                  haptic                # Enable the haptic (f
 media-libs/libsdl2                  gles2                 # OpenGL ES 2.0 support, required by media-libs/libsdl2[wayland].
 media-libs/libvpx                   postproc              # Required by mail-client/thunderbird[system-libvpx], www-client/firefox[system-libvpx].
 ##media-libs/mesa                   opencl                # Enable OpenCL support in Mesa (rusticl). Currently interferes with ROCm (it needs mesa[-opencl]).
-media-libs/mesa                     xa                    # Enable the XA (X Acceleration) API for Gallium3D. Required by x11-drivers/xf86-video-vmware.
 media-libs/mlt                      -rubberband           # Drop unnecessary dependency (from CLD).
 media-libs/mlt                      xml                   # Required by kde-apps/kdenlive.
 media-libs/opencolorio              -opengl               # Drop unnecessary dependency (from CLD).

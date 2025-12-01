@@ -1,10 +1,10 @@
---- /usr/share/applications/org.stellarium.Stellarium.desktop	2024-05-29 06:12:10.414626768 +0200
-+++ ./org.stellarium.Stellarium.desktop	2024-05-29 06:16:56.514598317 +0200
+--- /usr/share/applications/org.stellarium.Stellarium.desktop	2025-11-29 02:13:37.193070652 +0100
++++ ./org.stellarium.Stellarium.desktop	2025-11-29 02:23:57.178785579 +0100
 @@ -8,9 +8,9 @@
  Terminal=false
  Type=Application
  MimeType=application/x-stellarium-script;
--Categories=Education;
+-Categories=Qt;Education;Science;Astronomy;
 -StartupNotify=false
 -Actions=Window;Fullscreen;Debugmode;XCBPlatform;XCBPlatformTheme;
 +Categories=Education;Science;
