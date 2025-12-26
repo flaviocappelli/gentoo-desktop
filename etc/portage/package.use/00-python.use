@@ -51,9 +51,63 @@
 
 # SYSTEM PYTHON IS NOW 3.13
 # Following packages still need Python 3.12
-# ==============================================================
+# =================================================================
 # See https://bugs.gentoo.org/953643
 
 # dev-libs/intel-compute-runtime:legacy
-# --------------------------------------------------------------
+# -----------------------------------------------------------------
 llvm-core/clang:15                  python_single_target_python3_12
+
+# Some pip packages in virtual environments still needs Python 3.12
+# -----------------------------------------------------------------
+dev-python/pip                      python_targets_python3_12
+dev-python/cachecontrol             python_targets_python3_12
+dev-python/certifi                  python_targets_python3_12
+dev-python/cffi                     python_targets_python3_12
+dev-python/charset-normalizer       python_targets_python3_12
+dev-python/colorama                 python_targets_python3_12
+dev-python/cython                   python_targets_python3_12
+dev-python/dependency-groups        python_targets_python3_12
+dev-python/distlib                  python_targets_python3_12
+dev-python/distro                   python_targets_python3_12
+dev-python/editables                python_targets_python3_12
+dev-python/fastjsonschema           python_targets_python3_12
+dev-python/flit-core                python_targets_python3_12
+dev-python/gpep517                  python_targets_python3_12
+dev-python/hatchling                python_targets_python3_12
+dev-python/hatch-vcs                python_targets_python3_12
+dev-python/idna                     python_targets_python3_12
+dev-python/installer                python_targets_python3_12
+dev-python/jaraco-collections       python_targets_python3_12
+dev-python/jaraco-context           python_targets_python3_12
+dev-python/jaraco-functools         python_targets_python3_12
+dev-python/jaraco-text              python_targets_python3_12
+dev-python/lark                     python_targets_python3_12
+dev-python/linkify-it-py            python_targets_python3_12
+dev-python/markdown-it-py           python_targets_python3_12
+dev-python/mdurl                    python_targets_python3_12
+dev-python/more-itertools           python_targets_python3_12
+dev-python/msgpack                  python_targets_python3_12
+dev-python/packaging                python_targets_python3_12
+dev-python/pathspec                 python_targets_python3_12
+dev-python/platformdirs             python_targets_python3_12
+dev-python/pluggy                   python_targets_python3_12
+dev-python/ply                      python_targets_python3_12
+dev-python/poetry-core              python_targets_python3_12
+dev-python/pycparser                python_targets_python3_12
+dev-python/pygments                 python_targets_python3_12
+dev-python/pyproject-hooks          python_targets_python3_12
+dev-python/pysocks                  python_targets_python3_12
+dev-python/requests                 python_targets_python3_12
+dev-python/resolvelib               python_targets_python3_12
+dev-python/rich                     python_targets_python3_12
+dev-python/setuptools               python_targets_python3_12
+dev-python/setuptools-scm           python_targets_python3_12
+dev-python/tomli-w                  python_targets_python3_12
+dev-python/trove-classifiers        python_targets_python3_12
+dev-python/truststore               python_targets_python3_12
+dev-python/typing-extensions        python_targets_python3_12
+dev-python/uc-micro-py              python_targets_python3_12
+dev-python/urllib3                  python_targets_python3_12
+dev-python/wheel                    python_targets_python3_12
+dev-python/zstandard                python_targets_python3_12

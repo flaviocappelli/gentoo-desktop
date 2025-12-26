@@ -58,6 +58,9 @@ dev-lang/rust
 # Ensures Firefox ESR is installed (i.e. mask the bleeding-edge versions).
 www-client/firefox:rapid
 
+# Gtk+2 has been deprecated for a long time. I finally got rid of it.
+x11-libs/gtk+:2
+
 # NVidia proprietary video drivers are not required on this system.
 x11-drivers/nvidia-drivers
 

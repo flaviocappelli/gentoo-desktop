@@ -36,10 +36,11 @@ app-emulation/winetricks
 app-eselect/eselect-python
 app-eselect/eselect-repository
 app-forensics/rkhunter
-app-misc/chatbox-appimage
 app-misc/ddcui
 app-misc/ellama
+app-misc/evtest
 app-misc/fastfetch
+app-misc/jq
 app-misc/openrgb
 app-misc/radeontop
 app-misc/resolve-march-native
@@ -121,7 +122,7 @@ dev-vcs/subversion
 games-board/gnome-chess
 games-board/gnuchess
 games-emulation/ryujinx-bin
-games-fps/gzdoom
+games-engines/uzdoom
 games-fps/xonotic
 gnome-base/dconf-editor
 gnome-extra/gnome-color-manager
@@ -184,8 +185,6 @@ media-gfx/kgraphviewer
 media-gfx/nomacs
 media-gfx/openscad
 media-gfx/povray
-media-gfx/viewnior
-media-gfx/xsane
 media-plugins/obs-backgroundremoval
 media-sound/alsa-utils
 media-sound/ardour
@@ -329,6 +328,5 @@ x11-apps/mesa-progs
 x11-apps/xdpyinfo
 x11-apps/xlsclients
 x11-apps/xrandr
-x11-themes/oxygen-gtk:2
 x11-themes/oxygen-gtk:3
 x11-themes/papirus-icon-theme

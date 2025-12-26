@@ -9,6 +9,9 @@ app-admin/spectre-meltdown-checker::gentoo **
 # SpeedCruch calculator is back with Qt6 support!
 sci-calculators/speedcrunch::gentoo
 
+# Gimp-3 is now stable but offline help is not yet!
+app-doc/gimp-help::gentoo
+
 # Hex editor that can edit very BIG files!
 app-editors/wxhexeditor::gentoo
 
@@ -74,8 +77,9 @@ games-strategy/wesnoth::gentoo
 # OpenGL/Vulkan multi-platform port of ZDoom (game engine that
 # permit to play DOOM, DOOM II, HERETIC, HEXEN, and many others
 # old titles, including mods). NOTE that it needs the original
-# *.WAD game files. See https://zdoom.org/wiki/Main_Page
-games-fps/gzdoom::gentoo
+# *.WAD game files. See https://zdoom.org/wiki/Main_Page and
+# https://bugs.gentoo.org/967252 (gzdoom deprecated).
+games-engines/uzdoom::gentoo
 media-libs/zmusic::gentoo
 
 # KChmViewer has been removed from portage (see Gentoo

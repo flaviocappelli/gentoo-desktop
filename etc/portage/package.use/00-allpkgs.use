@@ -98,6 +98,7 @@ app-office/lyx                      enchant               # Add support for ench
 
 app-shells/bash                     pgo                   # Optimize the build using Profile Guided Optimization (from CLD).
 
+app-text/calibre                    unrar                 # Required to open comics (*.cbr files).
 app-text/mupdf                      archive               # Enable support for CBR and other archive formats using libarchive.
 app-text/poppler                    -boost                # Drop unnecessary dependency (from CLD).
 app-text/texlive                    l10n_es               # Installs dev-texlive/texlive-langspanish (required to build LyX documentation).
@@ -117,6 +118,7 @@ dev-embedded/libftdi                cxx                   # Required by dev-embe
 
 ##dev-games/godot                   double-precision      # Use double-precision floats (see https://docs.godotengine.org/en/stable/tutorials/physics/large_world_coordinates.html).
 dev-games/godot                     gui                   # Build the GUI frontend (required).
+dev-games/ode                       double-precision      # Required by games-fps/xonotic[ode].
 dev-games/openscenegraph            -wxwidgets            # Drop unnecessary dependency (from CLD).
 
 dev-lang/fpc                        source                # Required by dev-lang/lazarus.
@@ -133,6 +135,7 @@ dev-lang/rust-bin                   rustfmt               # Install 'rustfmt' (R
 
 dev-libs/boost                      context python        # Required by sci-electronics/kicad and other packages.
 dev-libs/boost                      icu                   # Required by games-strategy/wesnoth.
+dev-libs/libdbusmenu                -gtk                  # Drop unnecessary dependency (Gtk+:2).
 dev-libs/libdbusmenu                gtk3                  # Required by x11-libs/xapp.
 dev-libs/libpcre                    pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libpcre2                   pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
@@ -313,6 +316,8 @@ dev-util/kdevelop                   plasma                # Build optional KDE/P
 
 ##dev-vcs/git                       cgi                   # Install gitweb too (see https://git-scm.com/book/it/v2/Git-on-the-Server-GitWeb).
 
+games-fps/xonotic                   ode                   # Enable support for physics engine.
+
 ##gnome-base/gnome-keyring          -ssh-agent            # Ensure gnome-keyring SSH agent is disabled (to not interfere with the gpg-agent.ssh service).
 gnome-base/gvfs                     archive               # Enables support for accessing files in archives transparently via app-arch/libarchive.
 gnome-base/gvfs                     fuse                  # Provides limited access to the GVfs filesystems for applications not using GIO (I/O library available in GLib).
@@ -402,7 +407,7 @@ media-gfx/gimp                      aalib                 # Add support for medi
 media-gfx/gimp                      jpegxl mng xpm        # Add support for graphics formats JPEGXL, MNG, XPM (not enabled by default).
 media-gfx/gimp                      vector-icons          # Enable support for vector icons (experimental).
 media-gfx/graphicsmagick            -imagemagick          # GraphicsMagick is required by Octave but conflicts with ImageMagick (that is still required).
-media-gfx/graphicsmagick            q16                   # Set storage quantum depth to 16 (like imagemagick default).
+media-gfx/graphicsmagick            q16                   # Set storage quantum depth to 16 (like imagemagick default; see also https://wiki.octave.org/GraphicsMagick).
 media-gfx/hugin                     lapack                # Add support for the virtual/lapack numerical library.
 media-gfx/hugin                     sift                  # Automatically align images with media-gfx/autopano-sift-C.
 media-gfx/imagemagick               -raw                  # Drop unnecessary dependency (from CLD).
@@ -422,8 +427,10 @@ media-gfx/openscad                  gui                   # Build the GUI fronte
 media-libs/avidemux-plugins         aften                 # Enable A/52 (AC-3) audio encoder support.
 media-libs/avidemux-plugins         dcaenc                # Enable DTS Coherent Acoustics audio encoder support.
 media-libs/avidemux-plugins         gui                   # Required by media-video/avidemux[gui].
+media-libs/babl                     lcms                  # Required by media-gfx/gimp-3.
 media-libs/freetype                 harfbuzz              # Required by dev-games/godot and media-libs/sdl2-ttf[harfbuzz]. Also see bugzilla #712374.
 media-libs/freetype                 brotli                # Enable brotli compression support, required by dev-games/godot and media-gfx/blender.
+media-libs/gegl                     lcms                  # Required by media-gfx/gimp-3.
 media-libs/gst-plugins-base         pango                 # Re-enable flag +PANGO (see the ebuild).
 media-libs/harfbuzz                 icu                   # Required by app-office/libreoffice, app-text/texlive-core, dev-games/godot, net-libs/webkit-gtk.
 media-libs/libao                    -alsa                 # Force output on PulseAudio (or Pipewire) without any config file.
@@ -503,6 +510,7 @@ media-video/ffmpeg                  srt                   # Enable support for S
 media-video/ffmpeg                  vmaf                  # Enables Netflix's perceptual video quality assessment filter.
 ##media-video/ffmpeg                zimg                  # Enable libzimg support (scaling, colorspace conversion and dithering library).
 media-video/handbrake               gui                   # Build the GUI frontend.
+media-video/mjpegtools              -gtk                  # Drop unnecessary dependency (Gtk+:2).
 media-video/mjpegtools              -quicktime            # Drop unnecessary dependency (from CLD).
 ##media-video/mpv                   archive               # Enable support to play directly from various archives via app-arch/libarchive.
 ##media-video/mpv                   sdl                   # Enable media-libs/libsdl2 based video and audio outputs (NOTE: these outputs exist for compatibility reasons only, avoid if possible).
@@ -696,6 +704,7 @@ sys-auth/polkit                     -gtk                  # Drop unnecessary dep
 sys-auth/polkit-qt                  qt5                   # Required by kde-frameworks/kauth:5.
 
 sys-block/fio                       aio                   # Enable AIO ioengine, required by app-benchmarks/kdiskmark (from guru overlay).
+sys-block/fio                       -gtk                  # Drop unnecessary dependency (Gtk+:2).
 
 # NOTE: the 'device-mapper' USE flag on grub is required to boot from an LVM partition
 # (see https://wiki.gentoo.org/wiki/GRUB/Advanced_storage, plus other packages with the

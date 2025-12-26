@@ -1,0 +1,16 @@
+--- /usr/share/applications/org.zdoom.UZDoom.desktop	2025-12-24 21:32:15.763762199 +0100
++++ ./org.zdoom.UZDoom.desktop	2025-12-24 21:33:58.489525432 +0100
+@@ -1,11 +1,12 @@
+ [Desktop Entry]
++Hidden=true
+ Name=UZDoom
+ Exec=uzdoom %F
+ Icon=org.zdoom.UZDoom
+ Terminal=false
+ Type=Application
+ MimeType=application/x-doom-pk3;application/x-doom-pk7;application/x-doom-wad;
+-Categories=Game;Shooter;
++Categories=Game;
+ Keywords=Doom;Heretic;Hexen;strife;pwad;iwad;first;person;shooter;
+ StartupNotify=true
+ PrefersNonDefaultGPU=true
