@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Released under MIT License
 # Copyright (c) 2024 Flavio Cappelli
-# Version 1.1
+# Version 1.2
 #
 # Automate (as much as possible) the upgrade of a Gentoo system.
 # This script can also be invoked in "pretend mode", that can be
@@ -187,6 +187,20 @@ perform_colorful_emerge()
     echo -e "\n"
 }
 
+# Unmount PKGDIR when the script terminates (only if the script mounted it, see the statement
+# "trap 'unmount_pkgdir_on_exit' EXIT" below). This prevents local KDE Dolphin instances from
+# freezing if the remote binhost is shut down. NOTE: if PKGDIR was already mounted before the
+# script started, it is assumed that root still needs it and is responsible for unmounting it.
+unmount_pkgdir_on_exit()
+{
+    echo -e -n "\nNetwork folder ${PKGDIR} mounted by this script, try to unmount"
+    if ! umount "${PKGDIR}" >/dev/null 2>&1; then
+        echo -e "\nError: unmount of Gentoo binhost shared folder failed\n"
+    else
+        echo -e "\nSucceed\n"
+    fi
+}
+
 # Process options (if any).
 SYNC_REPOS=1
 PRETEND_MODE=0
@@ -227,7 +241,7 @@ fi
 # Check if the packages are installed from a binary repo and more specifically from a
 # network folder (shared by a Gentoo binhost); if so, and such folder is not mounted on
 # the current host, try to mount it and if it fails stop the script and display the error.
-MOUNTED_PKGDIR=0
+PKGDIR_MOUNTED=0
 EMERGE_INFO_DATA=$(emerge --info)
 if echo "${EMERGE_INFO_DATA}" | grep EMERGE_DEFAULT_OPTS | grep -qlwE -- "-k|--usepkg"; then
     PKGDIR=$(echo "${EMERGE_INFO_DATA}" | grep PKGDIR | sed 's|PKGDIR="\(.*\)"|\1|')
@@ -239,8 +253,9 @@ if echo "${EMERGE_INFO_DATA}" | grep EMERGE_DEFAULT_OPTS | grep -qlwE -- "-k|--u
                 exit 1
             fi
             echo -e "\nSucceed\n"
+            trap 'unmount_pkgdir_on_exit' EXIT
         fi
-        MOUNTED_PKGDIR=1
+        PKGDIR_MOUNTED=1
     fi
 fi
 
@@ -279,7 +294,7 @@ echo -e "\n"
 echo -e "\nREMOVING OUTDATED DISTFILES\n---------------------------\n"
 eclean -d distfiles
 echo -e "\n"
-if [ ${MOUNTED_PKGDIR} -eq 0 ]; then
+if [ ${PKGDIR_MOUNTED} -eq 0 ]; then
     echo -e "\nREMOVING OUTDATED BINARY PACKAGES\n---------------------------------\n"
     eclean -d packages
 fi
