@@ -1,0 +1,10 @@
+--- /usr/share/applications/freetube.desktop	2025-07-16 15:32:30.187476138 +0200
++++ ./freetube.desktop	2025-07-16 15:46:41.876906816 +0200
+@@ -1,5 +1,7 @@
+ [Desktop Entry]
+ Name=FreeTube
++GenericName=Privacy-focused YouTube Client
++GenericName[it]=Client YouTube incentrato sulla privacy
+ Exec=/opt/FreeTube/freetube %U
+ Icon=freetube
+ Terminal=false

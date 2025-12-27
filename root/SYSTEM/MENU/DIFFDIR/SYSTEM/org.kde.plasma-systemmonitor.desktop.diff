@@ -1,12 +1,12 @@
---- /usr/share/applications/org.kde.plasma-systemmonitor.desktop	2025-04-28 20:14:33.814839387 +0200
-+++ ./org.kde.plasma-systemmonitor.desktop	2025-04-28 20:15:57.802987471 +0200
-@@ -1,12 +1,13 @@
+--- /usr/share/applications/org.kde.plasma-systemmonitor.desktop	2025-12-26 23:40:24.753570227 +0100
++++ ./org.kde.plasma-systemmonitor.desktop	2025-12-26 23:48:02.128208912 +0100
+@@ -1,14 +1,13 @@
  [Desktop Entry]
 -Name=System Monitor
 -Name[it]=Monitor di sistema
 +Name=plasma-systemmonitor
-+GenericName=System Monitor
-+GenericName[it]=Monitor di sistema
+ GenericName=System Monitor
+ GenericName[it]=Monitor di sistema
  Exec=plasma-systemmonitor
  Icon=utilities-system-monitor
  Type=Application

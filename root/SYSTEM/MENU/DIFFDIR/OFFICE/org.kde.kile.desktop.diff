@@ -1,0 +1,23 @@
+--- /usr/share/applications/org.kde.kile.desktop	2025-07-13 13:13:18.512147166 +0200
++++ ./org.kde.kile.desktop	2025-07-13 13:15:33.949954742 +0200
+@@ -1,14 +1,16 @@
+ [Desktop Entry]
+ Name=Kile
+-Name[it]=Kile
+-GenericName=LaTeX Frontend
+-GenericName[it]=Interfaccia LaTeX
++GenericName=LaTeX Editor
++GenericName[it]=Editor per LaTeX
+ Exec=kile %U
+ Icon=kile
+ Terminal=false
+ Type=Application
+ MimeType=text/x-kilepr;text/x-tex;
+-Categories=Qt;KDE;Office;Publishing;
++Categories=Office;
++Keywords=WYSIWYG;WYSIWYM;TeX;frontend;documents;
++Keywords[it]=WYSIWYG;WYSIWYM;TeX;frontend;documenti;
++StartupNotify=true
+ SingleMainWindow=true
+ X-DocPath=kile/index.html
+ X-DBUS-ServiceName=org.kde.kile

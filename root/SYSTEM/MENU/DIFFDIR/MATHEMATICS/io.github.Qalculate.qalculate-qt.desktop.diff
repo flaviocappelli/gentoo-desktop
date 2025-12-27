@@ -1,0 +1,21 @@
+--- /usr/share/applications/io.github.Qalculate.qalculate-qt.desktop	2025-08-30 16:49:51.656737289 +0200
++++ ./io.github.Qalculate.qalculate-qt.desktop	2025-08-30 16:52:28.960327461 +0200
+@@ -1,12 +1,14 @@
+ [Desktop Entry]
+-Name=Qalculate! (Qt)
+-GenericName=Calculator
++Name=Qalculate!
++GenericName=Scientific Calculator
++GenericName[it]=Calcolatrice scientifica
+ TryExec=qalculate-qt
+ Exec=qalculate-qt
+ Icon=qalculate-qt
+ Terminal=false
+ Type=Application
+-Categories=Qt;Utility;Calculator;Education;Science;Math;
+-Keywords=calculation;arithmetic;scientific;financial;
++Categories=Mathematics;
++Keywords=arithmetic;calculation;math;scientific;
++Keywords[it]=aritmetica;calcolo;matematica;scientifico;scientifica;
+ StartupWMClass=qalculate-qt
+ StartupNotify=true

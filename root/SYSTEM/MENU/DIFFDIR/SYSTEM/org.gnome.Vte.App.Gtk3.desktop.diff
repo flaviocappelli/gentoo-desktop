@@ -1,0 +1,8 @@
+--- /usr/share/applications/org.gnome.Vte.App.Gtk3.desktop	2025-10-15 16:41:52.030230079 +0200
++++ ./org.gnome.Vte.App.Gtk3.desktop	2025-10-15 17:10:56.884083916 +0200
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=VTE Terminal for GTK3
+ TryExec=vte-2.91
+ Exec=vte-2.91

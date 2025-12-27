@@ -1,14 +1,13 @@
---- /usr/share/applications/org.kde.plasma-welcome.desktop	2025-04-28 20:16:19.964762680 +0200
-+++ ./org.kde.plasma-welcome.desktop	2025-04-28 20:18:04.323704427 +0200
-@@ -1,11 +1,12 @@
+--- /usr/share/applications/org.kde.plasma-welcome.desktop	2025-12-26 23:50:06.627094263 +0100
++++ ./org.kde.plasma-welcome.desktop	2025-12-26 23:51:25.497373352 +0100
+@@ -1,5 +1,6 @@
  [Desktop Entry]
  OnlyShowIn=KDE;
--Name=Welcome Center
--Name[it]=Centro di benvenuto
 +Name=plasma-welcome
-+GenericName=Welcome Center
-+GenericName[it]=Centro di benvenuto
- Exec=plasma-welcome
+ Name=Welcome Center
+ Name[it]=Centro di benvenuto
+ GenericName=Welcome Center
+@@ -8,6 +9,6 @@
  Icon=start-here-kde-plasma
  Type=Application
  Categories=Qt;KDE;Documentation;

@@ -1,0 +1,32 @@
+--- /usr/share/applications/chromium-browser-bin-ungoogled-chromium-bin.desktop	2024-10-24 00:42:52.532105746 +0200
++++ ./chromium-browser-bin-ungoogled-chromium-bin.desktop	2024-10-24 00:46:16.631957571 +0200
+@@ -1,9 +1,27 @@
+ [Desktop Entry]
+-Name=Chromium
++Name=Chromium (ungoogled)
++GenericName=Web Browser
++GenericName[it]=Browser web
+ TryExec=chromium-browser-bin
+ Exec=chromium-browser-bin %U
+ Icon=chromium-browser-bin
+ Type=Application
+ MimeType=application/xhtml+xml;text/html;text/xml;x-scheme-handler/ftp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/mailto;x-scheme-handler/webcal;
+-Categories=Network;WebBrowser;
++Categories=Network;
+ StartupWMClass=chromium-browser-bin
++Actions=new-window;new-private-window;new-temp-window;
++
++[Desktop Action new-window]
++Name=New Window
++Name[it]=Nuova finestra
++Exec=chromium-browser-bin
++
++[Desktop Action new-private-window]
++Name=New Incognito Window
++Name[it]=Nuova finestra in incognito
++Exec=chromium-browser-bin --incognito
++
++[Desktop Action new-temp-window]
++Name=New Window with Temporary Profile
++Name[it]=Nuova finestra con profilo temporaneo
++Exec=chromium-browser-bin --temp-profile

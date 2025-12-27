@@ -1,0 +1,17 @@
+--- /usr/share/applications/qdbusviewer.desktop	2025-12-26 23:55:50.667021974 +0100
++++ ./qdbusviewer.desktop	2025-12-26 23:59:14.356180477 +0100
+@@ -1,8 +1,11 @@
+ [Desktop Entry]
+-Name=Qt D-Bus Viewer
+-GenericName=D-Bus Debugger
++Name=Qt QDBusViewer
++GenericName=Inspect D-Bus objects and messages
++GenericName[it]=Ispezione oggetti e messaggi D-Bus
++TryExec=qdbusviewer6
+ Exec=qdbusviewer6
+ Icon=qdbusviewer
+ Terminal=false
+ Type=Application
+-Categories=Qt;Development;Debugger;
++Categories=Development;
++StartupNotify=true

@@ -1,0 +1,17 @@
+--- /usr/share/applications/linguist.desktop	2025-12-26 23:59:28.513049945 +0100
++++ ./linguist.desktop	2025-12-27 00:01:13.179085077 +0100
+@@ -1,8 +1,13 @@
+ [Desktop Entry]
+ Name=Qt Linguist
++GenericName=Translation Tool
++GenericName[it]=Strumento per le traduzioni
++TryExec=linguist6
+ Exec=linguist6 %F
+ Icon=linguist
+ Terminal=false
+ Type=Application
+ MimeType=application/x-linguist;text/vnd.trolltech.linguist;
+-Categories=Qt;Development;
++Categories=Qt;KDE;Development;Translation;
++Keywords=programming;linguas;i18n;l10n;
++Keywords[it]=programmazione;lingue;i18n;l10n;

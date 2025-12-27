@@ -1,0 +1,15 @@
+--- /usr/share/applications/org.openrgb.OpenRGB.desktop	2025-10-04 12:57:34.567114668 +0200
++++ ./org.openrgb.OpenRGB.desktop	2025-10-04 12:59:11.633847797 +0200
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+ Name=OpenRGB
++GenericName=Control ARGB Leds
++GenericName[it]=Controllo led ARGB
+ TryExec=openrgb
+ Exec=openrgb
+ Icon=org.openrgb.OpenRGB
+ Terminal=false
+ Type=Application
+-Categories=Utility;
++Categories=System;
+ StartupWMClass=openrgb
