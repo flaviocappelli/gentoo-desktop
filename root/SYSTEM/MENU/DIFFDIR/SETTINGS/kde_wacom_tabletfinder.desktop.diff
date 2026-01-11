@@ -1,0 +1,16 @@
+--- /usr/share/applications/kde_wacom_tabletfinder.desktop	2026-01-09 23:46:15.670964159 +0100
++++ ./kde_wacom_tabletfinder.desktop	2026-01-10 00:03:23.714457475 +0100
+@@ -1,9 +1,9 @@
+ [Desktop Entry]
+ OnlyShowIn=KDE;
+-Name=Wacom Tablet finder
+-Name[it]=Rilevatore di tavolette Wacom
+-GenericName=Helper tool to detect Wacom Tablets
+-GenericName[it]=Strumento d'aiuto per rilevare le tavolette Wacom
++Name=Graphics Tablet Finder (X11)
++Name[it]=Rilevatore di tavolette grafiche (X11)
++GenericName=Graphics Tablet Finder (X11)
++GenericName[it]=Rilevatore di tavolette grafiche (X11)
+ Exec=kde_wacom_tabletfinder
+ Icon=preferences-desktop-tablet
+ Terminal=false
