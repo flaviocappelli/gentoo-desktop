@@ -79,8 +79,8 @@ clean_cups_spool()
 }
 
 
-# Clean samba cache and logs. Samba services (if
-# running) must be stopped and the end restarted.
+# Clean samba cache, old sockets (see https://bugzilla.samba.org/show_bug.cgi?id=12435)
+# and logs. Samba services (if running) must be stopped (and restarted after the clean).
 clean_samba_cache()
 {
     local NMB_S=0
@@ -125,10 +125,11 @@ clean_samba_cache()
     [[ ${SAMBA_ADDC_S} -eq 1 ]] && systemctl stop samba-ad-dc
     echo "ok"
 
-    # Clean samba cache and logs.
-    # NOTE: /var/lib/samba MUST NOT BE MODIFIED.
-    echo -n "Cleaning samba cache and logs... "
+    # Clean samba cache, old sockets and logs (NOTE:
+    # do not modify other subdirs in /var/lib/samba).
+    echo -n "Cleaning samba cache, old sockets and logs... "
     rm -f /var/log/samba/log.*
+    rm -f /var/lib/samba/private/msg.sock/*
     rm -rf /var/cache/samba/*
     rm -rf /var/run/samba/*
     echo "ok"
