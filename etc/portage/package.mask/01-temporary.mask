@@ -15,6 +15,6 @@
 ~app-editors/vscode-1.109.0
 ~app-editors/vscode-1.110.0
 
-# Ollama 0.13.5 gives errors answering some simple
+# Ollama 0.13.5* hang or give errors answering some
 # questions, while 0.13.2 seems to work quite well.
 ~sci-ml/ollama-0.13.5

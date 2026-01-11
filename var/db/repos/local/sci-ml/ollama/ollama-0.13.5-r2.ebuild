@@ -137,10 +137,12 @@ src_prepare() {
 
 	sed \
 		-e "s/ -O3//g" \
-		-i ml/backend/ggml/ggml/src/ggml-cpu/cpu.go || die "-O3 sed failed"
+		-i \
+			ml/backend/ggml/ggml/src/ggml-cpu/cpu.go \
+		|| die "-O3 sed failed"
 
 	sed \
-		-e "s#\"..\", \"lib\"#\"..\", \"$(get_libdir)\"#" \
+		-e "s/\"..\", \"lib\"/\"..\", \"$(get_libdir)\"/" \
 		-e "s#\"lib/ollama\"#\"$(get_libdir)/ollama\"#" \
 		-i \
 			ml/backend/ggml/ggml/src/ggml.go \
@@ -225,7 +227,7 @@ src_configure() {
 
 		# backends end up in /usr/bin otherwise
 		-DGGML_BACKEND_DL="yes"
-		-DGGML_BACKEND_DIR="${EPREFIX}/usr/$(get_libdir)/${PN}/backends"
+		-DGGML_BACKEND_DIR="${EPREFIX}/usr/$(get_libdir)/${PN}"
 
 		-DGGML_BLAS="$(usex blas)"
 		"$(cmake_use_find_package vulkan Vulkan)"
@@ -247,6 +249,15 @@ src_configure() {
 		local -x CUDAHOSTCXX CUDAHOSTLD
 		CUDAHOSTCXX="$(cuda_gccdir)"
 		CUDAHOSTLD="$(tc-getCXX)"
+
+		# default to all for now until cuda.eclass is updated
+		if [[ ! -v CUDAARCHS ]]; then
+			local CUDAARCHS="all"
+		fi
+
+		mycmakeargs+=(
+			-DCMAKE_CUDA_ARCHITECTURES="${CUDAARCHS}"
+		)
 
 		cuda_add_sandbox -w
 		addpredict "/dev/char/"
@@ -315,11 +326,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if use systemd; then
-		systemctl daemon-reload
-	fi
-
-	einfo "Remember to enable the ollama service."
+	einfo "Remember to enable (or restart) the ollama service."
 
 	if use cuda ; then
 		einfo

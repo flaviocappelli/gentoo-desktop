@@ -137,6 +137,7 @@ dev-libs/boost                      context python        # Required by sci-elec
 dev-libs/boost                      icu                   # Required by games-strategy/wesnoth.
 dev-libs/libdbusmenu                -gtk                  # Drop unnecessary dependency (Gtk+:2).
 dev-libs/libdbusmenu                gtk3                  # Required by x11-libs/xapp.
+dev-libs/libinput                   input_devices_wacom   # Enable support for graphic tablets (see /etc/portage/make.conf/00-devices.conf).
 dev-libs/libpcre                    pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libpcre2                   pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libxml2                    icu                   # Required by dev-qt/qtwebengine, www-client/ungoogled-chromium-bin.
@@ -292,8 +293,7 @@ dev-qt/qtquickcontrols              widgets               # Enable QtWidgets sup
 dev-qt/qtquickcontrols2             widgets               # Enable QtWidgets support.
 dev-qt/qtsensors                    qml                   # Required by dev-python/pyside[sensors].
 dev-qt/qtspeech                     qml                   # Required by net-im/neochat (pulled in by kde-apps/kdenetwork-meta[webengine]).
-dev-qt/qttools                      clang designer        # Required by dev-qt/qt-creator >= 12 (Qt6 based).
-dev-qt/qttools                      qdoc qml              # Required by dev-qt/qt-creator >= 12 (Qt6 based).
+dev-qt/qttools                      designer qdoc qml     # Required by dev-qt/qt-creator >= 12 (Qt6 based).
 dev-qt/qttools                      qtattributionsscanner # Required by dev-qt/qt-creator >= 12 (Qt6 based).
 dev-qt/qttools                      widgets               # Required by dev-qt/qttools[assistant,designer,...].
 dev-qt/qtwebchannel                 qml                   # Required by dev-qt/qtwebengine.
@@ -306,7 +306,6 @@ dev-qt/qtxmlpatterns                qml                   # Build the XmlListMod
 ##dev-util/cutter                   graphviz              # Add graphviz support.
 dev-util/gammaray                   3d                    # Build the Qt3D plugin.
 dev-util/gammaray                   geolocation           # Build the positioning plugin.
-dev-util/gammaray                   qml                   # Add QML support.
 dev-util/gammaray                   scxml                 # Build the state machine viewer plugin.
 dev-util/gammaray                   -wayland              # Exclude the wayland compositor inspector plugin (I don't need it).
 dev-util/heaptrack                  gui                   # Build the GUI frontend.
@@ -364,9 +363,8 @@ kde-frameworks/sonnet               qml                   # Required by kde-fram
 kde-misc/krename                    taglib                # Enable tagging support with taglib (from CLD).
 kde-misc/kshutdown                  kde                   # Re-enable flag +KDE (see the ebuild).
 
-kde-plasma/breeze                   qt5                   # Required by kde-plasma/plasma-meta[qt5].
+kde-plasma/plasma-desktop           input_devices_wacom   # Enable support for graphic tablets (see /etc/portage/make.conf/00-devices.conf).
 ##kde-plasma/plasma-firewall        -ufw firewalld        # Use net-firewall/firewalld as backend. I prefere firewalld's GUI (plasma-firewall is too bare).
-kde-plasma/plasma-integration       qt5                   # Required by kde-plasma/plasma-meta[qt5].
 kde-plasma/plasma-meta              -crypt                # Do not pull in kde-plasma/plasma-vault (I don't use it).
 kde-plasma/plasma-meta              -firewall             # Do not pull in kde-plasma/plasma-firewall (I prefere firewalld's GUI, see above).
 kde-plasma/plasma-meta              kwallet               # Enable support for KWallet auto-unlocking via kde-plasma/kwallet-pam.
@@ -472,7 +470,6 @@ media-plugins/alsa-plugins          -pulseaudio           # This flag must be di
 media-plugins/gst-plugins-meta      http taglib           # Enable http streaming and tagging support (from CLD).
 
 media-sound/fluid-soundfont         timidity              # Include Timidity++ (MIDI sequencer) support.
-media-sound/fluidsynth              network               # Required for server mode (i.e. ALSA sequencer).
 media-sound/kid3                    kde                   # Add KDE/PLASMA support.
 ##media-sound/strawberry            mtp                   # Enable support for Media Transfer Protocol (to transfer music to MTP compatible devices). Pull in gnome-base/gvfs.
 media-sound/strawberry              kde                   # Enable KDE (KGlobalAccel) shortcuts.
@@ -507,7 +504,7 @@ media-video/ffmpeg                  srt                   # Enable support for S
 ##media-video/ffmpeg                ssh                   # Enable SSH/sftp support via net-libs/libssh.
 ##media-video/ffmpeg                svt-av1               # Enables AV1 encoding support via media-libs/svt-av1.
 ##media-video/ffmpeg                vidstab               # Enables video stabilization filter using media-libs/vidstab library.
-media-video/ffmpeg                  vmaf                  # Enables Netflix's perceptual video quality assessment filter.
+media-video/ffmpeg                  vmaf                  # Enables Netflix's perceptual video quality assessment filter (only ffmpeg >= 8, see https://bugs.gentoo.org/968554).
 ##media-video/ffmpeg                zimg                  # Enable libzimg support (scaling, colorspace conversion and dithering library).
 media-video/handbrake               gui                   # Build the GUI frontend.
 media-video/mjpegtools              -gtk                  # Drop unnecessary dependency (Gtk+:2).

@@ -307,11 +307,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if use systemd; then
-		systemctl daemon-reload
-	fi
-
-	einfo "Remember to enable the ollama service."
+	einfo "Remember to enable (or restart) the ollama service."
 
 	if use cuda ; then
 		einfo

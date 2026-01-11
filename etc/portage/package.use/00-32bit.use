@@ -95,6 +95,7 @@ media-libs/gst-plugins-good             abi_x86_32
 media-libs/gst-plugins-ugly             abi_x86_32
 media-libs/gstreamer                    abi_x86_32
 media-libs/harfbuzz                     abi_x86_32
+media-libs/kvazaar                      abi_x86_32
 media-libs/ladspa-sdk                   abi_x86_32
 media-libs/lcms                         abi_x86_32
 media-libs/libaom                       abi_x86_32

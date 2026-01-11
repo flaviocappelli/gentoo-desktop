@@ -61,6 +61,7 @@ llvm-core/clang:15                  python_single_target_python3_12
 # Some pip packages in virtual environments still needs Python 3.12
 # -----------------------------------------------------------------
 dev-python/pip                      python_targets_python3_12
+dev-python/backports-zstd           python_targets_python3_12
 dev-python/cachecontrol             python_targets_python3_12
 dev-python/certifi                  python_targets_python3_12
 dev-python/cffi                     python_targets_python3_12
