@@ -50,6 +50,7 @@ app-backup/backintime               gui                   # Build the GUI fronte
 app-backup/bacula                   qt5                   # Build the GUI frontend.
 
 ##app-crypt/qca                     gpg                   # Provide GnuPG capability to programs that utilize the Qt Cryptographic Architecture (QCA) (from CLD).
+app-crypt/stoken                    gtk                   # Enable GUI for RSA SecurID 128-bit compatible generator.
 
 app-editors/nano                    -spell                # Dictionary support not required (from CLD).
 app-editors/okteta                  -designer             # The okteta plugin crashes Qt Designer and QtCreator (see QtCreator know issues). TODO: still true?
@@ -122,7 +123,7 @@ dev-games/ode                       double-precision      # Required by games-fp
 dev-games/openscenegraph            -wxwidgets            # Drop unnecessary dependency (from CLD).
 
 dev-lang/fpc                        source                # Required by dev-lang/lazarus.
-dev-lang/lazarus                    -gtk gui              # Build the GUI IDE (Qt6 interface). NOTE: version in portage is old, enable "pg_overlay".
+dev-lang/lazarus                    gui                   # Build the GUI IDE (Qt6 interface). NOTE: version in portage is old, enable "pg_overlay".
 dev-lang/php                        cgi                   # Required by www-servers/lighttpd[php].
 dev-lang/php                        fpm                   # Enable the FastCGI Process Manager SAPI (required for FastCGI).
 dev-lang/php                        -spell                # Dictionary support not required (from CLD).
@@ -135,9 +136,7 @@ dev-lang/rust-bin                   rustfmt               # Install 'rustfmt' (R
 
 dev-libs/boost                      context python        # Required by sci-electronics/kicad and other packages.
 dev-libs/boost                      icu                   # Required by games-strategy/wesnoth.
-dev-libs/libdbusmenu                -gtk                  # Drop unnecessary dependency (Gtk+:2).
 dev-libs/libdbusmenu                gtk3                  # Required by x11-libs/xapp.
-dev-libs/libinput                   input_devices_wacom   # Enable support for graphic tablets (see /etc/portage/make.conf/00-devices.conf).
 dev-libs/libpcre                    pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libpcre2                   pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libxml2                    icu                   # Required by dev-qt/qtwebengine, www-client/ungoogled-chromium-bin.
@@ -312,8 +311,11 @@ dev-util/heaptrack                  gui                   # Build the GUI fronte
 dev-util/kdstatemachineeditor       gui                   # Build the GUI frontend.
 dev-util/kdevelop                   gdbui                 # Enable GUI for attaching GDB to a running process.
 dev-util/kdevelop                   plasma                # Build optional KDE/PLASMA addons (useful for plasmoids).
+dev-util/sysprof                    gtk                   # Build the GUI frontend.
 
 ##dev-vcs/git                       cgi                   # Install gitweb too (see https://git-scm.com/book/it/v2/Git-on-the-Server-GitWeb).
+
+games-engines/uzdoom                gtk                   # Display a visual dialog if multiple game data files are detected and none was explicitly selected via command line.
 
 games-fps/xonotic                   ode                   # Enable support for physics engine.
 
@@ -322,6 +324,8 @@ gnome-base/gvfs                     archive               # Enables support for 
 gnome-base/gvfs                     fuse                  # Provides limited access to the GVfs filesystems for applications not using GIO (I/O library available in GLib).
 ##gnome-base/gvfs                   ios                   # Enable support for Apple's iDevice with iOS operating system (gvfs-afc).
 gnome-base/gvfs                     mtp                   # Enable support for Media Transfer Protocol.
+
+gui-libs/libdecor                   gtk                   # Re-enable flag +GTK (see the ebuild).
 
 # Portage has now only KDE/PLASMA6. Applications that still depends on KF5/Qt5 need kde-plasma/plasma-meta[qt5].
 # NOTE: kde-apps/kdeutils-meta is not required, just some dipendencies (see the ebuild and the USE flags below).
@@ -363,16 +367,18 @@ kde-frameworks/sonnet               qml                   # Required by kde-fram
 kde-misc/krename                    taglib                # Enable tagging support with taglib (from CLD).
 kde-misc/kshutdown                  kde                   # Re-enable flag +KDE (see the ebuild).
 
-kde-plasma/plasma-desktop           input_devices_wacom   # Enable support for graphic tablets (see /etc/portage/make.conf/00-devices.conf).
 ##kde-plasma/plasma-firewall        -ufw firewalld        # Use net-firewall/firewalld as backend. I prefere firewalld's GUI (plasma-firewall is too bare).
 kde-plasma/plasma-meta              -crypt                # Do not pull in kde-plasma/plasma-vault (I don't use it).
 kde-plasma/plasma-meta              -firewall             # Do not pull in kde-plasma/plasma-firewall (I prefere firewalld's GUI, see above).
+kde-plasma/plasma-meta	            gtk                   # Enable Breeze widget style and system settings module for GTK+.
 kde-plasma/plasma-meta              kwallet               # Enable support for KWallet auto-unlocking via kde-plasma/kwallet-pam.
 kde-plasma/plasma-meta              qt5                   # Pull in required packages for seamless integration of KF5/Qt5-based applications.
 kde-plasma/plasma-meta              sdk                   # Pull in kde-plasma/plasma-sdk for Plasma development.
 kde-plasma/plasma-meta              thunderbolt           # Pull in kde-plasma/plasma-thunderbolt control center module.
+kde-plasma/plasma-meta	            wacom                 # Pull in the graphics tablet configuration module (see also /etc/portage/make.conf/00-devices.conf).
 kde-plasma/plasma-nm                openconnect           # Build support for the OpenConnect VPN client (integrated in networkmanager).
 ##kde-plasma/plasma-nm              teamd                 # Enable Teamd control support for channel bonding (see libteam.org).
+kde-plasma/print-manager            gtk                   # Re-enable flag +GTK (see the ebuild).
 
 media-fonts/fonts-meta              cjk                   # Add support for Chinese, Japanese, Korean.
 media-fonts/fonts-meta              emoji                 # Install a font supporting emojis.
@@ -389,6 +395,7 @@ media-fonts/source-han-sans         l10n_zh-CN l10n_zh-TW # Add Chinese China/Ta
 # Note also that 'gnome-base/gvfs' is not required to have a working local copy of the gimp help (at least on Gentoo).
 
 media-gfx/darktable                 opencl                # Enable OpenCL support (computation on GPU).
+media-gfx/fontforge                 -X                    # X11 GUI not required (nor gtk3 GUI).
 media-gfx/freecad                   addonmgr              # Build the addon manager module for automatic handling of 3rd party addons.
 media-gfx/freecad                   assembly              # Build the assembly module to create 3D models from distinguishable parts.
 ##media-gfx/freecad                 cam                   # Build the CAM module and workbench (for CNC machines).
@@ -473,7 +480,7 @@ media-sound/fluid-soundfont         timidity              # Include Timidity++ (
 media-sound/kid3                    kde                   # Add KDE/PLASMA support.
 ##media-sound/strawberry            mtp                   # Enable support for Media Transfer Protocol (to transfer music to MTP compatible devices). Pull in gnome-base/gvfs.
 media-sound/strawberry              kde                   # Enable KDE (KGlobalAccel) shortcuts.
-media-sound/timidity++              -gtk -ncurses -X      # Graphic and NCurses UI not required (used only as MIDI sequencer).
+media-sound/timidity++              -ncurses -X           # Graphic and NCurses UI not required (used only as MIDI sequencer).
 
 # There are currently three AV1 encoders supported by FFmpeg: 'libaom', 'SVT-AV1' and 'rav1e'. The
 # first is the reference encoder for the AV1 format (see https://trac.ffmpeg.org/wiki/Encode/AV1).
@@ -507,7 +514,6 @@ media-video/ffmpeg                  srt                   # Enable support for S
 media-video/ffmpeg                  vmaf                  # Enables Netflix's perceptual video quality assessment filter (only ffmpeg >= 8, see https://bugs.gentoo.org/968554).
 ##media-video/ffmpeg                zimg                  # Enable libzimg support (scaling, colorspace conversion and dithering library).
 media-video/handbrake               gui                   # Build the GUI frontend.
-media-video/mjpegtools              -gtk                  # Drop unnecessary dependency (Gtk+:2).
 media-video/mjpegtools              -quicktime            # Drop unnecessary dependency (from CLD).
 ##media-video/mpv                   archive               # Enable support to play directly from various archives via app-arch/libarchive.
 ##media-video/mpv                   sdl                   # Enable media-libs/libsdl2 based video and audio outputs (NOTE: these outputs exist for compatibility reasons only, avoid if possible).
@@ -560,7 +566,6 @@ net-analyzer/wireshark              http3                 # Enable support for t
 
 ##net-dialup/ppp                    atm                   # Enable Asynchronous Transfer Mode protocol support.
 
-net-dns/avahi                       -gtk                  # Do not build the GTK frontend (only the CLI).
 net-dns/avahi                       autoipd               # Build the IPv4LL (RFC3927) network address configuration daemon.
 ##net-dns/avahi                     bookmarks             # Install the avahi-bookmarks application.
 net-dns/avahi                       mdnsresponder-compat  # Enable compat libraries for mDNSResponder (required for Bonjour).
@@ -614,10 +619,7 @@ net-print/hplip                     qt5                   # Build the "HP Device
 net-print/hplip                     scanner               # Enable scanner on multifunction devices which support it .
 net-print/hplip                     -X                    # Do not pull in any scanner GUI (from CLD).
 
-net-vpn/networkmanager-openconnect  -gtk                  # Not required with KDE/PLASMA.
-net-vpn/networkmanager-openvpn      -gtk                  # Not required with KDE/PLASMA.
-net-vpn/networkmanager-pptp         -gtk                  # Not required with KDE/PLASMA.
-##net-vpn/networkmanager-vpnc       -gtk                  # Not required with KDE/PLASMA but build of v1.2.8/1.4.0 fails without it (see https://bugs.gentoo.org/837365).
+net-vpn/networkmanager-vpnc         gtk                   # Not required with KDE/PLASMA but build of v1.2.8/1.4.0 fails without it (see https://bugs.gentoo.org/837365).
 ##net-vpn/openvpn                   inotify               # Enable the "Asynchronous Push Reply" feature (needs openvpn-2.49 or up).
 ##net-vpn/openvpn                   pkcs11                # Enable PKCS#11 smartcard support.
 net-vpn/strongswan           strongswan_plugins_ipseckey  # Provides authentication via IPSECKEY RRs protected by DNSSEC (l2tp+ipsec support) (from CLD).
@@ -697,11 +699,9 @@ sys-apps/util-linux                 tty-helpers           # Install mesg/wall/wr
 
 sys-auth/pambase                    homed                 # Required for systemd-homed (i.e. systemd[homed]).
 sys-auth/pambase                    -sha512 yescrypt      # Use safer password hashing function (see https://bugs.gentoo.org/905678).
-sys-auth/polkit                     -gtk                  # Drop unnecessary dependency (from CLD). NOTE: flag "kde" not required for KDE/PLASMA.
 sys-auth/polkit-qt                  qt5                   # Required by kde-frameworks/kauth:5.
 
 sys-block/fio                       aio                   # Enable AIO ioengine, required by app-benchmarks/kdiskmark (from guru overlay).
-sys-block/fio                       -gtk                  # Drop unnecessary dependency (Gtk+:2).
 
 # NOTE: the 'device-mapper' USE flag on grub is required to boot from an LVM partition
 # (see https://wiki.gentoo.org/wiki/GRUB/Advanced_storage, plus other packages with the
@@ -756,6 +756,8 @@ x11-drivers/xf86-video-intel        uxa                   # Enable UMA Accelerat
 x11-libs/wxGTK                      gstreamer             # Required by dev-python/wxpython.
 x11-libs/vte                        icu                   # Re-enable flag +ICU (see the ebuild).
 x11-libs/xapp                       vala                  # Required by app-backup/timeshift (for xapp >= 2.8.5).
+
+x11-misc/xdg-user-dirs              gtk                   # Integrates xdg-user-dirs into gnome/gtk applications (not sure if required with KDE/PLASMA).
 
 x11-themes/gtk-engines-murrine      -themes               # Does not install default "Murrine" themes.
 
