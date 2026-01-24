@@ -395,7 +395,7 @@ media-fonts/source-han-sans         l10n_zh-CN l10n_zh-TW # Add Chinese China/Ta
 # Note also that 'gnome-base/gvfs' is not required to have a working local copy of the gimp help (at least on Gentoo).
 
 media-gfx/darktable                 opencl                # Enable OpenCL support (computation on GPU).
-media-gfx/fontforge                 -X                    # X11 GUI not required (nor gtk3 GUI).
+media-gfx/fontforge                 -X gtk                # X11 GUI not required, use Gtk3 GUI.
 media-gfx/freecad                   addonmgr              # Build the addon manager module for automatic handling of 3rd party addons.
 media-gfx/freecad                   assembly              # Build the assembly module to create 3D models from distinguishable parts.
 ##media-gfx/freecad                 cam                   # Build the CAM module and workbench (for CNC machines).

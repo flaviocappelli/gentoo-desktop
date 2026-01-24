@@ -1,4 +1,4 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
@@ -137,12 +137,10 @@ src_prepare() {
 
 	sed \
 		-e "s/ -O3//g" \
-		-i \
-			ml/backend/ggml/ggml/src/ggml-cpu/cpu.go \
-		|| die "-O3 sed failed"
+		-i ml/backend/ggml/ggml/src/ggml-cpu/cpu.go || die "-O3 sed failed"
 
 	sed \
-		-e "s/\"..\", \"lib\"/\"..\", \"$(get_libdir)\"/" \
+		-e "s#\"..\", \"lib\"#\"..\", \"$(get_libdir)\"#" \
 		-e "s#\"lib/ollama\"#\"$(get_libdir)/ollama\"#" \
 		-i \
 			ml/backend/ggml/ggml/src/ggml.go \

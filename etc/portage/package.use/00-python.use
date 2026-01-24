@@ -54,10 +54,6 @@
 # =================================================================
 # See https://bugs.gentoo.org/953643
 
-# dev-libs/intel-compute-runtime:legacy
-# -----------------------------------------------------------------
-llvm-core/clang:15                  python_single_target_python3_12
-
 # Some pip packages in virtual environments still needs Python 3.12
 # -----------------------------------------------------------------
 dev-python/pip                      python_targets_python3_12

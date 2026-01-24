@@ -10,11 +10,11 @@
 >=dev-lang/python-3.14.0
 
 # Mask first patch release of VScode minor versions.
-~app-editors/vscode-1.107.0
-~app-editors/vscode-1.108.0
 ~app-editors/vscode-1.109.0
 ~app-editors/vscode-1.110.0
+~app-editors/vscode-1.111.0
+~app-editors/vscode-1.112.0
 
-# Ollama 0.13.5* hang or give errors answering some
-# questions, while 0.13.2 seems to work quite well.
-~sci-ml/ollama-0.13.5
+# All tested versions of Ollama > 0.13.2 freeze or generate
+# errors with some prompts. Ollama 0.13.2 seems to work well.
+>sci-ml/ollama-0.13.2
