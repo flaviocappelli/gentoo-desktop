@@ -15,6 +15,6 @@
 ~app-editors/vscode-1.111.0
 ~app-editors/vscode-1.112.0
 
-# All tested versions of Ollama > 0.13.2 freeze or generate
+# All tested versions of Ollama >= 0.13.3 freeze or generate
 # errors with some prompts. Ollama 0.13.2 seems to work well.
->sci-ml/ollama-0.13.2
+>=sci-ml/ollama-0.13.3

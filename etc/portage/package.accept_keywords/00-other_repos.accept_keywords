@@ -11,24 +11,28 @@
 
 
 # === ENABLED EBUILDS (FROM INSTALLED OVERLAYS) ==========================
+# "~* *" enable only testing/stable ebuilds, "**" enable also live ebuilds
 
 # Universal utility for programming FPGAs.
-sci-electronics/openfpgaloader::gentoo-zh **
+sci-electronics/openfpgaloader::gentoo-zh     ~* *
 
 # HDD and SSD benchmark tool with a very friendly graphical user interface
 # (similar to CrystalDiskMark in Windows). It uses 'sys-block/fio' (for the
 # exact tests launched see https://github.com/JonMagon/KDiskMark/issues/130).
 # Note that benchmarks on ZFS are currently not accurate, due to multiple
 # cache levels (see https://github.com/JonMagon/KDiskMark/issues/148).
-app-benchmarks/kdiskmark::guru **
+app-benchmarks/kdiskmark::guru                ~* *
 
 # Tool for development with Qt (kdstatemachineeditor is a dependency).
-dev-util/gammaray::guru **
+dev-util/gammaray::guru                       ~* *
 dev-util/kdstatemachineeditor::gentoo
 
 # YouTube client with many features similar to YouTube
 # (best method to watch YouTube privately on desktop).
-net-misc/freetube-bin::guru **
+net-misc/freetube-bin::guru                   ~* *
+
+# LLM inference in C/C++.
+sci-misc/llama-cpp::guru                      ~* *
 
 # Chromium without Google integration (i.e. with enhanced privacy).
-www-client/ungoogled-chromium-bin::pf4public **
+www-client/ungoogled-chromium-bin::pf4public  ~* *

@@ -140,7 +140,7 @@ src_prepare() {
 		-i ml/backend/ggml/ggml/src/ggml-cpu/cpu.go || die "-O3 sed failed"
 
 	sed \
-		-e "s#\"..\", \"lib\"#\"..\", \"$(get_libdir)\"#" \
+		-e "s/\"..\", \"lib\"/\"..\", \"$(get_libdir)\"/" \
 		-e "s#\"lib/ollama\"#\"$(get_libdir)/ollama\"#" \
 		-i \
 			ml/backend/ggml/ggml/src/ggml.go \
@@ -222,6 +222,12 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DGGML_CCACHE="no"
+
+		# backends end up in /usr/bin otherwise
+		# see https://github.com/ollama/ollama/issues/13614 
+		-DGGML_BACKEND_DL="yes"
+		-DGGML_BACKEND_DIR="${EPREFIX}/usr/$(get_libdir)/${PN}"
+
 		-DGGML_BLAS="$(usex blas)"
 		"$(cmake_use_find_package vulkan Vulkan)"
 	)

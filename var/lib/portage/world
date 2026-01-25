@@ -255,6 +255,7 @@ sci-mathematics/4ti2
 sci-mathematics/lean
 sci-mathematics/octave
 sci-mathematics/wxmaxima
+sci-misc/llama-cpp
 sci-ml/ollama
 sci-ml/pytorch
 sys-apps/cpuid

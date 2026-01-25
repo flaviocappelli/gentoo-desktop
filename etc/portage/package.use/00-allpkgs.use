@@ -660,6 +660,11 @@ sci-mathematics/octave              portaudio             # Provides "audioplaye
 sci-mathematics/octave              sndfile               # Add support for reading/writing files containing sampled audio data.
 ##sci-mathematics/octave            sundials              # Enable the "ode15i" and "ode15s" solvers using sci-libs/sundials (octave >= 6.0).
 
+##sci-misc/llama-cpp                cuda                  # Enable NVidia CUDA support.
+sci-misc/llama-cpp                  curl                  # Required for pulling models from "Hugging Face".
+sci-misc/llama-cpp                  hip                   # Enable HIP/ROCm support. Might be slower than Vulkan on consumer GPUs! (see llama-bench).
+##sci-misc/llama-cpp                openblas              # Enable OpenBLAS support (not recommended, very slow).
+
 ##sci-ml/caffe2                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
 sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
 sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
