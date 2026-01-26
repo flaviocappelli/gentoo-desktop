@@ -78,6 +78,7 @@ dev-debug/valgrind
 dev-games/godot
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
+dev-python/cupy
 dev-python/ollama
 dev-python/pip
 dev-python/uv

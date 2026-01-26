@@ -152,6 +152,8 @@ dev-libs/zziplib                    -sdl                  # Drop unnecessary dep
 # has been renamed dev-python/pyside; 4) few packages still depends on PyQt5, so probably PyQt5 will be
 # soon removed as well; 5) QtPy does not currently cover all Qt modules available in PyQt6/PySide6.
 
+##dev-python/cupy                   cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
+dev-python/cupy                     rocm                  # Enable ROCm support (at most one of [cuda,rocm] can be enabled).
 dev-python/matplotlib               -wxwidgets            # Do not build the WxWidgets integration (not required).
 dev-python/numpy                    lapack                # Add support for the virtual/lapack numerical library.
 dev-python/pillow                   lcms                  # Required by app-text/pdfarranger.
@@ -662,7 +664,7 @@ sci-mathematics/octave              sndfile               # Add support for read
 
 ##sci-misc/llama-cpp                cuda                  # Enable NVidia CUDA support.
 sci-misc/llama-cpp                  curl                  # Required for pulling models from "Hugging Face".
-sci-misc/llama-cpp                  hip                   # Enable HIP/ROCm support. Might be slower than Vulkan on consumer GPUs! (see llama-bench).
+sci-misc/llama-cpp                  rocm                  # Enable HIP/ROCm support. Might be slower than Vulkan on consumer GPUs! (see llama-bench).
 ##sci-misc/llama-cpp                openblas              # Enable OpenBLAS support (not recommended, very slow).
 
 ##sci-ml/caffe2                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
