@@ -66,3 +66,6 @@ dev-python/fastrlock::local
 # Nintendo Switch Emulator. See:
 # https://git.ryujinx.app/ryubing/ryujinx/
 games-emulation/ryujinx-bin::local
+
+# Clazy with latest fixes (see the ebuild).
+dev-util/clazy::local

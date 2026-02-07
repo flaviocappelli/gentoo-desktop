@@ -107,6 +107,7 @@ media-libs/libcaca                      abi_x86_32
 media-libs/libdc1394                    abi_x86_32
 media-libs/libdca                       abi_x86_32
 media-libs/libde265                     abi_x86_32
+media-libs/libdisplay-info              abi_x86_32
 media-libs/libdv                        abi_x86_32
 media-libs/libdvdcss                    abi_x86_32
 media-libs/libdvdnav                    abi_x86_32

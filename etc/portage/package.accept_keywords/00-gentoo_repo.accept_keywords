@@ -257,6 +257,7 @@ dev-libs/pfs::gentoo
 dev-libs/pocketfft::gentoo
 dev-libs/psimd::gentoo
 dev-libs/pthreadpool::gentoo
+sci-ml/FBGEMM::gentoo                       # caffe2-2.10 does not build with stable FBGEMM.
 sci-ml/FP16::gentoo
 sci-ml/caffe2::gentoo
 sci-ml/kineto::gentoo
