@@ -14,12 +14,13 @@ app-admin/zenmonitor3::local
 sys-kernel/zenpower3::local
 sys-kernel/nct6687d::local **
 
-# Timeshift system backup, from GURU repo.
+# Timeshift system backup. Version in GURU repo is too old.
 app-backup/timeshift::local
 
-# SiriKali (from holgersson overlay) and GoCryptFS (from portage).
+# Qt/C++ GUI front end to Fscrypt, Securefs, Ecryptfs, Cryfs, Encfs,
+# Gocryptfs, Sshfs and Cryptomator (from holgersson overlay). It works
+# perfectly with GoCryptFS >= 2.6-r1 from portage (i.e. stable version).
 app-crypt/sirikali::local
-=app-crypt/gocryptfs-2.6*::gentoo
 
 # Plugin for OBS Studio, useful to remove or blur the background
 # of captured images and videos (based on a neural network). See:
