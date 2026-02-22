@@ -16,12 +16,8 @@
 # Universal utility for programming FPGAs.
 sci-electronics/openfpgaloader::gentoo-zh     ~* *
 
-# HDD and SSD benchmark tool with a very friendly graphical user interface
-# (similar to CrystalDiskMark in Windows). It uses 'sys-block/fio' (for the
-# exact tests launched see https://github.com/JonMagon/KDiskMark/issues/130).
-# Note that benchmarks on ZFS are currently not accurate, due to multiple
-# cache levels (see https://github.com/JonMagon/KDiskMark/issues/148).
-app-benchmarks/kdiskmark::guru                ~* *
+# Timeshift system backup.
+app-backup/timeshift::guru                    ~* *
 
 # Tool for development with Qt (kdstatemachineeditor is a dependency).
 dev-util/gammaray::guru                       ~* *

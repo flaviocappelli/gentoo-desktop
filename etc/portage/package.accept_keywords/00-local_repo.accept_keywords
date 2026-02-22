@@ -14,13 +14,18 @@ app-admin/zenmonitor3::local
 sys-kernel/zenpower3::local
 sys-kernel/nct6687d::local **
 
-# Timeshift system backup. Version in GURU repo is too old.
-app-backup/timeshift::local
-
 # Qt/C++ GUI front end to Fscrypt, Securefs, Ecryptfs, Cryfs, Encfs,
 # Gocryptfs, Sshfs and Cryptomator (from holgersson overlay). It works
 # perfectly with GoCryptFS >= 2.6-r1 from portage (i.e. stable version).
 app-crypt/sirikali::local
+
+# HDD and SSD benchmark tool with a very friendly graphical user interface
+# (similar to CrystalDiskMark in Windows). It uses 'sys-block/fio' (for the
+# exact tests launched see https://github.com/JonMagon/KDiskMark/issues/130).
+# Note that benchmarks on ZFS are currently not accurate, due to multiple
+# cache levels (see https://github.com/JonMagon/KDiskMark/issues/148).
+# Version in 'guru' is not yet updated to latest sys-auth/polkit-qt.
+app-benchmarks/kdiskmark::local
 
 # Plugin for OBS Studio, useful to remove or blur the background
 # of captured images and videos (based on a neural network). See:

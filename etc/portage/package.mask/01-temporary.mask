@@ -18,3 +18,7 @@
 # All tested versions of Ollama >= 0.13.3 freeze or generate
 # errors with some prompts. Ollama 0.13.2 seems to work well.
 >=sci-ml/ollama-0.13.3
+
+# Delay the upgrade to kernel 6.18.x LTS, because
+# required out-of-tree drivers are not ready yet.
+>=virtual/dist-kernel-6.18.0

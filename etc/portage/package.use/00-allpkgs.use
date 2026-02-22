@@ -362,7 +362,6 @@ kde-frameworks/kconfig              qml                   # Required by kde-apps
 kde-frameworks/kfilemetadata        epub mobi             # Enable support for reading EPUB and MOBI ebook metadata.
 kde-frameworks/kimageformats        avif eps jpegxl       # Additional supported image formats.
 kde-frameworks/kio                  kwallet               # Re-enable flag +KWALLET (see the ebuild).
-kde-frameworks/knotifications:5     qml                   # Enable QML support via dev-qt/qtdeclarative:5 (from CLD).
 kde-frameworks/prison               qml                   # Required by kde-plasma/plasma-workspace and net-im/neochat.
 kde-frameworks/sonnet               qml                   # Required by kde-frameworks/qqc2-desktop-style and net-im/neochat.
 
@@ -698,7 +697,6 @@ sys-apps/util-linux                 tty-helpers           # Install mesg/wall/wr
 
 sys-auth/pambase                    homed                 # Required for systemd-homed (i.e. systemd[homed]).
 sys-auth/pambase                    -sha512 yescrypt      # Use safer password hashing function (see https://bugs.gentoo.org/905678).
-sys-auth/polkit-qt                  qt5                   # Required by kde-frameworks/kauth:5.
 
 sys-block/fio                       aio                   # Enable AIO ioengine, required by app-benchmarks/kdiskmark (from guru overlay).
 
