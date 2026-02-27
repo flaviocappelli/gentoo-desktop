@@ -25,7 +25,6 @@ app-crypt/sirikali
 app-crypt/stoken
 app-doc/gimp-help
 app-editors/ghostwriter
-app-editors/qxmledit
 app-editors/vscode
 app-editors/wxhexeditor
 app-emulation/virt-manager
@@ -81,13 +80,11 @@ dev-python/cupy
 dev-python/ollama
 dev-python/pip
 dev-python/uv
-dev-qt/qt-docs:5
-dev-qt/qt-docs:6
+dev-qt/qt-docs
 dev-qt/qt3d
 dev-qt/qtcharts
 dev-qt/qtlocation
-dev-qt/qtscxml:5
-dev-qt/qtscxml:6
+dev-qt/qtscxml
 dev-qt/qtserialbus
 dev-qt/qtwebview
 dev-util/bindgen
@@ -185,6 +182,7 @@ media-gfx/kgraphviewer
 media-gfx/nomacs
 media-gfx/openscad
 media-gfx/povray
+media-gfx/prusaslicer
 media-plugins/obs-backgroundremoval
 media-sound/alsa-utils
 media-sound/ardour

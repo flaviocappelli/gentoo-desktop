@@ -255,9 +255,10 @@ dev-qt/qt-creator                   plugin-dev            # Install the 'Devel' 
 dev-qt/qt-creator                   qmldesigner           # Build QmlDesigner and related plugins (Insight, StudioWelcome).
 dev-qt/qt-creator                   serialterminal        # Build the serial terminal plugin.
 ##dev-qt/qt-creator                 webengine             # Use dev-qt/qtwebengine with the help USE FLAG, rather than bundled litehtml.
+
 dev-qt/qt-docs                      activeqt              # Install documentation for Active Qt (class only for Windows).
 dev-qt/qt-docs                      charts datavis        # Install documentation for dev-qt/qtcharts and dev-qt/qtdatavis3d.
-dev-qt/qt-docs                      declarative gui       # Install documentation for dev-qt/qtdeclarative and dev-qt/qtgui.
+dev-qt/qt-docs                      declarative           # Install documentation for dev-qt/qtdeclarative.
 dev-qt/qt-docs                      graphs                # Install documentation for QtGraphs.
 dev-qt/qt-docs                      grpc lottie           # Install documentation for QtGRPC and QtLottie.
 dev-qt/qt-docs                      -html                 # Install only documentation in qch format (for qt-creator).
@@ -265,10 +266,9 @@ dev-qt/qt-docs                      networkauth           # Install documentatio
 dev-qt/qt-docs                      quick3dphysics        # Install documentation for QtQuick3DPhysics.
 dev-qt/qt-docs                      quickeffectmaker      # Install documentation for QtQuickEffectMaker.
 dev-qt/qt-docs                      remoteobjects         #	Install documentation for QtRemoteObjects.
-dev-qt/qt-docs                      script timeline       # Install documentation for dev-qt/qtscript and dev-qt/qtquicktimeline.
+dev-qt/qt-docs                      timeline              # Install documentation for dev-qt/qtquicktimeline.
 dev-qt/qt-docs                      virtualkeyboard       # Install documentation for dev-qt/qtvirtualkeyboard.
-dev-qt/qt-docs                      webengine widgets     # Install documentation for dev-qt/qtwebengine and dev-qt/qtwidgets.
-dev-qt/qt-docs                      xml                   # Install documentation for dev-qt/qtxml.
+
 dev-qt/qt3d                         qml                   # Required by dev-util/gammaray[3d].
 dev-qt/qt5compat                    gui                   # If disabled, force emerge of dev-qt/qtbase[-gui].
 dev-qt/qt5compat                    icu                   # If disabled, force emerge of dev-qt/qtbase[-icu].
@@ -277,8 +277,7 @@ dev-qt/qtbase                       -mysql                # MySQL/MariaDB suppor
 dev-qt/qtbase                       gui widgets xml       # Required by dev-qt/qtbase and other Qt6 packages.
 dev-qt/qtbase                       icu                   # Required by dev-qt/qt5compat, kde-frameworks/kcoreaddons.
 dev-qt/qtcharts                     qml                   # Required by kde-misc/kweather.
-dev-qt/qtcore:5                     icu                   # Required by kde-frameworks/kcoreaddons:5.
-dev-qt/qtdeclarative:5              localstorage          # Build the LocalStorage import for QtQuick (requires QtSql).
+dev-qt/qtcore                       icu                   # Required by kde-frameworks/kcoreaddons:5.
 dev-qt/qtdeclarative                widgets               # Required by many packages (see "equery depends dev-qt/qtdeclarative").
 dev-qt/qtgui                        -vnc                  # Drop unnecessary dependency (from CLD).
 dev-qt/qtgui                        egl                   # Required by dev-qt/qtwayland:5 and kde-plasma/kwayland:5.
@@ -457,7 +456,6 @@ media-libs/opencv                   features2d            # Required by media-pl
 media-libs/opencv                   opencl                # Enable OpenCL support (computation on GPU).
 media-libs/opensubdiv               tbb                   # Required by media-gfx/blender[opensubdiv].
 media-libs/simage                   -tiff                 # Drop unnecessary dependency (from CLD).
-media-libs/vulkan-loader            layers                # Include the vulkan layers.
 media-libs/zmusic                   mpg123                # Enable support for MPEG audio playback via media-sound/mpg123.
 
 # NOTE: Pipewire is now the default audio server on Gentoo (and other recent Linux distributions).

@@ -250,6 +250,7 @@ sci-libs/rocRAND:0/6.4::gentoo              # Same slot of sci-libs/hipRAND.
 # not (i.e., on errors), try to define TORCH_BLAS_PREFER_HIPBLASLT=0 in the environment.
 # PyTorch benchmark: https://github.com/lamikr/pytorch-gpu-benchmark/
 sci-ml/pytorch::gentoo
+dev-libs/cpuinfo::gentoo
 dev-libs/dynolog::gentoo
 dev-libs/pfs::gentoo
 dev-libs/pocketfft::gentoo
