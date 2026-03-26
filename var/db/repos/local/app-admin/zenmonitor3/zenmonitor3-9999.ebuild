@@ -1,4 +1,4 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
@@ -6,20 +6,14 @@
 
 EAPI=8
 
-inherit fcaps linux-info
+inherit git-r3 fcaps linux-info
 
-EGIT_COMMIT="7f652ba30efc31d7da4af426e3a112cff9bebd1f"
-
-DESCRIPTION="Monitoring software for AMD Zen-based CPUs with Zen3 support"
+DESCRIPTION="Monitoring software for AMD Zen-based CPUs (Zen3, Zen4, Zen5)"
 HOMEPAGE="https://github.com/detiam/zenmonitor3"
-SRC_URI="https://github.com/detiam/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-# Alternative URI: https://github.com/jpr999 (same commit).
-
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
+EGIT_REPO_URI="https://github.com/detiam/zenmonitor3.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
 IUSE="cli +filecaps"
 
 CONFIG_CHECK="X86_MSR"
@@ -27,6 +21,7 @@ CONFIG_CHECK="X86_MSR"
 DEPEND="
 	!sys-apps/zenmonitor
 	|| (
+		sys-kernel/zenpower5
 		sys-kernel/zenpower3
 		sys-kernel/zenstats
 	)
@@ -38,7 +33,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-makefile.patch"
-	"${FILESDIR}/${P}-gcc15.patch"
+	"${FILESDIR}/${P}-zen5-support.patch"
 )
 
 src_compile() {

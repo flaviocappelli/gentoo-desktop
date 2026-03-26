@@ -47,7 +47,6 @@ app-arch/zip                        natspec               # Use dev-libs/libnats
 app-arch/xz-utils                   pgo                   # Optimize the build using Profile Guided Optimization (from CLD).
 
 app-backup/backintime               gui                   # Build the GUI frontend.
-app-backup/bacula                   qt5                   # Build the GUI frontend.
 
 ##app-crypt/qca                     gpg                   # Provide GnuPG capability to programs that utilize the Qt Cryptographic Architecture (QCA) (from CLD).
 app-crypt/stoken                    gtk                   # Enable GUI for RSA SecurID 128-bit compatible generator.
@@ -347,15 +346,13 @@ kde-apps/kdesdk-meta                git                   # Enable support for G
 ##kde-apps/kdeutils-meta            gpg                   # Install kde-apps/kgpg which depends on kde-apps/akonadi.
 ##kde-apps/kdeutils-meta            lrz                   # Install app-arch/lrzip for LRZ archive support in kde-apps/ark.
 ##kde-apps/kdeutils-meta            rar                   # Install app-arch/rar or app-arch/unrar or app-arch/unar for RAR archive support in kde-apps/ark (CHOOSE rar).
-kde-apps/kio-extras                 -phonon               # Audio preview plugin not required (from CLD).
 kde-apps/kio-extras                 mtp taglib            # Enable support for Media Transfer Protocol and audio thumbnails.
 ##kde-apps/ksystemlog               kdesu                 # Run as root using kdesu (currently not compatible with wayland, see the ebuild).
 ##kde-apps/libkcddb                 musicbrainz           # Lookup audio metadata using MusicBrainz community service.
-kde-apps/marble                     -phonon kde           # Disable sound support (not required) and re-enable flag +KDE (see the ebuild).
+kde-apps/marble                     kde                   # Re-enable flag +KDE (see the ebuild).
 kde-apps/okular                     epub                  # Enable E-Book support via app-text/ebook-tools.
 kde-apps/okular                     markdown              # Enable Markdown support via app-text/discount.
 kde-apps/okular                     mobi                  # Enable mobipocket support.
-kde-apps/okular                     phonon                # Enable sound support.
 
 kde-frameworks/kconfig              qml                   # Required by kde-apps/filelight, kde-misc/kdeconnect, kde-plasma/kscreenlocker, kde-plasma/kwin, ...
 kde-frameworks/kfilemetadata        epub mobi             # Enable support for reading EPUB and MOBI ebook metadata.
@@ -665,7 +662,7 @@ sci-ml/caffe2                       onednn                # Enable backends oneD
 sci-ml/caffe2                       openblas              # Enable backends OpenBLAS.
 sci-ml/caffe2                       rocm                  # Enable ROCm support (at most one of [cuda,rocm] can be enabled).
 ##sci-ml/ollama                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
-sci-ml/ollama                       blas                  # Enable virtual/blas support.
+sci-ml/ollama                       blas flexiblas        # Enable virtual/blas (flexiblas) support.
 sci-ml/ollama                       rocm                  # Enable ROCm support (at most one of [cuda,rocm] can be enabled).
 sci-ml/ollama                       cpu_flags_x86_bmi2    # Enable support for Bit Manipulation Instructions (required by CPU flags 'avx2' + 'f16c' + 'fma3').
 

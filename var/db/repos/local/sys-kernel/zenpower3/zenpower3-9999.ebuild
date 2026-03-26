@@ -1,26 +1,19 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied from 'supertux88' overlay with some modifications.
-# Last update: May 12, 2025 (git.exozy.me does not exists anymore).
+# Inspired by sys-kernel/nct6687d ebuild (in this overlay).
 
 EAPI=8
 
-inherit linux-mod-r1
-
-EGIT_COMMIT="ccc7d9e2d128055387ea1ca241f562a37e5ea7e0"
+inherit git-r3 linux-mod-r1
 
 DESCRIPTION="Linux kernel driver for reading sensors of AMD Zen family CPUs"
 HOMEPAGE="https://github.com/detiam/zenpower3"
-SRC_URI="https://github.com/detiam/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-# Alternative URI: https://github.com/koweda (same commit).
-
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
+EGIT_REPO_URI="https://github.com/detiam/zenpower3.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
 
 # A kernel >= 5.4 is required; also, to use this driver, the K10TEMP
 # driver must not be compiled (or built as module and blacklisted). See:
@@ -32,14 +25,13 @@ CONFIG_CHECK="HWMON PCI AMD_NB ~!SENSORS_K10TEMP"
 ERROR_SENSORS_K10TEMP="SENSORS_K10TEMP: If you insist on building this, you must blacklist it!"
 
 RDEPEND="
-    !sys-kernel/zenstats
-    !sys-kernel/zenpower
-    !sys-kernel/zenpower5
+	!sys-kernel/zenstats
+	!sys-kernel/zenpower
+	!sys-kernel/zenpower5
 "
 
 PATCHES=(
-    "${FILESDIR}/${P}-add-lucienne-support.patch"
-    "${FILESDIR}/${P}-amd_pci_dev_to_node_id-kernel-6.14.patch"
+	"${FILESDIR}/${PN}-0.2.0-add-lucienne-support.patch"
 )
 
 pkg_pretend() {

@@ -1,0 +1,18 @@
+--- /usr/share/applications/PrusaSlicer.desktop	2026-02-12 11:27:01.887365054 +0100
++++ ./PrusaSlicer.desktop	2026-02-12 11:28:54.584639123 +0100
+@@ -1,12 +1,13 @@
+ [Desktop Entry]
+ Name=PrusaSlicer
+ GenericName=3D Printing Software
++GenericName[it]=Software di stampa 3D
+ Exec=prusa-slicer %F
+ Icon=PrusaSlicer
+ Terminal=false
+ Type=Application
+ MimeType=application/prs.wavefront-obj;application/vnd.ms-3mfdocument;application/x-amf;model/stl;
+-Categories=Graphics;3DGraphics;Engineering;
+-Keywords=3D;Printing;Slicer;slice;3D;printer;convert;gcode;stl;obj;amf;SLA
++Categories=Graphics;
++Keywords=3D;slicer;gcode;stl;abs;pla;petg;tpu;
+ StartupWMClass=prusa-slicer
+ StartupNotify=false

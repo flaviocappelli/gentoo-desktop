@@ -10,15 +10,14 @@
 >=dev-lang/python-3.14.0
 
 # Mask first patch release of VScode minor versions.
-~app-editors/vscode-1.109.0
-~app-editors/vscode-1.110.0
 ~app-editors/vscode-1.111.0
 ~app-editors/vscode-1.112.0
-
-# All tested versions of Ollama >= 0.13.3 freeze or generate
-# errors with some prompts. Ollama 0.13.2 seems to work well.
->=sci-ml/ollama-0.13.3
+~app-editors/vscode-1.113.0
 
 # Delay the upgrade to kernel 6.18.x LTS, because
 # required out-of-tree drivers are not ready yet.
 >=virtual/dist-kernel-6.18.0
+
+# Many packages still require ffmpeg-7 and emerge produces a
+# lot of noise in its output, so I temporarily mask ffmpeg-8.
+>=media-video/ffmpeg-8.0.0

@@ -211,6 +211,7 @@ net-libs/libssh                         abi_x86_32
 net-libs/libtirpc                       abi_x86_32
 net-libs/nghttp2                        abi_x86_32
 net-libs/nghttp3                        abi_x86_32
+net-libs/ngtcp2                         abi_x86_32
 net-libs/srt                            abi_x86_32
 net-misc/curl                           abi_x86_32
 net-nds/openldap                        abi_x86_32
