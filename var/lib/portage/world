@@ -310,7 +310,6 @@ sys-kernel/nct6687d
 sys-libs/ncurses-compat
 sys-power/acpid
 sys-power/cpupower
-sys-power/tlp
 sys-process/btop
 sys-process/htop
 sys-process/iotop

@@ -95,7 +95,7 @@ GRUB_HIDDEN_TIMEOUT_QUIET=true
 GRUB_TIMEOUT_STYLE=menu
 GRUB_TIMEOUT=10
 
-# Kernel options for Gentoo on Cerberus:
+# Kernel options for Gentoo:
 #
 # * On Gentoo, 'systemd' already uses the unified (i.e. modern, also named v2) cgroup
 #   interface (if USE flag 'cgroup-hybrid' is not set): we don't need to force it here.
@@ -115,13 +115,40 @@ GRUB_TIMEOUT=10
 #    - in /etc/vconsole.conf for virtual consoles (not X);
 #    - in /etc/X11/xorg.conf.d/00-keyboard.conf for X (but DEs can override it).
 #
-# * Option 'amd_pstate=<mode>' enable the AMD P-State driver (kernel >= 6.6 LTS is
-#   required). Delete such option if you want to go back to the acpi-cpufreq driver.
-#   I prefer to start the driver in passive mode (with schedutil as default governor)
-#   and let the TLP service set the P-State mode, governor and energy policy, for AC and
-#   BAT (the latter only makes sense on laptops, it can be safely ignored on desktops).
+# CPU FREQUENCY SCALING DRIVER / POWER MANAGEMENT
 #
-GRUB_CMDLINE_LINUX_DEFAULT="quiet threadirqs preempt=full amd_pstate=passive udev.log_priority=3 loglevel=3"
+# 1. acpi-cpufreq (legacy):
+#    Default for CPUs Intel < Sandy Bridge (inc. older Atom/Celeron) and AMD < Zen2 (Ryzen 1000/2000,
+#    FX, A-series). Fallback if HWP (Intel) or CPPC (AMD) is disabled in BIOS. On modern systems with
+#    default p-state can be forced with "amd_pstate=disable" (AMD) or "intel_pstate=disable" (Intel).
+#
+# 2. amd_pstate:
+#    Modern driver for AMD Zen2+ (Ryzen 3000+, EPYC 7002+). Requires CPPC enabled in BIOS.
+#    - active (EPP): default since Kernel 6.5+, HW manages frequency via hints [amd_pstate=active];
+#    - passive: default kernels 5.17-6.4, software (governors) sends requests to HW [amd_pstate=passive];
+#    - guided: hybrid, kernel sets range (min/max), HW selects frequency [amd_pstate=guided].
+#    USE DEFAULT (EPP) ON MODERN SYSTEMS WITH AMD CPUs, KERNELs > 6.6, POWER-PROFILES-DAEMON.
+#
+# 3. intel_pstate:
+#    Modern driver for Intel Core (Sandy Bridge 2nd Gen+).
+#    - active (HWP): default since Skylake (6th Gen+) / kernel 4.10+, HW-managed (HWP) [intel_pstate=active];
+#    - passive: default for Sandy Bridge to Broadwell (2nd-5th Gen), software-managed [intel_pstate=passive];
+#    - no_hwp: disables HWP on modern CPUs, forcing software-controlled mode [intel_pstate=no_hwp].
+#
+# NOTE: If you prefer TLP over POWER-PROFILE_DAEMON, add "amd_pstate=passive" or "intel_pstate=passive" to
+# GRUB_CMDLINE_LINUX_DEFAULT below (ensure the kernel is configured to use "schedutil" as default governor),
+# then let the TLP service set the best p-state mode, governor and energy policy for both AC and BAT (useful
+# for laptops). Anyway modern desktops/laptops generally work well with the default power-profiles-daemon.
+#
+# INTEL GRAPHICS DRIVER
+#  * To force "xe" driver instead of "i915" use "i915.force_probe=!<id> xe.force_probe=<id>" in
+#    GRUB_CMDLINE_LINUX_DEFAULT; "xe" can be used only from CPU >= Tiger Lake (11th generation);
+#
+# SABRENT ROCKET 4 NVME I/O ERROR ON SOME INTEL MINI-PCs
+#  * On I/O errors add "nvme_core.default_ps_max_latency_us=10000" to GRUB_CMDLINE_LINUX; this
+#   will disable the S4 low power state solving the I/O errors (if not, use 200 to disable both
+#   the S3/S4 states). For other NVMe models and vendors change the above timings accordingly.
+GRUB_CMDLINE_LINUX_DEFAULT="quiet threadirqs preempt=full udev.log_priority=3 loglevel=3"
 GRUB_CMDLINE_LINUX="dolvm vconsole.keymap=it locale=it_IT audit=0 nowatchdog"
 
 # Uncomment to disable submenus in boot menu.

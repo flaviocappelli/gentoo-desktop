@@ -5,11 +5,15 @@ DISABLED SERVICES
 -----------------
 These 3 services conflict with TLP-1.5 and above
 (see https://wiki.archlinux.org/title/TLP), so they
-are masked (if you uninstall TLP, re-enable them):
+MUST BE masked if you install (and enable) TLP:
 
 	power-profiles-daemon.service -> /dev/null
 	systemd-rfkill.service -> /dev/null
 	systemd-rfkill.socket -> /dev/null
+
+(to restore power-profiles-daemon.service, unmask them
+and enable power-profiles-daemon.service; *-rfkill.*
+service/socket are automatically started if required).
 
 This service conflicts with chrony so it is masked:
 

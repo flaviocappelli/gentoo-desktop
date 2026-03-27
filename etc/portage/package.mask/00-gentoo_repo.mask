@@ -68,3 +68,7 @@ x11-drivers/nvidia-drivers
 # installed packages can use use gnome-base/librsvg as alternative).
 # Better to use libreoffice-draw or Krita as vector drawing program.
 media-gfx/inkscape
+
+# Prefere "sys-power/power-profiles-daemon" over "tuned" and "TLP".
+sys-apps/tuned
+sys-power/tlp
