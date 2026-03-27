@@ -160,7 +160,6 @@ kde-apps/rocs
 kde-apps/sweeper
 kde-misc/kdiff3
 kde-misc/krename
-kde-misc/krusader
 kde-misc/kshutdown
 kde-misc/kweather
 kde-misc/markdownpart
@@ -220,6 +219,7 @@ net-im/zoom
 net-misc/bridge-utils
 net-misc/chrony
 net-misc/freetube-bin
+net-misc/iperf
 net-misc/rclone
 net-misc/socat
 net-misc/whois
@@ -231,7 +231,6 @@ net-vpn/networkmanager-openvpn
 net-vpn/networkmanager-pptp
 net-vpn/networkmanager-vpnc
 sci-astronomy/stellarium
-sci-calculators/qalculate-qt
 sci-calculators/speedcrunch
 sci-electronics/circuitjs1-bin
 sci-electronics/electronics-menu
