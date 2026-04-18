@@ -2,23 +2,23 @@
 #
 # Mask unwanted/problematic packages (gentoo repo).
 
-# This system uses the latest LTS kernel (6.12). Note: only
+# This system uses the latest LTS kernel (6.18). Note: only
 # sys-kernel/*-kernel are Gentoo Distribution Kernels, see
 # https://wiki.gentoo.org/wiki/Project:Distribution_Kernel.
 # I am currently using 'gentoo-kernel' with some additional
 # patches (see /etc/portage/patches/sys-kernel/gentoo-kernel*)
 # and a custom configuration (see /etc/kernel/config.d/*).
-<sys-kernel/linux-headers-6.12
-<sys-kernel/gentoo-kernel-6.12.0
-<sys-kernel/gentoo-kernel-bin-6.12.0
-<sys-kernel/gentoo-sources-6.12.0
-<sys-kernel/rt-sources-6.12.0
-<sys-kernel/vanilla-kernel-6.12.0
-<sys-kernel/vanilla-sources-6.12.0
+<sys-kernel/linux-headers-6.18
+<sys-kernel/gentoo-kernel-6.18.0
+<sys-kernel/gentoo-kernel-bin-6.18.0
+<sys-kernel/gentoo-sources-6.18.0
+<sys-kernel/rt-sources-6.18.0
+<sys-kernel/vanilla-kernel-6.18.0
+<sys-kernel/vanilla-sources-6.18.0
 
-# Kernel 6.12 LTS needs OpenZFS >= 2.2.7.
-<sys-fs/zfs-2.2.7
-<sys-fs/zfs-kmod-2.2.7
+# Kernel 6.18 LTS needs OpenZFS >= 2.3.6.
+<sys-fs/zfs-2.3.6
+<sys-fs/zfs-kmod-2.3.6
 
 # It is a common misconception that genkernel "automatically"
 # generates a custom kernel configuration, but it is not true:

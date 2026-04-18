@@ -8,7 +8,3 @@
 
 # Do not pull in Python 3.14 until really required.
 >=dev-lang/python-3.14.0
-
-# Delay the upgrade to kernel 6.18.x LTS, because
-# required out-of-tree drivers are not ready yet.
->=virtual/dist-kernel-6.18.0
