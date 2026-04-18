@@ -1,0 +1,24 @@
+## by F.C.
+##
+## Limits the ZFS ARC max size to 1/4 of the available RAM, which
+## is more than sufficient for desktop use. This should reduce the
+## competition between the disk cache and the Gentoo emerge jobs.
+## Also set the ARC min size to 1/16 of the available RAM.
+##
+## See also:
+##  - 20-zfs-arc.stop
+##
+## To get the current ARC size type "arc_summary -s arc"
+## and check the "ARC status:" section.
+
+if [ -d /sys/module/zfs/parameters ]; then
+    MEM_TOTAL_KB=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+
+    # ARC size must be in bytes.
+    ARC_MAX=$(( MEM_TOTAL_KB * 1024 / 4 ))
+    ARC_MIN=$(( MEM_TOTAL_KB * 1024 / 16 ))
+
+    # Apply above limits.
+    echo $ARC_MAX > /sys/module/zfs/parameters/zfs_arc_max
+    echo $ARC_MIN > /sys/module/zfs/parameters/zfs_arc_min
+fi

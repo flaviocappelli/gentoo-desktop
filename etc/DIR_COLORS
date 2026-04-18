@@ -74,7 +74,6 @@ RESET 0                             # reset to "normal" color
 DIR                     01;34       # directory
 LINK                    01;36       # symbolic link (if you set this to 'target' instead of a
                                     # numerical value, the color is as for the file pointed to)
-#MULTIHARDLINK          00          # regular file with more than one link
 MULTIHARDLINK           44;37       # regular file with more than one link
 FIFO                    40;33       # pipe
 SOCK                    01;35       # socket
@@ -85,8 +84,7 @@ ORPHAN                  01;05;37;41 # symlink to nonexistent file, or non-stat'a
 MISSING                 01;05;37;41 # ... and the files they point to
 SETUID                  37;41       # file that is setuid (u+s)
 SETGID                  30;43       # file that is setgid (g+s)
-#CAPABILITY             00          # file with capability (very expensive to lookup)
-CAPABILITY              30;41       # file with capability (very expensive to lookup)
+CAPABILITY              30;41       # file with capability
 STICKY_OTHER_WRITABLE   30;42       # dir that is sticky and other-writable (+t,o+w)
 OTHER_WRITABLE          34;42       # dir that is other-writable (o+w) and not sticky
 STICKY                  37;44       # dir with the sticky bit set (+t) and not other-writable
@@ -103,6 +101,8 @@ EXEC                    01;32       # regular files with execute permission
 
 # Executables (bright green)
 .app      01;32     # OSX
+.AppImage 01;32     # Linux self-contained application
+.appimage 01;32     # Linux self-contained application
 .bat      01;32     # DOS/WINDOWS executable
 .btm      01;32     # DOS/WINDOWS executable
 .cmd      01;32     # DOS/WINDOWS executable
@@ -112,17 +112,17 @@ EXEC                    01;32       # regular files with execute permission
 .exe      01;32     # DOS/WINDOWS executable
 .fish     01;32     # Unix Fish Shell script
 .ksh      01;32     # Unix Korn Shell script
-.reg      01;32     # WINDOWS registry
 .sh       01;32     # Unix SH and BASH Shell script
 .zsh      01;32     # Unix ZSH Shell script
 
-# Archives or compressed (bright red)
+# Archives or compressed files (bright red)
 .7z       01;31     # app-arch/p7zip
 .ace      01;31     # app-arch/unace (Windows)
 .alz      01;31     # app-arch/unalz (see 'eix -R unalz')
 .apk      01;31     # Android package format
 .arc      01;31     # app-arch/arc (DOS LHARC archive or Macintosh HFS archive)
 .arj      01;31     # app-arch/arj (DOS & Windows archive)
+.bin      01;31     # Binary disk image or firmware
 .bz       01;31     # app-arch/bzip2 (old bzip format)
 .bz2      01;31     # app-arch/bzip2
 .cab      01;31     # app-arch/cabextract (Windows archive)
@@ -130,13 +130,14 @@ EXEC                    01;32       # regular files with execute permission
 .crate    01;31     # https://doc.rust-lang.org/cargo/reference/publishing.html#packaging-a-crate
 .deb      01;31     # app-arch/dpkg (Debian Software Package)
 .dmg      01;31     # Apple DiskImage format
-.dwm      01;31     # ?
 .drpm     01;31     # Delta RPM File (Fedora's Presto plugin for yum)
 .dz       01;31     # dzip compressed file (demo recordings of id's Quake)
 .ear      01;31     # https://fileinfo.com/extension/ear
 .egg      01;31     # ALZip Archive / Panda3D
 .esd      01;31     # https://fileinfo.com/extension/esd
 .gz       01;31     # app-arch/gzip
+.img      01;31     # Generic disk image
+.iso      01;31     # Optical disc image
 .jar      01;31     # https://fileinfo.com/extension/jar
 .lha      01;31     # app-arch/lha (DOS)
 .lrz      01;31     # app-arch/lrzip
@@ -145,6 +146,7 @@ EXEC                    01;32       # regular files with execute permission
 .lzh      01;31     # app-arch/lha (DOS)
 .lzma     01;31     # 7-zip compressed file
 .lzo      01;31     # app-arch/lzop (fast, even real-time, compression/decompression)
+.msi      01;31     # Microsoft installer (databese, not executable)
 .partimg  01;31     # Partimage backup format
 .pea      01;31     # app-arch/peazip (see "eix -R unalz")
 .pyz      01;31     # https://fileinfo.com/extension/pyz
@@ -156,14 +158,14 @@ EXEC                    01;32       # regular files with execute permission
 .t7z      01;31     # .tar.7z
 .tar      01;31     # app-arch/tar (Tape Archive, not compressed)
 .taz      01;31     # https://fileinfo.com/extension/taz
-.tb2      01;31     # ?
+.tb2      01;31     # .tar.bz2 (old extension)
 .tbz      01;31     # https://fileinfo.com/extension/tbz
 .tbz2     01;31     # .tar.bz2
 .tgz      01;31     # .tar.gz
 .tlz      01;31     # https://fileinfo.com/extension/tlz
 .txz      01;31     # .tar.xz
 .tz       01;31     # https://fileinfo.com/extension/tz
-.tz2      01;31     # ?
+.tz2      01;31     # .tar.bz2 (old extension)
 .tzo      01;31     # .tar.lzo
 .tzst     01;31     # .tar.zst
 .udeb     01;31     # https://fileinfo.com/extension/udeb
@@ -173,6 +175,7 @@ EXEC                    01;32       # regular files with execute permission
 .xz       01;31     # app-arch/xz-utils
 .z        01;31     # app-arch/gzip (OLD Unix archive format) & app-arch/ncompress
 .zip      01;31     # app-arch/zip
+.ZIP      01;31     # app-arch/zip (uppercase variant for compatibility)
 .zoo      01;31     # app-arch/zoo
 .zst      01;31     # app-arch/zstd
 
@@ -195,6 +198,9 @@ EXEC                    01;32       # regular files with execute permission
 .flv      01;35
 .gif      01;35
 .gl       01;35
+.heic     01;35     # High Efficiency Image File Format (Apple/Android)
+.heif     01;35     # High Efficiency Image File Format (Apple/Android)
+.hif      01;35     # High Efficiency Image File Format (Apple/Android)
 .jpeg     01;35
 .jpg      01;35
 .jxl      01;35     # JPEG XL
@@ -237,6 +243,7 @@ EXEC                    01;32       # regular files with execute permission
 .tga      01;35
 .tif      01;35
 .tiff     01;35
+.ts       01;35     # MPEG Transport Stream (video)
 .vob      01;35     # MPEG-2 DVD
 .wav      01;35
 .webm     01;35
@@ -248,31 +255,57 @@ EXEC                    01;32       # regular files with execute permission
 .xwd      01;35
 .yuv      01;35
 
-# Playlist
+# Playlists
 .m3u      00;36
+.m3u8     01;36
 .xspf     00;36     # http://wiki.xiph.org/index.php/MIME_Types_and_File_Extensions
 
-# Some document files (text or binary)
+# Document files (text or binary)
 .cfg      00;32
 .chm      00;32
 .conf     00;32
 .csv      00;32
 .diff     00;32
 .djvu     00;32
-.doc      00;32
+.doc      00;32     # Microsoft Word (legacy)
+.docx     00;32     # Microsoft Word (modern)
 .epub     00;32
 .htm      00;32
 .html     00;32
 .ini      00;32
+.json     00;32
 .log      00;32
+.md       00;32     # Markdown
 .mobi     00;32
+.ods      00;32     # OpenDocument Spreadsheet
+.odt      00;32     # OpenDocument Text
 .patch    00;32
 .pdf      00;32
+.PDF      00;32     # Portable Document Format (uppercase variant for compatibility)
+.ppt      00;32     # Microsoft PowerPoint (legacy)
+.pptx     00;32     # Microsoft PowerPoint (modern)
 .ps       00;32
+.reg      00;32     # WINDOWS registry (ASCII or UTF-16)
 .rtf      00;32
 .tex      00;32
+.toml     00;32     # Tom's Obvious Minimal Language (config)
 .txt      00;32
+.xls      00;32     # Microsoft Excel (legacy)
+.xlsx     00;32     # Microsoft Excel (modern)
 .xml      00;32
+.yaml     00;32     # YAML Ain't Markup Language (config)
+.yml      00;32     # YAML (short extension)
+
+# Databases (bright yellow)
+.accdb    01;33     # Microsoft Access database (modern)
+.db       01;33     # Generic database
+.dbf      01;33     # dBase database (legacy)
+.mdb      01;33     # Microsoft Access database (legacy)
+.odb      01;33     # LibreOffice Base Database
+.sql      01;33     # SQL dump/script (text)
+.sqlite   01;33     # SQLite database
+.sqlite2  01;33     # SQLite v2 database
+.sqlite3  01;33     # SQLite v3 database
 
 # Backup/temporary files
 *~          00;90

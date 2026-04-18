@@ -93,7 +93,7 @@ GRUB_SAVEDEFAULT="true"
 GRUB_HIDDEN_TIMEOUT=0
 GRUB_HIDDEN_TIMEOUT_QUIET=true
 GRUB_TIMEOUT_STYLE=menu
-GRUB_TIMEOUT=10
+GRUB_TIMEOUT=5
 
 # Kernel options for Gentoo:
 #
@@ -148,6 +148,21 @@ GRUB_TIMEOUT=10
 #  * On I/O errors add "nvme_core.default_ps_max_latency_us=10000" to GRUB_CMDLINE_LINUX; this
 #   will disable the S4 low power state solving the I/O errors (if not, use 200 to disable both
 #   the S3/S4 states). For other NVMe models and vendors change the above timings accordingly.
+#
+# LENOVO LAPTOP LEGION PRO 5 16ADR10
+#  * If suspend-to-ram (S3) wakes up after 1s, add "gpiolib_acpi.ignore_interrupt=AMDI0030:00@4"
+#    (see https://wiki.archlinux.org/title/Power_management/Wakeup_triggers#Ryzen_7000_Series).
+#    NOTE: This might be due to MT7921 module; TODO - recheck with AX210 module when installed.
+#    NOTE: MT7921 in kernel 6.18.18 causes kernel freezes on tranfer of large files (6/8GB+).
+#  * There's currently a bug in the amdgpu driver that causes a kernel crash (with total freezes):
+#      amdgpu 0000:06:00.0: [drm] *ERROR* flip_done timed out
+#      amdgpu 0000:06:00.0: [drm] *ERROR* [CRTC:80:crtc-0] commit wait timed out
+#    Add "amdgpu.dcdebugmask=0x10" to mitigate (causes more battery drain). Patches discussions:
+#      https://lore.kernel.org/amd-gfx/20260305222131.160914-1-sunpeng.li@amd.com/
+#      https://gitlab.freedesktop.org/drm/amd/-/work_items/2950
+#      https://gitlab.freedesktop.org/drm/amd/-/work_items/3787
+#      https://github.com/ROCm/ROCm/issues/6033
+#      https://www.phoronix.com/news/AMDGPU-DC-Power-Module
 GRUB_CMDLINE_LINUX_DEFAULT="quiet threadirqs preempt=full udev.log_priority=3 loglevel=3"
 GRUB_CMDLINE_LINUX="dolvm vconsole.keymap=it locale=it_IT audit=0 nowatchdog"
 

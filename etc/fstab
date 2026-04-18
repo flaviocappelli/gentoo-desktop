@@ -40,17 +40,20 @@ UUID=4a264017-bd29-4dd8-a944-e36245a4fcad   /mnt/VARDATA      xfs    noatime    
 #    I set it here, to override the default tmpfs mount options (add 'noatime');
 #  - for changes of /tmp settings see https://wiki.archlinux.org/index.php/tmpfs;
 #  - if you want to use the 'noexec' on /tmp, beware it will break some programs.
-tmpfs                                       /tmp          tmpfs  noatime,nodev,nosuid,mode=1777   0  0
+tmpfs                                       /tmp         tmpfs  noatime,nodev,nosuid,mode=1777   0  0
 
 # Encrypted LOW PRIORITY swap device. At the moment not required. See also:
 #  - /etc/crypttab
 #  - /etc/local.d/90-zram.start
-#/dev/mapper/cswap                           none           swap   sw                              0  0
+#/dev/mapper/cswap                          none              swap   sw                          0  0
 
 # NFS EXPORTS, see /etc/exports.
 # DISABLED, BECAUSE PLASMA KIO ZEROCONF IS STILL BUGGED.
 # TO REENABLE, SIMPLY UNCOMMENT THIS LINE AND TYPE "systemctl enable nfs-server".
-#/home/TEMP/flavio/PUBLIC     /mnt/NFS_EXPORT/PUBLIC        none   bind                            0  0
+#/home/TEMP/flavio/PUBLIC     /mnt/NFS_EXPORT/PUBLIC          none   bind                        0  0
 
 # PORTAGE_TMPDIR on tmpfs: not required with /var/tmp on NVME disk (even counterproductive).
 #tmpfs   /var/tmp/portage-tmpfs   tmpfs   defaults,noatime,mode=775,uid=portage,gid=portage,nodev,nosuid   0  0
+
+# BINHOST packages (nfsvers=4 needs only 'nfs' service on firewalld).
+#cerberus.local:/var/cache/binpkgs  /var/cache/binpkgs  nfs  defaults,noauto,softerr,nfsvers=4   0  0

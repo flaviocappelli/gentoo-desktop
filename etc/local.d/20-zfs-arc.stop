@@ -1,0 +1,19 @@
+## by F.C.
+##
+## See also: 20-zfs-arc.start
+##
+## Restore ZFS ARC max size to 1/2 of available ram and min
+## size to 0 (note that a min size 0 does not have immediate
+## effects). Not really required, so it's currently disabled.
+
+#if [ -d /sys/module/zfs/parameters ]; then
+#    MEM_TOTAL_KB=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+#
+#    # ARC size must be in bytes.
+#    ARC_MAX=$(( MEM_TOTAL_KB * 1024 / 2 ))
+#    ARC_MIN=0
+#
+#    # Apply above limits.
+#    echo $ARC_MAX > /sys/module/zfs/parameters/zfs_arc_max
+#    echo $ARC_MIN > /sys/module/zfs/parameters/zfs_arc_min
+#fi
