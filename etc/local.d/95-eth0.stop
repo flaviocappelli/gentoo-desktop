@@ -1,0 +1,12 @@
+## by F.C.
+##
+## See also: 95-eth0.start
+
+
+## Delete the eth0 dummy interface.
+if [ -e /sys/class/net/eth0 ]; then
+  ip link delete dev eth0 type dummy
+  rmmod dummy
+else
+  echo "Interface eth0 not found!"
+fi

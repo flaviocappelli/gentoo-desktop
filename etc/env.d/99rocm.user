@@ -1,0 +1,26 @@
+# by F.C.
+#
+# AMD ROCm is officially supported only on a few consumer-grade GPUs, mainly
+# Radeon RX 7900 GRE and above. Before we can run an application that depends
+# on ROCm (like ollama), we need to present our GPU as supported. This requires
+# setting the "HSA_OVERRIDE_GFX_VERSION" environment variable:
+#
+#   GCN 5th gen GPUs / APUs  ->  HSA_OVERRIDE_GFX_VERSION=9.0.0
+#   RDNA 1 GPUs / APUs       ->  HSA_OVERRIDE_GFX_VERSION=10.1.0
+#   RDNA 2 GPUs / APUs       ->  HSA_OVERRIDE_GFX_VERSION=10.3.0
+#   RDNA 3 GPUs / APUs       ->  HSA_OVERRIDE_GFX_VERSION=11.0.0
+#   ...
+#
+# Also, some APUs on ROCm 6.x might require setting the following variable:
+#
+#   HSA_ENABLE_SDMA=0
+#
+# Reference:
+# https://discuss.linuxcontainers.org/t/rocm-and-pytorch-on-amd-apu-or-gpu-ai/19743
+# https://packages.gentoo.org/useflags/amdgpu_targets_gfx1030
+# https://github.com/ollama/ollama/blob/main/docs/gpu.md
+# https://llvm.org/docs/AMDGPUUsage.html#processors
+
+
+# Settings for GPU Radeon RX 6900 XT.
+HSA_OVERRIDE_GFX_VERSION=10.3.0

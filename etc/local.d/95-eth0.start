@@ -1,0 +1,23 @@
+## by F.C.
+##
+## See also: 95-eth0.stop
+##
+## NOTE: 'eth0' must be set as 'unmanaged' in NM, see
+## /etc/NetworkManager/conf.d/unmanaged-devices.conf
+
+
+## Set the private MAC address for the 'eth0' dummy
+## interface. It is required for the license of the
+## IceCube2 application from Lattice Semiconductor.
+ETH0_MAC=5e:07:33:98:75:ef
+
+## Create the dummy interface 'eth0' with the above
+## specified MAC address. Note that such MAC address
+## must be set after the dummy interface is created.
+if [ ! -e /sys/class/net/eth0 ]; then
+  modprobe dummy numdummies=0
+  ip link add eth0 type dummy
+  ip link set dev eth0 address ${ETH0_MAC}
+else
+    echo "Interface eth0 already exists!"
+fi
