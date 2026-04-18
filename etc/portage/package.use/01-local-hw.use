@@ -1,0 +1,35 @@
+# by F.C.
+#
+# Use flags for custom hardware (see also /etc/portage/make.conf/00-devices.conf).
+
+
+# --------- Settings shared with my laptop (Lenovo Legion Pro 5 16ADR10) ---------
+
+# Use HIP only for AMD video cards.
+dev-util/hip                        -video_cards_nvidia
+
+# Use the open source variant of the drivers (required for 50xx
+# Blackwell or newer GPUs, always enabled for nvidia-drivers > 595).
+x11-drivers/nvidia-drivers          kernel-open
+
+# Install the NVIDIA dynamic boost daemon. This is required to boost the GPU
+# power on some laptops, based on power profile and usage (without this daemon
+# the GPU will be capped to the minimum power used for the power-save profile).
+x11-drivers/nvidia-drivers          powerd
+
+
+# ---- Settings only for my desktop (CPU Ryzen 5900X + GPU Radeon RX 6900 XT) ----
+
+# Following packages can use ROCm or CUDA, not both (at most one of [cuda,rocm] can be enabled).
+
+##dev-python/cupy                   cuda                  # Enable NVidia CUDA support.
+dev-python/cupy                     rocm                  # Enable ROCm support.
+##sci-misc/llama-cpp                cuda                  # Enable NVidia CUDA support.
+sci-misc/llama-cpp                  rocm                  # Enable HIP/ROCm support. Might be slower than Vulkan on consumer GPUs! (see llama-bench).
+##sci-ml/caffe2                     cuda                  # Enable NVidia CUDA support.
+sci-ml/caffe2                       rocm                  # Enable ROCm support.
+##sci-ml/ollama                     cuda                  # Enable NVidia CUDA support.
+sci-ml/ollama                       rocm                  # Enable ROCm support.
+
+# Deps of above packages.
+##acct-user/ollama                  cuda                  # Required by sci-ml/ollama[cuda].

@@ -135,6 +135,8 @@ dev-lang/rust-bin                   rustfmt               # Install 'rustfmt' (R
 
 dev-libs/boost                      context python        # Required by sci-electronics/kicad and other packages.
 dev-libs/boost                      icu                   # Required by games-strategy/wesnoth.
+
+dev-libs/cutlass                    tools                 # Required by sci-ml/caffe2[cuda],
 dev-libs/libdbusmenu                gtk3                  # Required by x11-libs/xapp.
 dev-libs/libpcre                    pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libpcre2                   pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
@@ -151,8 +153,6 @@ dev-libs/zziplib                    -sdl                  # Drop unnecessary dep
 # has been renamed dev-python/pyside; 4) few packages still depends on PyQt5, so probably PyQt5 will be
 # soon removed as well; 5) QtPy does not currently cover all Qt modules available in PyQt6/PySide6.
 
-##dev-python/cupy                   cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
-dev-python/cupy                     rocm                  # Enable ROCm support (at most one of [cuda,rocm] can be enabled).
 dev-python/matplotlib               -wxwidgets            # Do not build the WxWidgets integration (not required).
 dev-python/numpy                    lapack                # Add support for the virtual/lapack numerical library.
 dev-python/pillow                   lcms                  # Required by app-text/pdfarranger.
@@ -311,6 +311,7 @@ dev-util/heaptrack                  gui                   # Build the GUI fronte
 dev-util/kdstatemachineeditor       gui                   # Build the GUI frontend.
 dev-util/kdevelop                   gdbui                 # Enable GUI for attaching GDB to a running process.
 dev-util/kdevelop                   plasma                # Build optional KDE/PLASMA addons (useful for plasmoids).
+dev-util/nvidia-cuda-toolkit        profiler              # Required by sci-ml/caffe2[cuda].
 dev-util/sysprof                    gtk                   # Build the GUI frontend.
 
 ##dev-vcs/git                       cgi                   # Install gitweb too (see https://git-scm.com/book/it/v2/Git-on-the-Server-GitWeb).
@@ -337,7 +338,7 @@ kde-apps/akonadi-config             sqlite                # See https://www.mail
 ##kde-apps/gwenview                 fits                  # Enable support for NASA's sci-libs/cfitsio library.
 ##kde-apps/k3b                      sox                   # Add support for Sound eXchange (SoX).
 kde-apps/kalarm                     -pim                  # Disable PIM integration (I don't need it).
-##kde-apps/kdegraphics-meta         color-management      # Enable color management.
+kde-apps/kdegraphics-meta           color-management      # Enable color management via kde-misc/colord-kde.
 ##kde-apps/kdegraphics-meta         -scanner              # Do not build kde-misc/skanlite (NOTE: not related with kde-apps/kolourpaint[scanner]).
 kde-apps/kdenetwork-meta            -bittorrent           # I don't need bittorrent support (I prefere net-p2p/qbittorrent).
 ##kde-apps/kdenetwork-meta          dropbox               # Popular cloud storage alternative to Google Drive (see also NextCloud).
@@ -583,6 +584,7 @@ net-libs/glib-networking            -gnome                # Unnecessary with KDE
 net-libs/gnutls                     pkcs11 tools          # Required by app-crypt/swtpm.
 ##net-libs/libssh                   server                # Required by dev-db/mysql-workbench.
 net-libs/libwebsockets              libuv                 # Required by net-libs/libwebsockets[smtp].
+net-libs/ngtcp2                     gnutls                # Required by net-fs/samba, virtual/wine, app-emulation/winetricks.
 net-libs/nodejs                     icu                   # Required by net-libs/nodejs[inspector,system-icu] and dev-qt/qtwebengine.
 
 net-misc/freerdp                    icu                   # Re-enable flag +ICU (see the ebuild).
@@ -651,19 +653,13 @@ sci-mathematics/octave              portaudio             # Provides "audioplaye
 sci-mathematics/octave              sndfile               # Add support for reading/writing files containing sampled audio data.
 ##sci-mathematics/octave            sundials              # Enable the "ode15i" and "ode15s" solvers using sci-libs/sundials (octave >= 6.0).
 
-##sci-misc/llama-cpp                cuda                  # Enable NVidia CUDA support.
 sci-misc/llama-cpp                  curl                  # Required for pulling models from "Hugging Face".
-sci-misc/llama-cpp                  rocm                  # Enable HIP/ROCm support. Might be slower than Vulkan on consumer GPUs! (see llama-bench).
 ##sci-misc/llama-cpp                openblas              # Enable OpenBLAS support (not recommended, very slow).
 
-##sci-ml/caffe2                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
 sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
 sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
 sci-ml/caffe2                       openblas              # Enable backends OpenBLAS.
-sci-ml/caffe2                       rocm                  # Enable ROCm support (at most one of [cuda,rocm] can be enabled).
-##sci-ml/ollama                     cuda                  # Enable NVidia CUDA support (at most one of [cuda,rocm] can be enabled).
 sci-ml/ollama                       blas flexiblas        # Enable virtual/blas (flexiblas) support.
-sci-ml/ollama                       rocm                  # Enable ROCm support (at most one of [cuda,rocm] can be enabled).
 sci-ml/ollama                       cpu_flags_x86_bmi2    # Enable support for Bit Manipulation Instructions (required by CPU flags 'avx2' + 'f16c' + 'fma3').
 
 sci-physics/bullet                  double-precision      # Required by media-gfx/blender[bullet].
@@ -671,12 +667,12 @@ sci-physics/bullet                  double-precision      # Required by media-gf
 ##sys-apps/fwupd                    amdgpu                # Build and install AMD dGPU (Navi3x and above) plugin.
 ##sys-apps/fwupd                    cbor                  # Enable CBOR support.
 ##sys-apps/fwupd                    flashrom              # Enable flashrom plugin via sys-apps/flashrom.
-##sys-apps/fwupd                    gnutls                # Prefer net-libs/gnutls as SSL/TLS provide (required by 'synaptics' and 'uefi' use flag).
-##sys-apps/fwupd                    nvme                  # Build and install NVMe plugin.
+sys-apps/fwupd                      gnutls                # Prefer net-libs/gnutls as SSL/TLS provide (required by 'synaptics' and 'uefi' use flag).
+sys-apps/fwupd                      nvme                  # Build and install NVMe plugin.
 ##sys-apps/fwupd                    spi                   # Install Intel-SPI plugin.
 ##sys-apps/fwupd                    synaptics             # Install synaptics plugin.
 ##sys-apps/fwupd                    tpm                   # Install Trusted Platform Module plugin.
-##sys-apps/fwupd                    uefi                  # Enable UEFI support (required by 'dell' use flag).
+sys-apps/fwupd                      uefi                  # Enable UEFI support (required by 'dell' use flag).
 sys-apps/kmod                       pkcs7                 # Required to get the module signature. See https://wiki.gentoo.org/wiki/Signed_kernel_module_support
 ##sys-apps/systemd                  bpf                   # Enable BPF support for sandboxing and firewalling.
 sys-apps/shadow                     -cracklib             # USE flags 'pam' and 'cracklib' cannot be both enabled (from CLD).
@@ -708,7 +704,7 @@ sys-boot/plymouth                   pango                 # Re-enable flag +PANG
 sys-devel/binutils                  pgo                   # Build binutils with Profile Guided Optimization (PGO).
 sys-devel/distcc                    -ipv6                 # Disable IPv6 support (IPv4 should be enough on the LAN).
 sys-devel/distcc                    zeroconf              # Support for DNS Service Discovery (DNS-SD).
-sys-devel/gcc                       ada                   # Enable ADA frontend (SEE ALSO /etc/portage/make.conf/00-ada.conf).
+##sys-devel/gcc                     ada                   # Enable ADA frontend (SEE ALSO /etc/portage/make.conf/00-ada.conf).
 sys-devel/gcc                       graphite              # Add support for the framework for loop optimizations based on a polyhedral intermediate representation.
 ##sys-devel/gcc                     lto                   # Build GCC using Link Time Optimizations (LTO).
 sys-devel/gcc                       pgo                   # Build GCC using Profile Guided Optimization (PGO).

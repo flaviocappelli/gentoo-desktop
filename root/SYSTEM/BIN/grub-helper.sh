@@ -56,7 +56,7 @@ show_usage_and_exit() {
 gen_initramfs()
 {
     echo "INITRAMFS GENERATION"
-    dracut --force
+    dracut -v --force
     echo ""
 }
 

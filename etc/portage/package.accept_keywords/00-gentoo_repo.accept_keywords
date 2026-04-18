@@ -3,6 +3,9 @@
 # Ebuilds from the gentoo official repository.
 # NOTE: sign ~ (tilde) let in -r# package revisions.
 
+# Stable version fails to build (required by fwupd).
+~sys-apps/fwupd-efi-1.8::gentoo
+
 # Use LLVM 21 instead of LLVM 20.
 ~dev-util/bcc-0.35.0::gentoo
 
@@ -51,14 +54,14 @@ media-libs/avidemux-plugins::gentoo
 media-libs/aften::gentoo
 media-sound/dcaenc::gentoo
 
-# KiCad (meta package, latest version).
-sci-electronics/kicad-meta::gentoo
-app-doc/kicad-doc::gentoo
-sci-electronics/kicad::gentoo
-sci-electronics/kicad-footprints::gentoo
-sci-electronics/kicad-packages3d::gentoo
-sci-electronics/kicad-symbols::gentoo
-sci-electronics/kicad-templates::gentoo
+# KiCad (meta package, latest 9.x version).
+<sci-electronics/kicad-meta-10.0.0::gentoo
+<app-doc/kicad-doc-10.0.0::gentoo
+<sci-electronics/kicad-10.0.0::gentoo
+<sci-electronics/kicad-footprints-10.0.0::gentoo
+<sci-electronics/kicad-packages3d-10.0.0::gentoo
+<sci-electronics/kicad-symbols-10.0.0::gentoo
+<sci-electronics/kicad-templates-10.0.0::gentoo
 
 # Godot Engine.
 dev-games/godot::gentoo
@@ -268,8 +271,13 @@ dev-cpp/frugally-deep::gentoo
 dev-cpp/functional-plus::gentoo
 dev-libs/half::gentoo
 dev-libs/rccl:0/6.4::gentoo                 # Same slot of dev-util/hip.
+dev-python/cppheaderparser::gentoo
+dev-util/roctracer:0/6.4::gentoo            # Same slot of dev-util/hip.
 sci-libs/composable-kernel:0/6.4::gentoo    # Same slot of dev-util/hip.
 sci-libs/hipBLASLt:0/6.4::gentoo            # Same slot of dev-util/hip and sci-libs/hipBLAS.
 sci-libs/miopen:0/6.4::gentoo               # Same slot of dev-util/hip and sci-libs/rocBLAS.
-dev-python/cppheaderparser::gentoo
-dev-util/roctracer:0/6.4::gentoo            # Same slot of dev-util/hip.
+# ---- CUDA backend deps ----
+dev-libs/cudnn::gentoo
+dev-libs/cutlass::gentoo
+dev-util/nvidia-cuda-toolkit::gentoo
+sci-ml/cudnn-frontend::gentoo

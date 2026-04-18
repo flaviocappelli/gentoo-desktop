@@ -43,3 +43,6 @@ This service (currently not used) can be enabled to carry
 out some actions required to solve anomalous behaviors (if
 any) that might occur after resuming from a system suspend
 in RAM (e.g. reload of modules, special settings, etc).
+
+We can also define custom root/users' pre-suspend and post-resume services, see:
+https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate#Sleep_hooks
