@@ -152,12 +152,12 @@ GRUB_TIMEOUT=5
 # LENOVO LAPTOP LEGION PRO 5 16ADR10
 #  * If suspend-to-ram (S3) wakes up after 1s, add "gpiolib_acpi.ignore_interrupt=AMDI0030:00@4"
 #    (see https://wiki.archlinux.org/title/Power_management/Wakeup_triggers#Ryzen_7000_Series).
-#    NOTE: This might be due to MT7921 module; TODO - recheck with AX210 module when installed.
-#    NOTE: MT7921 in kernel 6.18.18 causes kernel freezes on tranfer of large files (6/8GB+).
+#  * The MT7921 WiFi module causes kernel freeze during large transfers (8GB+) in kernel 6.18.x
+#    (tested up to 6.18.25, then I switched to an AX210 WiFi module and such issue went away).
 #  * There's currently a bug in the amdgpu driver that causes a kernel crash (with total freezes):
 #      amdgpu 0000:06:00.0: [drm] *ERROR* flip_done timed out
 #      amdgpu 0000:06:00.0: [drm] *ERROR* [CRTC:80:crtc-0] commit wait timed out
-#    Add "amdgpu.dcdebugmask=0x10" to mitigate (causes more battery drain). Patches discussions:
+#    Add "amdgpu.dcdebugmask=0x10" as workaround (causes more battery drain). Discussions:
 #      https://lore.kernel.org/amd-gfx/20260305222131.160914-1-sunpeng.li@amd.com/
 #      https://gitlab.freedesktop.org/drm/amd/-/work_items/2950
 #      https://gitlab.freedesktop.org/drm/amd/-/work_items/3787
