@@ -118,7 +118,6 @@ dev-vcs/repo
 dev-vcs/subversion
 games-board/gnome-chess
 games-board/gnuchess
-games-emulation/ryujinx-bin
 games-engines/uzdoom
 games-fps/xonotic
 gnome-base/dconf-editor
@@ -254,7 +253,6 @@ sci-mathematics/lean
 sci-mathematics/octave
 sci-mathematics/wxmaxima
 sci-misc/llama-cpp
-sci-ml/ollama
 sci-ml/pytorch
 sys-apps/cpuid
 sys-apps/dmidecode
@@ -312,8 +310,9 @@ sys-power/acpid
 sys-power/cpupower
 sys-process/btop
 sys-process/htop
-sys-process/iotop
+sys-process/iotop-c
 sys-process/lsof
+sys-process/nvtop
 sys-process/parallel
 virtual/linux-sources
 www-client/falkon
