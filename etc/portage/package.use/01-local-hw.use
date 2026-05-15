@@ -8,10 +8,6 @@
 # Use HIP only for AMD video cards.
 dev-util/hip                        -video_cards_nvidia
 
-# Use the open source variant of the drivers (required for 50xx
-# Blackwell or newer GPUs, always enabled for nvidia-drivers > 595).
-x11-drivers/nvidia-drivers          kernel-open
-
 # Install the NVIDIA dynamic boost daemon. This is required to boost the GPU
 # power on some laptops, based on power profile and usage (without this daemon
 # the GPU will be capped to the minimum power used for the power-save profile).

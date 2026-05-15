@@ -5,11 +5,9 @@
 #
 # Copied from 'stuff' overlay with python min version bump and other modifications.
 #
-# NOTE: the upcoming v14 release will add support for ROCm-7.x and drop support for
-# cuda-11 and cudnn (upstream recommends "cuDNN Frontend" for cuDNN functionality
-# from Python).
-#
-# This ebuild has been tested only with ROCm (I don't have CUDA devices).
+# NOTE: the new v14 release adds support for ROCm-7.x but drops support for ROCm-6.x,
+# cuda-11 and cudnn (upstream recommends "cuDNN Frontend" for cuDNN functionality from
+# Python). NOTE: version 14.0.1 still has some issues, better wait for 14.1.0.
 
 EAPI=8
 

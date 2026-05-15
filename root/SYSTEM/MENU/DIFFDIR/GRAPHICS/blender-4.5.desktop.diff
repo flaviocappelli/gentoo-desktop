@@ -1,15 +1,15 @@
---- /usr/share/applications/blender-4.4.desktop	2025-05-03 16:49:54.714734304 +0200
-+++ ./blender-4.4.desktop	2025-05-03 16:53:03.512890970 +0200
+--- /usr/share/applications/blender-4.5.desktop	2026-05-13 23:29:47.713580072 +0200
++++ ./blender-4.5.desktop	2026-05-13 23:41:45.446948305 +0200
 @@ -1,13 +1,14 @@
  [Desktop Entry]
--Name=Blender 4.4
+-Name=Blender 4.5
 -GenericName=3D modeler
 -GenericName[it]=Modellatore 3D
 +Name=Blender
 +GenericName=3D Modeling
 +GenericName[it]=Modellazione 3D
- Exec=blender-4.4 %f
--Icon=blender-4.4
+ Exec=blender-4.5 %f
+-Icon=blender-4.5
 +Icon=blender
  Terminal=false
  Type=Application

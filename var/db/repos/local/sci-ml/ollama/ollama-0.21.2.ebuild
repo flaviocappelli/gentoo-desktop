@@ -74,20 +74,16 @@ COMMON_DEPEND="
 	)
 	cuda? (
 		dev-util/nvidia-cuda-toolkit:=
-		x11-drivers/nvidia-drivers
 	)
 	rocm? (
 		>=sci-libs/hipBLAS-${ROCM_VERSION}:=
-	)
-	vulkan? (
-		media-libs/vulkan-loader
 	)
 	systemd? ( sys-apps/systemd )
 "
 
 DEPEND="
 	${COMMON_DEPEND}
-	>=dev-lang/go-1.23.4
+	>=dev-lang/go-1.24.1
 "
 BDEPEND="
 	vulkan? (
@@ -104,7 +100,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-use-GNUInstallDirs.patch"
-	"${FILESDIR}/${PN}-9999-make-installing-runtime-deps-optional.patch"
+	"${FILESDIR}/${PN}-0.18.0-make-installing-runtime-deps-optional.patch"
 )
 
 pkg_pretend() {
@@ -136,7 +132,7 @@ pkg_setup() {
 		fi
 	fi
 	if use cuda; then
-		einfo "This ebuild has not yet been tested with CUDA (I don't have an NVidia GPU)"
+		einfo "This ebuild has not yet been tested with CUDA"
 	fi
 }
 
@@ -159,7 +155,6 @@ src_prepare() {
 		-i CMakeLists.txt || die "Disable CCACHE sed failed"
 
 	# TODO see src_unpack?
-	# bug 963401
 	sed \
 		-e "s/ -O3//g" \
 		-i \
@@ -382,6 +377,10 @@ pkg_postinst() {
 		einfo "won't detect the GPU. The ebuild ensures this via 'acct-user/ollama[cuda]'."
 	fi
 
+	einfo
+	einfo "Ollama binds 127.0.0.1 port 11434 by default."
+	einfo "Change the bind address with the OLLAMA_HOST environment variable."
+	einfo "See https://docs.ollama.com/faq for more info"
 	einfo
 	einfo "See available models at https://ollama.com/library"
 }

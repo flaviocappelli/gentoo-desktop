@@ -185,7 +185,7 @@ dev-python/pyqt6                    xml                   # Required by dev-pyth
 dev-python/pyqt6-webengine          quick                 # Required by dev-python/qtpy[pyqt6 + webengine + quick].
 dev-python/pyqt6-webengine          widgets               # Required by app-text/calibre, dev-python/qtpy[pyqt6 + webengine + widgets].
 ##dev-python/pyside                 3d                    # Build Qt3DCore, Qt3DAnimation, Qt3DExtras, Qt3DInput, Qt3DLogic, and Qt3DRender modules. NOT AVAILABLE IN QtPy.
-##dev-python/pyside                 charts                # Build QtCharts module. NOT AVAILABLE IN QtPy.
+dev-python/pyside                   charts                # Build QtCharts module. NOT AVAILABLE IN QtPy.
 dev-python/pyside                   designer              # Required by dev-python/qtpy[pyside6 + designer].
 dev-python/pyside                   gui                   # Required by dev-python/qtpy[pyside6 + gui].
 dev-python/pyside                   help                  # Required by dev-python/qtpy[pyside6 + help].
@@ -300,7 +300,6 @@ dev-qt/qtwebengine                  widgets               # Required by many pac
 dev-qt/qtwebengine                  pdfium                # Required by media-gfx/skanpage, dev-python/pyqt6[pdfium], dev-python/pyside[pdfium].
 dev-qt/qtwebengine                  qml                   # Required by dev-qt/qtwebview, kde-apps/kaccounts-providers, net-libs/signon-ui.
 dev-qt/qtwebsockets                 qml                   # Build QML bindings.
-dev-qt/qtxmlpatterns                qml                   # Build the XmlListModel import for QtQuick.
 
 ##dev-util/cutter                   graphviz              # Add graphviz support.
 dev-util/gammaray                   3d                    # Build the Qt3D plugin.
@@ -593,7 +592,6 @@ net-misc/networkmanager             iptables              # Required by net-misc
 ##net-misc/networkmanager           ofono                 # Use net-misc/ofono for telephony support.
 ##net-misc/networkmanager           resolvconf            # Use net-dns/openresolv for managing DNS information in /etc/resolv.conf (useful with OpenRC).
 net-misc/spice-gtk                  usbredir              # Required by app-emulation/virt-manager[gui].
-net-misc/whois                      xcrypt                # Use sys-libs/libxcrypt (for support of 'yescrypt' method in mkpasswd).
 
 ##net-nds/openldap                  -minimal              # Uncomment to enable the LDAP daemon (at the moment, I don't need it).
 
@@ -639,7 +637,6 @@ sci-libs/miopen                     composable-kernel     # Use composable-kerne
 ##sci-libs/miopen                   hipblaslt             # Use hipBLASLt (disabled because my GPU is not currently supported by hipBLASLt).
 sci-libs/miopen                     rocblas               # Build with rocBLAS support.
 sci-libs/netcdf                     -dap                  # Support for remote data access not required.
-sci-libs/opencascade                -ffmpeg               # Prevents opencascade to pull in ffmpeg < 5 (downgrade). Support of ffmpeg is not required.
 sci-libs/opencascade                json                  # Required by media-gfx/freecad.
 sci-libs/vtk                        tbb                   # Use dev-cpp/tbb to handle smp support (from CLD).
 
@@ -675,7 +672,6 @@ sys-apps/fwupd                      nvme                  # Build and install NV
 sys-apps/fwupd                      uefi                  # Enable UEFI support (required by 'dell' use flag).
 sys-apps/kmod                       pkcs7                 # Required to get the module signature. See https://wiki.gentoo.org/wiki/Signed_kernel_module_support
 ##sys-apps/systemd                  bpf                   # Enable BPF support for sandboxing and firewalling.
-sys-apps/shadow                     -cracklib             # USE flags 'pam' and 'cracklib' cannot be both enabled (from CLD).
 sys-apps/systemd                    cryptsetup            # Enable cryptsetup tools (includes unit generator for crypttab).
 sys-apps/systemd                    elfutils              # Enable coredump stacktraces in the journal.
 ##sys-apps/systemd                  fido2                 # Enable FIDO2 support, i.e. unlocking LUKS2 volumes with FIDO2 token (dmesg +FIDO2).

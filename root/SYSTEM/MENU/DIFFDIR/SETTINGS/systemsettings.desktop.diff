@@ -1,5 +1,5 @@
---- /usr/share/applications/systemsettings.desktop	2024-09-02 21:57:22.730037149 +0200
-+++ ./systemsettings.desktop	2024-09-02 21:59:28.273352989 +0200
+--- /usr/share/applications/systemsettings.desktop	2026-04-28 11:06:26.842771994 +0200
++++ ./systemsettings.desktop	2026-04-28 11:09:25.474434707 +0200
 @@ -1,9 +1,9 @@
  [Desktop Entry]
  OnlyShowIn=KDE;
@@ -17,7 +17,7 @@
 @@ -16,34 +16,3 @@
  X-DBUS-StartupType=Unique
  X-DBUS-ServiceName=org.kde.systemsettings
- X-KDE-Shortcuts=Tools
+ X-KDE-Shortcuts=Tools,Meta+I
 -Actions=kcm-lookandfeel;kcm-users;kcm-screenlocker;kcm-powerdevilprofilesconfig;kcm-kscreen;
 -
 -[Desktop Action kcm-lookandfeel]

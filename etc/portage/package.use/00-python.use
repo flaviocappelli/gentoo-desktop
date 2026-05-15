@@ -109,5 +109,6 @@ dev-python/truststore               python_targets_python3_12
 dev-python/typing-extensions        python_targets_python3_12
 dev-python/uc-micro-py              python_targets_python3_12
 dev-python/urllib3                  python_targets_python3_12
+dev-python/vcs-versioning           python_targets_python3_12
 dev-python/wheel                    python_targets_python3_12
 dev-python/zstandard                python_targets_python3_12
