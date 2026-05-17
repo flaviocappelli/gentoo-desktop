@@ -31,7 +31,7 @@
 # - A list of USE flags is available in https://www.gentoo.org/support/use-flags.
 
 
-## acct-user/git                    gitea                 # Prefere 'gitea' hosting (see the ebuild and https://gitea.com/) (from CLD).
+##acct-user/git                     gitea                 # Prefere 'gitea' hosting (see the ebuild and https://gitea.com/) (from CLD).
 
 app-accessibility/speech-dispatcher -espeak               # Drop unnecessary dependency (from CLD).
 
@@ -62,7 +62,7 @@ app-emulation/qemu                  spice usbredir        # Required by app-emul
 ##app-emulation/qemu                ssh                   # Enable SSH based block device support via net-libs/libssh2.
 app-emulation/qemu                  virtfs                # Enable VirtFS via virtio-9p-pci (i.e. shared folders). See https://wiki.qemu.org/Documentation/9psetup.
 ##app-emulation/qemu                virgl                 # Enable experimental Virgil 3D (virtual software GPU).
-app-emulation/vice                  -sdl                  # Support for Simple Direct Layer not required with flag 'gtk' enabled (GTK3 interface recommend).
+app-emulation/vice                  -sdl gtk              # Support for Simple Direct Layer not required with flag 'gtk' enabled (GTK3 interface recommend).
 app-emulation/virt-manager          gui                   # Build the GUI frontend (required).
 app-emulation/virtualbox            gui                   # Build the GUI frontend (VirtualBox-7.x).
 app-emulation/wine-proton           -gstreamer            # Drop unnecessary dependency (gstreamer should be used only for streaming) (from CLD).
@@ -130,8 +130,6 @@ dev-lang/php                        sqlite                # Add support for sqli
 dev-lang/php                        xml                   # Required by dev-lang/php[simplexml].
 dev-lang/python                     bluetooth             # Build Bluetooth protocol support in socket module (from CLD).
 ##dev-lang/python                   pgo                   # Build using Profile Guided Optimization (PGO).
-dev-lang/rust                       rustfmt               # Install 'rustfmt' (Rust code formatter) (from CLD).
-dev-lang/rust-bin                   rustfmt               # Install 'rustfmt' (Rust code formatter) (from CLD).
 
 dev-libs/boost                      context python        # Required by sci-electronics/kicad and other packages.
 dev-libs/boost                      icu                   # Required by games-strategy/wesnoth.
@@ -150,8 +148,8 @@ dev-libs/zziplib                    -sdl                  # Drop unnecessary dep
 # QtPy is a small abstraction layer for PyQt5/PySide2 (Qt5) and PyQt6/PySide6 (Qt6): it is very useful
 # for fast prototyping (see https://github.com/spyder-ide/qtpy/). NOTES: 1) Gentoo has recently dropped
 # support for Qt5 in QtPy; 2) PySide2 has been removed from portage; 3) dev-python/pyside6 (i.e. PySide6)
-# has been renamed dev-python/pyside; 4) few packages still depends on PyQt5, so probably PyQt5 will be
-# soon removed as well; 5) QtPy does not currently cover all Qt modules available in PyQt6/PySide6.
+# has been renamed dev-python/pyside; 4) few packages depends on PyQt5 and Qt5 has been masked, so PyQt5
+# will be soon removed as well; 5) QtPy does not currently cover all Qt modules available in PyQt6/PySide6.
 
 dev-python/matplotlib               -wxwidgets            # Do not build the WxWidgets integration (not required).
 dev-python/numpy                    lapack                # Add support for the virtual/lapack numerical library.
@@ -159,7 +157,6 @@ dev-python/pillow                   lcms                  # Required by app-text
 dev-python/pyqt6                    designer              # Required by dev-python/qtpy[pyqt6 + designer].
 dev-python/pyqt6                    gui                   # Required by dev-python/qtpy[pyqt6 + gui].
 dev-python/pyqt6                    help                  # Required by dev-python/qtpy[pyqt6 + help].
-##dev-python/pyqt6                  location              # Build bindings for the QtLocation module (does not yet exist for PyQt6). NOT AVAILABLE IN QtPy.
 dev-python/pyqt6                    multimedia            # Required by dev-python/qtpy[pyqt6 + multimedia].
 dev-python/pyqt6                    network               # Required by dev-python/qtpy[pyqt6 + network].
 ##dev-python/pyqt6                  nfc                   # Required by dev-python/qtpy[pyqt6 + nfc].
@@ -189,7 +186,7 @@ dev-python/pyside                   charts                # Build QtCharts modul
 dev-python/pyside                   designer              # Required by dev-python/qtpy[pyside6 + designer].
 dev-python/pyside                   gui                   # Required by dev-python/qtpy[pyside6 + gui].
 dev-python/pyside                   help                  # Required by dev-python/qtpy[pyside6 + help].
-##dev-python/pyside                 location              # Build QtLocation module. NOT AVAILABLE IN QtPy.
+##dev-python/pyside                 location              # Build QtLocation module. NOT AVAILABLE IN QtPy (nor PyQt6).
 dev-python/pyside                   multimedia            # Required by dev-python/qtpy[pyside6 + multimedia].
 dev-python/pyside                   network               # Required by dev-python/qtpy[pyside6 + network].
 ##dev-python/pyside                 network-auth          # Build QtNetworkAuth module. NOT AVAILABLE IN QtPy.
@@ -276,20 +273,11 @@ dev-qt/qtbase                       -mysql                # MySQL/MariaDB suppor
 dev-qt/qtbase                       gui widgets xml       # Required by dev-qt/qtbase and other Qt6 packages.
 dev-qt/qtbase                       icu                   # Required by dev-qt/qt5compat, kde-frameworks/kcoreaddons.
 dev-qt/qtcharts                     qml                   # Required by kde-misc/kweather.
-dev-qt/qtcore                       icu                   # Required by kde-frameworks/kcoreaddons:5.
 dev-qt/qtdeclarative                widgets               # Required by many packages (see "equery depends dev-qt/qtdeclarative").
-dev-qt/qtgui                        -vnc                  # Drop unnecessary dependency (from CLD).
-dev-qt/qtgui                        egl                   # Required by dev-qt/qtwayland:5 and kde-plasma/kwayland:5.
 dev-qt/qtimageformats               mng                   # Required by app-editors/qxmledit.
 dev-qt/qtmultimedia                 qml                   # Required by dev-libs/kirigami-addons, kde-misc/kdeconnect, net-im/neochat.
-##dev-qt/qtnetwork                  sctp                  # Add support for Stream Control Transmission Protocol (i.e. QSctpServer & QSctpSocket).
 dev-qt/qtpositioning                geoclue               # Required by kde-misc/kweather.
 dev-qt/qtpositioning                qml                   # Required by dev-qt/qtlocation.
-dev-qt/qtsql                        -mysql                # MySQL/MariaDB support not required (see also 'kde-apps/akonadi' below) (from CLD).
-##dev-qt/qtsql                      odbc                  # Add ODBC Support (Open DataBase Connectivity).
-##dev-qt/qtsql                      postgres              # Required by kde-apps/akonadi[postgres].
-dev-qt/qtquickcontrols              widgets               # Enable QtWidgets support.
-dev-qt/qtquickcontrols2             widgets               # Enable QtWidgets support.
 dev-qt/qtsensors                    qml                   # Required by dev-python/pyside[sensors].
 dev-qt/qtspeech                     qml                   # Required by net-im/neochat (pulled in by kde-apps/kdenetwork-meta[webengine]).
 dev-qt/qttools                      designer qdoc qml     # Required by dev-qt/qt-creator >= 12 (Qt6 based).
@@ -327,7 +315,7 @@ gnome-base/gvfs                     mtp                   # Enable support for M
 
 gui-libs/libdecor                   gtk                   # Re-enable flag +GTK (see the ebuild).
 
-# Portage has now only KDE/PLASMA6. Applications that still depends on KF5/Qt5 need kde-plasma/plasma-meta[qt5].
+# In Gentoo only KDE/PLASMA6 is available; also Qt5 has been masked and will be soon removed from portage.
 # NOTE: kde-apps/kdeutils-meta is not required, just some dipendencies (see the ebuild and the USE flags below).
 
 kde-apps/akonadi                    -designer -xml        # Drop unnecessary dependency (from CLD).
@@ -512,7 +500,7 @@ media-video/mjpegtools              -quicktime            # Drop unnecessary dep
 ##media-video/mpv                   archive               # Enable support to play directly from various archives via app-arch/libarchive.
 ##media-video/mpv                   sdl                   # Enable media-libs/libsdl2 based video and audio outputs (NOTE: these outputs exist for compatibility reasons only, avoid if possible).
 media-video/obs-studio              lua                   # Enable Lua scripting support (see https://wiki.gentoo.org/wiki/OBS_Studio).
-media-video/obs-studio              vlc                   # Enable VLC media source support (see https://www.youtube.com/watch?v=Gr3XIo7exSg).
+##media-video/obs-studio            vlc                   # Enable VLC media source support (see https://www.youtube.com/watch?v=Gr3XIo7exSg). Requires VLC < 4.0 whose GUI has been disabled due to Qt5 masked.
 media-video/pipewire                echo-cancel           # Enable WebRTC-based echo canceller via media-libs/webrtc-audio-processing.
 media-video/pipewire                extra                 # Build pw-cat/pw-play/pw-record. Required by pipewire[ffmpeg].
 media-video/pipewire                gstreamer             # Add support for media-libs/gstreamer (Streaming media) (from CLD).
@@ -593,7 +581,7 @@ net-misc/networkmanager             iptables              # Required by net-misc
 ##net-misc/networkmanager           resolvconf            # Use net-dns/openresolv for managing DNS information in /etc/resolv.conf (useful with OpenRC).
 net-misc/spice-gtk                  usbredir              # Required by app-emulation/virt-manager[gui].
 
-##net-nds/openldap                  -minimal              # Uncomment to enable the LDAP daemon (at the moment, I don't need it).
+##net-nds/openldap                  -minimal              # Uncomment to enable the LDAP daemon (for the time being, I don't need it).
 
 ##net-p2p/amule                     geoip                 # Add geoip support for country and city lookup based on IPs.
 net-p2p/amule                       gui                   # Build the GUI frontend.
@@ -603,10 +591,9 @@ net-p2p/qbittorrent                 gui                   # Build the GUI fronte
 net-print/cups                      zeroconf              # Required by net-print/cups-meta[zeroconf].
 net-print/cups                      -X                    # Drop unnecessary dependency (from CLD).
 net-print/cups-meta                 zeroconf              # Enable network printer discovery through Bonjour protocol (DNS-SD).
-net-print/gutenprint                gimp ppds             # Build a plugin for the GIMP and add support for automatically generated ppd (from CLD).
+net-print/gutenprint                ppds                  # Add support for automatically generated ppd (from CLD).
 net-print/hplip                     fax                   # Enable fax on multifunction devices which support it.
 net-print/hplip                     hpijs                 # Build the IJS driver for cups (from CLD).
-net-print/hplip                     qt5                   # Build the "HP Device Manager" Qt GUI (from CLD).
 net-print/hplip                     scanner               # Enable scanner on multifunction devices which support it .
 net-print/hplip                     -X                    # Do not pull in any scanner GUI (from CLD).
 
@@ -742,8 +729,6 @@ x11-libs/vte                        icu                   # Re-enable flag +ICU 
 x11-libs/xapp                       vala                  # Required by app-backup/timeshift (for xapp >= 2.8.5).
 
 x11-misc/xdg-user-dirs              gtk                   # Integrates xdg-user-dirs into gnome/gtk applications (not sure if required with KDE/PLASMA).
-
-x11-themes/gtk-engines-murrine      -themes               # Does not install default "Murrine" themes.
 
 
 # From 'eselect news' 2024-05-17 (Changes to dracut kernel module/microcode handling):
