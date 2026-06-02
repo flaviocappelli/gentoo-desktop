@@ -17,8 +17,8 @@
 #    - First, enable both Python 3.13 and Python 3.14, and run the 1st
 #      upgrade (see below):
 #
-#        */* PYTHON_TARGETS: -* python3_13 python3_14
-#        */* PYTHON_SINGLE_TARGET: -* python3_13
+        */* PYTHON_TARGETS: -* python3_13 python3_14
+        */* PYTHON_SINGLE_TARGET: -* python3_13
 #
 #    - Then switch PYTHON_SINGLE_TARGET and run the 2nd upgrade:
 #

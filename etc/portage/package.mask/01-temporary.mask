@@ -5,6 +5,3 @@
 # NOTE: on any issue with VirtualBox >= 7.1.8 remove
 # ~/.VirtualBox and reimport all VMs (recent versions
 # have configuration in ~/.config/VirtualBox).
-
-# Do not pull in Python 3.14 until really required.
->=dev-lang/python-3.14.0
