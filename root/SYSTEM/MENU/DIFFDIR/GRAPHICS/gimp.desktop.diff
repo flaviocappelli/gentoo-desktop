@@ -1,22 +1,20 @@
---- /usr/share/applications/gimp.desktop	2026-02-17 15:10:32.009832012 +0100
-+++ ./gimp.desktop	2026-02-17 15:13:48.356092029 +0100
-@@ -1,16 +1,15 @@
+--- /usr/share/applications/gimp.desktop	2026-05-19 13:30:06.709498942 +0200
++++ ./gimp.desktop	2026-05-19 13:33:09.471900590 +0200
+@@ -1,14 +1,15 @@
  [Desktop Entry]
 -Name=GNU Image Manipulation Program
 -Name[it]=GNU Image Manipulation Program
 +Name=Gimp
  GenericName=Image Editor
--GenericName[it]=Ritocco immagini
 +GenericName[it]=Editor di immagini
- TryExec=gimp-3.0
- Exec=gimp-3.0 %U
+ TryExec=gimp-3.2
+ Exec=gimp-3.2 %U
  Icon=gimp
  Terminal=false
  Type=Application
- MimeType=image/x-xcf;application/pdf;application/postscript;application/x-navi-animation;image/avif;image/bmp;image/dds;image/g3-fax;image/gif;image/heif;image/hej2k;image/jp2;image/jpeg;image/jxl;image/openraster;image/png;image/svg+xml;image/tiff;image/vnd.microsoft.icon;image/vnd.wap.wbmp;image/webp;image/x-dcm;image/x-dcx;image/x-exr;image/x-flic;image/x-icns;image/x-ico;image/x-jp2-codestream;image/x-pcx;image/x-pixmap;image/x-portable-anymap;image/x-psd;image/x-psp;image/x-sgi;image/x-sun-raster;image/x-tga;image/x-wmf;image/x-xbitmap;image/x-xwindowdump
+ MimeType=image/x-xcf;application/pdf;application/postscript;application/x-navi-animation;image/apng;image/avci;image/avif;image/bmp;image/dds;image/g3-fax;image/gif;image/heif;image/hej2k;image/jp2;image/jpeg;image/jxl;image/openraster;image/png;image/svg+xml;image/tiff;image/vnd.microsoft.icon;image/vnd.wap.wbmp;image/webp;image/x-dcm;image/x-dcx;image/x-exr;image/x-flic;image/x-icns;image/x-ico;image/x-jp2-codestream;image/x-pcx;image/x-pixmap;image/x-portable-anymap;image/x-psd;image/x-psp;image/x-seattle-filmcamera;image/x-sgi;image/x-sun-raster;image/x-tga;image/x-wmf;image/x-xbitmap;image/x-xwindowdump
 -Categories=Graphics;2DGraphics;RasterGraphics;GTK;
 -Keywords=GIMP;graphic;design;illustration;painting;
--Keywords[it]=GIMP;grafica;design;illustrazione;disegno;fotoritocco;composizione;
 +Categories=Graphics;
 +Keywords=images;photos;graphic;design;illustration;painting;
 +Keywords[it]=immagine;foto;grafica;disegno;illustrazioni;pittura;fotoritocco;

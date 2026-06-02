@@ -54,14 +54,14 @@ media-libs/avidemux-plugins::gentoo
 media-libs/aften::gentoo
 media-sound/dcaenc::gentoo
 
-# KiCad (meta package, latest 9.x version).
-<sci-electronics/kicad-meta-10.0.0::gentoo
-<app-doc/kicad-doc-10.0.0::gentoo
-<sci-electronics/kicad-10.0.0::gentoo
-<sci-electronics/kicad-footprints-10.0.0::gentoo
-<sci-electronics/kicad-packages3d-10.0.0::gentoo
-<sci-electronics/kicad-symbols-10.0.0::gentoo
-<sci-electronics/kicad-templates-10.0.0::gentoo
+# KiCad (emerge meta package).
+app-doc/kicad-doc::gentoo
+sci-electronics/kicad::gentoo
+sci-electronics/kicad-footprints::gentoo
+sci-electronics/kicad-meta::gentoo
+sci-electronics/kicad-packages3d::gentoo
+sci-electronics/kicad-symbols::gentoo
+sci-electronics/kicad-templates::gentoo
 
 # Godot Engine.
 dev-games/godot::gentoo

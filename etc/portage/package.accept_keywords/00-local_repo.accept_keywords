@@ -70,9 +70,11 @@ sci-ml/ollama::local
 dev-python/cupy::local
 dev-python/fastrlock::local
 
-# Nintendo Switch Emulator. See:
-# https://git.ryujinx.app/ryubing/ryujinx/
-games-emulation/ryujinx-bin::local
-
 # Clazy with latest fixes (see the ebuild).
 dev-util/clazy::local
+
+# Blender in portage is too old; also Python 11 has been disabled
+# from PYTHON_COMPAT, so the stable ebuild currently fails. This
+# ebuild fix it and bump blender to the latest LTS version. See:
+# https://bugs.gentoo.org/973408, https://bugs.gentoo.org/976618
+media-gfx/blender::local

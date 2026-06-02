@@ -20,27 +20,28 @@ KEYWORDS="~amd64"
 IUSE="+ngspice"
 
 DEPEND="
-	dev-qt/qtbase:6[gui,opengl,widgets]
+	dev-qt/qtbase:6[gui,opengl,widgets,xml]
 	dev-qt/qtcharts:6
-	dev-qt/qttools:6
 	dev-qt/qtsvg:6
 	"
+
 RDEPEND="
 	${DEPEND}
 	ngspice? ( sci-electronics/ngspice )
 	"
+
 BDEPEND="
-	app-text/dos2unix
-	dev-util/gperf
-	dev-vcs/git
-	sys-devel/bison
+	dev-qt/qttools:6[linguist]
 	sys-devel/flex
+	sys-devel/bison
+	dev-util/gperf
+	app-text/dos2unix
 	"
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	xdg_icon_cache_update
+	xdg_pkg_postrm
 }
