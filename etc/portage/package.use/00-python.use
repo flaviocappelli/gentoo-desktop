@@ -17,13 +17,13 @@
 #    - First, enable both Python 3.13 and Python 3.14, and run the 1st
 #      upgrade (see below):
 #
-        */* PYTHON_TARGETS: -* python3_13 python3_14
-        */* PYTHON_SINGLE_TARGET: -* python3_13
+#        */* PYTHON_TARGETS: -* python3_13 python3_14
+#        */* PYTHON_SINGLE_TARGET: -* python3_13
 #
 #    - Then switch PYTHON_SINGLE_TARGET and run the 2nd upgrade:
 #
-#        */* PYTHON_TARGETS: -* python3_13 python3_14
-#        */* PYTHON_SINGLE_TARGET: -* python3_14
+        */* PYTHON_TARGETS: -* python3_13 python3_14
+        */* PYTHON_SINGLE_TARGET: -* python3_14
 #
 #    - Finally, switch to the final version and run the 3rd upgrade:
 #
@@ -49,10 +49,16 @@
 # old and new versions of Python need to be enabled for some packages.
 
 
-# SYSTEM PYTHON IS NOW 3.13
-# Following packages still need Python 3.12
+# SYSTEM PYTHON IS NOW 3.14
+# Following packages still need Python 3.13 or 3.12
 # =================================================================
-# See https://bugs.gentoo.org/953643
+# See https://bugs.gentoo.org/972708  (Python 3.14 stabilizations)
+#     https://bugs.gentoo.org/953643  (Python 3.13 stabilizations)
+media-gfx/blender                   python_single_target_python3_13
+media-gfx/freecad                   python_single_target_python3_13
+media-sound/lilypond                python_single_target_python3_13
+
+
 
 # Some pip packages in virtual environments still needs Python 3.12
 # -----------------------------------------------------------------
