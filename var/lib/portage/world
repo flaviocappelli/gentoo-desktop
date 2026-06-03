@@ -248,7 +248,6 @@ sci-libs/hipRAND
 sci-libs/hipSOLVER
 sci-libs/hipSPARSE
 sci-libs/openblas
-sci-libs/rocThrust
 sci-mathematics/4ti2
 sci-mathematics/lean
 sci-mathematics/octave

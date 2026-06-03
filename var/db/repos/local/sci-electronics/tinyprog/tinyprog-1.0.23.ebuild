@@ -1,12 +1,12 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied from the 'salfter' overlay.
+# Copied from 'salfter' overlay and modified for python-3.14.
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
@@ -19,19 +19,15 @@ SRC_URI="https://github.com/tinyfpga/TinyFPGA-Bootloader/archive/$GIT_COMMIT.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
-RDEPEND=">=dev-python/pyserial-3
-	 <dev-python/pyserial-4
-	 >=dev-python/jsonmerge-1.4
-	 <dev-python/jsonmerge-2
-	 >=dev-python/intelhex-2.2.1
-	 <dev-python/intelhex-3
-	 >=dev-python/tqdm-4.19.5
-	 <dev-python/tqdm-5
-	 dev-python/six
-	 dev-python/packaging
-	 dev-python/pyusb"
+RDEPEND="<dev-python/intelhex-3.0[${PYTHON_USEDEP}]
+         <dev-python/jsonmerge-2.0[${PYTHON_USEDEP}]
+         dev-python/packaging[${PYTHON_USEDEP}]
+         <dev-python/pyserial-4.0[${PYTHON_USEDEP}]
+         dev-python/pyusb[${PYTHON_USEDEP}]
+         dev-python/six[${PYTHON_USEDEP}]
+         <dev-python/tqdm-5.0[${PYTHON_USEDEP}]"
 DEPEND=""
 
 src_unpack() {

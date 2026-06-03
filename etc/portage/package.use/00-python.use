@@ -22,13 +22,13 @@
 #
 #    - Then switch PYTHON_SINGLE_TARGET and run the 2nd upgrade:
 #
-        */* PYTHON_TARGETS: -* python3_13 python3_14
-        */* PYTHON_SINGLE_TARGET: -* python3_14
+#        */* PYTHON_TARGETS: -* python3_13 python3_14
+#        */* PYTHON_SINGLE_TARGET: -* python3_14
 #
 #    - Finally, switch to the final version and run the 3rd upgrade:
 #
-#        */* PYTHON_TARGETS: -* python3_14
-#        */* PYTHON_SINGLE_TARGET: -* python3_14
+        */* PYTHON_TARGETS: -* python3_14
+        */* PYTHON_SINGLE_TARGET: -* python3_14
 #
 #      Keep the latest two lines to block the next automatic upgrade
 #      to Python 3.15.
@@ -54,67 +54,124 @@
 # =================================================================
 # See https://bugs.gentoo.org/972708  (Python 3.14 stabilizations)
 #     https://bugs.gentoo.org/953643  (Python 3.13 stabilizations)
+
+# Blender 4.5.x
+# See https://bugs.gentoo.org/973411
+# -----------------------------------------------------------------
 media-gfx/blender                   python_single_target_python3_13
+dev-python/attrs                    python_targets_python3_13
+dev-python/cattrs                   python_targets_python3_13
+dev-python/cffi                     python_targets_python3_13
+dev-python/hatch-fancy-pypi-readme  python_targets_python3_13
+dev-python/meson-python             python_targets_python3_13
+dev-python/numpy                    python_targets_python3_13
+dev-python/ply                      python_targets_python3_13
+dev-python/pycparser                python_targets_python3_13
+dev-python/pyproject-metadata       python_targets_python3_13
+dev-python/zstandard                python_targets_python3_13
+
+# Freecad 1.0.x
+# See https://bugs.gentoo.org/973982
+# -----------------------------------------------------------------
 media-gfx/freecad                   python_single_target_python3_13
+dev-python/cairocffi                python_targets_python3_13
+dev-python/cffi                     python_targets_python3_13
+dev-python/contourpy                python_targets_python3_13
+dev-python/cppy                     python_targets_python3_13
+dev-python/cycler                   python_targets_python3_13
+dev-python/fonttools                python_targets_python3_13
+dev-python/kiwisolver               python_targets_python3_13
+dev-python/meson-python             python_targets_python3_13
+dev-python/matplotlib               python_targets_python3_13
+dev-python/numpy                    python_targets_python3_13
+dev-python/pillow                   python_targets_python3_13
+dev-python/pivy                     python_targets_python3_13
+dev-python/ply                      python_targets_python3_13
+dev-python/pybind11                 python_targets_python3_13
+dev-python/pycparser                python_targets_python3_13
+dev-python/pycxx                    python_targets_python3_13
+dev-python/pyparsing                python_targets_python3_13
+dev-python/pyproject-metadata       python_targets_python3_13
+dev-python/pyside                   python_targets_python3_13
+dev-python/python-dateutil          python_targets_python3_13
+dev-python/pytz                     python_targets_python3_13
+dev-python/olefile                  python_targets_python3_13
+dev-python/scikit-build-core        python_targets_python3_13
+dev-python/six                      python_targets_python3_13
+dev-python/xcffib                   python_targets_python3_13
+
+# Lilypond 2.24.x
+# See https://bugs.gentoo.org/974010
+# -----------------------------------------------------------------
 media-sound/lilypond                python_single_target_python3_13
 
-
-
-# Some pip packages in virtual environments still needs Python 3.12
+# ROCM 6.4.x
+# See https://bugs.gentoo.org/973931
 # -----------------------------------------------------------------
-dev-python/pip                      python_targets_python3_12
-dev-python/backports-zstd           python_targets_python3_12
-dev-python/cachecontrol             python_targets_python3_12
-dev-python/certifi                  python_targets_python3_12
-dev-python/cffi                     python_targets_python3_12
-dev-python/charset-normalizer       python_targets_python3_12
-dev-python/colorama                 python_targets_python3_12
-dev-python/cython                   python_targets_python3_12
-dev-python/dependency-groups        python_targets_python3_12
-dev-python/distlib                  python_targets_python3_12
-dev-python/distro                   python_targets_python3_12
-dev-python/editables                python_targets_python3_12
-dev-python/fastjsonschema           python_targets_python3_12
-dev-python/flit-core                python_targets_python3_12
-dev-python/gpep517                  python_targets_python3_12
-dev-python/hatchling                python_targets_python3_12
-dev-python/hatch-vcs                python_targets_python3_12
-dev-python/idna                     python_targets_python3_12
-dev-python/installer                python_targets_python3_12
-dev-python/jaraco-collections       python_targets_python3_12
-dev-python/jaraco-context           python_targets_python3_12
-dev-python/jaraco-functools         python_targets_python3_12
-dev-python/jaraco-text              python_targets_python3_12
-dev-python/lark                     python_targets_python3_12
-dev-python/linkify-it-py            python_targets_python3_12
-dev-python/markdown-it-py           python_targets_python3_12
-dev-python/mdurl                    python_targets_python3_12
-dev-python/more-itertools           python_targets_python3_12
-dev-python/mypy                     python_targets_python3_12
-dev-python/mypy-extensions          python_targets_python3_12
-dev-python/msgpack                  python_targets_python3_12
-dev-python/packaging                python_targets_python3_12
-dev-python/pathspec                 python_targets_python3_12
-dev-python/platformdirs             python_targets_python3_12
-dev-python/pluggy                   python_targets_python3_12
-dev-python/ply                      python_targets_python3_12
-dev-python/poetry-core              python_targets_python3_12
-dev-python/psutil                   python_targets_python3_12
-dev-python/pycparser                python_targets_python3_12
-dev-python/pygments                 python_targets_python3_12
-dev-python/pyproject-hooks          python_targets_python3_12
-dev-python/pysocks                  python_targets_python3_12
-dev-python/requests                 python_targets_python3_12
-dev-python/resolvelib               python_targets_python3_12
-dev-python/rich                     python_targets_python3_12
-dev-python/setuptools               python_targets_python3_12
-dev-python/setuptools-scm           python_targets_python3_12
-dev-python/tomli-w                  python_targets_python3_12
-dev-python/trove-classifiers        python_targets_python3_12
-dev-python/truststore               python_targets_python3_12
-dev-python/typing-extensions        python_targets_python3_12
-dev-python/uc-micro-py              python_targets_python3_12
-dev-python/urllib3                  python_targets_python3_12
-dev-python/vcs-versioning           python_targets_python3_12
-dev-python/wheel                    python_targets_python3_12
-dev-python/zstandard                python_targets_python3_12
+dev-util/rocminfo                   python_targets_python3_13
+dev-util/Tensile                    python_targets_python3_13
+sci-libs/rocFFT                     python_targets_python3_13
+dev-python/cloudpickle              python_targets_python3_13
+dev-python/joblib                   python_targets_python3_13
+dev-python/loky                     python_targets_python3_13
+dev-python/psutil                   python_targets_python3_13
+dev-python/pyyaml                   python_targets_python3_13
+
+# NVidia CUDA Toolkit 12.x
+# See https://bugs.gentoo.org/973947
+# -----------------------------------------------------------------
+dev-util/nvidia-cuda-toolkit        python_targets_python3_13
+
+# PIP virtual environments dependencies (for Python 3.12 and 3.13).
+# -------------------------------------------------------------------------------------
+dev-python/pip                      python_targets_python3_13 python_targets_python3_12
+dev-python/backports-zstd           python_targets_python3_13 python_targets_python3_12
+dev-python/cachecontrol             python_targets_python3_13 python_targets_python3_12
+dev-python/certifi                  python_targets_python3_13 python_targets_python3_12
+dev-python/charset-normalizer       python_targets_python3_13 python_targets_python3_12
+dev-python/colorama                 python_targets_python3_13 python_targets_python3_12
+dev-python/cython                   python_targets_python3_13 python_targets_python3_12
+dev-python/dependency-groups        python_targets_python3_13 python_targets_python3_12
+dev-python/distlib                  python_targets_python3_13 python_targets_python3_12
+dev-python/distro                   python_targets_python3_13 python_targets_python3_12
+dev-python/editables                python_targets_python3_13 python_targets_python3_12
+dev-python/fastjsonschema           python_targets_python3_13 python_targets_python3_12
+dev-python/flit-core                python_targets_python3_13 python_targets_python3_12
+dev-python/gpep517                  python_targets_python3_13 python_targets_python3_12
+dev-python/hatchling                python_targets_python3_13 python_targets_python3_12
+dev-python/hatch-vcs                python_targets_python3_13 python_targets_python3_12
+dev-python/idna                     python_targets_python3_13 python_targets_python3_12
+dev-python/installer                python_targets_python3_13 python_targets_python3_12
+dev-python/jaraco-context           python_targets_python3_13 python_targets_python3_12
+dev-python/jaraco-functools         python_targets_python3_13 python_targets_python3_12
+dev-python/jaraco-text              python_targets_python3_13 python_targets_python3_12
+dev-python/lark                     python_targets_python3_13 python_targets_python3_12
+dev-python/librt                    python_targets_python3_13 python_targets_python3_12
+dev-python/linkify-it-py            python_targets_python3_13 python_targets_python3_12
+dev-python/markdown-it-py           python_targets_python3_13 python_targets_python3_12
+dev-python/mdurl                    python_targets_python3_13 python_targets_python3_12
+dev-python/more-itertools           python_targets_python3_13 python_targets_python3_12
+dev-python/mypy                     python_targets_python3_13 python_targets_python3_12
+dev-python/mypy-extensions          python_targets_python3_13 python_targets_python3_12
+dev-python/msgpack                  python_targets_python3_13 python_targets_python3_12
+dev-python/packaging                python_targets_python3_13 python_targets_python3_12
+dev-python/pathspec                 python_targets_python3_13 python_targets_python3_12
+dev-python/platformdirs             python_targets_python3_13 python_targets_python3_12
+dev-python/pluggy                   python_targets_python3_13 python_targets_python3_12
+dev-python/poetry-core              python_targets_python3_13 python_targets_python3_12
+dev-python/pygments                 python_targets_python3_13 python_targets_python3_12
+dev-python/pyproject-hooks          python_targets_python3_13 python_targets_python3_12
+dev-python/pysocks                  python_targets_python3_13 python_targets_python3_12
+dev-python/requests                 python_targets_python3_13 python_targets_python3_12
+dev-python/resolvelib               python_targets_python3_13 python_targets_python3_12
+dev-python/rich                     python_targets_python3_13 python_targets_python3_12
+dev-python/setuptools               python_targets_python3_13 python_targets_python3_12
+dev-python/setuptools-scm           python_targets_python3_13 python_targets_python3_12
+dev-python/tomli-w                  python_targets_python3_13 python_targets_python3_12
+dev-python/trove-classifiers        python_targets_python3_13 python_targets_python3_12
+dev-python/truststore               python_targets_python3_13 python_targets_python3_12
+dev-python/typing-extensions        python_targets_python3_13 python_targets_python3_12
+dev-python/uc-micro-py              python_targets_python3_13 python_targets_python3_12
+dev-python/urllib3                  python_targets_python3_13 python_targets_python3_12
+dev-python/vcs-versioning           python_targets_python3_13 python_targets_python3_12
+dev-python/wheel                    python_targets_python3_13 python_targets_python3_12

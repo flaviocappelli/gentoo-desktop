@@ -9,7 +9,7 @@
 EAPI=8
 
 LLVM_COMPAT=( {19..21} )
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake llvm-r1 python-any-r1
 
 MY_P="${PN}-v${PV}"
