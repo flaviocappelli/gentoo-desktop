@@ -123,9 +123,9 @@ dev-games/openscenegraph            -wxwidgets            # Drop unnecessary dep
 
 dev-lang/fpc                        source                # Required by dev-lang/lazarus.
 dev-lang/lazarus                    gui                   # Build the GUI IDE (Qt6 interface). NOTE: version in portage is old, enable "pg_overlay".
+dev-lang/php                        -spell                # Dictionary support not required (from CLD).
 dev-lang/php                        cgi                   # Required by www-servers/lighttpd[php].
 dev-lang/php                        fpm                   # Enable the FastCGI Process Manager SAPI (required for FastCGI).
-dev-lang/php                        -spell                # Dictionary support not required (from CLD).
 dev-lang/php                        sqlite                # Add support for sqlite (embedded sql database).
 dev-lang/php                        xml                   # Required by dev-lang/php[simplexml].
 dev-lang/python                     bluetooth             # Build Bluetooth protocol support in socket module (from CLD).
@@ -141,6 +141,7 @@ dev-libs/libpcre2                   pcre16 pcre32         # Build PCRE library f
 dev-libs/libxml2                    icu                   # Required by dev-qt/qtwebengine, www-client/ungoogled-chromium-bin.
 dev-libs/libxml2                    python                # Required by app-doc/gimp-help.
 dev-libs/nss                        utils                 # Install utilities included with the library.
+dev-libs/qcoro                      qml                   # Required by kde-apps/kdenetwork-meta[samba].
 dev-libs/xerces-c                   -iconv                # ICU take precedenze over iconv (this remove an annoying elog warning).
 dev-libs/xerces-c                   icu                   # Required by media-gfx/freecad.
 dev-libs/zziplib                    -sdl                  # Drop unnecessary dependency (SDL integration not required).
@@ -252,12 +253,12 @@ dev-qt/qt-creator                   qmldesigner           # Build QmlDesigner an
 dev-qt/qt-creator                   serialterminal        # Build the serial terminal plugin.
 ##dev-qt/qt-creator                 webengine             # Use dev-qt/qtwebengine with the help USE FLAG, rather than bundled litehtml.
 
+dev-qt/qt-docs                      -html                 # Install only documentation in qch format (for qt-creator).
 dev-qt/qt-docs                      activeqt              # Install documentation for Active Qt (class only for Windows).
 dev-qt/qt-docs                      charts datavis        # Install documentation for dev-qt/qtcharts and dev-qt/qtdatavis3d.
 dev-qt/qt-docs                      declarative           # Install documentation for dev-qt/qtdeclarative.
 dev-qt/qt-docs                      graphs                # Install documentation for QtGraphs.
 dev-qt/qt-docs                      grpc lottie           # Install documentation for QtGRPC and QtLottie.
-dev-qt/qt-docs                      -html                 # Install only documentation in qch format (for qt-creator).
 dev-qt/qt-docs                      networkauth           # Install documentation for dev-qt/qtnetworkauth.
 dev-qt/qt-docs                      quick3dphysics        # Install documentation for QtQuick3DPhysics.
 dev-qt/qt-docs                      quickeffectmaker      # Install documentation for QtQuickEffectMaker.
@@ -290,10 +291,10 @@ dev-qt/qtwebengine                  qml                   # Required by dev-qt/q
 dev-qt/qtwebsockets                 qml                   # Build QML bindings.
 
 ##dev-util/cutter                   graphviz              # Add graphviz support.
+dev-util/gammaray                   -wayland              # Exclude the wayland compositor inspector plugin (I don't need it).
 dev-util/gammaray                   3d                    # Build the Qt3D plugin.
 dev-util/gammaray                   geolocation           # Build the positioning plugin.
 dev-util/gammaray                   scxml                 # Build the state machine viewer plugin.
-dev-util/gammaray                   -wayland              # Exclude the wayland compositor inspector plugin (I don't need it).
 dev-util/heaptrack                  gui                   # Build the GUI frontend.
 dev-util/kdstatemachineeditor       gui                   # Build the GUI frontend.
 dev-util/kdevelop                   gdbui                 # Enable GUI for attaching GDB to a running process.
@@ -334,6 +335,7 @@ kde-apps/kdesdk-meta                git                   # Enable support for G
 ##kde-apps/kdeutils-meta            gpg                   # Install kde-apps/kgpg which depends on kde-apps/akonadi.
 ##kde-apps/kdeutils-meta            lrz                   # Install app-arch/lrzip for LRZ archive support in kde-apps/ark.
 ##kde-apps/kdeutils-meta            rar                   # Install app-arch/rar or app-arch/unrar or app-arch/unar for RAR archive support in kde-apps/ark (CHOOSE rar).
+kde-apps/kio-extras                 activities            # Build recentlyused:/, activities:/ KIO workers and fileitem plugin (required for "Recent" section in Dolphin).
 kde-apps/kio-extras                 mtp taglib            # Enable support for Media Transfer Protocol and audio thumbnails.
 ##kde-apps/ksystemlog               kdesu                 # Run as root using kdesu (currently not compatible with wayland, see the ebuild).
 ##kde-apps/libkcddb                 musicbrainz           # Lookup audio metadata using MusicBrainz community service.
@@ -557,8 +559,8 @@ net-firewall/firewalld              gui                   # Build the UI fronten
 net-firewall/iptables               nftables              # Required by app-containers/containers-common that is required by app-containers/podman.
 
 net-fs/nfs-utils                    -kerberos -ldap       # Drop unnecessary dependency (from CLD)
-net-fs/samba                        ads                   # Enable Active Directory support.
 net-fs/samba                        -pam                  # I don't know why, but SAMBA+PAM on Gentoo breaks authentication of Windows clients.
+net-fs/samba                        ads                   # Enable Active Directory support.
 net-fs/samba                        winbind               # Enables support for the winbind auth daemon.
 ##net-fs/samba                      -addc -gpg            # Disable Active Directory Domain Controller support (default, -gpg required by samba ebuild).
 ##net-fs/samba                      addc -system-mitkrb5  # Enable Active Directory Domain Controller support (-system-mitkrb5 required by samba ebuild).
@@ -592,10 +594,10 @@ net-print/cups                      zeroconf              # Required by net-prin
 net-print/cups                      -X                    # Drop unnecessary dependency (from CLD).
 net-print/cups-meta                 zeroconf              # Enable network printer discovery through Bonjour protocol (DNS-SD).
 net-print/gutenprint                ppds                  # Add support for automatically generated ppd (from CLD).
+net-print/hplip                     -X                    # Do not pull in any scanner GUI (from CLD).
 net-print/hplip                     fax                   # Enable fax on multifunction devices which support it.
 net-print/hplip                     hpijs                 # Build the IJS driver for cups (from CLD).
 net-print/hplip                     scanner               # Enable scanner on multifunction devices which support it .
-net-print/hplip                     -X                    # Do not pull in any scanner GUI (from CLD).
 
 net-vpn/networkmanager-vpnc         gtk                   # Not required with KDE/PLASMA but build of v1.2.8/1.4.0 fails without it (see https://bugs.gentoo.org/837365).
 ##net-vpn/openvpn                   inotify               # Enable the "Asynchronous Push Reply" feature.
@@ -658,6 +660,7 @@ sys-apps/fwupd                      nvme                  # Build and install NV
 ##sys-apps/fwupd                    tpm                   # Install Trusted Platform Module plugin.
 sys-apps/fwupd                      uefi                  # Enable UEFI support (required by 'dell' use flag).
 sys-apps/kmod                       pkcs7                 # Required to get the module signature. See https://wiki.gentoo.org/wiki/Signed_kernel_module_support
+sys-apps/systemd                    -kernel-install       # Not required with sys-kernel/installkernel[-systemd].
 ##sys-apps/systemd                  bpf                   # Enable BPF support for sandboxing and firewalling.
 sys-apps/systemd                    cryptsetup            # Enable cryptsetup tools (includes unit generator for crypttab).
 sys-apps/systemd                    elfutils              # Enable coredump stacktraces in the journal.
