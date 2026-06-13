@@ -1,0 +1,17 @@
+--- /usr/share/applications/nvidia-settings.desktop	2026-04-25 22:30:40.856244940 +0200
++++ ./nvidia-settings.desktop	2026-04-26 00:48:24.622503444 +0200
+@@ -1,7 +1,11 @@
+ [Desktop Entry]
+-Name=NVIDIA X Server Settings
+-Name[it]=NVIDIA X Server Settings
++Name=NVidia GPU Settings
++Name[it]=Impostazioni della GPU NVidia
++GenericName=NVidia GPU Settings
++GenericName[it]=Impostazioni della GPU NVidia
++TryExec=nvidia-settings
+ Exec=nvidia-settings
+ Icon=nvidia-settings
++Terminal=false
+ Type=Application
+-Categories=System;HardwareSettings;
++Categories=Settings;

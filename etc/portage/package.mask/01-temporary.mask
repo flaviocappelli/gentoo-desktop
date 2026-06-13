@@ -5,3 +5,6 @@
 # NOTE: on any issue with VirtualBox >= 7.1.8 remove
 # ~/.VirtualBox and reimport all VMs (recent versions
 # have configuration in ~/.config/VirtualBox).
+
+# This version fails to install.
+=www-client/ungoogled-chromium-bin-149.0.7827.53

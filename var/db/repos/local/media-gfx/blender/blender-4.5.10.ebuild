@@ -2,10 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Blender in portage is too old; also Python 11 has been disabled
-# from PYTHON_COMPAT, so the stable ebuild currently fails. This
-# ebuild fix it and bump blender to the latest LTS version. See:
-# https://bugs.gentoo.org/973408, https://bugs.gentoo.org/976618
+# Blender in portage is too old, bump it to latest LTS
+# version (see https://bugs.gentoo.org/973408). Add
+# patch due to RETURN_CONST removed in Python 3.14
 
 # shellcheck disable=SC2207
 
@@ -24,7 +23,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 # NOTE must match media-libs/osl
 LLVM_COMPAT=( {18..20} )
 LLVM_OPTIONAL=1
@@ -252,6 +251,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.3.2-system-glog.patch"
 	"${FILESDIR}/${PN}-4.5.0-ffmpeg-8.0.patch"
 	"${FILESDIR}/${PN}-4.5.3-cmake-policy-3.10.patch"
+    "${FILESDIR}/${PN}-4.5.10-fix-python314-opcode.patch"
 	"${FILESDIR}/${PN}-9999-don-t-show-variable-names.patch"
 )
 
@@ -907,16 +907,6 @@ pkg_postinst() {
 		ewarn "an other LLVM version than what OSL is linked to."
 		ewarn "See https://bugs.gentoo.org/880671 for more details"
 		ewarn ""
-	fi
-
-	# NOTE build_files/cmake/Modules/FindPythonLibsUnix.cmake: set(_PYTHON_VERSION_SUPPORTED 3.12)
-	if ! use python_single_target_python3_12; then
-		elog "You are building Blender with a newer python version than"
-		elog "supported by this version upstream."
-		elog "If you experience breakages with e.g. plugins, please switch to"
-		elog "PYTHON_SINGLE_TARGET: python3_12 instead."
-		elog "Bug: https://bugs.gentoo.org/737388"
-		elog
 	fi
 
 	xdg_icon_cache_update

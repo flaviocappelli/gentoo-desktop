@@ -1,0 +1,15 @@
+--- /usr/share/applications/nvtop.desktop	2026-04-26 00:49:05.128536352 +0200
++++ ./nvtop.desktop	2026-04-26 00:56:16.540388006 +0200
+@@ -1,9 +1,10 @@
+ [Desktop Entry]
+ Name=nvtop
+-GenericName=GPU Process Monitor
++GenericName=GPU Monitor
++GenericName[it]=Monitor della GPU
+ Exec=nvtop
+ Icon=nvtop
+ Terminal=true
+ Type=Application
+-Categories=System;Monitor;
++Categories=System;
+ X-AppImage-Integrate=false

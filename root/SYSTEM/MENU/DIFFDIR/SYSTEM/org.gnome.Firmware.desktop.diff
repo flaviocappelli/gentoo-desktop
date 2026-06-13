@@ -1,0 +1,21 @@
+--- /usr/share/applications/org.gnome.Firmware.desktop	2026-04-26 00:57:36.047241236 +0200
++++ ./org.gnome.Firmware.desktop	2026-04-26 01:02:00.806448357 +0200
+@@ -1,13 +1,14 @@
+ [Desktop Entry]
+ NoDisplay=false
+-Name=Firmware
+-Name[it]=Firmware
++Name=gnome-firmware
++GenericName=Firmware Update
++GenericName[it]=Aggiornamento firmware
+ Exec=gnome-firmware
+ Icon=org.gnome.Firmware
+ Terminal=false
+ Type=Application
+-Categories=GNOME;GTK;System;
+-Keywords=Firmware;
++Categories=System;
++Keywords=firmware;
+ Keywords[it]=firmware;
+ StartupNotify=true
+ DBusActivatable=true

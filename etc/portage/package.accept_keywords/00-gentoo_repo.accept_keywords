@@ -3,9 +3,6 @@
 # Ebuilds from the gentoo official repository.
 # NOTE: sign ~ (tilde) let in -r# package revisions.
 
-# Stable version fails to build (required by fwupd).
-~sys-apps/fwupd-efi-1.8::gentoo
-
 # Use LLVM 21 instead of LLVM 20.
 ~dev-util/bcc-0.35.0::gentoo
 
@@ -14,9 +11,6 @@ app-admin/spectre-meltdown-checker::gentoo **
 
 # SpeedCruch calculator is back with Qt6 support!
 sci-calculators/speedcrunch::gentoo
-
-# Gimp-3 is now stable but offline help is not yet!
-app-doc/gimp-help::gentoo
 
 # Hex editor integrated in KDE/PLASMA6 (stable
 # version has been masked due to KF5 removal).
@@ -36,12 +30,9 @@ dev-util/seer::gentoo
 # PipeWire Graph Qt GUI Interface.
 media-sound/qpwgraph::gentoo
 
-# IM: Zoom and Telegram Desktop (bin version).
-# Microsoft is shutting down Skype in favor of Teams
-# (Skype has been permanently retired on May 5, 2025)
-# so I uninstalled the net-im/skypeforlinux package.
+# IM: Zoom and Telegram Desktop.
 net-im/zoom::gentoo
-net-im/telegram-desktop-bin::gentoo
+~net-im/telegram-desktop-6.8.2::gentoo
 
 # OBS Studio. Seee also
 # https://github.com/umlaeute/v4l2loopback.
@@ -96,9 +87,6 @@ app-text/uchmviewer::gentoo
 # https://blog.desdelinux.net/it/genymotion-un-emulador-de-android-para-gnulinux/
 app-emulation/genymotion-bin::gentoo
 
-# Qt rizin frontend for reverse engineering. Stable version fails to build.
-dev-util/cutter::gentoo
-
 # Realtime monitor.
 net-analyzer/netdata::gentoo
 
@@ -106,7 +94,7 @@ net-analyzer/netdata::gentoo
 # https://github.com/vincentdephily/emlop
 # https://www.reddit.com/r/Gentoo/comments/159727l
 # Most useful command: 'emlop s -H -gm -st'.
-#app-portage/emlop::gentoo
+app-portage/emlop::gentoo
 
 # Manage monitor settings such as brightness, color levels, input source (any
 # setting that can be changed by pressing monitor's buttons).  NOTE: does not

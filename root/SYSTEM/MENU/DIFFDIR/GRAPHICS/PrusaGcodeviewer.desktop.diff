@@ -1,0 +1,17 @@
+--- /usr/share/applications/PrusaGcodeviewer.desktop	2026-04-26 01:12:47.584183115 +0200
++++ ./PrusaGcodeviewer.desktop	2026-04-26 01:20:26.711851229 +0200
+@@ -1,9 +1,11 @@
+ [Desktop Entry]
+-Name=Prusa GCode viewer
++Name=PrusaSlicer Viewer
++GenericName=G-Code file Viewer
++GenericName[it]=Visore di file G-Code
+ Exec=prusa-slicer --gcodeviewer %F
+ Icon=PrusaSlicer-gcodeviewer
+ Terminal=false
+ Type=Application
+ MimeType=text/x.gcode;
+-Categories=Graphics;3DGraphics;
+-Keywords=3D;Printing;Slicer;
++Categories=Graphics;
++Keywords=3D;gcode;slicer;

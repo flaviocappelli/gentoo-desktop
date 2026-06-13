@@ -20,6 +20,19 @@ sci-electronics/openfpgaloader::gentoo-zh     * ~*
 # Timeshift system backup.
 app-backup/timeshift::guru                    * ~*
 
+# HDD and SSD benchmark tool with a very friendly graphical user interface
+# (similar to CrystalDiskMark in Windows). It uses 'sys-block/fio' (for the
+# exact tests launched see https://github.com/JonMagon/KDiskMark/issues/130).
+# Note that benchmarks on ZFS are currently not accurate, due to multiple
+# cache levels (see https://github.com/JonMagon/KDiskMark/issues/148).
+app-benchmarks/kdiskmark::guru                * ~*
+
+# Low level key mapping daemon, used to remap the "Copilot"
+# key to "right CTRL" on laptop Lenovo Legion Pro 5 16ADR10.
+# See /etc/keyd/default.conf
+app-misc/keyd::guru                           * ~*
+acct-group/keyd::guru                         * ~*
+
 # Tool for development with Qt (kdstatemachineeditor is a dependency).
 dev-util/gammaray::guru                       * ~*
 dev-util/kdstatemachineeditor::gentoo

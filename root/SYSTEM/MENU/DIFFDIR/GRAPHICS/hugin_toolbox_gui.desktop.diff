@@ -1,0 +1,8 @@
+--- /usr/share/applications/hugin_toolbox_gui.desktop	2026-04-26 01:06:39.207002892 +0200
++++ ./hugin_toolbox_gui.desktop	2026-04-26 01:12:18.951518384 +0200
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=Hugin Toolbox
+ GenericName=Hugin Toolbox
+ Exec=hugin_toolbox

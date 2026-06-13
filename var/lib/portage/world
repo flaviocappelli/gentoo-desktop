@@ -215,7 +215,7 @@ net-dns/bind
 net-firewall/firewalld
 net-fs/nfs-utils
 net-ftp/filezilla
-net-im/telegram-desktop-bin
+net-im/telegram-desktop
 net-im/zoom
 net-misc/bridge-utils
 net-misc/chrony

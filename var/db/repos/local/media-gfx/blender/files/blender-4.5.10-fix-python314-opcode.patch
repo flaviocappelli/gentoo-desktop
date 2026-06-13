@@ -1,0 +1,12 @@
+--- a/source/blender/python/intern/bpy_driver.cc.old   2026-06-06 20:12:16.582743513 +0200
++++ b/source/blender/python/intern/bpy_driver.cc       2026-06-06 20:19:16.032632941 +0200
+@@ -379,7 +379,9 @@
+ #  endif
+ 
+ #  if PY_VERSION_HEX >= 0x030c0000
++#  if PY_VERSION_HEX < 0x030e0000
+     OK_OP(RETURN_CONST)
++#  endif
+     OK_OP(POP_JUMP_IF_FALSE)
+     OK_OP(CALL_INTRINSIC_1)
+ #  endif
