@@ -80,6 +80,8 @@ dev-libs/rocm-opencl-runtime
 dev-python/cupy
 dev-python/ollama
 dev-python/pip
+dev-python/python-lsp-black
+dev-python/python-lsp-server
 dev-python/uv
 dev-qt/qt-docs
 dev-qt/qt3d
