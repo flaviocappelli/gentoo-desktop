@@ -248,6 +248,7 @@ sci-mathematics/lean
 sci-mathematics/octave
 sci-mathematics/wxmaxima
 sci-misc/llama-cpp
+sci-misc/stable-diffusion-cpp
 sci-ml/torchvision
 sys-apps/cpuid
 sys-apps/dmidecode

@@ -14,10 +14,37 @@ dev-util/hip                    -video_cards_nvidia
 x11-drivers/nvidia-drivers      powerd
 
 
-# ---- Settings only for my desktop (CPU Ryzen 5900X + GPU Radeon RX 6900 XT) ----
+# ================================================================================
+#  AI BACKEND SETTINGS FOR MY DESKTOP (CPU Ryzen 5900X + GPU Radeon RX 6900 XT)
+# ================================================================================
 
-dev-python/cupy                 rocm                # Enable ROCm support.
-sci-misc/llama-cpp              rocm                # Enable HIP/ROCm support. Might be slower than Vulkan on consumer GPUs! (see llama-bench).
-sci-ml/caffe2                   rocm                # Enable ROCm support.
-sci-ml/ollama                   rocm                # Enable ROCm support.
-sci-ml/torchvision              rocm                # Enable ROCm support.
+# --------------------------------------------------------------------------------
+#   Use Vulkan for LLMs (max stability and agility, faster than ROCm on my GPU)
+# --------------------------------------------------------------------------------
+#   LLM weights are linear. The engine chunks layers into hundreds of sequential,
+#   low-footprint VRAM buffers. It rarely allocates massive single blocks, so
+#   Vulkan offers advantages: exceptional responsiveness, faster prompt ingestion,
+#   and zero-delay initialization via Mesa. Highly mature. Possible Exception:
+#   extreme KV Caches (huge contexts like 64k+ tokens on heavy models) can rarely
+#   exceed Vulkan allocation limits. Fix with `-ctk q8_0` or `-ctk q4_0`.
+
+sci-misc/llama-cpp              -rocm vulkan
+sci-ml/ollama                   -rocm vulkan
+
+# --------------------------------------------------------------------------------
+#   Use ROCm for IMAGE GENERATION / GPU COMPUTE (avoids buffer crashes)
+# --------------------------------------------------------------------------------
+#   Diffusion models require massive geometric computations. During the final VAE
+#   decoding stage at 1024x1024, the engine demands a monolithic, single contiguous
+#   compute buffer of roughly ~6.6 to 8 GB. The AMD RDNA2 architecture (Navi 21) has
+#   a  hard hardware limit under Vulkan (`maxBufferSize`) restricted to exactly 4 GB.
+#   Vulkan cannot allocate the huge VAE block in one go, triggering a fatal `Requested
+#   buffer size exceeds device buffer size limit` (OutOfDeviceMemory) crash. ROCm maps
+#   VRAM virtually and continuously (HIP/AMD GPU architecture), bypassing Vulkan
+#   geometric constraints. It comfortably runs the whole image pipeline in VRAM
+#   at native resolutions. Text processing should be offloaded to save some VRAM.
+
+dev-python/cupy                 rocm
+sci-ml/caffe2                   rocm
+sci-misc/stable-diffusion-cpp   rocm -vulkan
+sci-ml/torchvision              rocm

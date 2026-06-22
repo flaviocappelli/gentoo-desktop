@@ -53,5 +53,8 @@ net-misc/freetube-bin::guru                   * ~*
 # LLM inference in C/C++.
 sci-misc/llama-cpp::guru                      * ~*
 
+# Diffusion model inference in pure C/C++.
+sci-misc/stable-diffusion-cpp::guru           * ~* **
+
 # Chromium without Google integration (i.e. with enhanced privacy).
 www-client/ungoogled-chromium-bin::pf4public  * ~* **
