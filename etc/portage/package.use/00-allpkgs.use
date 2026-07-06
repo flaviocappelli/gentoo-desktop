@@ -326,7 +326,7 @@ kde-apps/akonadi-config             sqlite                # See https://www.mail
 ##kde-apps/gwenview                 fits                  # Enable support for NASA's sci-libs/cfitsio library.
 ##kde-apps/k3b                      sox                   # Add support for Sound eXchange (SoX).
 kde-apps/kalarm                     -pim                  # Disable PIM integration (I don't need it).
-kde-apps/kate-addons                lspclient             # Enable LSP (Language Server Protocol) client plugin.
+##kde-apps/kate-addons              lspclient             # Enable LSP (Language Server Protocol) client plugin.
 kde-apps/kdegraphics-meta           color-management      # Enable color management via kde-misc/colord-kde.
 ##kde-apps/kdegraphics-meta         -scanner              # Do not build kde-misc/skanlite (NOTE: not related with kde-apps/kolourpaint[scanner]).
 kde-apps/kdenetwork-meta            -bittorrent           # I don't need bittorrent support (I prefere net-p2p/qbittorrent).
