@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>iohann.s.titov@gmail.com</email>
+    <name>Ivan S. Titov</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ggml-org/llama.cpp</remote-id>
+  </upstream>
+  <use>
+    <flag name="blis">Build a BLIS backend</flag>
+    <flag name="flexiblas">Build a FlexiBLAS backend</flag>
+    <flag name="rocm">Build a HIP (ROCm) backend</flag>
+    <flag name="wmma">Use rocWMMA to enhance flash attention performance</flag>
+    <flag name="openblas">Build an OpenBLAS backend</flag>
+    <flag name="opencl">Build an OpenCL backend, so far only works on Adreno and Intel GPUs</flag>
+    <flag name="openssl">Use openssl to support HTTPS</flag>
+    <flag name="sycl">Build an Intel SYCL backend (Arc GPU, Intel CPU via
+    oneAPI). Requires a -fsycl-capable compiler (Intel icpx or clang++
+    with SYCL patches) installed separately.</flag>
+    <flag name="webui">Build the embedded llama-server web UI. Fetches
+    prebuilt assets from the upstream Hugging Face bucket at configure
+    time; disable for a server binary with only the HTTP API.</flag>
+  </use>
+</pkgmetadata>

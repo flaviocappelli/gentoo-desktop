@@ -35,7 +35,6 @@ app-eselect/eselect-python
 app-eselect/eselect-repository
 app-forensics/rkhunter
 app-misc/ddcui
-app-misc/ellama
 app-misc/evtest
 app-misc/fastfetch
 app-misc/jq
@@ -166,7 +165,7 @@ kde-misc/kshutdown
 kde-misc/kweather
 kde-misc/markdownpart
 kde-plasma/plasma-meta
-llvm-core/libclc
+llvm-runtimes/libclc
 mail-client/s-nail
 mail-client/thunderbird
 mail-mta/opensmtpd

@@ -100,7 +100,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-9999-use-GNUInstallDirs.patch"
-	"${FILESDIR}/${PN}-0.18.0-make-installing-runtime-deps-optional.patch"
+	"${FILESDIR}/${PN}-0.24.0-make-installing-runtime-deps-optional.patch"
 )
 
 pkg_pretend() {
@@ -123,7 +123,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	if use rocm; then
-		einfo "This ebuild has been tested with ROCM >= 6.4.3 on AMD Radeon RX 6900 XT only"
+		einfo "This ebuild has been tested only with ROCM >= 6.4.3 on AMD Radeon RX 6900 XT"
 		linux-info_pkg_setup
 		if linux-info_get_any_version && linux_config_exists; then
 			if ! linux_chkconfig_present HSA_AMD_SVM; then
@@ -132,7 +132,7 @@ pkg_setup() {
 		fi
 	fi
 	if use cuda; then
-		einfo "This ebuild has not yet been tested with CUDA"
+		einfo "This ebuild has been tested only with nvidia-cuda-toolkit-12.9 and NVidia RTX 5070"
 	fi
 }
 
@@ -160,7 +160,6 @@ src_prepare() {
 		-i \
 			ml/backend/ggml/ggml/src/ggml-cpu/cpu.go \
 		|| die "-O3 sed failed"
-
 
 	sed \
 		-e "s/\"..\", \"lib\"/\"..\", \"$(get_libdir)\"/" \

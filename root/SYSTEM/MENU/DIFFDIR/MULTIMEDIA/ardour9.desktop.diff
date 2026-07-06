@@ -1,13 +1,13 @@
---- /usr/share/applications/ardour8.desktop	2024-03-17 14:30:37.065398241 +0100
-+++ ./ardour8.desktop	2024-03-17 20:44:42.793481523 +0100
-@@ -1,8 +1,12 @@
+--- /usr/share/applications/ardour9.desktop	2026-06-29 11:58:41.211062470 +0200
++++ ./ardour9.desktop	2026-06-29 12:01:39.639872154 +0200
+@@ -1,11 +1,15 @@
  [Desktop Entry]
--Name=Ardour 8
+-Name=Ardour 9
 +Name=Ardour
 +GenericName=Digital Audio Workstation
 +GenericName[it]=Workstation audio digitale
- Exec=ardour8
- Icon=ardour8
+ Exec=ardour9
+ Icon=ardour9
  Terminal=false
  Type=Application
  MimeType=application/x-ardour;
@@ -15,3 +15,6 @@
 +Categories=AudioVideo;
 +Keywords=microphone;instruments;track;record;capture;music;sounds;midi;
 +Keywords[it]=microfono;strumenti;traccia;registrazione;cattura;musica;suoni;midi;
+ StartupWMClass=Ardour
+ X-NSM-Capable=true
+ X-NSM-Exec=ardour9

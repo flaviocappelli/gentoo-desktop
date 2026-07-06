@@ -36,7 +36,7 @@ net-im/zoom::gentoo
 
 # OBS Studio. Seee also
 # https://github.com/umlaeute/v4l2loopback.
-~media-video/obs-studio-32.0.4::gentoo
+media-video/obs-studio::gentoo
 
 # Avidemux.
 media-video/avidemux::gentoo
@@ -234,9 +234,7 @@ dev-libs/cpuinfo::gentoo
 dev-libs/dynolog::gentoo
 dev-libs/pfs::gentoo
 dev-libs/pocketfft::gentoo
-dev-libs/psimd::gentoo
 dev-libs/pthreadpool::gentoo
-sci-ml/FBGEMM::gentoo                       # caffe2-2.10 does not build with stable FBGEMM.
 sci-ml/FP16::gentoo
 sci-ml/caffe2::gentoo
 sci-ml/kineto::gentoo

@@ -44,7 +44,6 @@ net-misc/freetube-bin::guru                   * ~*
 # Fast and local neural text-to-speech engine, with HAL 9000
 # voice model. See https://github.com/OHF-Voice/piper1-gpl
 #media-sound/piper::guru                       * ~*
-#media-sound/piper-voice-hal::guru             * ~*
 #dev-cpp/safeint::guru                         * ~* **
 #sci-libs/dlpack::guru                         * ~* **
 #sci-libs/onnxruntime::guru                    * ~* **
@@ -52,9 +51,10 @@ net-misc/freetube-bin::guru                   * ~*
 
 # LLM inference in C/C++.
 sci-misc/llama-cpp::guru                      * ~*
+sci-misc/llama-cpp::local                     * ~*
 
 # Diffusion model inference in pure C/C++.
 sci-misc/stable-diffusion-cpp::guru           * ~* **
 
 # Chromium without Google integration (i.e. with enhanced privacy).
-www-client/ungoogled-chromium-bin::pf4public  * ~* **
+www-client/ungoogled-chromium-bin::pf4public  * ~*

@@ -44,15 +44,35 @@ sci-electronics/circuitjs1-bin::local
 # Electronic circuit simulator.
 sci-electronics/qucs-s::local
 
-# Ellama is a friendly interface to Ollama.
 # Run LLMs locally: Llama 3, Mistral, Gemma, DeepSeek-R1, ...
 # NOTE: a high-end AMD or NVidia GPU is required. See docs in
 # https://github.com/ollama/ollama, https://itsfoss.com/ollama/
 # and https://itsfoss.com/install-deepseek-r1-locally-linux/
 #
-# There are also an updated ebuild "app-misc/ollama-bin" in:
-# https://gpo.zugaina.org/Overlays/arrans-overlay/app-misc/ollama-bin
-app-misc/ellama::local
+# Ellama has been removed because it doesn't work properly with
+# latest models. It's highly recommended to use Open WebUI; the
+# best way to run it is with Docker or Podman. I prefere Podman
+# in rootless mode, so I created the Open WebUI container with:
+#
+#    podman run -d --network=host \
+#      --cpus=2 \
+#      --memory=1g \
+#      -e WEBUI_AUTH=False \
+#      -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \
+#      -e OFFLINE_MODE=true \
+#      -e HF_HUB_OFFLINE=1 \
+#      -e HF_HUB_DISABLE_TELEMETRY=1 \
+#      -e RAG_EMBEDDING_ENGINE=ollama \
+#      -e RAG_EMBEDDING_MODEL=bge-m3 \
+#      -v open-webui:/app/backend/data \
+#      --name open-webui \
+#      --restart always \
+#      ghcr.io/open-webui/open-webui:main
+#
+# With the above configuration, Open WebUI simply acts as an offline
+# interface to Ollama (all connections to Hugginface and telemetry are
+# disabled). For document vectorization, I use the multilingual embedded
+# model "bge-m3"; if only English is needed, use "nomic-embed" (lighter).
 acct-group/ollama::local
 acct-user/ollama::local
 dev-python/ollama::local
