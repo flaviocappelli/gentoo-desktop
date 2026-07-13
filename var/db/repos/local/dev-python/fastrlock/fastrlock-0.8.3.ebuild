@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied from 'stuff' overlay (with python min version bump).
-# Required by dev-python/cupy.
+# Copied from 'stuff' overlay. Required by dev-python/cupy.
 
 EAPI=8
 
@@ -18,6 +17,7 @@ SRC_URI="$(pypi_sdist_url "${PN^}" "${PV}")"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest

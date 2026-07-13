@@ -49,10 +49,6 @@ net-misc/freetube-bin::guru                   * ~*
 #sci-libs/onnxruntime::guru                    * ~* **
 #media-libs/sonic::gentoo
 
-# LLM inference in C/C++.
-sci-misc/llama-cpp::guru                      * ~*
-sci-misc/llama-cpp::local                     * ~*
-
 # Diffusion model inference in pure C/C++.
 sci-misc/stable-diffusion-cpp::guru           * ~* **
 

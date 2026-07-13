@@ -1,18 +1,19 @@
-# Copyright 2024-2025 Gentoo Authors
+# Copyright 2024-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied with minor modifications from 'dev1990-overlay'.
+# Copied from portage with minor modifications.
 
-EAPI=8
+EAPI=9
 
 inherit acct-user
 
-DESCRIPTION="System user for ollama."
+DESCRIPTION="A user for ollama"
 KEYWORDS="~amd64"
 
-ACCT_USER_ID=-1
+ACCT_USER_ID=562
 ACCT_USER_HOME=/var/lib/ollama
+ACCT_USER_HOME_PERMS=0750
 ACCT_USER_GROUPS=( ollama )
 
 IUSE="cuda"
@@ -26,7 +27,7 @@ RDEPEND+="
 "
 
 pkg_setup() {
-	# Not required for ROCm.
+	# sci-ml/ollama[cuda]
 	if use cuda; then
 		ACCT_USER_GROUPS+=( video )
 	fi

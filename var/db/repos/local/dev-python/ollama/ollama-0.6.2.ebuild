@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # by F.C.
-# Copied from 'HomeAssistantRepository' overlay with some modifications.
+# Copied from 'ha-bleeding-edge' overlay with minor modifications.
 # See https://projects.gentoo.org/python/guide/distutils.html
 
 EAPI=8
@@ -12,7 +12,7 @@ DISTUTILS_USE_PEP517=hatchling
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="The Ollama Python library provides the easiest way to integrate Ollama."
+DESCRIPTION="The Ollama Python library provides the easiest way to integrate Ollama"
 HOMEPAGE="https://ollama.ai https://github.com/ollama/ollama-python https://pypi.org/project/ollama/"
 
 LICENSE="MIT"

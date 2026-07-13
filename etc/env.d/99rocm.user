@@ -2,8 +2,8 @@
 #
 # AMD ROCm is officially supported only on a few consumer-grade GPUs, mainly
 # Radeon RX 7900 GRE and above. Before we can run an application that depends
-# on ROCm (like ollama), we need to present our GPU as supported. This requires
-# setting the "HSA_OVERRIDE_GFX_VERSION" environment variable:
+# on ROCm, we need to present our GPU as supported. This requires setting
+# the "HSA_OVERRIDE_GFX_VERSION" environment variable:
 #
 #   GCN 5th gen GPUs / APUs  ->  HSA_OVERRIDE_GFX_VERSION=9.0.0
 #   RDNA 1 GPUs / APUs       ->  HSA_OVERRIDE_GFX_VERSION=10.1.0

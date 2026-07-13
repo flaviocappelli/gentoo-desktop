@@ -28,8 +28,12 @@ x11-drivers/nvidia-drivers      powerd
 #   extreme KV Caches (huge contexts like 64k+ tokens on heavy models) can rarely
 #   exceed Vulkan allocation limits. Fix with `-ctk q8_0` or `-ctk q4_0`.
 
+# LLAMA.CPP
 sci-misc/llama-cpp              -rocm vulkan
-sci-ml/ollama                   -rocm vulkan
+
+# OLLAMA
+sci-ml/ggml                     -rocm vulkan
+
 
 # --------------------------------------------------------------------------------
 #   Use ROCm for IMAGE GENERATION / GPU COMPUTE (avoids buffer crashes)
@@ -44,7 +48,8 @@ sci-ml/ollama                   -rocm vulkan
 #   geometric constraints. It comfortably runs the whole image pipeline in VRAM
 #   at native resolutions. Text processing should be offloaded to save some VRAM.
 
+# PYTORCH & C.
 dev-python/cupy                 rocm
-sci-ml/caffe2                   rocm
 sci-misc/stable-diffusion-cpp   rocm -vulkan
+sci-ml/caffe2                   rocm
 sci-ml/torchvision              rocm

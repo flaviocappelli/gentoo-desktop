@@ -641,13 +641,13 @@ sci-mathematics/octave              sndfile               # Add support for read
 ##sci-mathematics/octave            sundials              # Enable the "ode15i" and "ode15s" solvers using sci-libs/sundials (octave >= 6.0).
 
 sci-misc/llama-cpp                  curl                  # Required for pulling models from "Hugging Face".
+##sci-misc/llama-cpp                blis                  # Enable Blis support (faster than OpenBLAS on big matrices).
 ##sci-misc/llama-cpp                openblas              # Enable OpenBLAS support (not recommended, very slow).
 
 sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
 sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
 sci-ml/caffe2                       openblas              # Enable backends OpenBLAS.
-sci-ml/ollama                       blas flexiblas        # Enable virtual/blas (flexiblas) support.
-sci-ml/ollama                       cpu_flags_x86_bmi2    # Enable support for Bit Manipulation Instructions (required by CPU flags 'avx2' + 'f16c' + 'fma3').
+sci-ml/ggml                         flexiblas             # Use sci-libs/flexiblas as BLAS provider.
 
 sci-physics/bullet                  double-precision      # Required by media-gfx/blender[bullet].
 

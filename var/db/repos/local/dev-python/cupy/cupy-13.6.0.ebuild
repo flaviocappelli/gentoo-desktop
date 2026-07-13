@@ -3,11 +3,12 @@
 
 # by F.C.
 #
-# Copied from 'stuff' overlay with python min version bump and other modifications.
+# Copied from 'stuff' overlay with some modifications.
+# Add ROCm-6.x support.
 #
-# NOTE: the new v14 release adds support for ROCm-7.x but drops support for ROCm-6.x,
-# cuda-11 and cudnn (upstream recommends "cuDNN Frontend" for cuDNN functionality from
-# Python). NOTE: version 14.0.1 still has some issues, better wait for 14.1.0.
+# NOTE: New cupy-14.x adds support for ROCm-7.x but drops
+# support for ROCm-6.x, cuda-11 and cudnn (upstream recommends
+# "cuDNN Frontend" for cuDNN functionality from Python).
 
 EAPI=8
 
@@ -26,18 +27,24 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-IUSE="rocm cuda"
+IUSE="rocm cuda cudnn"
+
 REQUIRED_USE="
 	^^ ( cuda rocm )
+	cudnn? ( cuda )
 	rocm? ( ${ROCM_REQUIRED_USE} )
 	"
+
+# cupy 13.x's bundled cudnn module rejects cuDNN >=9 at build time
+# ("WARNING: cuDNN <=v8970 is required", see cupy_setup_build.py).
+# Pin <dev-libs/cudnn-9 so the dep is unsatisfiable when a newer
+# cuDNN is on the system, instead of silently building a no-op stub.
 DEPEND="
 	>=dev-python/cython-3.1.0[${PYTHON_USEDEP}]
+	>=dev-python/fastrlock-0.8.3[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.22.0[${PYTHON_USEDEP}]
-	cuda? (
-		dev-util/nvidia-cuda-toolkit[profiler]
-		dev-libs/cudnn
-	)
+	cuda? ( dev-util/nvidia-cuda-toolkit[profiler] )
+	cudnn? ( <dev-libs/cudnn-9 )
 	rocm? (
 		>=dev-util/hip-${ROCM_VERSION}
 		>=dev-util/roctracer-${ROCM_VERSION}
@@ -48,9 +55,9 @@ DEPEND="
 		>=sci-libs/rocThrust-${ROCM_VERSION}[${ROCM_USEDEP}]
 		>=sci-libs/hipSPARSE-${ROCM_VERSION}[${ROCM_USEDEP}]
 	 )"
-RDEPEND=">=dev-python/fastrlock-0.8.3
-	${DEPEND}"
+RDEPEND="${DEPEND}"
 
+EPYTEST_PLUGINS=()
 distutils_enable_tests pytest
 
 src_prepare ()

@@ -31,11 +31,10 @@ SRC_URI+="
 LICENSE="MIT"
 SLOT="0"
 
-CPU_FLAGS_X86=( avx avx_vnni avx2 avx512_vnni avx512f avx512vbmi bmi2 f16c fma3 sse4_2 )
+CPU_FLAGS_X86=( avx avx_vnni avx2 avx512_bf16 avx512_vnni avx512f  avx512vbmi bmi2 f16c fma3 sse4_2 )
 
 # By default, llama-server uses the same port of Open WebUI (8080). Change it with --port;
 # wmma USE explained here: https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md#hip
-
 IUSE="curl openblas +openmp blis rocm cuda opencl openssl vulkan flexiblas wmma examples rpc +server"
 IUSE+=" ${CPU_FLAGS_X86[@]/#/cpu_flags_x86_}"
 
@@ -102,22 +101,25 @@ src_configure() {
 		-DLLAMA_BUILD_EXAMPLES=$(usex examples)
 		-DLLAMA_BUILD_SERVER=$(usex server)
 
-		-DGGML_CCACHE=OFF
+		-DLLAMA_BUILD_UI=OFF
+		-DLLAMA_USE_PREBUILT_UI=OFF
 		-DCMAKE_SKIP_BUILD_RPATH=ON
-		-DGGML_NATIVE=OFF		# don't set march
+		-DGGML_NATIVE=0	# don't set march
 		-DGGML_RPC="$(usex rpc)"
-		-DLLAMA_CURL=$(usex curl)
+		# LLAMA_CURL is deprecated since b9575+, curl is auto-detected
 		-DLLAMA_OPENSSL=$(usex openssl)
 		-DLLAMA_BUILD_NUMBER="${PV#0_pre}"
 		-DLLAMA_BUILD_COMMIT="b${PV#0_pre}"
 		-DGENTOO_REMOVE_CMAKE_BLAS_HACK=ON
+
+		# -- Backends --
 		-DGGML_CUDA=$(usex cuda)
 		-DGGML_CUDA_NCCL=OFF		# Use ON only for multiple NVidia GPUs on the same host.
 		-DGGML_OPENCL=$(usex opencl)
 		-DGGML_OPENMP=$(usex openmp)
 		-DGGML_VULKAN=$(usex vulkan)
 
-		# avoid clashing with whisper.cpp
+		# -- Install paths (avoid clashing with whisper.cpp) --
 		-DCMAKE_INSTALL_LIBDIR="${EPREFIX}/usr/$(get_libdir)/llama.cpp"
 		-DCMAKE_INSTALL_RPATH="${EPREFIX}/usr/$(get_libdir)/llama.cpp"
 	)
@@ -126,6 +128,7 @@ src_configure() {
 		-DGGML_AVX=$(usex cpu_flags_x86_avx)
 		-DGGML_AVX_VNNI=$(usex cpu_flags_x86_avx_vnni)
 		-DGGML_AVX2=$(usex cpu_flags_x86_avx2)
+		-DGGML_AVX512_BF16=$(usex cpu_flags_x86_avx512_bf16)
 		-DGGML_AVX512_VNNI=$(usex cpu_flags_x86_avx512_vnni)
 		-DGGML_AVX512=$(usex cpu_flags_x86_avx512f)
 		-DGGML_AVX512_VBMI=$(usex cpu_flags_x86_avx512vbmi)
@@ -173,13 +176,10 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	# The rpc-server tool was renamed to ggml-rpc-server upstream (b9829) and
-	# given its own install rule under LLAMA_TOOLS_INSTALL (on for standalone
-	# builds), so cmake_src_install now places it -- the old manual dobin path
-	# (bin/rpc-server) no longer exists. verified 2026-06-28
-	#if use rpc; then
-	#	dobin "${BUILD_DIR}/bin/rpc-server"
-	#fi
+	# rpc-server was renamed to ggml-rpc-server upstream (b9829) and given its
+	# own install rule under LLAMA_TOOLS_INSTALL (on for standalone builds), so
+	# cmake_src_install now places it -- the old manual dobin (bin/rpc-server)
+	# is gone. verified 2026-06-28
 
 	# avoid clashing with whisper.cpp
 	rm -rf "${ED}/usr/include"
