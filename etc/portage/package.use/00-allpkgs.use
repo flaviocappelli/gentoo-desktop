@@ -133,8 +133,8 @@ dev-lang/python                     bluetooth             # Build Bluetooth prot
 
 dev-libs/boost                      context python        # Required by sci-electronics/kicad and other packages.
 dev-libs/boost                      icu                   # Required by games-strategy/wesnoth.
-
 dev-libs/cutlass                    tools                 # Required by sci-ml/caffe2[cuda],
+dev-libs/libbpf                     static-libs           # Required by dev-debug/bpftrace.
 dev-libs/libdbusmenu                gtk3                  # Required by x11-libs/xapp.
 dev-libs/libpcre                    pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
 dev-libs/libpcre2                   pcre16 pcre32         # Build PCRE library for 16-bit and 32-bit characters (e.g. UTF-16, UTF-32).
@@ -252,7 +252,6 @@ dev-qt/qt-creator                   plugin-dev            # Install the 'Devel' 
 dev-qt/qt-creator                   qmldesigner           # Build QmlDesigner and related plugins (Insight, StudioWelcome).
 dev-qt/qt-creator                   serialterminal        # Build the serial terminal plugin.
 ##dev-qt/qt-creator                 webengine             # Use dev-qt/qtwebengine with the help USE FLAG, rather than bundled litehtml.
-
 dev-qt/qt-docs                      -html                 # Install only documentation in qch format (for qt-creator).
 dev-qt/qt-docs                      activeqt              # Install documentation for Active Qt (class only for Windows).
 dev-qt/qt-docs                      charts datavis        # Install documentation for dev-qt/qtcharts and dev-qt/qtdatavis3d.
@@ -265,7 +264,6 @@ dev-qt/qt-docs                      quickeffectmaker      # Install documentatio
 dev-qt/qt-docs                      remoteobjects         #	Install documentation for QtRemoteObjects.
 dev-qt/qt-docs                      timeline              # Install documentation for dev-qt/qtquicktimeline.
 dev-qt/qt-docs                      virtualkeyboard       # Install documentation for dev-qt/qtvirtualkeyboard.
-
 dev-qt/qt3d                         qml                   # Required by dev-util/gammaray[3d].
 dev-qt/qt5compat                    gui                   # If disabled, force emerge of dev-qt/qtbase[-gui].
 dev-qt/qt5compat                    icu                   # If disabled, force emerge of dev-qt/qtbase[-icu].

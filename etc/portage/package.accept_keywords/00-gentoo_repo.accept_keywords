@@ -3,9 +3,6 @@
 # Ebuilds from the gentoo official repository.
 # NOTE: sign ~ (tilde) let in -r# package revisions.
 
-# Use LLVM 21 instead of LLVM 20.
-~dev-util/bcc-0.35.0::gentoo
-
 # CPU vulnerability checker (latest version).
 app-admin/spectre-meltdown-checker::gentoo **
 
@@ -31,9 +28,8 @@ dev-util/seer::gentoo
 # PipeWire Graph Qt GUI Interface.
 media-sound/qpwgraph::gentoo
 
-# IM: Zoom and Telegram Desktop.
+# IM: Zoom.
 net-im/zoom::gentoo
-~net-im/telegram-desktop-6.8.2::gentoo
 
 # OBS Studio. Seee also
 # https://github.com/umlaeute/v4l2loopback.

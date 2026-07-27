@@ -1,0 +1,62 @@
+diff '--color=auto' -ru kdeplasma-addons-6.6.4.old/kwin/CMakeLists.txt kdeplasma-addons-6.6.4/kwin/CMakeLists.txt
+--- a/kwin/CMakeLists.txt	2026-04-07 09:55:11.000000000 +0200
++++ b/kwin/CMakeLists.txt	2026-05-11 02:30:18.141817233 +0200
+@@ -3,6 +3,31 @@
+ #
+ # SPDX-License-Identifier: BSD-3-Clause
+ 
++option(KWIN_WAYLAND "Whether to build effects for kwin_wayland if present." ON)
++option(KWIN_X11 "Whether to build effects for kwin_x11 if present." ON)
++
++if(KWIN_WAYLAND)
++    find_package(KWin COMPONENTS
++        kwineffects
++    )
++    if (${KWin_FOUND})
++        find_package(KWinDBusInterface CONFIG REQUIRED)
++    else()
++        set(KWIN_WAYLAND OFF)
++    endif()
++endif()
++if(KWIN_X11)
++    find_package(KWinX11 COMPONENTS
++        kwineffects
++    )
++    if (${KWinX11_FOUND})
++        find_package(KWinX11DBusInterface CONFIG REQUIRED)
++        set(KWin_VERSION ${KWinX11_VERSION})
++    else()
++        set(KWIN_X11 OFF)
++    endif()
++endif()
++
+ add_subdirectory(effects)
+ add_subdirectory(scripts)
+ add_subdirectory(windowswitchers)
+diff '--color=auto' -ru kdeplasma-addons-6.6.4.old/kwin/effects/cube/kcm/CMakeLists.txt kdeplasma-addons-6.6.4/kwin/effects/cube/kcm/CMakeLists.txt
+--- a/kwin/effects/cube/kcm/CMakeLists.txt	2026-04-07 09:55:11.000000000 +0200
++++ b/kwin/effects/cube/kcm/CMakeLists.txt	2026-05-11 02:29:26.399994121 +0200
+@@ -5,7 +5,11 @@
+ set(kwin_cube_config_SOURCES cubeeffectkcm.cpp)
+ ki18n_wrap_ui(kwin_cube_config_SOURCES cubeeffectkcm.ui)
+ 
+-kcoreaddons_add_plugin(kwin_cube_config INSTALL_NAMESPACE "kwin/effects/configs" SOURCES ${kwin_cube_config_SOURCES})
++# This will only work as long as KWin and KWin X11 have the same interface
++qt_add_dbus_interface(kwin_cube_config_SOURCES ${KWIN_EFFECTS_INTERFACE} kwineffects_interface)
++
++add_library(kwin_cube_config MODULE ${kwin_cube_config_SOURCES})
++
+ target_sources(kwin_cube_config PRIVATE
+     resources.qrc
+ )
+@@ -23,3 +27,10 @@
+ target_compile_definitions(kwin_cube_config PRIVATE
+     -DTRANSLATION_DOMAIN=\"kwin_effect_cube\"
+ )
++
++if(KWIN_WAYLAND)
++    install(TARGETS kwin_cube_config DESTINATION ${KDE_INSTALL_PLUGINDIR}/kwin/effects/configs)
++endif()
++if(KWIN_X11)
++    install(TARGETS kwin_cube_config DESTINATION ${KDE_INSTALL_PLUGINDIR}/kwin-x11/effects/configs)
++endif()

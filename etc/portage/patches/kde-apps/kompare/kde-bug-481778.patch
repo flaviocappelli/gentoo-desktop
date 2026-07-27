@@ -1,0 +1,15 @@
+https://bugs.kde.org/show_bug.cgi?id=481778
+
+diff --git a/src/komparepart/komparelistview.cpp b/src/komparepart/komparelistview.cpp
+index 61cd7bbd040e5c9d948fcea2deb0b7809aed7a8f..3deb472df045e7c39cda827113373b876024ef4a 100644
+--- a/src/komparepart/komparelistview.cpp
++++ b/src/komparepart/komparelistview.cpp
+@@ -745,7 +745,7 @@ void KompareListViewLineItem::init(int line, DifferenceString* text)
+ void KompareListViewLineItem::paintCell(QPainter* p, const QStyleOptionViewItem& option, int column)
+ {
+     int width = option.rect.width();
+-    Qt::Alignment align = option.displayAlignment;
++    Qt::Alignment align = option.displayAlignment & ~Qt::AlignVCenter | Qt::AlignTop;
+ 
+     p->setRenderHint(QPainter::Antialiasing);
+     p->translate(option.rect.topLeft());
