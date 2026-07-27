@@ -92,3 +92,9 @@ dev-python/fastrlock::local
 # ebuild fix it and bump blender to the latest LTS version. See:
 # https://bugs.gentoo.org/973408, https://bugs.gentoo.org/976618
 media-gfx/blender::local
+
+# The Microchip XC compilers are now totally free,
+# no more license required for PRO optimizations!
+dev-embedded/xc8-bin::local
+dev-embedded/xc-dsc-bin::local
+dev-embedded/xc32-bin::local

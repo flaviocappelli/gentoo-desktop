@@ -72,6 +72,9 @@ dev-debug/kdbg
 dev-debug/ltrace
 dev-debug/strace
 dev-debug/valgrind
+dev-embedded/xc-dsc-bin
+dev-embedded/xc32-bin
+dev-embedded/xc8-bin
 dev-games/godot
 dev-libs/libisoburn
 dev-libs/rocm-opencl-runtime
