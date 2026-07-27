@@ -1,0 +1,55 @@
+# by F.C.
+# Best edited with tab 8 (nano -T8).
+# Last edit: 2026/07/27.
+#
+# This file has been manually added to /etc/pam.d/
+# to handle the ZFS user's dataset(s) on login/logout.
+#
+# NOTE: I currently use a custom script to load the encryption key and mount/unmount
+#       the user's dataset (and its children, if exist) during login/logout. Despite
+#       recent improvements, the 'pam_zfs_key.so' module still fails to unmount such
+#       dataset(s) at logout (an action that my script handles successfully). However,
+#       my script does not work when switching users via 'su'. This limitation is due
+#       to how PAM handles the transitions to the root user: the script is forced to
+#       run with standard user privileges, which prevents it from executing any ZFS
+#       command that require root access (like load/unload key and mount/unmount).
+
+# --------------------------------------------------------------------------------------------------
+#
+# Unlock and mount the user's encrypted ZFS dataset(s).
+
+-auth		optional	pam_exec.so	quiet expose_authtok /usr/local/libexec/pam_zfs_helper
+
+# --------------------------------------------------------------------------------------------------
+#
+# Unfortunately "expose_authtok" (see auth) is not supported by "pam_exec.so"
+# on the PAM type "password", so there is no way to pass the new password to
+# my script. This means that the ZFS encryption passphrase cannot be changed
+# automatically by "passwd": it must be changed manually after "passwd" with
+# the command "zfs change-key -o keyformat=passphrase storage/$USER" (by root
+# or using sudo, of course).
+
+# --------------------------------------------------------------------------------------------------
+#
+# Keeps track of user's open sessions and, if enabled (see my script), unmounts/locks
+# the user's ZFS dataset(s) after the last user session has ended; note that the script
+# must handle different types of logins: graphical via sddm, local logins on VT, and
+# remote SSH access using a password or a passkeys; note that the SSH passkey cannot
+# unlock/mount the ZFS dataset(s) because an interactive authentication is required to
+# obtain the password from PAM. Fortunately we can force such authentication with the
+# command "ssh -o PreferredAuthentications=keyboard-interactive" (only needed for the
+# first remote user's login, next logins can use the passkey). Regardless of the access
+# method used when the last login is terminated the dataset(s) are unmounted and locked.
+
+-session	optional	pam_exec.so /usr/local/libexec/pam_zfs_helper
+
+# --------------------------------------------------------------------------------------------------
+#
+# If you want to try the 'pam_zfs_key.so' module, comment out the previous lines and
+# uncomment the following ones. Add the 'uid_min=0' option if you want to extend the
+# pam_zfs_key.so's capabilities to the root user (for security reasons, by default the
+# module ignores users with UIDs < 1000, see the pam_zfs_key.so's C code on github).
+
+#-auth      optional    pam_zfs_key.so  homes=storage runstatedir=/run/pam_zfs_key mount_recursively
+#-password  optional    pam_zfs_key.so  homes=storage runstatedir=/run/pam_zfs_key mount_recursively
+#-session   optional    pam_zfs_key.so  homes=storage runstatedir=/run/pam_zfs_key mount_recursively
