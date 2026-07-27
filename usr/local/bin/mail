@@ -1,0 +1,101 @@
+#!/bin/bash
+#
+# by F.C.
+#
+# mail wrapper - v1.0
+#
+# Restricts mail/mailx to send-only mode (i.e. blocks
+# interactive read mode); also detect unknown flags
+# (for safety reasons). This wrapper is developed for:
+#
+#     Gentoo mail-client/mailx-8.1 or above
+#
+# (is not intended to support other mailx variants
+# and it relies on the option syntax documented by
+# manpages "mail(1)" and "mailx(1P)"). Note that to
+# parse the options we cannot use getopts() because
+# '-f' flag has an optional argument (and getops()
+# does not permit optional arguments). By the above
+# documentation -f is a read mode operation.
+
+INVOKED=$(basename "$0")
+REAL_MAIL="/usr/bin/$INVOKED"
+ORIGINAL_ARGS=("$@")
+READ_MODE=false
+RECIPIENTS=()
+
+# Repeat until there are argument to process.
+while [[ $# -gt 0 ]]; do
+  ARG="$1"
+
+  # ONLY FOR DEBUG
+  #echo "ARG = $ARG"
+
+  # Get the next cluster of short options (without '-').
+  if [[ "$ARG" =~ ^-[a-zA-Z0-9].*$ ]]; then
+    CLUSTER="${ARG:1}"
+
+    # ONLY FOR DEBUG
+    #echo "  CLUSTER = $CLUSTER"
+
+    # Parse any character of the cluster.
+    for (( i=0; i<${#CLUSTER}; i++ )); do
+      OPT="${CLUSTER:$i:1}"
+
+      # ONLY FOR DEBUG
+      #echo "    OPT = $OPT"
+
+      case "$OPT" in
+
+        e|H|N|f|u)              # Options selecting read mode.
+            READ_MODE=true
+            break 2             # Stops both 'for' and 'while' loops.
+            ;;
+
+        d|E|I|i|n|v)            # Valid options for send mode without arguments.
+            ;;
+
+        a|b|c|r|s)              # Valid options for send mode with mandatory argument.
+            if (( i == ${#CLUSTER} - 1 )); then     # If the option is the last one in the block,
+              shift                                 # the argument is in the next parameter ($2)
+            fi                                      # Otherwise, the argument is the remainder
+            break                                   # of the cluster itself.
+            ;;
+
+        *)  echo "Error: Invalid option: -$OPT" >&2
+            exit 1
+            ;;
+      esac
+  done
+
+  # Explicit end of options: everything after is a recipient.
+  # This assignement end the parsing cycle (see man pages).
+  elif [[ "$ARG" == "--" ]]; then
+    RECIPIENTS+=("$@")
+    break
+
+  # Starts with a hyphen but does not match the regex pattern
+  # (note that long options are not supported in mail/mailx).
+  elif [[ "$ARG" == -* ]]; then
+    echo "Error: Invalid option or format: $ARG" >&2
+    exit 1
+
+  # Recipient addresses (positional arguments). This
+  # assignement end the parsing cycle (see man pages).
+  else
+    RECIPIENTS+=("$@")
+    break
+  fi
+  shift 1
+done
+
+# Read mode or recipient missing (still a read mode).
+if [ "$READ_MODE" = true ] || [ ${#RECIPIENTS[@]} -eq 0 ] ; then
+  echo -e "\nInteractive mail access is disabled on this system:" >&2
+  echo -e "to read the system emails, run Mozilla Thunderbird." >&2
+  echo -e "Maybe, did you simply forget to add the recipient?\n" >&2
+  exit 1
+fi
+
+# All checks ok, invoke the original command with the initial arguments.
+exec "$REAL_MAIL" "${ORIGINAL_ARGS[@]}"

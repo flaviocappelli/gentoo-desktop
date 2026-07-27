@@ -163,7 +163,6 @@ kde-misc/kweather
 kde-misc/markdownpart
 kde-plasma/plasma-meta
 llvm-runtimes/libclc
-mail-client/s-nail
 mail-client/thunderbird
 mail-mta/opensmtpd
 media-fonts/fonts-meta
@@ -214,6 +213,7 @@ net-fs/nfs-utils
 net-ftp/filezilla
 net-im/telegram-desktop
 net-im/zoom
+net-mail/dovecot
 net-misc/bridge-utils
 net-misc/chrony
 net-misc/freetube-bin
