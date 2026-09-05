@@ -217,7 +217,7 @@ sci-libs/rocRAND:0/6.4::gentoo              # Same slot of sci-libs/hipRAND.
 # See https://github.com/lamikr/rocm_sdk_builder
 
 
-# ======================================= PyTorch =======================================
+# ======================================== PyTorch =======================================
 # 'PyTorch' powers a wide range of cutting-edge AI applications: ROCM support is provided
 # by sci-libs/caffe2[rocm] (see https://bugs.gentoo.org/940356). Library sci-libs/hipBLASLt
 # is required by PyTorch for GEMM operations that extend functionalities of traditional BLAS
@@ -255,3 +255,14 @@ dev-util/nvidia-cuda-toolkit::gentoo
 sci-ml/cudnn-frontend::gentoo
 # ---- TorchVision ----
 sci-ml/torchvision::gentoo
+
+
+# ======================================== Ollama ========================================
+# Ollama is finally available in Portage and seems to work pretty well. NOTE: for consumer
+# AMD GPUs, ROCm isn't necessarily better than Vulkan (testing is highly recommended); for
+# NVidia GPUs, CUDA is recommended instead (CUDA must also be enabled in acct-user/ollama).
+# See also "dev-python/ollama" and "sci-misc/llama-cpp" in ./00-local_repo.accept_keywords.
+sci-ml/ollama::gentoo
+acct-group/ollama::gentoo
+acct-user/ollama::gentoo
+sci-ml/ggml::gentoo

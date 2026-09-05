@@ -73,12 +73,9 @@ sci-electronics/qucs-s::local
 # interface to Ollama (all connections to Hugginface and telemetry are
 # disabled). For document vectorization, I use the multilingual embedded
 # model "bge-m3"; if only English is needed, use "nomic-embed" (lighter).
-# See /etc/portage/package.use/01-local-hw.use for required use flags.
+# See ./00-local_repo.accept_keywords for sci-ml/ollama ebuild in portage
+# and /etc/portage/package.use/01-local-hw.use for the required use flags.
 dev-python/ollama::local
-acct-group/ollama::local
-acct-user/ollama::local
-sci-ml/ggml::local
-sci-ml/ollama::local
 
 # LLM inference in C/C++.
 sci-misc/llama-cpp::local

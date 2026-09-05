@@ -41,7 +41,7 @@ sci-ml/ggml                     -rocm vulkan
 #   Diffusion models require massive geometric computations. During the final VAE
 #   decoding stage at 1024x1024, the engine demands a monolithic, single contiguous
 #   compute buffer of roughly ~6.6 to 8 GB. The AMD RDNA2 architecture (Navi 21) has
-#   a  hard hardware limit under Vulkan (`maxBufferSize`) restricted to exactly 4 GB.
+#   a hard hardware limit under Vulkan (`maxBufferSize`) restricted to exactly 4 GB.
 #   Vulkan cannot allocate the huge VAE block in one go, triggering a fatal `Requested
 #   buffer size exceeds device buffer size limit` (OutOfDeviceMemory) crash. ROCm maps
 #   VRAM virtually and continuously (HIP/AMD GPU architecture), bypassing Vulkan
@@ -51,5 +51,6 @@ sci-ml/ggml                     -rocm vulkan
 # PYTORCH & C.
 dev-python/cupy                 rocm
 sci-misc/stable-diffusion-cpp   rocm -vulkan
-sci-ml/caffe2                   rocm
+sci-ml/caffe2                   rocm          # Pytorch < 2.13 only.
+sci-ml/pytorch                  rocm          # Pytorch 2.13 and above.
 sci-ml/torchvision              rocm

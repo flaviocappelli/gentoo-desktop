@@ -607,6 +607,8 @@ net-vpn/strongswan           strongswan_plugins_ipseckey  # Provides authenticat
 net-wireless/wpa_supplicant         ap                    # Add support for access point mode.
 net-wireless/wpa_supplicant         tkip                  # Add support for WPA TKIP (deprecated in 2009 due to security flaws, but it might be still useful).
 
+sci-astronomy/stellarium            gui                   # Build the GUI frontend.
+
 sci-electronics/gtkwave             fasttree tcl          # Enables Fast SST Tree code and support for the Tcl language.
 
 # Flag 'hdf5' has been removed from sci-libs/armadillo because HDF5 support is absent in CMakeLists.txt,
@@ -638,14 +640,16 @@ sci-mathematics/octave              portaudio             # Provides "audioplaye
 sci-mathematics/octave              sndfile               # Add support for reading/writing files containing sampled audio data.
 ##sci-mathematics/octave            sundials              # Enable the "ode15i" and "ode15s" solvers using sci-libs/sundials (octave >= 6.0).
 
-sci-misc/llama-cpp                  curl                  # Required for pulling models from "Hugging Face".
 ##sci-misc/llama-cpp                blis                  # Enable Blis support (faster than OpenBLAS on big matrices).
 ##sci-misc/llama-cpp                openblas              # Enable OpenBLAS support (not recommended, very slow).
 
 sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
 sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
 sci-ml/caffe2                       openblas              # Enable backends OpenBLAS.
-sci-ml/ggml                         flexiblas             # Use sci-libs/flexiblas as BLAS provider.
+
+sci-ml/pytorch                      fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
+sci-ml/pytorch                      onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
+sci-ml/pytorch                      openblas              # Enable backends OpenBLAS.
 
 sci-physics/bullet                  double-precision      # Required by media-gfx/blender[bullet].
 

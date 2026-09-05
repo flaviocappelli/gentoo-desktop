@@ -117,6 +117,7 @@ dev-util/sysprof
 dev-util/vulkan-tools
 dev-vcs/cvs
 dev-vcs/git
+dev-vcs/git-filter-repo
 dev-vcs/git-flow
 dev-vcs/mercurial
 dev-vcs/qgit
@@ -138,7 +139,6 @@ kde-apps/kalarm
 kde-apps/kalzium
 kde-apps/kapman
 kde-apps/kate
-kde-apps/kbackup
 kde-apps/kcalc
 kde-apps/kcharselect
 kde-apps/kdeadmin-meta
