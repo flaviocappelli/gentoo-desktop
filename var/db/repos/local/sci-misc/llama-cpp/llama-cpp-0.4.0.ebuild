@@ -15,11 +15,12 @@ TINY_LLAMAS_COMMIT="99dd1a73db5a37100bd4ae633f4cfce6560e1567"
 DESCRIPTION="Port of Facebook's LLaMA model in C/C++"
 HOMEPAGE="https://github.com/ggml-org/llama.cpp"
 
-
-MY_PV="b${PV#0_pre}"
-SRC_URI="https://github.com/ggml-org/llama.cpp/archive/refs/tags/${MY_PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/llama.cpp-${MY_PV}"
-KEYWORDS="~amd64"
+# Stable SemVer release track (vX.Y.Z): "slower release cadence, recommended
+# for downstream distribution" per upstream. The 0_pre<N> ebuilds track the
+# bleeding-edge b<N> build tags instead ("faster cadence, for developers").
+SRC_URI="https://github.com/ggml-org/llama.cpp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/llama.cpp-${PV}"
+KEYWORDS="~amd64 ~arm64"
 
 SRC_URI+="
 	examples? (
@@ -31,23 +32,19 @@ SRC_URI+="
 LICENSE="MIT"
 SLOT="0"
 
-CPU_FLAGS_X86=( avx avx_vnni avx2 avx512_bf16 avx512_vnni avx512f  avx512vbmi bmi2 f16c fma3 sse4_2 )
+CPU_FLAGS_X86=( avx avx_vnni avx2 avx512f avx512_bf16 avx512vbmi avx512_vnni bmi2 f16c fma3 sse4_2 )
 
 # By default, llama-server uses the same port of Open WebUI (8080). Change it with --port;
-# wmma USE explained here: https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md#hip
-IUSE="curl openblas +openmp blis rocm cuda opencl openssl vulkan flexiblas wmma examples rpc +server"
+IUSE="openblas +openmp blis rocm cuda opencl openssl vulkan flexiblas examples rpc +server"
 IUSE+=" ${CPU_FLAGS_X86[@]/#/cpu_flags_x86_}"
 
 REQUIRED_USE="
 	?? ( openblas blis flexiblas )
 	rocm? ( ${ROCM_REQUIRED_USE} )
-	wmma? ( rocm )
 "
 
-# curl is needed for pulling models from huggingface
 # numpy is used by convert_hf_to_gguf.py
 CDEPEND="
-	curl? ( net-misc/curl:= )
 	openblas? ( sci-libs/openblas:= )
 	openmp? ( llvm-runtimes/openmp:= )
 	blis? ( sci-libs/blis:= )
@@ -55,7 +52,6 @@ CDEPEND="
 	rocm? (
 		>=dev-util/hip-${ROCM_VERSION}:=
 		>=sci-libs/hipBLAS-${ROCM_VERSION}:=
-		wmma? ( >=sci-libs/rocWMMA-${ROCM_VERSION}:= )
 	)
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	openssl? ( dev-libs/openssl:= )
@@ -106,10 +102,12 @@ src_configure() {
 		-DCMAKE_SKIP_BUILD_RPATH=ON
 		-DGGML_NATIVE=0	# don't set march
 		-DGGML_RPC="$(usex rpc)"
-		# LLAMA_CURL is deprecated since b9575+, curl is auto-detected
 		-DLLAMA_OPENSSL=$(usex openssl)
-		-DLLAMA_BUILD_NUMBER="${PV#0_pre}"
-		-DLLAMA_BUILD_COMMIT="b${PV#0_pre}"
+		# build-info.cpp compiles LLAMA_BUILD_NUMBER as an integer literal, so the
+		# stable SemVer release maps to its corresponding nightly build number
+        # (v0.4.0 == b10809 per the release notes). Update on each stable bump.
+        -DLLAMA_BUILD_NUMBER="10809"
+		-DLLAMA_BUILD_COMMIT="v${PV}"
 		-DGENTOO_REMOVE_CMAKE_BLAS_HACK=ON
 
 		# -- Backends --
@@ -128,10 +126,10 @@ src_configure() {
 		-DGGML_AVX=$(usex cpu_flags_x86_avx)
 		-DGGML_AVX_VNNI=$(usex cpu_flags_x86_avx_vnni)
 		-DGGML_AVX2=$(usex cpu_flags_x86_avx2)
-		-DGGML_AVX512_BF16=$(usex cpu_flags_x86_avx512_bf16)
-		-DGGML_AVX512_VNNI=$(usex cpu_flags_x86_avx512_vnni)
 		-DGGML_AVX512=$(usex cpu_flags_x86_avx512f)
+		-DGGML_AVX512_BF16=$(usex cpu_flags_x86_avx512_bf16)
 		-DGGML_AVX512_VBMI=$(usex cpu_flags_x86_avx512vbmi)
+		-DGGML_AVX512_VNNI=$(usex cpu_flags_x86_avx512_vnni)
 		-DGGML_BMI2=$(usex cpu_flags_x86_bmi2)
 		-DGGML_F16C=$(usex cpu_flags_x86_f16c)
 		-DGGML_FMA=$(usex cpu_flags_x86_fma3)
@@ -157,7 +155,7 @@ src_configure() {
 	fi
 
 	if use cuda; then
-		local -x CUDAHOSTCXX="$(cuda_gccdir)"
+		local -x CUDAHOSTCXX="$(cuda_gccdir)/g++"
 		# tries to recreate dev symlinks
 		cuda_add_sandbox
 		addpredict "/dev/char/"
@@ -167,7 +165,6 @@ src_configure() {
 		rocm_use_hipcc
 		mycmakeargs+=(
 			-DGGML_HIP=ON -DAMDGPU_TARGETS=$(get_amdgpu_flags)
-			-DGGML_HIP_ROCWMMA_FATTN=$(usex wmma)
 		)
 	fi
 
