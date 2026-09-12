@@ -43,7 +43,7 @@ media-sound/pulseaudio-daemon
 # We want to globally use at least "-march=x86-64-v2". Generic
 # CPU architecture x86-64-v* need GCC >= 11 or LLVM/Clang >= 12
 # (previous versions generate build errors with -march=x86-64-v2
-# or greater arch). Note that LLVM/Clang < 15 is no longer in
+# or greater arch). Note that LLVM/Clang < 17 is no longer in
 # portage. See also /etc/portage/make.conf/00-cflags.conf
 <sys-devel/gcc-11.0.0
 

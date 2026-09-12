@@ -21,7 +21,6 @@ app-editors/wxhexeditor::gentoo
 # is a new gui frontend to gdb with advanced features.
 app-text/zeal::gentoo
 dev-debug/kdbg::gentoo
-dev-util/clazy::gentoo
 dev-util/heaptrack::gentoo
 dev-util/seer::gentoo
 
@@ -149,7 +148,7 @@ dev-util/clinfo::gentoo
 #  < 6.3.3   removed from portage
 #  = 6.3.3   portage         luxmark-3.1 works, darktable-4.8 cltest works
 #  = 6.4.3   portage         luxmark-3.1 works, darktable-5.2 cltest works
-#  = 7.3.4   stuff overlay   luxmark-3.1 works, darktable-5.4 cltest works
+#  = 7.2.4   stuff overlay   luxmark-3.1 works, darktable-5.4 cltest works
 #                            NOTE: I'VE DEEPLY TESTED ROCm 7.2.4 AND GOT A MARGINAL GAIN (PLUS SOME MINOR
 #                            REGRESSIONS) ON MY RX6900XT GPU, SO I'M KEEPING ROCm 6.4.3 FOR THE TIME BEING.
 dev-libs/rocm-opencl-runtime:0/6.4::gentoo

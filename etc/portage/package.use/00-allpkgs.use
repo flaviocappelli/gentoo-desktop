@@ -2,7 +2,7 @@
 #
 # IMPORTANT NOTES:
 #
-# - I currently don't use binary packages (I prefere to compile from sources).
+# - I currently don't use binary packages from Gentoo (I prefere to compile from sources).
 #
 # - ReiserFs support is deprecated since Linux kernel 5.18 (its removal is planned for 2025).
 #
@@ -146,11 +146,11 @@ dev-libs/xerces-c                   -iconv                # ICU take precedenze 
 dev-libs/xerces-c                   icu                   # Required by media-gfx/freecad.
 dev-libs/zziplib                    -sdl                  # Drop unnecessary dependency (SDL integration not required).
 
-# QtPy is a small abstraction layer for PyQt5/PySide2 (Qt5) and PyQt6/PySide6 (Qt6): it is very useful
-# for fast prototyping (see https://github.com/spyder-ide/qtpy/). NOTES: 1) Gentoo has recently dropped
-# support for Qt5 in QtPy; 2) PySide2 has been removed from portage; 3) dev-python/pyside6 (i.e. PySide6)
-# has been renamed dev-python/pyside; 4) few packages depends on PyQt5 and Qt5 has been masked, so PyQt5
-# will be soon removed as well; 5) QtPy does not currently cover all Qt modules available in PyQt6/PySide6.
+# QtPy is a small abstraction layer for PyQt5/PySide2 (Qt5) and PyQt6/PySide6 (Qt6); it is very useful for
+# rapid prototyping (see https://github.com/spyder-ide/qtpy/). Note that Gentoo has recently dropped support
+# for Qt5, so PyQt5 and PySide2 have been removed from Portage. Additionally, dev-python/pyside6 (i.e. PySide6)
+# has been renamed to dev-python/pyside. Also, note that QtPy and PyQt6 include fewer Qt modules than PySide6;
+# these are missing: Qt3D*, QtCharts, QtGraphs, QtHttpServer, QtLocation, QtNetworkAuth, QtSerialBus, QtWebView.
 
 dev-python/matplotlib               -wxwidgets            # Do not build the WxWidgets integration (not required).
 dev-python/numpy                    lapack                # Add support for the virtual/lapack numerical library.
@@ -168,6 +168,7 @@ dev-python/pyqt6                    printsupport          # Required by dev-pyth
 dev-python/pyqt6                    qml                   # Required by dev-python/qtpy[pyqt6 + qml].
 dev-python/pyqt6                    quick                 # Required by dev-python/qtpy[pyqt6 + quick].
 ##dev-python/pyqt6                  quick3d               # Required by dev-python/qtpy[pyqt6 + quick3d].
+##dev-python/pyqt6                  remoteobjects         # Required by dev-python/qtpy[pyqt6 + remoteobjects].
 ##dev-python/pyqt6                  scxml                 # Required by dev-python/qtpy[pyqt6 + scxml].
 dev-python/pyqt6                    sensors               # Required by dev-python/qtpy[pyqt6 + sensors].
 dev-python/pyqt6                    serialport            # Required by dev-python/qtpy[pyqt6 + serialport].
@@ -179,18 +180,20 @@ dev-python/pyqt6                    testlib               # Required by dev-pyth
 dev-python/pyqt6                    webchannel            # Required by dev-python/qtpy[pyqt6 + webchannel].
 dev-python/pyqt6                    websockets            # Required by dev-python/qtpy[pyqt6 + websockets].
 dev-python/pyqt6                    widgets               # Required by dev-python/qtpy[pyqt6 + widgets].
-dev-python/pyqt6                    xml                   # Required by dev-python/qtpy[pyqt6 + xml] (unlike PyQt5, this flag exists in PyQt6).
+dev-python/pyqt6                    xml                   # Required by dev-python/qtpy[pyqt6 + xml].
 dev-python/pyqt6-webengine          quick                 # Required by dev-python/qtpy[pyqt6 + webengine + quick].
 dev-python/pyqt6-webengine          widgets               # Required by app-text/calibre, dev-python/qtpy[pyqt6 + webengine + widgets].
-##dev-python/pyside                 3d                    # Build Qt3DCore, Qt3DAnimation, Qt3DExtras, Qt3DInput, Qt3DLogic, and Qt3DRender modules. NOT AVAILABLE IN QtPy.
-dev-python/pyside                   charts                # Build QtCharts module. NOT AVAILABLE IN QtPy.
+##dev-python/pyside                 3d                    # Build Qt3DCore, Qt3DAnimation, Qt3DExtras, Qt3DInput, Qt3DLogic, and Qt3DRender modules.
+dev-python/pyside                   charts                # Build QtCharts module.
 dev-python/pyside                   designer              # Required by dev-python/qtpy[pyside6 + designer].
+##dev-python/pyside                 graphs                # Build QtGraphs module.
 dev-python/pyside                   gui                   # Required by dev-python/qtpy[pyside6 + gui].
 dev-python/pyside                   help                  # Required by dev-python/qtpy[pyside6 + help].
-##dev-python/pyside                 location              # Build QtLocation module. NOT AVAILABLE IN QtPy (nor PyQt6).
+##dev-python/pyside                 httpserver            # Build QtHttpServer module.
+##dev-python/pyside                 location              # Build QtLocation module.
 dev-python/pyside                   multimedia            # Required by dev-python/qtpy[pyside6 + multimedia].
 dev-python/pyside                   network               # Required by dev-python/qtpy[pyside6 + network].
-##dev-python/pyside                 network-auth          # Build QtNetworkAuth module. NOT AVAILABLE IN QtPy.
+##dev-python/pyside                 network-auth          # Build QtNetworkAuth module.
 ##dev-python/pyside                 nfc                   # Required by dev-python/qtpy[pyside6 + nfc].
 ##dev-python/pyside                 pdfium                # Required by dev-python/qtpy[pyside6 + pdfium].
 dev-python/pyside                   opengl                # Required by dev-python/qtpy[pyside6 + opengl].
@@ -199,8 +202,10 @@ dev-python/pyside                   printsupport          # Required by dev-pyth
 dev-python/pyside                   qml                   # Required by dev-python/qtpy[pyside6 + qml].
 dev-python/pyside                   quick                 # Required by dev-python/qtpy[pyside6 + quick].
 ##dev-python/pyside                 quick3d               # Required by dev-python/qtpy[pyside6 + quick3d].
+##dev-python/pyside                 remoteobjects         # Required by dev-python/qtpy[pyside6 + remoteobjects].
 ##dev-python/pyside                 scxml                 # Required by dev-python/qtpy[pyside6 + scxml].
 dev-python/pyside                   sensors               # Required by dev-python/qtpy[pyside6 + sensors].
+##dev-python/pyside                 serialbus             # Build QtSerialBus modules.
 dev-python/pyside                   serialport            # Required by dev-python/qtpy[pyside6 + serialport].
 ##dev-python/pyside                 spatialaudio          # Required by dev-python/qtpy[pyside6 + spatialaudio].
 dev-python/pyside                   speech                # Required by dev-python/qtpy[pyside6 + speech].
@@ -211,6 +216,7 @@ dev-python/pyside                   uitools               # Required by media-gf
 dev-python/pyside                   webchannel            # Required by dev-python/qtpy[pyside6 + webchannel].
 dev-python/pyside                   webengine             # Required by dev-python/qtpy[pyside6 + webengine].
 dev-python/pyside                   websockets            # Required by dev-python/qtpy[pyside6 + websockets].
+##dev-python/pyside                 webview               # Build QtWebView module.
 dev-python/pyside                   widgets               # Required by dev-python/qtpy[pyside6 + widgets].
 dev-python/pyside                   xml                   # Required by dev-python/qtpy[pyside6 + xml].
 dev-python/qtpy                     designer              # Pull in bindings for the QtDesigner module and enable the designer plugin.
@@ -227,6 +233,7 @@ dev-python/qtpy                     pyqt6 pyside6         # Provides support for
 dev-python/qtpy                     qml                   # Build bindings for the QtQml.
 dev-python/qtpy                     quick                 # Build bindings for the QtQuick.
 ##dev-python/qtpy                   quick3d               # Build bindings for the QtQuick3D.
+##dev-python/qtpy                   remoteobjects         # Pull in bindings for the QtRemoteObjects module.
 ##dev-python/qtpy                   scxml                 # Pull in bindings for the QtScXml module.
 dev-python/qtpy                     sensors               # Pull in bindings for the QtSensors module.
 dev-python/qtpy                     serialport            # Pull in bindings for the QtSerialPort module.
@@ -306,7 +313,7 @@ games-engines/uzdoom                gtk                   # Display a visual dia
 
 games-fps/xonotic                   ode                   # Enable support for physics engine.
 
-##gnome-base/gnome-keyring          -ssh-agent            # Ensure gnome-keyring SSH agent is disabled (to not interfere with the gpg-agent.ssh service).
+gnome-base/gnome-keyring            -ssh-agent            # If installed, ensure gnome-keyring SSH agent is disabled (to not interfere with the gpg-agent.ssh service).
 gnome-base/gvfs                     archive               # Enables support for accessing files in archives transparently via app-arch/libarchive.
 gnome-base/gvfs                     fuse                  # Provides limited access to the GVfs filesystems for applications not using GIO (I/O library available in GLib).
 ##gnome-base/gvfs                   ios                   # Enable support for Apple's iDevice with iOS operating system (gvfs-afc).
@@ -322,7 +329,7 @@ kde-apps/akonadi                    tools                 # Install tools for de
 kde-apps/akonadi-config             -mysql -postgres      # See https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1903060.html
 kde-apps/akonadi-config             sqlite                # See https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1903060.html
 ##kde-apps/gwenview                 fits                  # Enable support for NASA's sci-libs/cfitsio library.
-##kde-apps/k3b                      sox                   # Add support for Sound eXchange (SoX).
+##kde-apps/k3b                      sox                   # Add support for SoX (Sound eXchange), to convert audio PCM to other formats.
 kde-apps/kalarm                     -pim                  # Disable PIM integration (I don't need it).
 ##kde-apps/kate-addons              lspclient             # Enable LSP (Language Server Protocol) client plugin.
 kde-apps/kdegraphics-meta           color-management      # Enable color management via kde-misc/colord-kde.
@@ -441,6 +448,7 @@ media-libs/opencv                   features2d            # Required by media-pl
 ##media-libs/opencv                 lapack                # Add support for the virtual/lapack numerical library.
 media-libs/opencv                   opencl                # Enable OpenCL support (computation on GPU).
 media-libs/opensubdiv               tbb                   # Required by media-gfx/blender[opensubdiv].
+media-libs/qhull                    static-libs           # Required by media-gfx/prusaslicer.
 media-libs/simage                   -tiff                 # Drop unnecessary dependency (from CLD).
 media-libs/zmusic                   mpg123                # Enable support for MPEG audio playback via media-sound/mpg123.
 
@@ -501,7 +509,7 @@ media-video/mjpegtools              -quicktime            # Drop unnecessary dep
 ##media-video/mpv                   archive               # Enable support to play directly from various archives via app-arch/libarchive.
 ##media-video/mpv                   sdl                   # Enable media-libs/libsdl2 based video and audio outputs (NOTE: these outputs exist for compatibility reasons only, avoid if possible).
 media-video/obs-studio              lua                   # Enable Lua scripting support (see https://wiki.gentoo.org/wiki/OBS_Studio).
-##media-video/obs-studio            vlc                   # Enable VLC media source support (see https://www.youtube.com/watch?v=Gr3XIo7exSg). Requires VLC < 4.0 whose GUI has been disabled due to Qt5 masked.
+media-video/obs-studio              vlc                   # Enable VLC media source support (see https://www.youtube.com/watch?v=Gr3XIo7exSg). Requires VLC < 4.0 (see my local repo).
 media-video/pipewire                echo-cancel           # Enable WebRTC-based echo canceller via media-libs/webrtc-audio-processing.
 media-video/pipewire                extra                 # Build pw-cat/pw-play/pw-record. Required by pipewire[ffmpeg].
 media-video/pipewire                gstreamer             # Add support for media-libs/gstreamer (Streaming media) (from CLD).
@@ -623,7 +631,7 @@ sci-libs/hdf5                       -threads              # Thread support is in
 sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk[cgns].
 sci-libs/lapack                     lapacke               # Required by virtual/lapacke.
 sci-libs/libqalculate               gnuplot               # Required by sci-calculators/qalculate-qt for plot support.
-sci-libs/miopen                     composable-kernel     # Use composable-kernel for GEMM-like and reduction-like operators.
+##sci-libs/miopen                   composable-kernel     # Additional solvers that are NOT USED on my RX 6900 XT GPU (disabled because the build takes a lot of time).
 ##sci-libs/miopen                   hipblaslt             # Use hipBLASLt (disabled because my GPU is not currently supported by hipBLASLt).
 sci-libs/miopen                     rocblas               # Build with rocBLAS support.
 sci-libs/netcdf                     -dap                  # Support for remote data access not required.
@@ -643,13 +651,12 @@ sci-mathematics/octave              sndfile               # Add support for read
 ##sci-misc/llama-cpp                blis                  # Enable Blis support (faster than OpenBLAS on big matrices).
 ##sci-misc/llama-cpp                openblas              # Enable OpenBLAS support (not recommended, very slow).
 
-sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
-sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
-sci-ml/caffe2                       openblas              # Enable backends OpenBLAS.
-
-sci-ml/pytorch                      fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication).
-sci-ml/pytorch                      onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library).
-sci-ml/pytorch                      openblas              # Enable backends OpenBLAS.
+sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication) (pytorch < 2.13).
+sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library)     (pytorch < 2.13).
+sci-ml/caffe2                       openblas              # Enable backends OpenBLAS                                        (pytorch < 2.13).
+sci-ml/pytorch                      fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication) (pytorch >= 2.13).
+sci-ml/pytorch                      onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library)     (pytorch >= 2.13).
+sci-ml/pytorch                      openblas              # Enable backends OpenBLAS                                        (pytorch >= 2.13).
 
 sci-physics/bullet                  double-precision      # Required by media-gfx/blender[bullet].
 
@@ -731,6 +738,7 @@ x11-drivers/xf86-video-intel        uxa                   # Enable UMA Accelerat
 ##x11-drivers/xf86-video-qxl        xspice                # Include Xspice, a standard X server that is also a Spice server (for QEMU/KVM guest).
 
 x11-libs/wxGTK                      gstreamer             # Required by dev-python/wxpython.
+x11-libs/wxGTK                      webkit                # Required by media-gfx/prusaslicer.
 x11-libs/vte                        icu                   # Re-enable flag +ICU (see the ebuild).
 x11-libs/xapp                       vala                  # Required by app-backup/timeshift (for xapp >= 2.8.5).
 
