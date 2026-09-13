@@ -67,6 +67,7 @@ dev-util/rocminfo                   python_targets_python3_13
 dev-util/Tensile                    python_targets_python3_13
 sci-libs/rocFFT                     python_targets_python3_13
 dev-python/cloudpickle              python_targets_python3_13
+dev-python/flit-core                python_targets_python3_13
 dev-python/joblib                   python_targets_python3_13
 dev-python/loky                     python_targets_python3_13
 dev-python/psutil                   python_targets_python3_13
@@ -75,7 +76,6 @@ dev-python/pyyaml                   python_targets_python3_13
 # PIP virtual environments dependencies (for Python 3.13 and 3.12).
 # -------------------------------------------------------------------------------------
 dev-python/pip                      python_targets_python3_13 python_targets_python3_12
-dev-python/ast-serialize            python_targets_python3_13 python_targets_python3_12
 dev-python/backports-zstd           python_targets_python3_13 python_targets_python3_12
 dev-python/cachecontrol             python_targets_python3_13 python_targets_python3_12
 dev-python/certifi                  python_targets_python3_13 python_targets_python3_12
@@ -97,13 +97,10 @@ dev-python/jaraco-context           python_targets_python3_13 python_targets_pyt
 dev-python/jaraco-functools         python_targets_python3_13 python_targets_python3_12
 dev-python/jaraco-text              python_targets_python3_13 python_targets_python3_12
 dev-python/lark                     python_targets_python3_13 python_targets_python3_12
-dev-python/librt                    python_targets_python3_13 python_targets_python3_12
 dev-python/linkify-it-py            python_targets_python3_13 python_targets_python3_12
 dev-python/markdown-it-py           python_targets_python3_13 python_targets_python3_12
 dev-python/mdurl                    python_targets_python3_13 python_targets_python3_12
 dev-python/more-itertools           python_targets_python3_13 python_targets_python3_12
-dev-python/mypy                     python_targets_python3_13 python_targets_python3_12
-dev-python/mypy-extensions          python_targets_python3_13 python_targets_python3_12
 dev-python/msgpack                  python_targets_python3_13 python_targets_python3_12
 dev-python/packaging                python_targets_python3_13 python_targets_python3_12
 dev-python/pathspec                 python_targets_python3_13 python_targets_python3_12
@@ -119,6 +116,7 @@ dev-python/rich                     python_targets_python3_13 python_targets_pyt
 dev-python/setuptools               python_targets_python3_13 python_targets_python3_12
 dev-python/setuptools-scm           python_targets_python3_13 python_targets_python3_12
 dev-python/tomli-w                  python_targets_python3_13 python_targets_python3_12
+dev-python/tomlkit                  python_targets_python3_12 python_targets_python3_13
 dev-python/trove-classifiers        python_targets_python3_13 python_targets_python3_12
 dev-python/truststore               python_targets_python3_13 python_targets_python3_12
 dev-python/typing-extensions        python_targets_python3_13 python_targets_python3_12
@@ -126,4 +124,3 @@ dev-python/uc-micro-py              python_targets_python3_13 python_targets_pyt
 dev-python/urllib3                  python_targets_python3_13 python_targets_python3_12
 dev-python/vcs-versioning           python_targets_python3_13 python_targets_python3_12
 dev-python/wheel                    python_targets_python3_13 python_targets_python3_12
-dev-util/maturin                    python_targets_python3_13 python_targets_python3_12
