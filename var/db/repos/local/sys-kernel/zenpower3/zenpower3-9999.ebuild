@@ -9,8 +9,8 @@ EAPI=8
 inherit git-r3 linux-mod-r1
 
 DESCRIPTION="Linux kernel driver for reading sensors of AMD Zen family CPUs"
-HOMEPAGE="https://github.com/detiam/zenpower3"
-EGIT_REPO_URI="https://github.com/detiam/zenpower3.git"
+HOMEPAGE="https://github.com/AliEmreSenel/zenpower3"
+EGIT_REPO_URI="https://github.com/AliEmreSenel/zenpower3.git"
 
 LICENSE="GPL-2"
 SLOT="0"

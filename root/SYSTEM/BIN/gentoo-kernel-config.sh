@@ -1,11 +1,11 @@
 #!/bin/bash
 #
 # Released under MIT License
-# Copyright (c) 2024 Flavio Cappelli
-# Version 1.0
+# Copyright (c) 2024-2026 Flavio Cappelli
+# Version 1.1
 #
-# Launch menuconfig (or xconfig) of current running kernel. On exit
-# report the saved config changes (if any) and clean the used space.
+# Launch menuconfig of specified kernel (or current running kernel). On
+# exit report the saved config changes (if any) and clean the used space.
 #
 # This script is useful for observing how changing a particular kernel
 # setting will propagate through the global kernel configuration (e.g.
@@ -15,46 +15,59 @@
 
 set -e
 
-USE_X=0
-if [ -n "$1" ]; then
-    case "$1" in
-        -x) if [ -z "${DISPLAY}" ]; then
-                echo -e "\nNo X server available\n" >&2
-                exit 1
+# ------------------------------------------------------------------------------
 
-            fi
-            if ! timeout 1s xset q &>/dev/null; then
-                echo -e "\nNo X server at \$DISPLAY [$DISPLAY]\n" >&2
-                exit 1
-            fi
-            USE_X=1
+usage() {
+
+    printf '\nUsage: %s [version]\n\n' "${0##*/}" >&2
+    exit 1
+}
+
+KVER_SELECTED=""
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -*) printf "\nError: unknow option: $1\n" >&2
+            usage
             ;;
-         *) echo -e "\nUsage: $0 [-x]"
-            echo -e "-x needs qt + X running or X forwarding\n"
-            exit 1
+
+         *) if [[ -n "${KVER_SELECTED}" ]]; then
+                printf "\nError: too many arguments\n" >&2
+                usage
+            fi
+
+            if [[ ! "$1" =~ ^[0-9._pr-]+$ ]]; then
+                printf "\nError: invalid argoment: $1\n" >&2
+                usage
+            fi
+
+            KVER_SELECTED="$1"
+            shift
             ;;
     esac
+done
+
+if [[ -z "${KVER_SELECTED}" ]]; then
+    KVER_SELECTED=$(uname -r | sed 's|-.*||')
 fi
 
-if [ ! -e /usr/bin/equery ]; then
-    echo -e "\nPlease install app-portage/gentoolkit\n"
+EBUILD="/var/db/repos/gentoo/sys-kernel/gentoo-kernel/gentoo-kernel-${KVER_SELECTED}.ebuild"
+if [[ ! -f "$EBUILD" ]]; then
+    printf "\nError: invalid kernel version: ${KVER_SELECTED}\n"
+    printf "\nCurrently available: %s\n\n" "$(
+        printf '%s\n' /var/db/repos/gentoo/sys-kernel/gentoo-kernel/gentoo-kernel-*.ebuild |
+        sed 's|.*/gentoo-kernel-||; s|\.ebuild$||' |
+        tr '\n' ' '
+    )"
     exit 1
 fi
-
-KVER=$(uname -r | sed 's|-.*||')
-EBUILD=$(equery list -F '/var/db/repos/$repo/$cp/$name-$fullversion.ebuild' gentoo-kernel | grep "${KVER}")
 
 ebuild "${EBUILD}" clean
 ebuild "${EBUILD}" configure
 
-cd /var/tmp/portage/sys-kernel/gentoo-kernel-${KVER}*/work/modprep
+cd /var/tmp/portage/sys-kernel/gentoo-kernel-${KVER_SELECTED}*/work/modprep
 
 rm -f .config.old
-if [ ${USE_X} -eq 0 ]; then
-    make menuconfig
-else
-    make xconfig
-fi
+make menuconfig
 
 echo ""
 echo "Kernel config changes"
