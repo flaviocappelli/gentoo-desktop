@@ -33,7 +33,8 @@
 
 ##acct-user/git                     gitea                 # Prefere 'gitea' hosting (see the ebuild and https://gitea.com/) (from CLD).
 
-app-accessibility/speech-dispatcher -espeak               # Drop unnecessary dependency (from CLD).
+app-accessibility/espeak-ng         sound                 # Re-enable flag +sound (see the ebuild).
+app-accessibility/speech-dispatcher -espeak               # Drop unnecessary dependency (I use piper-tts).
 
 app-admin/logrotate                 -cron                 # Cron file not required, logrotate has systemd timer.
 app-admin/sudo                      -gcrypt               # At most one of "gcrypt" and "ssl" use flag must be set.
@@ -308,8 +309,6 @@ dev-util/nvidia-cuda-toolkit        profiler              # Required by sci-ml/c
 dev-util/sysprof                    gtk                   # Build the GUI frontend.
 
 ##dev-vcs/git                       cgi                   # Install gitweb too (see https://git-scm.com/book/it/v2/Git-on-the-Server-GitWeb).
-
-games-engines/uzdoom                gtk                   # Display a visual dialog if multiple game data files are detected and none was explicitly selected via command line.
 
 games-fps/xonotic                   ode                   # Enable support for physics engine.
 
@@ -664,7 +663,6 @@ sci-physics/bullet                  double-precision      # Required by media-gf
 ##sys-apps/fwupd                    cbor                  # Enable CBOR support.
 ##sys-apps/fwupd                    flashrom              # Enable flashrom plugin via sys-apps/flashrom.
 sys-apps/fwupd                      gnutls                # Prefer net-libs/gnutls as SSL/TLS provide (required by 'synaptics' and 'uefi' use flag).
-sys-apps/fwupd                      nvme                  # Build and install NVMe plugin.
 ##sys-apps/fwupd                    spi                   # Install Intel-SPI plugin.
 ##sys-apps/fwupd                    synaptics             # Install synaptics plugin.
 ##sys-apps/fwupd                    tpm                   # Install Trusted Platform Module plugin.
@@ -679,7 +677,7 @@ sys-apps/systemd                    gnutls                # Prefer net-libs/gnut
 sys-apps/systemd                    homed                 # Enable portable home directories. Needs also sys-auth/pambase[homed].
 ##sys-apps/systemd                  importd               # Enable import daemon (VM and container import/export service). Companion of systemd-machined (dmesg +BZIP2 +ZLIB).
 sys-apps/systemd                    pkcs11                # Enable PKCS#11 support for cryptsetup and homed (dmesg +P11KIT).
-sys-apps/systemd                    tpm                   # Enable TPM support, i.e. unlocking LUKS2 volumes with TPM2 (dmesg +TPM2).
+##sys-apps/systemd                  tpm                   # Enable TPM support, i.e. unlocking LUKS2 volumes with TPM2 (dmesg +TPM2).
 sys-apps/util-linux                 tty-helpers           # Install mesg/wall/write tools for talking to local users.
 
 sys-auth/pambase                    homed                 # Required for systemd-homed (i.e. systemd[homed]).
