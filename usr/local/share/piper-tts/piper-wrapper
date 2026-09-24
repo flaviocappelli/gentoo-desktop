@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# by F.C.
+# Wrapper for piper-tts (called by speech-dispatcher, see
+# /etc/speech-dispatcher/modules/piper-tts-generic.conf).
+
+# Input parameters from speech-dispatcher.
+DATA=$1
+LANGUAGE=$2
+VOICE=$3
+VOLUME=$4
+
+# Voice model and json files.
+VOICEDIR="/usr/local/share/piper-tts/voices"
+MODEL="${VOICEDIR}/${VOICE}.onnx"
+JSON="${MODEL}.json"
+
+# Voice sampling rate (see json files).
+RATE=$(grep sample_rate "$JSON" | sed 's/.*: \(.*\),/\1/')
+
+# Normalized volume (0.0 .. 1.0).
+NVOL=$(awk "BEGIN {print $VOLUME / 100}")
+
+# Run piper-tts.
+echo "$DATA" | piper -m "$MODEL" --output_raw | pw-play -a --rate "$RATE" --volume "$NVOL" --channel-map LE -

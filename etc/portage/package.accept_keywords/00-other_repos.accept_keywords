@@ -41,14 +41,6 @@ dev-util/kdstatemachineeditor::gentoo
 # (best method to watch YouTube privately on desktop).
 net-misc/freetube-bin::guru                   * ~*
 
-# Fast and local neural text-to-speech engine, with HAL 9000
-# voice model. See https://github.com/OHF-Voice/piper1-gpl
-#media-sound/piper::guru                       * ~*
-#dev-cpp/safeint::guru                         * ~* **
-#sci-libs/dlpack::guru                         * ~* **
-#sci-libs/onnxruntime::guru                    * ~* **
-#media-libs/sonic::gentoo
-
 # Diffusion model inference in pure C/C++.
 sci-misc/stable-diffusion-cpp::guru           * ~* **
 
