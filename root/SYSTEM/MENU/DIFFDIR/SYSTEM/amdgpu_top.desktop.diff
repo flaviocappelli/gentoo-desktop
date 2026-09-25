@@ -1,0 +1,14 @@
+--- /usr/share/applications/amdgpu_top.desktop	2026-09-25 17:55:58.964467505 +0200
++++ ./amdgpu_top.desktop	2026-09-25 18:00:43.145689669 +0200
+@@ -1,7 +1,8 @@
+ [Desktop Entry]
+-Name=AMDGPU TOP (GUI)
+-GenericName=AMDGPU Monitoring Tool
++Name=amdgpu_top
++GenericName=GPU Monitor
++GenericName[it]=Monitor della GPU
+ Exec=amdgpu_top --gui
+ Icon=utilities-system-monitor
+ Type=Application
+-Categories=System;Monitor;
++Categories=System;

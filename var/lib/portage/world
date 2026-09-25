@@ -255,6 +255,7 @@ sci-mathematics/wxmaxima
 sci-misc/llama-cpp
 sci-misc/stable-diffusion-cpp
 sci-ml/torchvision
+sys-apps/amdgpu_top
 sys-apps/cpuid
 sys-apps/dmidecode
 sys-apps/dtc

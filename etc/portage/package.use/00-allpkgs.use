@@ -310,6 +310,8 @@ dev-util/sysprof                    gtk                   # Build the GUI fronte
 
 ##dev-vcs/git                       cgi                   # Install gitweb too (see https://git-scm.com/book/it/v2/Git-on-the-Server-GitWeb).
 
+games-engines/uzdoom                mpg123                # Enable support for MPEG audio playback via media-sound/mpg123.
+
 games-fps/xonotic                   ode                   # Enable support for physics engine.
 
 gnome-base/gnome-keyring            -ssh-agent            # If installed, ensure gnome-keyring SSH agent is disabled (to not interfere with the gpg-agent.ssh service).
@@ -449,7 +451,6 @@ media-libs/opencv                   opencl                # Enable OpenCL suppor
 media-libs/opensubdiv               tbb                   # Required by media-gfx/blender[opensubdiv].
 media-libs/qhull                    static-libs           # Required by media-gfx/prusaslicer.
 media-libs/simage                   -tiff                 # Drop unnecessary dependency (from CLD).
-media-libs/zmusic                   mpg123                # Enable support for MPEG audio playback via media-sound/mpg123.
 
 # NOTE: Pipewire is now the default audio server on Gentoo (and other recent Linux distributions).
 # The useful plugin that allows a program with an 'ALSA only' output to be integrated into the audio
@@ -634,6 +635,7 @@ sci-libs/libqalculate               gnuplot               # Required by sci-calc
 ##sci-libs/miopen                   hipblaslt             # Use hipBLASLt (disabled because my GPU is not currently supported by hipBLASLt).
 sci-libs/miopen                     rocblas               # Build with rocBLAS support.
 sci-libs/netcdf                     -dap                  # Support for remote data access not required.
+sci-libs/onnxruntime                python                # Required by media-sound/piper.
 sci-libs/opencascade                json                  # Required by media-gfx/freecad.
 sci-libs/vtk                        tbb                   # Use dev-cpp/tbb to handle smp support (from CLD).
 
@@ -653,6 +655,7 @@ sci-mathematics/octave              sndfile               # Add support for read
 sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication) (pytorch < 2.13).
 sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library)     (pytorch < 2.13).
 sci-ml/caffe2                       openblas              # Enable backends OpenBLAS                                        (pytorch < 2.13).
+sci-ml/onnx                         disableStaticReg      # Required by sci-libs/onnxruntime.
 sci-ml/pytorch                      fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication) (pytorch >= 2.13).
 sci-ml/pytorch                      onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library)     (pytorch >= 2.13).
 sci-ml/pytorch                      openblas              # Enable backends OpenBLAS                                        (pytorch >= 2.13).

@@ -50,6 +50,10 @@ sci-electronics/kicad-packages3d::gentoo
 sci-electronics/kicad-symbols::gentoo
 sci-electronics/kicad-templates::gentoo
 
+# FreeCAD (latest version).
+media-gfx/freecad::gentoo
+sci-libs/ondselsolver::gentoo
+
 # Godot Engine.
 dev-games/godot::gentoo
 dev-games/recastnavigation::gentoo
@@ -72,7 +76,6 @@ games-strategy/wesnoth::gentoo
 # *.WAD game files. See https://zdoom.org/wiki/Main_Page and
 # https://bugs.gentoo.org/967252 (gzdoom deprecated).
 games-engines/uzdoom::gentoo
-media-libs/zmusic::gentoo
 
 # KChmViewer has been removed from portage (see Gentoo
 # bug #823008). We can use app-text/uchmviewer instead.

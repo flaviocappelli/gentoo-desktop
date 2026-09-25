@@ -1,0 +1,8 @@
+--- /usr/share/applications/amdgpu_top-tui.desktop	2026-09-25 18:01:04.414993231 +0200
++++ ./amdgpu_top-tui.desktop	2026-09-25 18:02:05.135195525 +0200
+@@ -1,4 +1,5 @@
+ [Desktop Entry]
++Hidden=true
+ Name=AMDGPU TOP (TUI)
+ GenericName=AMDGPU Monitoring Tool
+ Exec=amdgpu_top
