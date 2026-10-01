@@ -33,6 +33,7 @@ net-im/zoom::gentoo
 # OBS Studio. Seee also
 # https://github.com/umlaeute/v4l2loopback.
 media-video/obs-studio::gentoo
+media-plugins/obs-pipewire-audio-capture
 
 # Avidemux.
 media-video/avidemux::gentoo

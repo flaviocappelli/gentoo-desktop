@@ -188,6 +188,7 @@ media-gfx/openscad
 media-gfx/povray
 media-gfx/prusaslicer
 media-plugins/obs-backgroundremoval
+media-plugins/obs-pipewire-audio-capture
 media-sound/alsa-utils
 media-sound/ardour
 media-sound/audacity
