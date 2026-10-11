@@ -21,8 +21,8 @@ LIBVIRT_BRIDGE=virbr0
 ## network (the MAC address of the bridge must also be persistent).
 VBOXIF_MAC=5e:07:33:63:3d:d1
 
-## Wait at most 3 seconds to ensure the libvirt interface is started.
-for i in 1 2 3; do
+## Wait at most 5 seconds to ensure the libvirt interface is started.
+for i in 1 2 3 4 5; do
   if [ ! -e /sys/class/net/${LIBVIRT_BRIDGE} ]; then
     sleep 1
   fi
@@ -44,8 +44,8 @@ if [ -e /sys/class/net/${LIBVIRT_BRIDGE} ]; then
       ip tuntap add mode tap user root group vboxusers dev ${VBOXIF}
     fi
     ip link set dev ${VBOXIF} address ${VBOXIF_MAC}
-    ip link set dev ${VBOXIF} up
     ip link set dev ${VBOXIF} master ${LIBVIRT_BRIDGE}
+    ip link set dev ${VBOXIF} up
   else
     echo "Interface ${VBOXIF} already exists!"
   fi

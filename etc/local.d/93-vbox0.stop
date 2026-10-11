@@ -8,7 +8,6 @@ VBOXIF=vbox0
 
 ## Delete the dummy tun/tap interface.
 if [ -e /sys/class/net/${VBOXIF} ]; then
-  ip link set dev ${VBOXIF} nomaster
   ip link set dev ${VBOXIF} down
   if [ -x /usr/bin/VBoxTunctl ]; then
     VBoxTunctl -d ${VBOXIF}
