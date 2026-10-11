@@ -1,0 +1,13 @@
+Required to build sci-ml/pytorch with with ROCm/HIP support fails when using GCC 16.
+See https://bugs.gentoo.org/981839
+
+--- a/hipamd/include/hip/amd_detail/host_defines.h	2026-10-02 20:37:08.181360070 +0200
++++ b/hipamd/include/hip/amd_detail/host_defines.h	2026-10-02 20:37:35.600768528 +0200
+@@ -172,7 +172,6 @@
+ 
+ #define __global__
+ 
+-#define __noinline__
+ #define __forceinline__ inline
+ 
+ #define __shared__

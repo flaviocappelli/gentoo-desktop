@@ -213,6 +213,7 @@ media-video/smplayer
 media-video/v4l2loopback
 media-video/vlc
 net-analyzer/nmap
+net-analyzer/tcpdump
 net-analyzer/traceroute
 net-analyzer/wireshark
 net-dialup/cutecom

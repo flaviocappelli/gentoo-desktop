@@ -19,8 +19,8 @@ HOMEPAGE="https://github.com/ggml-org/llama.cpp"
 # it: a release is the vX.Y.Z tag, whose build upstream publishes as
 # nightly-tag.txt; a snapshot is the bN tag itself and is versioned
 # X.Y.Z_pN after the release it follows.
-LLAMA_SRC_TAG="v0.5.0"
-LLAMA_BUILD_NUMBER="11146"
+LLAMA_SRC_TAG="v0.6.0"
+LLAMA_BUILD_NUMBER="11429"
 
 # A release carries upstream's own version; a snapshot is a dev build.
 [[ ${LLAMA_SRC_TAG} == v* ]] && LLAMA_BUILD_IS_DEV=OFF || LLAMA_BUILD_IS_DEV=ON

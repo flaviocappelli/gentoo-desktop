@@ -1,0 +1,14 @@
+Explicitly force Thunderbird's user data to ~/.thunderbird, preventing the creation of the
+unwanted ~/thunderbird directory. This bug was fixed in Thunderbird 154 and later versions.
+
+diff --git a/comm/mail/moz.configure b/comm/mail/moz.configure
+--- a/comm/mail/moz.configure
++++ b/comm/mail/moz.configure
+@@ -7,6 +7,8 @@
+ imply_option("MOZ_APP_NAME", "thunderbird")
+
++imply_option("--with-user-appdir", ".thunderbird")
++
+ # MOZ_APP_PROFILE: When set, used for application.ini's
+ # "Profile" field, which controls profile location.
+ imply_option("MOZ_APP_PROFILE", "Thunderbird", when=target_is_windows | target_is_osx)
