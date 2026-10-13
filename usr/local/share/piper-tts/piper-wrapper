@@ -4,22 +4,38 @@
 # Wrapper for piper-tts (called by speech-dispatcher, see
 # /etc/speech-dispatcher/modules/piper-tts-generic.conf).
 
-# Input parameters from speech-dispatcher.
-DATA=$1
-LANGUAGE=$2
-VOICE=$3
-VOLUME=$4
+# Input parameters from speech-dispatcher. NOTE: the ASCII apostrophe (U+0027) is literally pronounced
+# by piper-tts: it requires the typographic apostrophe (U+2019), so we must perform a substitution here.
+DATA="${1//"'\''"/’}"
+VOICE="$2"
+VOLUME="$3"
+PITCH="$4"
+RATE="$5"
 
-# Voice model and json files.
+# Get the piper-tts voice model and json files.
 VOICEDIR="/usr/local/share/piper-tts/voices"
 MODEL="${VOICEDIR}/${VOICE}.onnx"
 JSON="${MODEL}.json"
 
-# Voice sampling rate (see json files).
-RATE=$(grep sample_rate "$JSON" | sed 's/.*: \(.*\),/\1/')
+# Extract the sample rate from the JSON file if available, otherwise use the model name.
+if [[ -f "$JSON" ]]; then
+	SAMPLE_RATE=$(grep "sample_rate" "$JSON" | tr -cd '0-9')
+elif [[ "$VOICE" == *"low"* ]]; then
+	SAMPLE_RATE=16000
+else
+	SAMPLE_RATE=22050
+fi
 
-# Normalized volume (0.0 .. 1.0).
-NVOL=$(awk "BEGIN {print $VOLUME / 100}")
+# Adjust volume, pitch and rate (input -100...+100):
+#  - volume (see "pw-play -h"): -100:0.0, 0:0.5, +100:1.0;
+#  - pitch  (see "man sox")   : -100:-1200 (lower octave), 0:0, +100:1200 (higher octave);
+#  - rate   (see "man sox")   : -100:0.5, 0:1.0, +100:1.5
+read -r ADJ_VOL ADJ_PITCH ADJ_RATE < <(awk "BEGIN {print ($VOLUME+100)/200, $PITCH*12, $RATE/200+1}")
+
+# UNCOMMENT FOR DEBUGGING.
+# To get debug data in realtime run in another terminal: "journalctl -f -t PIPER-TTS-DEBUG". We must
+# use the logger, because redirecting data to a debug file doesn't work reliably in speech-dispatcher.
+#logger -t PIPER-TTS-DEBUG "DATA='$DATA', VOICE=$VOICE, VOLUME=$VOLUME, PITCH=$PITCH, RATE=$RATE, MODEL=$MODEL, SAMPLE_RATE=$SAMPLE_RATE, ADJ_VOL=$ADJ_VOL, ADJ_PITCH=$ADJ_PITCH, ADJ_RATE=$ADJ_RATE"
 
 # Run piper-tts.
-echo "$DATA" | piper -m "$MODEL" --output_raw | pw-play -a --rate "$RATE" --volume "$NVOL" --channel-map LE -
+echo "$DATA" | piper -m "$MODEL" --output_raw | sox -r "$SAMPLE_RATE" -c 1 -b 16 -e signed-integer -t raw - -t wav - tempo "$ADJ_RATE" pitch "$ADJ_PITCH" norm | pw-play --volume "$ADJ_VOL" -
