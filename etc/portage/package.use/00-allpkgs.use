@@ -34,7 +34,6 @@
 ##acct-user/git                     gitea                 # Prefere 'gitea' hosting (see the ebuild and https://gitea.com/) (from CLD).
 
 app-accessibility/espeak-ng         sound                 # Re-enable flag +sound (see the ebuild).
-app-accessibility/speech-dispatcher -espeak               # Drop unnecessary dependency (I use piper-tts).
 
 app-admin/logrotate                 -cron                 # Cron file not required, logrotate has systemd timer.
 app-admin/sudo                      -gcrypt               # At most one of "gcrypt" and "ssl" use flag must be set.
@@ -588,6 +587,7 @@ net-misc/networkmanager             connection-sharing    # Support connection s
 net-misc/networkmanager             iptables              # Required by net-misc/networkmanager[connection-sharing] (alternatively, 'nftables').
 ##net-misc/networkmanager           ofono                 # Use net-misc/ofono for telephony support.
 ##net-misc/networkmanager           resolvconf            # Use net-dns/openresolv for managing DNS information in /etc/resolv.conf (useful with OpenRC).
+net-misc/networkmanager             -wext                 # WEXT is deprecated and will be soon removed (I have already removed it from the kernel config).
 net-misc/spice-gtk                  usbredir              # Required by app-emulation/virt-manager[gui].
 
 ##net-nds/openldap                  -minimal              # Uncomment to enable the LDAP daemon (for the time being, I don't need it).

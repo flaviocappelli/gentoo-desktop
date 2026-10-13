@@ -6,6 +6,9 @@
 # ~/.VirtualBox and reimport all VMs (recent versions
 # have configuration in ~/.config/VirtualBox).
 
+# VLC 3.0.23 in portage has dropped Qt5 GUI support.
+~media-video/vlc-3.0.23::gentoo
+
 # VLC 4_pre* in portage has many issues. Use version 3.0.23
 # (Qt5 GUI) from my local repo (until stable 4.x is released).
-<media-video/vlc-4.0.0::gentoo
+=media-video/vlc-4.0.0_pre*::gentoo
