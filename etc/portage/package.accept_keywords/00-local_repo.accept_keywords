@@ -77,9 +77,6 @@ sci-electronics/qucs-s::local
 # and /etc/portage/package.use/01-local-hw.use for the required use flags.
 dev-python/ollama::local
 
-# LLM inference in C/C++.
-sci-misc/llama-cpp::local
-
 # NumPy-compatible array library accelerated by CUDA or ROCm.
 dev-python/cupy::local
 dev-python/fastrlock::local

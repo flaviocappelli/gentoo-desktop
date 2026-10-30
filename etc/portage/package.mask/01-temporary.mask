@@ -12,3 +12,6 @@
 # VLC 4_pre* in portage has many issues. Use version 3.0.23
 # (Qt5 GUI) from my local repo (until stable 4.x is released).
 =media-video/vlc-4.0.0_pre*::gentoo
+
+# ROCm/HIP require flit-core < 4.
+>=dev-python/flit-core-4.0.0

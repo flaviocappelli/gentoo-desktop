@@ -651,6 +651,7 @@ sci-mathematics/octave              sndfile               # Add support for read
 
 ##sci-misc/llama-cpp                blis                  # Enable Blis support (faster than OpenBLAS on big matrices).
 ##sci-misc/llama-cpp                openblas              # Enable OpenBLAS support (not recommended, very slow).
+sci-misc/llama-cpp                  -webui                # For the time being I do not need UI in sci-misc/llama-cpp::stuff.
 
 sci-ml/caffe2                       fbgemm                # Enable backends FBGEMM (FaceBook GEneral Matrix Multiplication) (pytorch < 2.13).
 sci-ml/caffe2                       onednn                # Enable backends oneDNN (oneAPI Deep Neural Network Library)     (pytorch < 2.13).
