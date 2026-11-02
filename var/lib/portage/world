@@ -1,6 +1,7 @@
 app-accessibility/kontrast
 app-admin/checksec
 app-admin/logrotate
+app-admin/rasdaemon
 app-admin/spectre-meltdown-checker
 app-admin/sudo
 app-admin/testdisk

@@ -11,11 +11,7 @@ sci-calculators/speedcrunch::gentoo
 
 # Hex editor integrated in KDE/PLASMA6 (stable
 # version has been masked due to KF5 removal).
-# See https://www.bugs.gentoo.org/962280
 app-editors/okteta::gentoo
-
-# Hex editor that can edit very BIG files!
-app-editors/wxhexeditor::gentoo
 
 # Other packages useful for development. dev-util/seer
 # is a new gui frontend to gdb with advanced features.
@@ -26,6 +22,14 @@ dev-util/seer::gentoo
 
 # PipeWire Graph Qt GUI Interface.
 media-sound/qpwgraph::gentoo
+
+# VLC-4.0.0_pre* versions are unstable and affected by some
+# issues. VLC-3.0.23 is stable, but it does not longer have
+# a GUI, due to the removal of Qt5 from Portage. Fortunately
+# VLC-3.0.24 has been released with support for Qt6. Note
+# that VLC3 needs a patch against net-libs/libupnp-1.18
+# (see /etc/portage/patches/media-video/vlc-3.0.24).
+~media-video/vlc-3.0.24::gentoo
 
 # IM: Zoom.
 net-im/zoom::gentoo

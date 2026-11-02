@@ -2,16 +2,14 @@
 #
 # These are temporary fix (will be removed in the future).
 
-# NOTE: on any issue with VirtualBox >= 7.1.8 remove
-# ~/.VirtualBox and reimport all VMs (recent versions
-# have configuration in ~/.config/VirtualBox).
-
-# VLC 3.0.23 in portage has dropped Qt5 GUI support.
-~media-video/vlc-3.0.23::gentoo
-
-# VLC 4_pre* in portage has many issues. Use version 3.0.23
-# (Qt5 GUI) from my local repo (until stable 4.x is released).
-=media-video/vlc-4.0.0_pre*::gentoo
+# VLC-4.0.0_pre* versions are unstable and affected by some
+# issues. VLC-3.0.23 is stable, but it does not longer have
+# a GUI, due to the removal of Qt5 from Portage. Fortunately
+# VLC-3.0.24 has been released with support for Qt6. Note
+# that VLC3 needs a patch against net-libs/libupnp-1.18
+# (see /etc/portage/patches/media-video/vlc-3.0.24).
+=media-video/vlc-4.0.0_pre*
+=media-video/vlc-3.0.23*
 
 # ROCm/HIP require flit-core < 4.
 >=dev-python/flit-core-4.0.0

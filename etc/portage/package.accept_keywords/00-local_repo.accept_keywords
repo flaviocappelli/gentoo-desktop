@@ -15,6 +15,15 @@ sys-kernel/zenpower5::local **
 sys-kernel/zenpower3::local **
 sys-kernel/nct6687d::local **
 
+# RASdaemon < 0.8.5 (in Portage) does not support tracefs
+# mounted at /sys/kernel/tracing, but only the deprecated
+# path /sys/kernel/debug/tracing (that is disabled in my
+# kernel config). 0.8.5+ adds support for such new path.
+# This daemon can collect and save AMD MCE/SMCA and RAS
+# events (Reliability, Availability, Serviceability) and
+# can potentially help in diagnosing hardware errors.
+app-admin/rasdaemon::local
+
 # Qt/C++ GUI front end to Fscrypt, Securefs, Ecryptfs, Cryfs, Encfs,
 # Gocryptfs, Sshfs and Cryptomator (from holgersson overlay). It works
 # perfectly with GoCryptFS >= 2.6-r1 from portage (i.e. stable version).
