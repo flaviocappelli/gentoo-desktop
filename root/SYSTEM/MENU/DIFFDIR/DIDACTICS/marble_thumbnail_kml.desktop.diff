@@ -2,7 +2,7 @@
 +++ ./marble_thumbnail_kml.desktop	2025-01-19 14:04:13.891386668 +0100
 @@ -1,4 +1,5 @@
  [Desktop Entry]
-+Hidden=true
++NoDisplay=true
  Name=KML Geographic Data
  Name[it]=Dati geografici KML
  Type=Service

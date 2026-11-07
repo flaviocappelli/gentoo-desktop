@@ -4,7 +4,7 @@
  [Desktop Entry]
  Name=Zoom
 +GenericName=Video Conference
-+GenericName[it]=Video Conferenza
++GenericName[it]=Videoconferenza
  TryExec=/opt/zoom/ZoomLauncher
  Exec=/opt/zoom/ZoomLauncher %U
  Icon=videoconference-zoom

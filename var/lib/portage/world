@@ -169,7 +169,6 @@ kde-apps/sweeper
 kde-misc/kdiff3
 kde-misc/krename
 kde-misc/kshutdown
-kde-misc/kweather
 kde-misc/markdownpart
 kde-plasma/plasma-meta
 llvm-runtimes/libclc
@@ -326,6 +325,7 @@ www-client/firefox
 www-client/opera
 www-client/uget
 www-client/ungoogled-chromium-bin
+www-client/vivaldi
 www-plugins/chrome-binary-plugins
 x11-apps/mesa-progs
 x11-apps/xdpyinfo

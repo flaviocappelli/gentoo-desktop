@@ -25,6 +25,6 @@
  
  [Desktop Action new-private-window]
  Name=New Private Window
-+Name[it]=Nuova finestra anonima
++Name[it]=Nuova finestra privata
  Exec=opera --incognito
 -X-TargetEnvironment=Unity

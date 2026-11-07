@@ -2,7 +2,7 @@
 +++ ./org.kde.kdeconnect.sms.desktop	2024-03-17 17:06:18.723173533 +0100
 @@ -1,4 +1,5 @@
  [Desktop Entry]
-+Hidden=true
++NoDisplay=true
  Name=KDE Connect SMS
  Name[it]=KDE Connect SMS
  GenericName=SMS

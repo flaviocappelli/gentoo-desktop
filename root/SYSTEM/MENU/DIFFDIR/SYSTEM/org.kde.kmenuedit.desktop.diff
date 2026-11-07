@@ -3,7 +3,7 @@
 @@ -1,5 +1,5 @@
  [Desktop Entry]
 -OnlyShowIn=KDE;
-+Hidden=true
++NoDisplay=true
  Name=Menu Editor
  Name[it]=Editor dei menu
  Exec=kmenuedit

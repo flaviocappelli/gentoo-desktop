@@ -6,7 +6,7 @@
 -GenericName=Interface Designer
 +Name=Qt Designer
 +GenericName=GUI Designer for Qt/KDE
-+GenericName[it]=Progettazione GUI per QT/KDE
++GenericName[it]=Progettazione GUI per Qt/KDE
 +TryExec=designer6
  Exec=designer6 %F
  Icon=designer

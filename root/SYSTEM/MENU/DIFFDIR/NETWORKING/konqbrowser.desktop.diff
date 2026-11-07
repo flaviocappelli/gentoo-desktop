@@ -1,6 +1,11 @@
---- /usr/share/applications/konqbrowser.desktop	2024-03-17 14:30:37.097397932 +0100
-+++ ./konqbrowser.desktop	2024-03-17 20:29:41.687660787 +0100
-@@ -6,5 +6,5 @@
+--- /usr/share/applications/konqbrowser.desktop	2026-11-04 07:24:12.618528334 +0100
++++ ./konqbrowser.desktop	2026-11-04 07:26:13.567313234 +0100
+@@ -2,9 +2,9 @@
+ Name=Konqueror
+ Name[it]=Konqueror
+ GenericName=Web Browser
+-GenericName[it]=Browser Web
++GenericName[it]=Browser web
  Exec=konqueror
  Icon=konqueror
  Type=Application

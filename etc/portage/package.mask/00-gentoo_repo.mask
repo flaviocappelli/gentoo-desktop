@@ -74,3 +74,7 @@ media-gfx/inkscape
 # Prefere "sys-power/power-profiles-daemon" over "tuned" and "TLP".
 sys-apps/tuned
 sys-power/tlp
+
+# Hex editor app-editors/wxhexeditor no longer works with
+# recent versions of KDE/Plasma. Install okteta instead.
+app-editors/wxhexeditor

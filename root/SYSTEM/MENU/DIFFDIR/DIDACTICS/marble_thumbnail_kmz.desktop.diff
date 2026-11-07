@@ -2,7 +2,7 @@
 +++ ./marble_thumbnail_kmz.desktop	2025-01-19 14:01:49.909103324 +0100
 @@ -1,4 +1,5 @@
  [Desktop Entry]
-+Hidden=true
++NoDisplay=true
  Name=KML Geographic Compressed Data
  Name[it]=Dati geografici compressi KML
  Type=Service
