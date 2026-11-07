@@ -1,8 +1,9 @@
 #!/bin/bash
 #
-# by F.C.
+# Released under MIT License
+# Copyright (c) 2024-2026 Flavio Cappelli
 #
-# mail wrapper - v1.0
+# mail wrapper - v1.1
 #
 # Restricts mail/mailx to send-only mode (i.e. blocks
 # interactive read mode); also detect unknown flags
@@ -17,22 +18,25 @@
 # '-f' flag has an optional argument (and getops()
 # does not permit optional arguments). By the above
 # documentation -f is a read mode operation.
+#
+# ShellCheck (-s bash -o all): PASS (2026-11-04)
 
-INVOKED=$(basename "$0")
-REAL_MAIL="/usr/bin/$INVOKED"
+
+INVOKED="${0##*/}"
+REAL_MAIL=/usr/bin/"${INVOKED}"
 ORIGINAL_ARGS=("$@")
 READ_MODE=false
 RECIPIENTS=()
 
 # Repeat until there are argument to process.
 while [[ $# -gt 0 ]]; do
-  ARG="$1"
+  ARG="${1}"
 
   # ONLY FOR DEBUG
   #echo "ARG = $ARG"
 
   # Get the next cluster of short options (without '-').
-  if [[ "$ARG" =~ ^-[a-zA-Z0-9].*$ ]]; then
+  if [[ "${ARG}" =~ ^-[a-zA-Z0-9].*$ ]]; then
     CLUSTER="${ARG:1}"
 
     # ONLY FOR DEBUG
@@ -40,12 +44,12 @@ while [[ $# -gt 0 ]]; do
 
     # Parse any character of the cluster.
     for (( i=0; i<${#CLUSTER}; i++ )); do
-      OPT="${CLUSTER:$i:1}"
+      OPT="${CLUSTER:${i}:1}"
 
       # ONLY FOR DEBUG
       #echo "    OPT = $OPT"
 
-      case "$OPT" in
+      case "${OPT}" in
 
         e|H|N|f|u)              # Options selecting read mode.
             READ_MODE=true
@@ -62,7 +66,7 @@ while [[ $# -gt 0 ]]; do
             break                                   # of the cluster itself.
             ;;
 
-        *)  echo "Error: Invalid option: -$OPT" >&2
+        *)  printf "Error: Invalid option: '-%s'\n" "${OPT}" >&2
             exit 1
             ;;
       esac
@@ -70,14 +74,14 @@ while [[ $# -gt 0 ]]; do
 
   # Explicit end of options: everything after is a recipient.
   # This assignement end the parsing cycle (see man pages).
-  elif [[ "$ARG" == "--" ]]; then
+  elif [[ "${ARG}" == "--" ]]; then
     RECIPIENTS+=("$@")
     break
 
   # Starts with a hyphen but does not match the regex pattern
   # (note that long options are not supported in mail/mailx).
-  elif [[ "$ARG" == -* ]]; then
-    echo "Error: Invalid option or format: $ARG" >&2
+  elif [[ "${ARG}" == -* ]]; then
+    printf "Error: Invalid option or format: '%s'\n" "${ARG}" >&2
     exit 1
 
   # Recipient addresses (positional arguments). This
@@ -90,12 +94,12 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Read mode or recipient missing (still a read mode).
-if [ "$READ_MODE" = true ] || [ ${#RECIPIENTS[@]} -eq 0 ] ; then
-  echo -e "\nInteractive mail access is disabled on this system:" >&2
-  echo -e "to read the system emails, run Mozilla Thunderbird." >&2
-  echo -e "Maybe, did you simply forget to add the recipient?\n" >&2
+if [[ "${READ_MODE}" = true || ${#RECIPIENTS[@]} -eq 0 ]] ; then
+  printf '\nInteractive mail access is disabled on this system:\n' >&2
+  printf 'to read the system emails, run Mozilla Thunderbird.\n' >&2
+  printf 'Maybe, did you simply forget to add the recipient?\n\n' >&2
   exit 1
 fi
 
 # All checks ok, invoke the original command with the initial arguments.
-exec "$REAL_MAIL" "${ORIGINAL_ARGS[@]}"
+exec "${REAL_MAIL}" "${ORIGINAL_ARGS[@]}"

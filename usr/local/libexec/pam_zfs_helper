@@ -2,7 +2,7 @@
 #
 # Released under MIT License
 # Copyright (c) 2024-2026 Flavio Cappelli
-# Version 1.1
+# Version 1.2
 #
 # Unlock/mount/unmount/lock the ZFS encrypted user's datasets on
 # login/logout (see /etc/pam.d/system-auth). I implemented this
@@ -13,34 +13,43 @@
 # datasets or recursive mounts or the unmount at logout.
 #
 # This script is called by the 'pam_exec.so' PAM module. Note the
-# variables ${PAM_USER}, ${PAM_TYPE}, ${PAM_SERVICE}, ${PAM_TTY}
-# and ${PAM_RHOST} are provided by such module (see the manpage).
+# environment variables ${PAM_USER}, ${PAM_TYPE}, ${PAM_SERVICE},
+# ${PAM_TTY}, ${PAM_RHOST} and ${PAM_RUSER} are provided by such
+# module (see the pam_exec manpage).
+#
+# ShellCheck (-s bash -o all): PASS (2026-11-07)
+
 
 # Unmount and lock on last logout. If enabled, the user's encrypted
 # datasets are unmounted and their encryption key unloaded when the
-# last PAM session terminates. Disabling this option may be useful
-# when the datasets must remain accessible after logout (for example
-# for SSH public-key logins, background jobs or long-running services).
+# last PAM session terminates. Disabling this option is useful when
+# datasets must remain accessible after all logouts (for example for
+# SSH public-key logins, background jobs or long-running services).
 LOCK_ON_LAST_LOGOUT=1
 
-# MODIFY THESE VARIABLES ACCORDINGLY WITH YOUR ZPOOL SETUP.
-ZPOOL_NAME="storage"
-ZPOOL_MOUNTPOINT="/mnt/STORAGE"
+# MODIFY THIS VARIABLE ACCORDINGLY WITH YOUR ZPOOL SETUP.
+ZPOOL_NAME='storage'
 
 # FOR DEBUG.
 TRACE_ENABLED=0
-TRACE_LOG_FILE="/tmp/pam_zfs_helper.log"
+TRACE_LOG_FILE='/var/log/pam_zfs_helper.log'
 
 
 # --------------- NOTHING TO MODIFY BELOW THIS POINT ---------------
 
+# Restrict the execution environment.
+export PATH='/usr/sbin:/usr/bin:/sbin:/bin'
+
+# Restrict permissions of files created by this script.
+umask 077
+
 # Safety checks.
-[[ -z "${PAM_USER}" ]] && exit 0
-[[ -z "${PAM_TYPE}" ]] && exit 0
-[[ -z "${PAM_SERVICE}" ]] && exit 0
+[[ -n "${PAM_USER}" ]] || exit 0
+[[ -n "${PAM_TYPE}" ]] || exit 0
+[[ -n "${PAM_SERVICE}" ]] || exit 0
 
 # Ensure OpenZFS is installed.
-command -v zfs >/dev/null 2>&1 || exit 0
+command -v zfs >/dev/null 2>&1 || exit 1
 
 # Ignore users that do not own a dataset "${ZPOOL_NAME}/${PAM_USER}".
 zfs list -H -o name "${ZPOOL_NAME}/${PAM_USER}" >/dev/null 2>&1 || exit 0
@@ -50,14 +59,17 @@ zfs list -H -o name "${ZPOOL_NAME}/${PAM_USER}" >/dev/null 2>&1 || exit 0
 # counter are not atomic, access to this script must be serialized. To
 # deal with that, this script implements the functions get_script_lock()
 # and release_script_lock(). NOTE: don't confuse the lock and unlock on
-# this script with the lock and unlock of the ZFS encrypted datasets.
+# this bash script with the lock and unlock of the ZFS encrypted datasets.
 # Here is the temporary file used for serializing access to this script.
-SESSION_COUNTER_DIR="/run/pam_zfs_helper"
+SESSION_COUNTER_DIR='/var/run/pam_zfs_helper'
 SCRIPT_LOCK_FILE="${SESSION_COUNTER_DIR}/lock"
-mkdir -p -m 700 "${SESSION_COUNTER_DIR}"
+
+# Ensure the directory exists with root-only permissions.
+mkdir -p "${SESSION_COUNTER_DIR}" || exit 1
+chmod 700 "${SESSION_COUNTER_DIR}" || exit 1
 
 # Temporary file used for counting open sessions.
-PAM_UID=$(id -u "$PAM_USER" 2>/dev/null) || exit 0
+PAM_UID=$(id -u "${PAM_USER}" 2>/dev/null) || exit 1
 SESSION_FILE_COUNTER="${SESSION_COUNTER_DIR}/cnt.${PAM_UID}"
 
 # PAM service that I'm considering (others are ignored):
@@ -72,7 +84,7 @@ SESSION_FILE_COUNTER="${SESSION_COUNTER_DIR}/cnt.${PAM_UID}"
 # BEWARE: the $PAM_SERVICE variable can take the names of some files in
 # "/etc/pam.d/", so each Linux distribution can have different values.
 #
-# NOTE: The su "su" and "su -" command are intentionally not handled.
+# NOTE: The "su" and "su -" commands are intentionally not handled.
 # When switching from an existing user session to another user, PAM
 # modules are executed before the final UID switch performed by su.
 # Therefore pam_exec runs with the original user's privileges (not
@@ -82,60 +94,208 @@ case "${PAM_SERVICE}" in
     *) exit 0 ;;
 esac
 
-# -------------------------------------- FUNCTIONS --------------------------------------
 
-function log()
+# ---------------------------------- FUNCTIONS ----------------------------------
+
+log()
 {
     local msg="$1"
     local description
 
+    # shellcheck disable=SC2154 # ${PAM_TTY} and ${PAM_RHOST} provided by pam_exec.
     case "${PAM_SERVICE}" in
         login) description="'${PAM_SERVICE}' (${PAM_TTY})"   ;;
          sshd) description="'${PAM_SERVICE}' (${PAM_RHOST})" ;;
             *) description="'${PAM_SERVICE}'"                ;;
     esac
-    logger -t "pam_zfs_helper" "user '${PAM_USER}': service ${description}: ${msg}"
+
+    logger -t 'pam_zfs_helper' "user '${PAM_USER}': service ${description}: ${msg}"
 }
 
 
-function get_script_lock()
+is_user_zpool_mounted()
 {
-    # Try to get the lock on this script. If it succeeds, then traps the
-    # INT, TERM and EXIT signals to ensure that the lock file is removed
-    # if something goes wrong, then returns 0 (ok). If it fails to acquire
-    # the lock, then tries again (up to 500 times), then returns 1 (fail).
+    local mounted
+
+    mounted=$(zfs get -H -o value mounted "${ZPOOL_NAME}/${PAM_USER}" 2>/dev/null)
+    case "${mounted}" in
+        yes) return 0 ;;
+        no)  return 1 ;;
+        *)   log "function is_user_zpool_mounted() failed"
+    esac
+    exit 1
+}
+
+
+get_script_lock()
+{
+    local i rc
+
+    # Open the lock file on file descriptor 200.
+    # Append mode avoids truncating an existing lock file.
+    exec 200>>"${SCRIPT_LOCK_FILE}" || {
+        log "cannot open script lock file"
+        return 1
+    }
+
+    # Try to acquire the lock up to 500 times. NOTE:
+    # each failed attempt waits 10 ms before retrying.
     for (( i=1; i<=500; i++ )); do
-        if ( set -o noclobber; echo "$$" > "${SCRIPT_LOCK_FILE}" ) 2> /dev/null; then
-            trap 'rm -f "${SCRIPT_LOCK_FILE}"; exit $?' INT TERM EXIT
-            log "script lock aquired after $i attempt(s)"
+
+        # LINUX VERSION: uses "flock" (from util-linux). Exit
+        # status 75 indicates lock contention (the value 75 is
+        # chosen to comply with "lockf" on FreeBSD, see -E 75).
+        flock -n -E 75 200
+
+        # FREEBSD VERSION: uses "lockf" (base, FreeBSD 14.3+). Exit
+        # status 75 indicates lock contention (see "lockf" manpage).
+        #lockf -s -t 0 200
+
+        # Get the flock/lockf return code.
+        rc=$?
+
+        # Lock successfully acquired.
+        if (( rc == 0 )); then
+            log "script lock acquired after ${i} attempt(s)"
             return 0
         fi
+
+        # Do not retry unexpected errors.
+        if (( rc != 75 )); then
+            log "script lock acquisition failed (exit status: ${rc})"
+            exec 200>&-
+            return 1
+        fi
+
+        # Wait 10 ms before retrying.
         sleep 0.01
     done
-    log "failed to aquire script lock after 500 attempts"
+
+    log "failed to acquire script lock after 500 attempts"
+    exec 200>&-
     return 1
 }
 
 
-function release_script_lock()
+release_script_lock()
 {
-    rm -f "${SCRIPT_LOCK_FILE}"
-    trap - INT TERM EXIT
+    # Release the kernel lock by closing the file descriptor. NOTE: The
+    # kernel would release the lock automatically when the process exits
+    # (including on SIGKILL or crash), but explicit release is cleaner.
+    exec 200>&-
 }
 
 
-function unlock_and_mount_zpool()
+increment_session_counter()
 {
+    local count
+
+    # Always increment: the counter tracks any active PAM session for this UID
+    # (regardless of whether the datasets are currently mounted). This prevents
+    # premature unmount when session types are mixed (e.g. an SSH-key session
+    # that did not trigger a mount, followed by a password session that did).
+
+    # Get the counter.
+    if [[ -e "${SESSION_FILE_COUNTER}" ]]; then
+        if ! count=$(cat "${SESSION_FILE_COUNTER}" 2>/dev/null); then
+            log "failed to read session counter"
+            exit 1
+        fi
+    else
+        count=0
+    fi
+
+    # Reject invalid counter contents.
+    if ! [[ "${count}" =~ ^[0-9]+$ ]]; then
+        log "invalid session counter"
+        exit 1
+    fi
+
+    # Increment the counter.
+    count=$((count + 1))
+
+    # Store the updated counter.
+    if ! printf '%s\n' "${count}" > "${SESSION_FILE_COUNTER}"; then
+        log "failed to write session counter"
+        exit 1
+    fi
+
+    log "session count: ${count}"
+}
+
+
+decrement_session_counter()
+{
+    local count
+
+    # Always decrement: mirrors increment_session_counter(). The
+    # datasets are only unmounted (in umount_and_lock_zpool()) when
+    # the counter reaches zero AND such datasets are actually mounted.
+
+    # The counter must exist.
+    if [[ ! -e "${SESSION_FILE_COUNTER}" ]]; then
+        log "session counter not found"
+        exit 1
+    fi
+
+    # Get the counter.
+    if ! count=$(cat "${SESSION_FILE_COUNTER}" 2>/dev/null); then
+        log "failed to read session counter"
+        exit 1
+    fi
+
+    # Reject invalid counter contents.
+    if ! [[ "${count}" =~ ^[0-9]+$ ]]; then
+        log "invalid session counter"
+        exit 1
+    fi
+
+    # Decrement the counter, but never allow it to become negative.
+    if (( count > 0 )); then
+        count=$((count - 1))
+    fi
+
+    # Store the updated counter.
+    if ! printf '%s\n' "${count}" > "${SESSION_FILE_COUNTER}"; then
+        log "failed to write session counter"
+        exit 1
+    fi
+
+    log "session count: ${count}"
+}
+
+
+unlock_and_mount_zpool()
+{
+    local i dataset encroot
+    local -a DATASETS=()
+
     # Check if the main user's storage dataset is
     # already unlocked and mounted (if so, do nothing).
-    if ! mountpoint -q "${ZPOOL_MOUNTPOINT}/${PAM_USER}"; then
+    if ! is_user_zpool_mounted; then
 
         # No, try to unlock and mount it.
-        echo "$1" | zfs load-key "${ZPOOL_NAME}/${PAM_USER}" 2>/dev/null
-        zfs list -rH -o name "${ZPOOL_NAME}/${PAM_USER}" | xargs -L 1 zfs mount
+        if printf '%s\n' "${1}" | zfs load-key "${ZPOOL_NAME}/${PAM_USER}" 2>/dev/null; then
 
-        # Check if the operation was successfully.
-        if mountpoint -q "${ZPOOL_MOUNTPOINT}/${PAM_USER}"; then
+            # List all user's datasets and their encryptionroot.
+            # shellcheck disable=SC2312 # On failures -> empty array (intentional).
+            mapfile -t DATASETS < <(
+                zfs list -rH -t filesystem -o name,encryptionroot "${ZPOOL_NAME}/${PAM_USER}" 2>/dev/null
+            )
+
+            # Only try to mount datasets that use the same key as the parent.
+            for (( i=0; i<${#DATASETS[@]}; i++ )); do
+                IFS=$'\t' read -r dataset encroot <<< "${DATASETS[i]}"
+                if [[ "${encroot}" == "${ZPOOL_NAME}/${PAM_USER}" ]]; then
+                    if ! zfs mount "${dataset}"; then
+                        log "${dataset} mount failed"
+                    fi
+                fi
+            done
+        fi
+
+        # Check if the operation was successful.
+        if is_user_zpool_mounted; then
             log "${ZPOOL_NAME}/${PAM_USER} unlocked and mounted"
         else
             log "${ZPOOL_NAME}/${PAM_USER} mount failed"
@@ -144,78 +304,52 @@ function unlock_and_mount_zpool()
 }
 
 
-function increment_session_counter()
+umount_and_lock_zpool()
 {
-    # Increment the session's counter only for sessions where the main
-    # user's encrypted dataset has been successfully unlocked and mounted.
-    if mountpoint -q "${ZPOOL_MOUNTPOINT}/${PAM_USER}"; then
+    local i dataset mounted unload_failed=0
+    local -a DATASETS=()
 
-        # Ensure the path for the counter exists and get the counter.
-        mkdir -p "$(dirname "$SESSION_FILE_COUNTER")"
-        local count=$(cat "$SESSION_FILE_COUNTER" 2>/dev/null)
+    # Only act if the dataset is actually mounted.
+    if is_user_zpool_mounted; then
 
-        # If the counter file does not exist or contains an invalid
-        # value, reset the counter to zero before incrementing it.
-        if ! [[ "$count" =~ ^[0-9]+$ ]]; then
-            count=0
-        fi
-
-        # Increment the counter.
-        count=$((count + 1))
-        echo "$count" > "$SESSION_FILE_COUNTER"
-        log "session count: ${count}"
-    fi
-}
-
-
-function decrement_session_counter()
-{
-    # Decrement the session's counter only for sessions where the main
-    # user's encrypted dataset has been successfully unlocked and mounted.
-    if mountpoint -q "${ZPOOL_MOUNTPOINT}/${PAM_USER}"; then
-
-        # Ensure the path for the counter exists and get the counter.
-        mkdir -p "$(dirname "$SESSION_FILE_COUNTER")"
-        local count=$(cat "$SESSION_FILE_COUNTER" 2>/dev/null)
-
-        # If the counter file does not exist or contains an invalid
-        # value, reset the counter to zero before decrementing it.
-        if ! [[ "$count" =~ ^[0-9]+$ ]]; then
-            count=0
-        fi
-
-        # Decrement the counter, but never allow it to become negative.
-        if [ "$count" -gt 0 ]; then
-            count=$((count - 1))
-        fi
-        echo "$count" > "$SESSION_FILE_COUNTER"
-        log "session count: ${count}"
-    fi
-}
-
-
-function umount_and_lock_zpool()
-{
-    # Ensure the main user's storage dataset is unlocked and mounted.
-    if mountpoint -q "${ZPOOL_MOUNTPOINT}/${PAM_USER}"; then
-
-        # Sync and wait a little bit of time.
+        # Flush pending writes and give I/O a brief grace period.
         sync
         sleep 1
 
-        # Unmount the dataset(s) and unload the key.
-        zfs unmount "${ZPOOL_NAME}/${PAM_USER}"
-        zfs unload-key "${ZPOOL_NAME}/${PAM_USER}"
+        # List all user's datasets and their mount status.
+        # shellcheck disable=SC2312 # On failures -> empty array (intentional).
+        mapfile -t DATASETS < <(
+            zfs list -rH -t filesystem -o name,mounted "${ZPOOL_NAME}/${PAM_USER}" 2>/dev/null
+        )
 
-        # Check if the operation was successfully.
-        if mountpoint -q "${ZPOOL_MOUNTPOINT}/${PAM_USER}"; then
-            log "${ZPOOL_NAME}/${PAM_USER} unmount failed"
+        # Unmount all currently mounted user's datasets in reverse
+        # order (not only those that use the same key as the parent).
+        for (( i=${#DATASETS[@]}-1; i>=0; i-- )); do
+            IFS=$'\t' read -r dataset mounted <<< "${DATASETS[i]}"
+            if [[ "${mounted}" == "yes" ]]; then
+                if ! zfs unmount "${dataset}"; then
+                    log "${dataset} unmount failed"
+                fi
+            fi
+        done
+
+        # Try to unload all keys associated with the user.
+        if ! zfs unload-key -r "${ZPOOL_NAME}/${PAM_USER}"; then
+            log "unload of key(s) failed for ${ZPOOL_NAME}/${PAM_USER}"
+            unload_failed=1
+        fi
+
+        # Verify the unmount and key unloading succeeded.
+        if is_user_zpool_mounted || (( unload_failed )); then
+            log "${ZPOOL_NAME}/${PAM_USER} unmount or lock failed"
         else
             log "${ZPOOL_NAME}/${PAM_USER} unmounted and locked"
         fi
     fi
 }
 
+
+# ------------------------------------ MAIN -------------------------------------
 
 # Try to obtain the lock on this script.
 if get_script_lock; then
@@ -227,7 +361,9 @@ if get_script_lock; then
     case "${PAM_TYPE}" in
 
         auth)
-            unlock_and_mount_zpool "$(cat -)"       # ($1 = login password)
+            # pam_exec.so expose_authtok provides the password on stdin.
+            # shellcheck disable=SC2312 # Handle password provided by pam_exec.
+            unlock_and_mount_zpool "$(cat -)"           # ($1 = login password)
             ;;
 
         password)
@@ -245,34 +381,37 @@ if get_script_lock; then
 
         close_session)
             decrement_session_counter
-            if [[ ${LOCK_ON_LAST_LOGOUT} -ne 0 ]]; then
-                SESSION_COUNTER=$(cat "$SESSION_FILE_COUNTER" 2>/dev/null)
+            if (( LOCK_ON_LAST_LOGOUT )); then
+                SESSION_COUNTER=$(cat "${SESSION_FILE_COUNTER}" 2>/dev/null)
                 if [[ ${SESSION_COUNTER:-0} -eq 0 ]]; then
                     umount_and_lock_zpool
                 fi
             fi
             ;;
 
-        *)  log "unknow pam type"
+        *)  log 'unknown pam type'
             ;;
     esac
 
     # Trace the call if enabled.
     if [[ ${TRACE_ENABLED} -ne 0 ]]; then
-        date >> "${TRACE_LOG_FILE}"
-        echo "ID: $(id)" >> "${TRACE_LOG_FILE}"
-        echo "EUID: $(id -u)" >> "${TRACE_LOG_FILE}"
-        echo "USER: $USER" >> "${TRACE_LOG_FILE}"
-        echo "PAM_RHOST: $PAM_RHOST" >> "${TRACE_LOG_FILE}"
-        echo "PAM_RUSER: $PAM_RUSER" >> "${TRACE_LOG_FILE}"
-        echo "PAM_SERVICE: ${PAM_SERVICE}" >> "${TRACE_LOG_FILE}"
-        echo "PAM_TTY: $PAM_TTY" >> "${TRACE_LOG_FILE}"
-        echo "PAM_USER: ${PAM_USER}" >> "${TRACE_LOG_FILE}"
-        echo "PAM_TYPE: ${PAM_TYPE}" >> "${TRACE_LOG_FILE}"
-        if [ -e "${SESSION_FILE_COUNTER}" ]; then
-            echo "session count: $(cat $SESSION_FILE_COUNTER)" >> "${TRACE_LOG_FILE}"
-        fi
-        echo "-----------------------------------------------------------------------" >> "${TRACE_LOG_FILE}"
+        # shellcheck disable=SC2153,SC2154,SC2312 # Debug information only.
+        {
+            date
+            printf 'ID:            %s\n' "$(id)"
+            printf 'EUID:          %s\n' "$(id -u)"
+            printf 'USER:          %s\n' "${USER}"
+            printf 'PAM_RHOST:     %s\n' "${PAM_RHOST}"
+            printf 'PAM_RUSER:     %s\n' "${PAM_RUSER}"
+            printf 'PAM_SERVICE:   %s\n' "${PAM_SERVICE}"
+            printf 'PAM_TTY:       %s\n' "${PAM_TTY}"
+            printf 'PAM_USER:      %s\n' "${PAM_USER}"
+            printf 'PAM_TYPE:      %s\n' "${PAM_TYPE}"
+            if [[ -e "${SESSION_FILE_COUNTER}" ]]; then
+                printf 'Session count: %s\n' "$(cat "${SESSION_FILE_COUNTER}")"
+            fi
+            printf -- '-----------------------------------------------------------------------\n'
+        } >> "${TRACE_LOG_FILE}"
     fi
 
     # Release the lock.

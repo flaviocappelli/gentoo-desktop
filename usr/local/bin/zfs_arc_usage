@@ -1,20 +1,36 @@
-#!/bin/sh
+#!/bin/bash
 #
-# by F.C.
+# Released under MIT License
+# Copyright (c) 2024-2026 Flavio Cappelli
+# Version 1.0
+#
+# ShellCheck (-s bash -o all): PASS (2026-11-04)
+
+set -euo pipefail
 
 if command -v zarcsummary &> /dev/null; then
     # OpenZFS >= 2.4, see
     # https://github.com/openzfs/zfs/releases/tag/zfs-2.4.0
-    zarcsummary -s arc | grep -A 6 "ARC status:"
-    echo -e "\nARC statistics:"
-    zarcstat
+    CMD1=zarcsummary
+    CMD2=zarcstat
 elif command -v arc_summary &> /dev/null; then
     # OpenZFS < 2.4
-    arc_summary -s arc | grep -A 6 "ARC status:"
-    echo -e "\nARC statistics:"
-    arcstat
+    CMD1=arc_summary
+    CMD2=arcstat
 else
-    echo "Sorry, ZFS tools not installed"
+    printf '\nSorry, ZFS tools not installed\n\n'
     exit 1
 fi
+
+printf '\n'
+if ! "${CMD1}" -s arc | grep -A 6 'ARC status:'; then
+    printf 'Retrieval of ARC status failed\n'
+    exit 1
+fi
+printf '\nARC statistics:\n'
+if ! "${CMD2}"; then
+    printf 'Retrieval of ARC statistics failed\n'
+    exit 1
+fi
+printf '\n'
 exit 0

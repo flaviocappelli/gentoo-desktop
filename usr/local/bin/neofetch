@@ -3,5 +3,7 @@
 # by F.C.
 # Neofetch is abandoware and will be removed from portage: the
 # best alternative is fastfetch (it can even emulate neofetch).
+#
+# ShellCheck (-s bash -o all): PASS (2026-11-04)
 
-fastfetch --load-config neofetch
+fastfetch --config neofetch
