@@ -67,6 +67,7 @@ app-text/tree
 app-text/uchmviewer
 app-text/xchm
 app-text/zeal
+dev-build/steve
 dev-db/sqlitebrowser
 dev-debug/bpftrace
 dev-debug/kdbg
