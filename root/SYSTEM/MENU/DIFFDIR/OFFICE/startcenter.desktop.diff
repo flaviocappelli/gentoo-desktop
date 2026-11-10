@@ -1,5 +1,5 @@
---- /usr/share/applications/libreoffice-startcenter.desktop	2024-03-17 14:30:37.084398058 +0100
-+++ ./libreoffice-startcenter.desktop	2024-03-17 18:47:58.541014867 +0100
+--- /usr/lib64/libreoffice/share/xdg/startcenter.desktop	2024-03-17 14:30:37.084398058 +0100
++++ ./startcenter.desktop	2024-03-17 18:47:58.541014867 +0100
 @@ -1,13 +1,14 @@
  [Desktop Entry]
 -NoDisplay=false

@@ -44,6 +44,8 @@ patch_desktop_entries()
     local item label ext rettxt
     local -a patch_args
 
+    # NOTE: For security reasons, option '--follow-symlinks' has been removed;
+    # so, patch of simlinks will fail. Patch instead the files they point to.
     patch_args=( '-d/' '-p0' '--batch' "${DIRECTION}" )
 
     # Skip unmatched globs and symbolic links.
