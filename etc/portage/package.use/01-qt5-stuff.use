@@ -1,0 +1,11 @@
+# by F.C.
+#
+# Qt5 has been removed from Portage, but I still need it for SW development.
+# Fortunately, the 'stuff' overlay provides updated versions of Qt5 packages.
+
+dev-qt/qt-docs:5                     gui script widgets xml
+dev-qt/qtgui:5                       egl                   # Required by dev-qt/qtwayland:5.
+dev-qt/qtgui:5                       -vnc                  # Drop unnecessary dependency (from CLD).
+##dev-qt/qtnetwork:5                 sctp                  # Add support for Stream Control Transmission Protocol (i.e. QSctpServer & QSctpSocket).
+dev-qt/qtquickcontrols:5             widgets               # Enable QtWidgets support.
+dev-qt/qtquickcontrols2:5            widgets               # Enable QtWidgets support.
