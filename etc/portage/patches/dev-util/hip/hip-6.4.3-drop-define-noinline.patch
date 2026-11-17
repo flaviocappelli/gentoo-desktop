@@ -1,4 +1,4 @@
-Required to build sci-ml/pytorch with with ROCm/HIP support fails when using GCC 16.
+Required to build sci-ml/pytorch with ROCm/HIP support and GCC 16.
 See https://bugs.gentoo.org/981839
 
 --- a/hipamd/include/hip/amd_detail/host_defines.h	2026-10-02 20:37:08.181360070 +0200

@@ -60,19 +60,6 @@
 # -----------------------------------------------------------------
 media-sound/lilypond                python_single_target_python3_13
 
-# ROCM 6.4.x
-# Python 3.14 supported only on ROCM >= 7.2.0.
-# -----------------------------------------------------------------
-dev-util/rocminfo                   python_targets_python3_13
-dev-util/Tensile                    python_targets_python3_13
-sci-libs/rocFFT                     python_targets_python3_13
-dev-python/cloudpickle              python_targets_python3_13
-dev-python/flit-core                python_targets_python3_13
-dev-python/joblib                   python_targets_python3_13
-dev-python/loky                     python_targets_python3_13
-dev-python/psutil                   python_targets_python3_13
-dev-python/pyyaml                   python_targets_python3_13
-
 # PIP virtual environments dependencies (for Python 3.13 and 3.12).
 # -------------------------------------------------------------------------------------
 dev-python/pip                      python_targets_python3_13 python_targets_python3_12

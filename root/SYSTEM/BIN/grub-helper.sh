@@ -2,7 +2,7 @@
 #
 # Released under MIT License
 # Copyright (c) 2024-2026 Flavio Cappelli
-# Version 1.1
+# Version 1.2
 #
 # Simplify installation / configuration of the grub
 # bootloader and the rebuild of initramfs (if needed).
@@ -34,8 +34,15 @@ ENABLE_INITRAMFS_OPT=1
 ENABLE_GRUBINSTALL_REMOVABLE=1
 
 # List of grub generators that will be disabled (see /etc/grub.d/*).
-GRUBGEN_UNREQUIRED=('05_debian_theme' '10_linux_zfs' '20_linux_xen' '30_os-prober' '30_uefi-firmware' '35_fwupd')
-
+GRUBGEN_UNREQUIRED=(
+    '05_debian_theme'
+    '10_linux_zfs'
+    '20_linux_xen'
+    '30_os-prober'
+    '30_uefi-firmware'
+    '31_efi_bootnext'
+    '35_fwupd'
+)
 
 # This does not need an explanation!
 show_usage_and_exit()

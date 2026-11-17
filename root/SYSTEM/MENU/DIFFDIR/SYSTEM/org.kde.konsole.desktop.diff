@@ -1,5 +1,5 @@
---- /usr/share/applications/org.kde.konsole.desktop	2024-03-17 14:30:37.026398617 +0100
-+++ ./org.kde.konsole.desktop	2024-03-17 19:59:49.311906822 +0100
+--- /usr/share/applications/org.kde.konsole.desktop	2026-11-14 11:48:44.813274388 +0100
++++ ./org.kde.konsole.desktop	2026-11-14 11:50:55.959505675 +0100
 @@ -1,13 +1,13 @@
  [Desktop Entry]
  Name=Konsole
@@ -14,21 +14,6 @@
  Type=Application
 -Categories=Qt;KDE;System;TerminalEmulator;
 +Categories=Qt;KDE;System;
- Keywords=terminal;console;script;run;execute;command;command-line;commandline;cli;bash;sh;shell;zsh;cmd;command prompt
- Keywords[it]=terminale;console;script;esegui;comando;riga di comando;cli;bash;sh;shell;zsh;cmd;prompt dei comandi
+ Keywords=terminal;console;script;run;execute;command;command-line;commandline;cli;bash;sh;shell;zsh;cmd;command prompt;xterm;tty;pty;fish;konsole
+ Keywords[it]=terminale;console;script;esegui;comando;riga di comando;cli;bash;sh;shell;zsh;cmd;prompt dei comandi;xterm;tty;pty;fish;konsole
  StartupWMClass=konsole
-@@ -20,12 +20,12 @@
- 
- [Desktop Action NewWindow]
- Name=Open a New Window
--Name[it]=Apri in una nuova finestra
-+Name[it]=Apri una nuova finestra
- Exec=konsole
- Icon=window-new
- 
- [Desktop Action NewTab]
- Name=Open a New Tab
--Name[it]=Apri in una nuova scheda
-+Name[it]=Apri una nuova scheda
- Exec=konsole --new-tab
- Icon=tab-new

@@ -24,3 +24,6 @@
 
 # Settings for GPU Radeon RX 6900 XT.
 HSA_OVERRIDE_GFX_VERSION=10.3.0
+
+# Disable use of hipBLASLt in Pytorch (does not support GPU architecture gfx1030).
+TORCH_BLAS_PREFER_HIPBLASLT=0

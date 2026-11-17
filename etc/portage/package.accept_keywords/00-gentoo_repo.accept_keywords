@@ -3,15 +3,19 @@
 # Ebuilds from the gentoo official repository.
 # NOTE: sign ~ (tilde) let in -r# package revisions.
 
-# CPU vulnerability checker (latest version).
-app-admin/spectre-meltdown-checker::gentoo **
-
 # SpeedCruch calculator is back with Qt6 support!
 sci-calculators/speedcrunch::gentoo
 
 # Hex editor integrated in KDE/PLASMA6 (stable
 # version has been masked due to KF5 removal).
 app-editors/okteta::gentoo
+
+# Reverse Engineering Framework.
+# Stable version does not build.
+dev-util/cutter::gentoo
+dev-util/rizin::gentoo
+dev-libs/zycore-c::gentoo
+dev-libs/zydis::gentoo
 
 # Other packages useful for development. dev-util/seer
 # is a new gui frontend to gdb with advanced features.
@@ -22,14 +26,6 @@ dev-util/seer::gentoo
 
 # PipeWire Graph Qt GUI Interface.
 media-sound/qpwgraph::gentoo
-
-# VLC-4.0.0_pre* versions are unstable and affected by some
-# issues. VLC-3.0.23 is stable, but it does not longer have
-# a GUI, due to the removal of Qt5 from Portage. Fortunately
-# VLC-3.0.24 has been released with support for Qt6. Note
-# that VLC3 needs a patch against net-libs/libupnp-1.18
-# (see /etc/portage/patches/media-video/vlc-3.0.24).
-~media-video/vlc-3.0.24::gentoo
 
 # IM: Zoom.
 net-im/zoom::gentoo
@@ -105,10 +101,6 @@ app-portage/emlop::gentoo
 # support laptop displays (which are controlled using a special API, not I2C).
 app-misc/ddcui::gentoo
 
-# Utility that shows and sets processor power related values (stable version
-# is too old). Useful to check the acpi-cpufreq / amd-pstate driver status.
-sys-power/cpupower::gentoo
-
 # Show the GPU utilization (AMD GPU only)
 # (see https://github.com/clbr/radeontop).
 #app-misc/radeontop::gentoo
@@ -116,159 +108,11 @@ sys-power/cpupower::gentoo
 # Display info about the system's OpenCL capabilities.
 dev-util/clinfo::gentoo
 
-
-# ============================= OpenCL / ROCM / HIP / CUDA ==============================
-# See:
-#   https://wiki.gentoo.org/wiki/HIP
-#   https://wiki.gentoo.org/wiki/ROCm
-#   https://wiki.gentoo.org/wiki/OpenCL#AMD
-#   AMDGPU TARGET GPUs in /etc/portage/make.conf/00-amdgpu.conf
-#
-# -------- OpenCL ONLY --------
-# emerge -pv clinfo
-#
-# 1) USE=opencl emerge media-libs/mesa
-#    MESA >= 23.1.0 uses "rusticl" instead of "glover". Note that "rusticl" is still experimental
-#    (and incomplete, see https://mesamatrix.net/) and the radeonsi implementation must be enabled
-#    with the environment variable RUSTICL_ENABLE=radeonsi (see https://docs.mesa3d.org/envvars.html).
-#    Also note that mesa[opencl] cannot be installed together with ROCM (dev-libs/rocm-opencl-runtime).
-#
-#    TESTS:  darktable works
-#            luxmark-3.1 luxball with -cl-fast-relaxed-math enabled/disable: score around 60650..60850
-#            luxmark-4.0-alpha1 (not updated since 2020!) default scene: hangs compiling OpenCL kernels
-#
-# 2) emerge dev-libs/amdgpu-pro-opencl
-#    cannot be installed together with media-libs/mesa[opencl]
-#    old, not maintained, deprecated in favor of ROCM (dev-libs/rocm-opencl-runtime)
-#
-#    TESTS:  untested
-#
-# -------- OpenCL + ROCM + HIP --------
-# emerge -pv rocm-opencl-runtime clinfo rocminfo
-# emerge -pv dev-util/hip hipBLAS hipFFT hipCUB hipRAND ... (see below)
-#
-# NOTES:
-#  * ROCM cannot be installed together with mesa[opencl]
-#  * ROCM DOCS are available at 'https://rocm.docs.amd.com/projects/xxxYYYY/en/latest/' for
-#    package 'xxxYYYY' (e.g. rocBLAS -> https://rocm.docs.amd.com/projects/rocBLAS/en/latest/)
-#
-# MY TESTS FOR "dev-libs/rocm-opencl-runtime" WITH THE GPU "AMD Radeon RX 6900XT":
-#  < 6.3.3   removed from portage
-#  = 6.3.3   portage         luxmark-3.1 works, darktable-4.8 cltest works
-#  = 6.4.3   portage         luxmark-3.1 works, darktable-5.2 cltest works
-#  = 7.2.4   stuff overlay   luxmark-3.1 works, darktable-5.4 cltest works
-#                            NOTE: I'VE DEEPLY TESTED ROCm 7.2.4 AND GOT A MARGINAL GAIN (PLUS SOME MINOR
-#                            REGRESSIONS) ON MY RX6900XT GPU, SO I'M KEEPING ROCm 6.4.3 FOR THE TIME BEING.
-dev-libs/rocm-opencl-runtime:0/6.4::gentoo
-
-# ROCM OpenCL runtime dependencies + HIP compiler: the MAJOR version
-# of such packages must be the same of the ROCM OpenCL runtime.
-dev-libs/rocm-comgr:0/6.4::gentoo
-dev-libs/rocm-device-libs:0/6.4::gentoo
-dev-libs/rocr-runtime:0/6.4::gentoo
-dev-libs/roct-thunk-interface:0/6.4::gentoo
-dev-util/hipcc:0/6.4::gentoo
-dev-util/hip:0/6.4::gentoo
-
-# Another ROCM OpenCL runtime dependency.
-dev-build/rocm-cmake:0/6.4::gentoo
-
-# ROCIMINFO.
-dev-util/rocminfo:0/6.4::gentoo
-
-# BANDWIDTH_TEST.
-# Display infos about performance of buffer copying and kernel read / write
-# operations. If the ROCM slot is not available, use the latest version.
-dev-util/rocm_bandwidth_test:0/6.4::gentoo
-
-# Tools to translate CUDA source code into portable HIP C++.
-dev-util/hipify-clang:0/6.4::gentoo
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# FOLLOWING PACKAGES CAN HAVE VERSION != ROCM RUNTIME (ANYWAY, IT MUST BE <= HIP)
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# hipBLAS needs rocBLAS, rocPRIM, rocSOLVER, rocSPARSE, Tensile, rocm-smi.
-sci-libs/hipBLAS-common:0/6.4::gentoo
-sci-libs/hipBLAS:0/6.4::gentoo
-sci-libs/rocBLAS:0/6.4::gentoo              # Same slot of sci-libs/hipBLAS.
-sci-libs/rocPRIM:0/6.4::gentoo              # Same slot of sci-libs/hipBLAS.
-sci-libs/rocSOLVER:0/6.4::gentoo            # Same slot of sci-libs/hipBLAS.
-sci-libs/rocSPARSE:0/6.4::gentoo            # Same slot of sci-libs/hipBLAS.
-dev-util/Tensile:0/6.4::gentoo              # Same slot of sci-libs/hipBLAS.
-dev-util/rocm-smi:0/6.4::gentoo             # Any version accepted.
-
-# hipSPARSE needs above rocPRIM, rocSPARSE (same version).
-sci-libs/hipSPARSE:0/6.4::gentoo
-
-# hipSOLVER needs above rocSOLVER (same version).
-sci-libs/hipSOLVER:0/6.4::gentoo
-
-# hipCUB needs above rocPRIM (same version).
-sci-libs/hipCUB:0/6.4::gentoo
-
-# rocTrush needs above rocPRIM (same version).
-sci-libs/rocThrust:0/6.4::gentoo
-
-# hipFFT needs below rocFFT (can have version != previous packages).
-sci-libs/hipFFT:0/6.4::gentoo
-sci-libs/rocFFT:0/6.4::gentoo               # Same slot of sci-libs/hipFFT.
-
-# hipRAND needs below rocRAND (can have version != previous packages).
-sci-libs/hipRAND:0/6.4::gentoo
-sci-libs/rocRAND:0/6.4::gentoo              # Same slot of sci-libs/hipRAND.
-
-# - - - - - - - - - - - - - - - - - - - - - - - -
-# CUSTOM ROCM BUILDS AND OTHER INTERESTING STUFFS
-# - - - - - - - - - - - - - - - - - - - - - - - -
-# See https://github.com/lamikr/rocm_sdk_builder
-
-
-# ======================================== PyTorch =======================================
-# 'PyTorch' powers a wide range of cutting-edge AI applications: ROCM support is provided
-# by sci-libs/caffe2[rocm] (see https://bugs.gentoo.org/940356). Library sci-libs/hipBLASLt
-# is required by PyTorch for GEMM operations that extend functionalities of traditional BLAS
-# (see https://rocm.docs.amd.com/projects/hipBLASLt/en/latest/what-is-hipBLASLt.html), but
-# it does not currently support my GPU (gfx1030); anyway pytorch code should automatically
-# fallback to some old hipBLAS code (see https://github.com/ROCm/hipBLASLt/issues/648); if
-# not (i.e., on errors), try to define TORCH_BLAS_PREFER_HIPBLASLT=0 in the environment.
-# PyTorch benchmark: https://github.com/lamikr/pytorch-gpu-benchmark/
-sci-ml/pytorch::gentoo
-dev-libs/cpuinfo::gentoo
-dev-libs/dynolog::gentoo
-dev-libs/pfs::gentoo
-dev-libs/pocketfft::gentoo
-dev-libs/pthreadpool::gentoo
-sci-ml/FP16::gentoo
-sci-ml/caffe2::gentoo
-sci-ml/kineto::gentoo
-sci-ml/onnx::gentoo
-# --- oneDNN backend deps ---
-sci-ml/ideep::gentoo
-# ---- ROCM backend deps ----
-dev-cpp/frugally-deep::gentoo
-dev-cpp/functional-plus::gentoo
-dev-libs/half::gentoo
-dev-libs/rccl:0/6.4::gentoo                 # Same slot of dev-util/hip.
-dev-python/cppheaderparser::gentoo
-dev-util/roctracer:0/6.4::gentoo            # Same slot of dev-util/hip.
-sci-libs/composable-kernel:0/6.4::gentoo    # Same slot of dev-util/hip.
-sci-libs/hipBLASLt:0/6.4::gentoo            # Same slot of dev-util/hip and sci-libs/hipBLAS.
-sci-libs/miopen:0/6.4::gentoo               # Same slot of dev-util/hip and sci-libs/rocBLAS.
-# ---- CUDA backend deps ----
-dev-libs/cudnn::gentoo
-dev-libs/cutlass::gentoo
-dev-util/nvidia-cuda-toolkit::gentoo
-sci-ml/cudnn-frontend::gentoo
-# ---- TorchVision ----
-sci-ml/torchvision::gentoo
-
-
-# ======================================== Ollama ========================================
-# Ollama is finally available in Portage and seems to work pretty well. NOTE: for consumer
-# AMD GPUs, ROCm isn't necessarily better than Vulkan (testing is highly recommended); for
-# NVidia GPUs, CUDA is recommended instead (CUDA must also be enabled in acct-user/ollama).
-# See also "dev-python/ollama" and "sci-misc/llama-cpp" in ./00-local_repo.accept_keywords.
+# Ollama is finally available in Portage and seems to work pretty well. NOTE:
+# with consumer AMD GPUs, ROCm isn't necessarily better than Vulkan (testing is
+# highly recommended); with NVidia GPUs, CUDA is recommended instead (CUDA use
+# flag must also be enabled in acct-user/ollama). See also "dev-python/ollama"
+# (in ./00-local_repo.*) and "sci-misc/llama-cpp" (in ./00-other_repo.*).
 sci-ml/ollama::gentoo
 acct-group/ollama::gentoo
 acct-user/ollama::gentoo

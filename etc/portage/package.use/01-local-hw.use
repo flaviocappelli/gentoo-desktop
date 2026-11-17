@@ -15,8 +15,50 @@ x11-drivers/nvidia-drivers      powerd
 
 
 # ================================================================================
-#  AI BACKEND SETTINGS FOR MY DESKTOP (CPU Ryzen 5900X + GPU Radeon RX 6900 XT)
+#  ML BACKEND SETTINGS FOR MY DESKTOP (CPU Ryzen 5900X + GPU Radeon RX 6900 XT)
 # ================================================================================
+
+# --------------------------------------------------------------------------------
+#   AMD's Machine Intelligence Library (PyTorch dependency)
+# --------------------------------------------------------------------------------
+
+# CK solvers are NOT USED on the Radeon RX 6900 XT GPU (architecure gfx1030),
+# so they should be disabled (furthermore, compiling the CK takes a long time).
+sci-libs/miopen                 -composable-kernel
+
+# Architecture gfx1030 is not supported by hipBLASLt (it causes errors in MIOpen).
+sci-libs/miopen                 -hipblaslt
+
+# Build MIOpen with rocBLAS support (default HIP backend).
+sci-libs/miopen                 rocblas
+
+# --------------------------------------------------------------------------------
+#   Use ROCm for IMAGE GENERATION / GPU COMPUTE (avoids buffer crashes)
+# --------------------------------------------------------------------------------
+#   Diffusion models require massive geometric computations. During the final VAE
+#   decoding stage at 1024x1024, the engine demands a monolithic, single contiguous
+#   compute buffer of roughly ~6.6 to 8 GB. The AMD RDNA2 architecture (Navi 21) has
+#   a hard hardware limit under Vulkan (`maxBufferSize`) restricted to exactly 4 GB.
+#   Vulkan cannot allocate the huge VAE block in one go, triggering a fatal `Requested
+#   buffer size exceeds device buffer size limit` (OutOfDeviceMemory) crash. ROCm maps
+#   VRAM virtually and continuously (HIP/AMD GPU architecture), bypassing Vulkan
+#   geometric constraints. It comfortably runs the whole image pipeline in VRAM
+#   at native resolutions. Text processing should be offloaded to save some VRAM.
+
+# CuPy (NumPy-compatible array library GPU accelerated, from my local repo).
+dev-python/cupy                 rocm
+
+# ComfyUI (AI engine for content creation, from "styff" overlay).
+media-gfx/comfyui               rocm
+
+# Pytorch & C (deps of ComfyUI, mainly from "stuff" overlay).
+sci-ml/caffe2                   rocm
+sci-ml/pytorch                  rocm
+sci-ml/torchvision              rocm
+
+# Stable diffusion in C++ (simpler than ComfyUI, from my local repo).
+sci-misc/stable-diffusion-cpp   rocm -vulkan
+
 
 # --------------------------------------------------------------------------------
 #   Use Vulkan for LLMs (max stability and agility, faster than ROCm on my GPU)
@@ -33,24 +75,3 @@ sci-misc/llama-cpp              -rocm vulkan
 
 # OLLAMA
 sci-ml/ggml                     -rocm vulkan
-
-
-# --------------------------------------------------------------------------------
-#   Use ROCm for IMAGE GENERATION / GPU COMPUTE (avoids buffer crashes)
-# --------------------------------------------------------------------------------
-#   Diffusion models require massive geometric computations. During the final VAE
-#   decoding stage at 1024x1024, the engine demands a monolithic, single contiguous
-#   compute buffer of roughly ~6.6 to 8 GB. The AMD RDNA2 architecture (Navi 21) has
-#   a hard hardware limit under Vulkan (`maxBufferSize`) restricted to exactly 4 GB.
-#   Vulkan cannot allocate the huge VAE block in one go, triggering a fatal `Requested
-#   buffer size exceeds device buffer size limit` (OutOfDeviceMemory) crash. ROCm maps
-#   VRAM virtually and continuously (HIP/AMD GPU architecture), bypassing Vulkan
-#   geometric constraints. It comfortably runs the whole image pipeline in VRAM
-#   at native resolutions. Text processing should be offloaded to save some VRAM.
-
-# PYTORCH & C.
-dev-python/cupy                 rocm
-sci-misc/stable-diffusion-cpp   rocm -vulkan
-sci-ml/caffe2                   rocm          # Pytorch < 2.13 only.
-sci-ml/pytorch                  rocm          # Pytorch 2.13 and above.
-sci-ml/torchvision              rocm

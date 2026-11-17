@@ -1,5 +1,6 @@
-Explicitly force Thunderbird's user data to ~/.thunderbird, preventing the creation of the
-unwanted ~/thunderbird directory. This bug was fixed in Thunderbird 154 and later versions.
+Explicitly force Thunderbird's user data to ~/.thunderbird, preventing
+the creation of the unwanted ~/thunderbird directory. This bug was fixed
+in Thunderbird 154 and later versions. See https://bugs.gentoo.org/975225
 
 diff --git a/comm/mail/moz.configure b/comm/mail/moz.configure
 --- a/comm/mail/moz.configure

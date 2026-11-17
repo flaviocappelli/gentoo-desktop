@@ -629,6 +629,7 @@ sci-libs/armadillo                  superlu               # Use SuperLU for spar
 sci-libs/cgnslib                    hdf5                  # Required by sci-libs/vtk[cgns].
 sci-libs/hdf5                       -threads              # Thread support is incompatible with flags "cxx", "fortran", "hl", "mpi" (see the ebuild).
 sci-libs/hdf5                       cxx                   # Required by sci-libs/vtk[cgns].
+sci-libs/hipBLAS                    rocsolver             # Required by dev-python/cupy-14.x, sci-ml/pytorch (or sci-ml/caffe2).
 sci-libs/lapack                     lapacke               # Required by virtual/lapacke.
 sci-libs/libqalculate               gnuplot               # Required by sci-calculators/qalculate-qt for plot support.
 ##sci-libs/miopen                   composable-kernel     # Additional solvers that are NOT USED on my RX 6900 XT GPU (disabled because the build takes a lot of time).
@@ -722,7 +723,6 @@ sys-process/lsof                    rpc                   # Required by app-fore
 virtual/linux-sources               firmware              # Ensure sys-kernel/linux-firmware is installed.
 virtual/notification-daemon         kde                   # Pull in kde-plasma/plasma-workspace (for notifications in KDE/PLASMA).
 
-www-client/chromium                 widevine              # Unsupported closed-source DRM capability (required by Netflix VOD).
 www-client/firefox                  -telemetry            # Do not send anonymized usage information to upstream.
 ##www-client/firefox                hwaccel               # Force-enable hardware-accelerated rendering (Mozilla bug 594876). OBSOLETED.
 www-client/firefox                  openh264              # Use media-libs/openh264 for H264 support instead of downloading binary blob from Mozilla at runtime.

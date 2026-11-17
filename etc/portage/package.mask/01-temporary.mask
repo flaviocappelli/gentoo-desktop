@@ -13,3 +13,6 @@
 
 # ROCm/HIP require flit-core < 4.
 >=dev-python/flit-core-4.0.0
+
+# This ebuild fails.
+=www-client/ungoogled-chromium-bin-157.0.8103.78_p1

@@ -112,7 +112,6 @@ dev-util/kdevelop
 dev-util/kdstatemachineeditor
 dev-util/meld
 dev-util/pahole
-dev-util/rocm_bandwidth_test
 dev-util/rocminfo
 dev-util/seer
 dev-util/shellcheck-bin
@@ -258,7 +257,6 @@ sci-mathematics/octave
 sci-mathematics/wxmaxima
 sci-misc/llama-cpp
 sci-misc/stable-diffusion-cpp
-sci-ml/torchvision
 sys-apps/amdgpu_top
 sys-apps/cpuid
 sys-apps/dmidecode

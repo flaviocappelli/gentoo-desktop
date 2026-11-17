@@ -1,0 +1,108 @@
+# by F.C.
+#
+# Ebuilds for OpenCL / ROCM / HIP BACKENDS
+#
+# See:
+#   https://wiki.gentoo.org/wiki/HIP
+#   https://wiki.gentoo.org/wiki/ROCm
+#   https://wiki.gentoo.org/wiki/OpenCL#AMD
+#   AMDGPU TARGET GPUs in /etc/portage/make.conf/00-amdgpu.conf
+#
+# -------- OpenCL ONLY --------
+# emerge -pv clinfo
+#
+# 1) USE=opencl emerge media-libs/mesa
+#    MESA >= 23.1.0 uses "rusticl" instead of "glover". Note that "rusticl" is still experimental
+#    (and incomplete, see https://mesamatrix.net/) and the radeonsi implementation must be enabled
+#    with the environment variable RUSTICL_ENABLE=radeonsi (see https://docs.mesa3d.org/envvars.html).
+#    Also note that mesa[opencl] cannot be installed together with ROCM (dev-libs/rocm-opencl-runtime).
+#
+#    TESTS:  darktable works
+#            luxmark-3.1 luxball with -cl-fast-relaxed-math enabled/disable: score around 60650..60850
+#            luxmark-4.0-alpha1 (not updated since 2020!) default scene: hangs compiling OpenCL kernels
+#
+# 2) emerge dev-libs/amdgpu-pro-opencl
+#    cannot be installed together with media-libs/mesa[opencl]
+#    old, not maintained, deprecated in favor of ROCM (dev-libs/rocm-opencl-runtime)
+#
+#    TESTS:  untested
+#
+# -------- OpenCL + ROCM + HIP --------
+# emerge -pv rocm-opencl-runtime clinfo rocminfo
+# emerge -pv dev-util/hip hipBLAS hipFFT hipCUB hipRAND ... (see below)
+#
+# NOTES:
+#  * ROCM cannot be installed together with mesa[opencl]
+#  * ROCM DOCS are available at 'https://rocm.docs.amd.com/projects/xxxYYYY/en/latest/' for
+#    package 'xxxYYYY' (e.g. rocBLAS -> https://rocm.docs.amd.com/projects/rocBLAS/en/latest/)
+#
+# MY TESTS FOR "dev-libs/rocm-opencl-runtime" WITH THE GPU "AMD Radeon RX 6900XT":
+#  <  6.3.3  removed from portage
+#  =  6.3.3  portage         luxmark-3.1 works, darktable-4.8 cltest works
+#  =  6.4.3  portage         luxmark-3.1 works, darktable-5.2 cltest works
+#  =  7.2.4  stuff overlay   luxmark-3.1 works, darktable-5.4 cltest works
+#  = 10.0.1  portage         luxmark-3.1 works, darktable-5.2 cltest works
+dev-libs/rocm-opencl-runtime:0/7.2::stuff
+
+# ROCM OpenCL runtime dependencies + HIP compiler: the MAJOR version
+# of such packages must be the same of the ROCM OpenCL runtime.
+dev-build/rocm-cmake:0/7.2::stuff
+dev-libs/rocm-comgr:0/7.2::stuff
+dev-libs/rocm-device-libs:0/7.2::stuff
+dev-libs/rocr-runtime:0/7.2::stuff
+dev-libs/roct-thunk-interface:0/7.2::stuff
+dev-util/hipcc:0/7.2::stuff
+dev-util/hip:0/7.2::stuff
+
+# ROCIMINFO.
+dev-util/rocminfo:0/7.2::stuff
+
+# Tools to translate CUDA source code into portable HIP C++.
+dev-util/hipify-clang:0/7.2::stuff
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# FOLLOWING PACKAGES CAN HAVE VERSION != ROCM RUNTIME (ANYWAY, IT MUST BE <= HIP)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# hipBLAS needs rocBLAS, Tensile, rocm-core, rocm-smi.
+sci-libs/hipBLAS:0/7.2::stuff
+sci-libs/hipBLAS-common:0/7.2::stuff        # Same slot of sci-libs/hipBLAS.
+sci-libs/rocBLAS:0/7.2::stuff               # Same slot of sci-libs/hipBLAS.
+dev-libs/rocm-core:0/7.2::stuff             # Same slot of sci-libs/hipBLAS.
+dev-util/Tensile:0/7.2::gentoo              # Same slot of sci-libs/hipBLAS, gentoo only.
+dev-util/rocm-smi:0/7.2::stuff              # Any version accepted.
+
+# hipSPARSE needs rocSPARCE, rocPRIM, roctracer (same version).
+sci-libs/hipSPARSE:0/7.2::stuff
+sci-libs/rocSPARSE:0/7.2::stuff             # Same slot of sci-libs/hipBLAS.
+sci-libs/rocPRIM:0/7.2::stuff               # Same slot of sci-libs/hipBLAS.
+dev-util/roctracer:0/7.2::gentoo            # Same slot of dev-util/hip.
+dev-python/cppheaderparser::gentoo
+
+# hipSOLVER needs below rocSOLVER (same version).
+sci-libs/hipSOLVER:0/7.2::stuff
+sci-libs/rocSOLVER:0/7.2::stuff             # Same slot of sci-libs/hipBLAS.
+
+# hipCUB needs above rocPRIM (same version).
+sci-libs/hipCUB:0/7.2::stuff
+
+# rocThrust needs above rocPRIM (same version).
+sci-libs/rocThrust:0/7.2::stuff
+
+# hipFFT needs below rocFFT (can have version != previous packages).
+sci-libs/hipFFT:0/7.2::stuff
+sci-libs/rocFFT:0/7.2::stuff                # Same slot of sci-libs/hipFFT.
+
+# hipRAND needs below rocRAND (can have version != previous packages).
+sci-libs/hipRAND:0/7.2::stuff
+sci-libs/rocRAND:0/7.2::stuff               # Same slot of sci-libs/hipRAND.
+
+# AMD's Machine Intelligence Library (PyTorch dependency). NOTE: packages
+#  - sci-libs/composable-kernel
+#  - sci-libs/hipBLASLt
+# are not used on the architecture gfx1030; anyway, sci-libs/hipBLASLt
+# is a dependency required by pytorch/torchvision/torchaudio/comfyui).
+sci-libs/miopen:0/7.2::stuff                # Same slot of dev-util/hip and sci-libs/rocBLAS.
+sci-libs/composable-kernel:0/7.2::stuff     # Same slot of dev-util/hip.
+sci-libs/hipBLASLt:0/7.2::stuff             # Same slot of dev-util/hip and sci-libs/hipBLAS.
+dev-libs/half::gentoo
