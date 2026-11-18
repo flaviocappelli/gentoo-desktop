@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>you@example.org</email>
+		<name>Your Name</name>
+	</maintainer>
+	<use>
+		<flag name="userfeedback">Enable optional telemetry via <pkg>kde-frameworks/kuserfeedback</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
+		<remote-id type="kde-invent">utilities/kaichat</remote-id>
+	</upstream>
+</pkgmetadata>

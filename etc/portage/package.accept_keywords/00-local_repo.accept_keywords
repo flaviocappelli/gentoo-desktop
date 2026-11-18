@@ -120,3 +120,8 @@ sci-ml/onnx::stuff
 # rocm use flags. My ebuild works on both GPUs Radeon RX6900XT
 # (RDNA2) with ROC 6.4.3 and mobile NVidia GTX 5070 with CUDA.
 sci-misc/stable-diffusion-cpp::local
+
+# KDE Chat interface for AI language models
+# (local with Ollama, or online services).
+kde-misc/kaichat::local
+dev-libs/ktextaddons::local

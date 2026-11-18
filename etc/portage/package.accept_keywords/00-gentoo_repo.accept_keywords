@@ -6,6 +6,9 @@
 # SpeedCruch calculator is back with Qt6 support!
 sci-calculators/speedcrunch::gentoo
 
+# Reenable the Google Drive KIO service.
+kde-misc/kio-gdrive::gentoo
+
 # Hex editor integrated in KDE/PLASMA6 (stable
 # version has been masked due to KF5 removal).
 app-editors/okteta::gentoo

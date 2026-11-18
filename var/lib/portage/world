@@ -166,7 +166,9 @@ kde-apps/kwalletmanager
 kde-apps/lokalize
 kde-apps/rocs
 kde-apps/sweeper
+kde-misc/kaichat
 kde-misc/kdiff3
+kde-misc/kio-gdrive
 kde-misc/krename
 kde-misc/kshutdown
 kde-misc/markdownpart
