@@ -386,6 +386,7 @@ media-fonts/source-han-sans         l10n_zh-CN l10n_zh-TW # Add Chinese China/Ta
 # this is a bug, ignore it and press "F1" to see if the local help works (it should be displayed in the default browser).
 # Note also that 'gnome-base/gvfs' is not required to have a working local copy of the gimp help (at least on Gentoo).
 
+media-gfx/comfyui                   extra                 # Install required extra packages (kornia,spandrel).
 media-gfx/darktable                 opencl                # Enable OpenCL support (computation on GPU).
 media-gfx/fontforge                 -X gtk                # X11 GUI not required, use Gtk3 GUI.
 media-gfx/freecad                   addonmgr              # Build the addon manager module for automatic handling of 3rd party addons.

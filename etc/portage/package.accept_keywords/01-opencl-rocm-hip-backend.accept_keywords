@@ -106,3 +106,6 @@ sci-libs/miopen:0/7.2::stuff                # Same slot of dev-util/hip and sci-
 sci-libs/composable-kernel:0/7.2::stuff     # Same slot of dev-util/hip.
 sci-libs/hipBLASLt:0/7.2::stuff             # Same slot of dev-util/hip and sci-libs/hipBLAS.
 dev-libs/half::gentoo
+
+# Other AMD deps slotted required by Pytorch/Caffe2.
+dev-util/amdsmi:0/7.2::gentoo

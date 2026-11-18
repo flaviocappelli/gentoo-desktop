@@ -46,3 +46,46 @@ www-client/chromium-common::pf4public *
 
 # LLM inference in C/C++.
 sci-misc/llama-cpp::stuff
+
+# ComfyUI / Pytorch.
+media-gfx/comfyui::stuff
+dev-libs/pocketfft::stuff
+dev-python/av::stuff
+dev-python/blake3::stuff
+dev-python/comfy-aimdo-bin::stuff
+dev-python/comfy-angle-bin::stuff
+dev-python/comfy-kitchen-bin::stuff
+dev-python/comfyui-embedded-docs::stuff
+dev-python/comfyui-frontend-package::stuff
+dev-python/comfyui-workflow-templates::stuff
+dev-python/comfyui-workflow-templates-core::stuff
+dev-python/comfyui-workflow-templates-json::stuff
+dev-python/comfyui-workflow-templates-media-api::stuff
+dev-python/comfyui-workflow-templates-media-assets01::stuff
+dev-python/comfyui-workflow-templates-media-assets02::stuff
+dev-python/comfyui-workflow-templates-media-image::stuff
+dev-python/comfyui-workflow-templates-media-other::stuff
+dev-python/comfyui-workflow-templates-media-video::stuff
+dev-python/einops::stuff
+dev-python/kornia::stuff
+dev-python/kornia-rs-bin::stuff
+dev-python/spandrel::stuff
+dev-python/torchsde::stuff
+dev-python/trampoline::stuff
+sci-ml/caffe2::stuff
+sci-ml/FP16::gentoo
+sci-ml/hf_xet::stuff
+sci-ml/huggingface_hub::stuff
+sci-ml/ideep::gentoo
+sci-ml/pytorch::stuff
+sci-ml/safetensors::gentoo
+sci-ml/sentencepiece::stuff
+sci-ml/tokenizers::stuff
+sci-ml/torchvision::stuff
+sci-ml/transformers::stuff
+# ---- ONLY CUDA BACKEND ----
+dev-libs/cudnn::stuff
+sci-ml/cudnn-frontend::gentoo
+# ---- ONLY ROCM BACKEND ----
+dev-python/triton::stuff
+virtual/triton::stuff

@@ -111,3 +111,109 @@ dev-python/uc-micro-py              python_targets_python3_13 python_targets_pyt
 dev-python/urllib3                  python_targets_python3_13 python_targets_python3_12
 dev-python/vcs-versioning           python_targets_python3_13 python_targets_python3_12
 dev-python/wheel                    python_targets_python3_13 python_targets_python3_12
+
+# Python-3.13 is well supported in ComfyUI and recommended (custom nodes might have issues
+# with Python-3.14, see https://github.com/Comfy-Org/ComfyUI#manual-install-windows-linux).
+#-----------------------------------------------------------------------------------------------------------
+media-gfx/comfyui                                    -python_single_target_* python_single_target_python3_13
+dev-python/comfy-angle-bin                           -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-frontend-package                  -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-embedded-docs                     -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates                -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates-core           -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates-json           -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates-media-api      -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates-media-assets01 -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates-media-assets02 -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates-media-image    -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates-media-other    -python_single_target_* python_single_target_python3_13
+dev-python/comfyui-workflow-templates-media-video    -python_single_target_* python_single_target_python3_13
+dev-python/kornia                                    -python_single_target_* python_single_target_python3_13
+dev-python/spandrel                                  -python_single_target_* python_single_target_python3_13
+dev-python/torchsde                                  -python_single_target_* python_single_target_python3_13
+sci-ml/caffe2                                        -python_single_target_* python_single_target_python3_13
+sci-ml/huggingface_hub                               -python_single_target_* python_single_target_python3_13
+sci-ml/pytorch                                       -python_single_target_* python_single_target_python3_13
+sci-ml/torchvision                                   -python_single_target_* python_single_target_python3_13
+sci-ml/tokenizers                                    -python_single_target_* python_single_target_python3_13
+sci-ml/transformers                                  -python_single_target_* python_single_target_python3_13
+dev-python/aiodns                                    python_targets_python3_13
+dev-python/aiohappyeyeballs                          python_targets_python3_13
+dev-python/aiohttp                                   python_targets_python3_13
+dev-python/aiosignal                                 python_targets_python3_13
+dev-python/alembic                                   python_targets_python3_13
+dev-python/annotated-doc                             python_targets_python3_13
+dev-python/annotated-types                           python_targets_python3_13
+dev-python/anyio                                     python_targets_python3_13
+dev-python/attrs                                     python_targets_python3_13
+dev-python/av                                        python_targets_python3_13
+dev-python/beniget                                   python_targets_python3_13
+dev-python/blake3                                    python_targets_python3_13
+dev-python/brotlicffi                                python_targets_python3_13
+dev-python/cffi                                      python_targets_python3_13
+dev-python/click                                     python_targets_python3_13
+dev-python/comfy-aimdo-bin                           python_targets_python3_13
+dev-python/comfy-kitchen-bin                         python_targets_python3_13
+dev-python/dunamai                                   python_targets_python3_13
+dev-python/einops                                    python_targets_python3_13
+dev-python/expandvars                                python_targets_python3_13
+dev-python/filelock                                  python_targets_python3_13
+dev-python/frozenlist                                python_targets_python3_13
+dev-python/fsspec                                    python_targets_python3_13
+dev-python/gast                                      python_targets_python3_13
+dev-python/h11                                       python_targets_python3_13
+dev-python/hatch-fancy-pypi-readme                   python_targets_python3_13
+dev-python/httpx2                                    python_targets_python3_13
+dev-python/iniconfig                                 python_targets_python3_13
+dev-python/jinja2                                    python_targets_python3_13
+dev-python/kornia-rs-bin                             python_targets_python3_13
+dev-python/mako                                      python_targets_python3_13
+dev-python/markupsafe                                python_targets_python3_13
+dev-python/meson-python                              python_targets_python3_13
+dev-python/mpmath                                    python_targets_python3_13
+dev-python/multidict                                 python_targets_python3_13
+dev-python/nanobind                                  python_targets_python3_13
+dev-python/networkx                                  python_targets_python3_13
+dev-python/numpy                                     python_targets_python3_13
+dev-python/olefile                                   python_targets_python3_13
+dev-python/pdm-backend                               python_targets_python3_13
+dev-python/pillow                                    python_targets_python3_13
+dev-python/pkgconfig                                 python_targets_python3_13
+dev-python/ply                                       python_targets_python3_13
+dev-python/pooch                                     python_targets_python3_13
+dev-python/propcache                                 python_targets_python3_13
+dev-python/psutil                                    python_targets_python3_13
+dev-python/pybind11                                  python_targets_python3_13
+dev-python/pycares                                   python_targets_python3_13
+dev-python/pycparser                                 python_targets_python3_13
+dev-python/pydantic                                  python_targets_python3_13
+dev-python/pydantic-settings                         python_targets_python3_13
+dev-python/pyopengl                                  python_targets_python3_13
+dev-python/pyproject-metadata                        python_targets_python3_13
+dev-python/pytest                                    python_targets_python3_13
+dev-python/python-dotenv                             python_targets_python3_13
+dev-python/pythran                                   python_targets_python3_13
+dev-python/pyyaml                                    python_targets_python3_13
+dev-python/regex                                     python_targets_python3_13
+dev-python/scikit-build-core                         python_targets_python3_13
+dev-python/scipy                                     python_targets_python3_13
+dev-python/semantic-version                          python_targets_python3_13
+dev-python/setuptools-rust                           python_targets_python3_13
+dev-python/shellingham                               python_targets_python3_13
+dev-python/simpleeval                                python_targets_python3_13
+dev-python/six                                       python_targets_python3_13
+dev-python/sqlalchemy                                python_targets_python3_13
+dev-python/sympy                                     python_targets_python3_13
+dev-python/tqdm                                      python_targets_python3_13
+dev-python/trampoline                                python_targets_python3_13
+dev-python/triton                                    python_targets_python3_13
+dev-python/typer                                     python_targets_python3_13
+dev-python/typing-inspection                         python_targets_python3_13
+dev-python/tzdata                                    python_targets_python3_13
+dev-python/uv-dynamic-versioning                     python_targets_python3_13
+dev-python/yarl                                      python_targets_python3_13
+dev-util/maturin                                     python_targets_python3_13
+sci-ml/hf_xet                                        python_targets_python3_13
+sci-ml/safetensors                                   python_targets_python3_13
+sci-ml/sentencepiece                                 python_targets_python3_13
+virtual/triton                                       python_targets_python3_13
