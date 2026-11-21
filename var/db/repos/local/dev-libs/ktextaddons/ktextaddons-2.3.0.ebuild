@@ -51,7 +51,7 @@ RDEPEND="${DEPEND}
 	!${CATEGORY}/${PN}:5
 "
 
-PATCHES=( "${FILESDIR}/${PN}-2.2.0-ollama-images.patch" )
+PATCHES=( "${FILESDIR}/${P}-ollama-images.patch" )
 
 src_configure() {
 	local mycmakeargs=(
