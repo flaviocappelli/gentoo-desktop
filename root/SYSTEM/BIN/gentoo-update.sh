@@ -2,7 +2,7 @@
 #
 # Released under MIT License
 # Copyright (c) 2024-2026 Flavio Cappelli
-# Version 1.3
+# Version 1.4
 #
 # Automate (as much as possible) upgrades and rebuilds of Gentoo
 # systems. This script can also be invoked in "pretend mode" (-p),
@@ -63,6 +63,11 @@ GU_PATCH_MENU_SCRIPT='/root/SYSTEM/BIN/patch_menu.sh'
 # available for a long time. Note: 'ver_test' was previously defined
 # in 'eapi7-ver' eclass; if moved again, just update this variable.
 GU_VER_TEST_REL_PATH='tests/version-funcs.sh'
+
+# Seconds to wait for the running 'emerge' to terminate after SIGTERM
+# (sent when the script is interrupted) before sending SIGKILL: Portage
+# may need some time to stop builds and merges cleanly.
+GU_TERM_TIMEOUT=60
 
 # DEBUG ONLY: Set to 1 to print some diagnostics.
 GU_DEBUG=0
@@ -184,7 +189,7 @@ Usage:
   ${0##*/} [options] [atom [atom ...]] [@set]
 
 Arguments:
-  atom is a valid Portage package atom (i.e. 'categoty/package' or simply
+  atom is a valid Portage package atom (i.e. 'category/package' or simply
        'package' when unambiguous) optionally including a version or slot.
 
   @set can be @world, @system, @modules (i.e. external kernel modules) or
@@ -279,14 +284,72 @@ get_process_state()
 }
 
 
-# Terminate the child process started by run_managed(). Descendants of the child
-# (if any) are NOT terminated (Portage commands should be properly implemented).
+# Print the PIDs of all the descendants of a process (one per line).
+# shellcheck disable=SC2329   # Called by terminate_active_command(),
+# that is called by cleanup_on_exit(), that is invoked by trap on exit.
+get_descendants()
+{
+    local pid=$1
+    local child
+    local children=()
+
+    mapfile -t children < <(pgrep -P "${pid}" || :)
+    for child in "${children[@]}"; do
+        printf '%s\n' "${child}"
+        get_descendants "${child}"
+    done
+}
+
+
+# Terminate the given processes (if still running): SIGTERM first, then
+# SIGKILL for the survivors after 10 seconds. The caller passes the PIDs.
+# shellcheck disable=SC2329     # Called by terminate_active_command(),
+# that is called by cleanup_on_exit(), that is invoked by trap on exit.
+terminate_descendants()
+{
+    local pid state i
+    local survivors=() remaining=()
+
+    for pid in "$@"; do
+        state=$(get_process_state "${pid}")
+        if ! [[ -z ${state} || ${state} == Z* ]]; then
+            survivors+=("${pid}")
+            kill -TERM "${pid}" 2>/dev/null || :
+        fi
+    done
+
+    (( ${#survivors[@]} )) || return 0
+    warning "Terminating leftover descendant processes: ${survivors[*]}"
+
+    for (( i = 0; i < 50; i++ )); do
+        sleep 0.2
+        remaining=()
+        for pid in "${survivors[@]}"; do
+            state=$(get_process_state "${pid}")
+            if ! [[ -z ${state} || ${state} == Z* ]]; then
+                remaining+=("${pid}")
+            fi
+        done
+        survivors=("${remaining[@]}")
+        (( ${#survivors[@]} )) || return 0
+    done
+
+    for pid in "${survivors[@]}"; do
+        kill -KILL "${pid}" 2>/dev/null || :
+    done
+}
+
+
+# Terminate the child process started by run_activate() and its descendants
+# (if any remain). Portage is expected to stop its children when it receives
+# SIGTERM: killing descendants is only a safety measure (e.g. after a SIGKILL).
 # shellcheck disable=SC2329 # Called by cleanup_on_exit().
 terminate_active_command()
 {
     local pid=${GU_ACTIVE_CHILD_PID:-0}
     local state
     local i
+    local descendants=()
 
     (( pid > 0 )) || return 0
 
@@ -297,11 +360,18 @@ terminate_active_command()
     state=$(get_process_state "${pid}")
     if ! [[ -z ${state} || ${state} == Z* ]]; then
 
+        # Take a snapshot of the descendants (once the child is gone they
+        # are reparented to init and can no longer be found through it).
+        # shellcheck disable=SC2312 # Never fails (see get_descendants).
+        mapfile -t descendants < <(get_descendants "${pid}")
+
+        warning "Terminating PID ${pid} (up to ${GU_TERM_TIMEOUT} s); further INT/TERM/HUP signals are ignored"
+
         # First attempt: graceful termination.
         kill -TERM "${pid}" 2>/dev/null || :
 
-        # Allow up to 10 seconds for termination.
-        for (( i = 0; i < 50; i++ )); do
+        # Allow up to GU_TERM_TIMEOUT seconds for termination.
+        for (( i = 0; i < GU_TERM_TIMEOUT * 5; i++ )); do
             sleep 0.2
 
             # No process or zombie: termination has completed.
@@ -318,6 +388,9 @@ terminate_active_command()
             kill -KILL "${pid}" 2>/dev/null || :
         fi
     fi
+
+    # Terminate the descendants that survived the child (if any).
+    terminate_descendants "${descendants[@]}"
 
     # Wait for the child process to terminate (if it hasn't already).
     # Retrieve its exit status and allow Bash to handle the process's
@@ -361,19 +434,31 @@ check_residual_lock()
 cleanup_on_exit()
 {
     local exit_code=$?                  # Exit code from the last executed command.
+    local lock_result
+
+    # Disable 'errexit' for the whole cleanup (set -e is inherited), because every
+    # step below must run to the end, even if some commands fail; for example, after
+    # SIGHUP the terminal may no longer exist: a 'printf' (or 'warning') would fail
+    # aborting this function before the child process and its descendants are killed.
+    set +e
 
     (( GU_JOB_INTERRUPTED )) && printf '\n'
 
-    # Disable installed traps.
-    trap - EXIT INT TERM
+    # Reset the EXIT trap (no re-entry), but IGNORE INT/TERM/HUP instead
+    # of resetting them: a second signal arriving while the child is being
+    # terminated would otherwise kill the script and orphan the child.
+    trap - EXIT
+    trap '' INT TERM HUP
 
     # Terminate the child, if any.
     terminate_active_command
 
     # Check whether a descendant still holds the script lock.
     # shellcheck disable=SC2310 # Failures handled.
-    if ! check_residual_lock; then
-        local lock_result=$?
+    if check_residual_lock; then
+        :   # No residual lock.
+    else
+        lock_result=$?
         case ${lock_result} in
             1)  warning "Residual child lock detected"
                 ;;
@@ -710,9 +795,13 @@ sync_gentoo_and_other_repos()
 
 pretend_emerge()
 {
+    local rc
+
     # shellcheck disable=SC2310 # Failures handled.
-    if ! run_managed emerge -pv "$@"; then
-        local rc=$?
+    if run_managed emerge -pv "$@"; then
+        :
+    else
+        rc=$?
         fatal_error "Command 'emerge -pv $*' failed with exit code ${rc}"
     fi
     return 0
@@ -845,7 +934,7 @@ run_emerge_sysupdate()
     # Fetch first.
     if (( GU_FETCH_FIRST )); then
         printf '\nDOWNLOADING DISTFILES\n---------------------\n'
-        run_fetch -uN @world
+        run_fetch -uDN @world
         printf '\n'
     fi
 
@@ -1110,6 +1199,7 @@ fi
 trap 'cleanup_on_exit' EXIT
 trap 'GU_JOB_INTERRUPTED=1; exit 130' INT
 trap 'GU_JOB_INTERRUPTED=1; exit 143' TERM
+trap 'GU_JOB_INTERRUPTED=1; exit 129' HUP
 
 
 
